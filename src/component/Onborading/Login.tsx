@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const Login: React.FC = () => {
+  const navigate= useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
@@ -64,6 +66,7 @@ const Login: React.FC = () => {
           />
         </div>
         <button type="submit">Login</button>
+        <button onClick={() => navigate("/signup")}>signup</button>
       </form>
     </div>
   );
