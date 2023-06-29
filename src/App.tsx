@@ -2,12 +2,12 @@ import { BrowserRouter, Routes,Route } from 'react-router-dom'
 import Login from './component/Onborading/Login'
 import SignUp from './component/Onborading/SignUp'
 import Home from './Home'
-
+import './App.css'
 function App() {
 
 
   return (
-    <>
+    <div className='AppMain'>
      <BrowserRouter>
        <Routes>
         <Route path="/" element={<Home/>}/>
@@ -15,7 +15,7 @@ function App() {
         <Route path='signup' element={<SignUp/>}/>
        </Routes>
      </BrowserRouter>
-    </>
+    </div>
   )
 }
 
