@@ -44,7 +44,7 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className='LoginMain'>
       <h1>Login Page</h1>
       <form onSubmit={handleSubmit}>
         <div>

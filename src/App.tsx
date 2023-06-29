@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes,Route } from 'react-router-dom'
 import Login from './component/Onborading/Login'
 import SignUp from './component/Onborading/SignUp'
-import Home from './Home'
+import Home from './component/LandingPage/Home'
 import './App.css'
 function App() {
 
