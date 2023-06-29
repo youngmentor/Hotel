@@ -1,0 +1,90 @@
+.SignUpMain{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.SignUpLeft{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.SignUpForm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   margin-top: 40px;
+}
+.SignUpImage{
+    width: 100%;
+    height: 100%;
+}
+.SignUpRight{
+    width: 50%;
+    height: 100%;
+}
+.SignUpLeft{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.SignUpInputDiv{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   margin: 10px;
+}
+.SignUpinput{
+    width: 400px;
+    height: 40px;
+    padding: 10px;
+    outline: none;
+}
+.SignUpBttn{
+    width: 400px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.SigupSpan{
+    margin-top: 15px;
+}
+.SigupSpan b{
+    color: rgb(84, 162, 246);
+    cursor: pointer;
+}
+@media screen and (max-width: 426px){
+    .SignUpRight{
+        display: none;
+    }
+    .SignUpLeft{
+        display: flex;
+        width: 100%;
+    }
+    .SignUpinput{
+        width: 350px;
+        height: 40px;
+        padding: 10px;
+        outline: none;
+    }
+    .SignUpBttn{
+        width: 350px;
+        height: 40px;
+        margin-top: 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+}
