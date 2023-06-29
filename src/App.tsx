@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes,Route } from 'react-router-dom'
-import TodoForm from './testx'
 import Login from './component/Onborading/Login'
 import SignUp from './component/Onborading/SignUp'
+import Home from './Home'
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
     <>
      <BrowserRouter>
        <Routes>
-        <Route path="/" element={<TodoForm/>}/>
+        <Route path="/" element={<Home/>}/>
         <Route path='login' element={<Login/>}/>
         <Route path='signup' element={<SignUp/>}/>
        </Routes>
