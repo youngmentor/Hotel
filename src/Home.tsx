@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-const TodoForm: React.FC = () => {
+const Home: React.FC = () => {
 
   const navigate= useNavigate()
   return (
@@ -12,4 +12,4 @@ const TodoForm: React.FC = () => {
   );
 };
 
-export default TodoForm;
+export default Home;
