@@ -1,0 +1,63 @@
+.LoginMain{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.LoginLeft{
+    width: 50%;
+    height: 100%;
+}
+.LoginRight{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.LoginImageLeft{
+    width: 100%;
+    height: 100%;
+}
+.LoginForm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   margin-top: 40px;
+}
+.LoginInput{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* gap: 20px; */
+}
+.Input{
+    width: 400px;
+    height: 40px;
+    padding: 10px;
+    outline: none;
+}
+label{
+    width: 400px;
+    margin-bottom: 20px;
+}
+.LoginBttn{
+    width: 400px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.LoginSpan{
+    margin-top: 15px;
+}
+.LoginSpan b{
+    color: rgb(84, 162, 246);
+    cursor: pointer;
+}
