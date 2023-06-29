@@ -7,7 +7,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
@@ -53,7 +53,7 @@ const Login: React.FC = () => {
             type="text"
             id="username"
             value={email}
-            onChange={handleUsernameChange}
+            onChange={handleEmailChange}
           />
         </div>
         <div>
