@@ -4,7 +4,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: rgb(211, 24, 24);
+    position: fixed;
+    z-index: 100;
+    top: 0;
 }
 .HeaderWrap{
    width: 90%;
@@ -12,6 +15,7 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
+  
 
 }
 @media screen and (max-width:426px){

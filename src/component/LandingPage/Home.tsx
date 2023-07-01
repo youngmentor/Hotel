@@ -2,11 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css'
 import RoomData from './HomeData'
+import Header from '../Header/Header';
 const Home: React.FC = () => {
 
   const navigate = useNavigate()
   return (
     <div className='HomeMainPage'>
+      <Header/>
       <div className='HomeMainPageWrap'>
         <div className='HomePageHome'>
           {RoomData.map((item) => (
