@@ -1,0 +1,16 @@
+.HeaderMain{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.HeaderWrap{
+   width: 90%;
+   height: 80px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+}
