@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Home.css'
 import RoomData from './HomeData'
 import Header from '../Header/Header';
+import { Link } from 'react-router-dom';
 const Home: React.FC = () => {
 
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ const Home: React.FC = () => {
       <div className='HomeMainPageWrap'>
         <div className='HomePageHome'>
           {RoomData.map((item) => (
-            <div className='Prod_Card' key={item.id}>
+            <Link className='Prod_Card' key={item.id} to={`/detail/${item.id}`}>
               <img src={item.Avatar} className='Img' />
               <h4 className='ProductName'>{item.name}</h4>
               <p className='Desc_Contain'>{item.desc}</p>
@@ -20,7 +21,7 @@ const Home: React.FC = () => {
                 <p>${item.price}</p>
                 <button className='BookBttn'>Book Now</button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className='HomeBttn'>

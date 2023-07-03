@@ -1,9 +1,15 @@
+import RoomData from "../LandingPage/HomeData"
+import { useParams } from "react-router-dom"
 
 const Detail: React.FC  = ()=>{
-
+const {}= useParams
     return(
         <div>
-good mornin wolrd
+           {RoomData.map((i)=>(
+           <div key={i.id}>
+             <img src={i.Avatar} />
+           </div>
+           ))}
         </div>
     )
 }
