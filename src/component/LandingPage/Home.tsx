@@ -4,7 +4,7 @@ import './Home.css'
 import RoomData from './HomeData'
 import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
-import Popular from './PopularHotel';
+import Popular from './Popular/PopularHotel';
 const Home: React.FC = () => {
 
   const navigate = useNavigate()
@@ -26,10 +26,10 @@ const Home: React.FC = () => {
           ))}
         </div>
         <Popular/>
-        {/* <div className='HomeBttn'>
+        <div className='HomeBttn'>
           <button onClick={() => navigate("/login")}>login</button>
           <button onClick={() => navigate("/signup")}>sign up</button>
-        </div> */}
+        </div>
       </div>
     </div>
   );

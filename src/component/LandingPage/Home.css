@@ -46,6 +46,8 @@
     flex-direction: column;
     margin: 15px;
     align-items: center;
+    text-decoration: none;
+    color: inherit;
 }
 .Img{
     width: 100%;
