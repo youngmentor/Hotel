@@ -1,4 +1,4 @@
-.HeaderMain{
+.HeaderMain {
     width: 100%;
     height: auto;
     display: flex;
@@ -9,22 +9,64 @@
     z-index: 100;
     top: 0;
 }
-.HeaderWrap{
-   width: 90%;
-   height: 80px;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-  
+
+.HeaderWrap {
+    width: 90%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 
 }
-.HeaderNav{
+
+.HeaderNav {
     width: 50%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    background-color: #2e5b56;
 }
-@media screen and (max-width:426px){
-    .HeaderWrap{
+.Header_LogoDiv{
+    width: 20%;
+}
+.HeaderBurgeMenu{
+    width: 20%;
+    /* background-color: red; */
+}
+.HeaderDrop {
+    width: 200px;
+    background-color: white;
+    border: 1px solid lightgray;
+    position: relative;
+    top: 80px;
+    left: 50px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+   
+
+}
+.TimesIcon{
+    position: relative;
+    left: 200px;
+    top: 40px;
+}
+.MenuIcon{
+    position: relative;
+    left: 200px; 
+}
+.BurgerIcon {
+    display: none;
+}
+
+@media screen and (max-width:426px) {
+    .HeaderWrap {
         display: none;
+    }
+
+    .BurgerIcon {
+        display: flex;
     }
 }

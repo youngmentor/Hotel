@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes,Route } from 'react-router-dom'
-import Login from './component/Onborading/Login'
-import SignUp from './component/Onborading/SignUp'
+import Login from './component/Onborading/UserLogin/LoginUser'
+import SignUp from './component/Onborading/UserSignUp/SignUpUser'
 import Home from './component/LandingPage/Home'
 import './App.css'
 import Detail from './component/DetailPage/Detail'
