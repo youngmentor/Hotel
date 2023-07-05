@@ -24,8 +24,8 @@
     width: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: #2e5b56;
+    justify-content: space-around;
+    /* background-color: #2e5b56; */
 }
 .Header_LogoDiv{
     width: 20%;
