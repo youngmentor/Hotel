@@ -13,7 +13,11 @@
     /* background-color: green; */
     margin-top: 150px;
 }
-
+.HomeLanding1{
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+}
 .HomeBttn button {
     width: 100px;
     height: 40px;

@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(211, 24, 24);
+    background-color: #2ec4b6;
     position: fixed;
     z-index: 100;
     top: 0;
@@ -17,6 +17,11 @@
    justify-content: space-between;
   
 
+}
+.HeaderNav{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
 }
 @media screen and (max-width:426px){
     .HeaderWrap{
