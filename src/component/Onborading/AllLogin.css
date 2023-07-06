@@ -1,0 +1,8 @@
+.AllLoginMain{
+    width: 100%;
+    height: 100vh;
+    background-image: url('./HotelImg1.jpeg');
+    background-repeat: no-repeat; /* Specifies whether the background image should repeat */
+    background-size: cover; /* Specifies how the background image should be sized */
+    background-position: center;
+}

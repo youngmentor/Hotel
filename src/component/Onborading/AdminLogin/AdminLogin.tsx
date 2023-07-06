@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Hotel1 from './HotelImg1.jpeg'
-import './Login.css'
+import './AdminLogin.css'
 
 interface LoginForm {
   email: '',
   password: '',
  
 }
-const Login: React.FC = () => {
+const AdminLogin: React.FC = () => {
   const navigate = useNavigate()
   const [loginForm, setLoginForm] = useState<LoginForm>({
     email: '',
@@ -49,11 +49,11 @@ const Login: React.FC = () => {
 
   return (
     <div className='LoginMain'>
-      {/* <div className='LoginLeft'>
+      <div className='LoginLeft'>
         <img src={Hotel1} alt='loginimage' className='LoginImageLeft' />
-      </div> */}
+      </div>
       <div className='LoginRight'>
-        <h1>Welcome back </h1>
+        <h1>Welcome back Admin </h1>
         <form onSubmit={handleSubmit} className='LoginForm'>
           <div className='LoginInput'>
             <label htmlFor="username">Username</label>
@@ -86,4 +86,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

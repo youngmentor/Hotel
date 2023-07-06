@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Hotel1 from './HotelImg1.jpeg'
-import './Login.css'
+// import './Login.css'
 
 interface LoginForm {
   email: '',
   password: '',
  
 }
-const Login: React.FC = () => {
+const ALogin: React.FC = () => {
   const navigate = useNavigate()
   const [loginForm, setLoginForm] = useState<LoginForm>({
     email: '',
@@ -86,4 +86,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default ALogin;
