@@ -1,7 +1,7 @@
 import { Routes, Route, } from 'react-router-dom'
 import Login from './UserLogin/LoginUser'
 import AdminLogin from './AdminLogin/AdminLogin'
-import ALogin from './Login/Login'
+
 import './AllLogin.css'
 const AllLogins: React.FC = () => {
 
@@ -9,7 +9,7 @@ const AllLogins: React.FC = () => {
         <div className='AllLoginMain'>
           <div className='AllLoginMainWrap'>
           <Routes>
-                <Route path='/alogin' element={<ALogin />} />
+                {/* <Route path='/alogin' element={<ALogin />} /> */}
                 <Route path='login' element={<Login />} />
                 <Route path='adminlogin' element={<AdminLogin />} />
             </Routes>

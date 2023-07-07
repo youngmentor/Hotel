@@ -45,17 +45,46 @@
     flex-direction: column;
     margin: 20px;
 }
-
+.LoginInputPass{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px; 
+}
 .Input {
     width: 400px;
     height: 40px;
     padding: 10px;
     outline: none;
 }
-
+.InputPass{
+    width: 350px;
+    height: 40px;
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+.Input_EyeIcon{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid lightgray;
+}
+.password-toggle{
+    width: 50px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
 label {
     width: 400px;
     margin-bottom: 10px;
+    color:black;
+    font-weight: bolder;
 }
 
 .LoginBttn {
@@ -91,6 +120,14 @@ label {
         height: 40px;
         padding: 10px;
         outline: none;
+    }
+    .Input_EyeIcon{
+        width: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border: 1px solid lightgray;
     }
 
     label {
