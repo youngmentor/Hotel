@@ -7,11 +7,13 @@ const AllLogins: React.FC = () => {
 
     return (
         <div className='AllLoginMain'>
-            <Routes>
+          <div className='AllLoginMainWrap'>
+          <Routes>
                 <Route path='/alogin' element={<ALogin />} />
                 <Route path='login' element={<Login />} />
                 <Route path='adminlogin' element={<AdminLogin />} />
             </Routes>
+          </div>
         </div>
     )
 }

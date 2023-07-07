@@ -3,6 +3,7 @@ import axios from 'axios';
 import HotelSignUp from './HotelImg2.jpeg'
 import './SignUp.css'
 import { useNavigate } from 'react-router-dom';
+
 interface SignUpForm {
   name: string;
   email: string;

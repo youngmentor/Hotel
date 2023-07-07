@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Hotel1 from './HotelImg1.jpeg'
+// import Hotel1 from './HotelImg1.jpeg'
 // import './Login.css'
 
 interface LoginForm {
-  email: '',
-  password: '',
+  email: string;
+  password: string;
  
 }
 const ALogin: React.FC = () => {

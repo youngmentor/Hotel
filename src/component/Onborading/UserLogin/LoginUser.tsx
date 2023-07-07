@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Hotel1 from './HotelImg1.jpeg'
+// import Hotel1 from './HotelImg1.jpeg'
 import './Login.css'
 
 interface LoginForm {
@@ -53,7 +53,7 @@ const Login: React.FC = () => {
         <img src={Hotel1} alt='loginimage' className='LoginImageLeft' />
       </div> */}
       <div className='LoginRight'>
-        <h1>Welcome back </h1>
+        <h1>Welcome back User</h1>
         <form onSubmit={handleSubmit} className='LoginForm'>
           <div className='LoginInput'>
             <label htmlFor="username">Username</label>
@@ -81,6 +81,7 @@ const Login: React.FC = () => {
           {/* <button onClick={() => navigate("/signup")}>signup</button> */}
         </form>
         <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/signup")} >create account</b></span>
+        <span className='LoginSpan'>I am an Admin  <b onClick={() => navigate("/alllogin/adminlogin")} >Login here</b></span>
       </div>
     </div>
   );
