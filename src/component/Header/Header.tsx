@@ -1,6 +1,6 @@
 import './Header.css'
 import Logo from './1 (12).png'
-import { GiHamburgerMenu } from "react-icons/gi";
+// import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineMenu } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
 import { useState } from 'react';
