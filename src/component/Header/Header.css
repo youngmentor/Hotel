@@ -32,7 +32,6 @@
 }
 .HeaderBurgeMenu{
     width: 20%;
-    /* background-color: red; */
 }
 .HeaderDrop {
     width: 200px;
@@ -62,11 +61,30 @@
 }
 
 @media screen and (max-width:426px) {
-    .HeaderWrap {
+    .HeaderNav {
         display: none;
     }
 
     .BurgerIcon {
         display: flex;
+    }
+    .BurgerIcon{
+        display:none ;
+    }
+    .HeaderLogoImg{
+        width: 100px;
+    }
+    .HeaderBurgeMenu{
+        display: flex;
+        width: 250px;
+    }
+    .TimesIcon{
+        position: relative;
+        left: 200px;
+        top: 30px;
+    }
+    .MenuIcon{
+        position: relative;
+        left: 200px; 
     }
 }

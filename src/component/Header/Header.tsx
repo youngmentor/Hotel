@@ -23,7 +23,7 @@ const Header: React.FC = () => {
         <div className="HeaderMain">
             <div className="HeaderWrap">
                <div className='Header_LogoDiv'>
-               <img src={Logo} className='' />
+               <img src={Logo} className='HeaderLogoImg' />
                </div>
                 <div className='HeaderNav'>
                     <p>Home</p>
@@ -37,10 +37,11 @@ const Header: React.FC = () => {
                             <MdOutlineMenu onClick={() => { setHeader(!header) }} className='MenuIcon' />
                     }
                     {header && HeaderDrop}
-                    <GiHamburgerMenu className='BurgerIcon' />
+                   
                 </div>
-                {/* <button>Signup</button>
-                <button>login</button> */}
+                {/* <GiHamburgerMenu className='BurgerIcon' /> */}
+                {/* <button onClick={() => navigate("/allsignup/adminsignup")}>Signup</button>
+                <button onClick={() => navigate("alllogin/adminlogin")}>login</button> */}
             </div>
         </div>
     )
