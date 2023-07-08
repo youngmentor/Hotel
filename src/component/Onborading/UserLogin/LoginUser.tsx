@@ -10,7 +10,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false);
 
-  const showPasswords = () => {
+  const visiblePassword = () => {
       setShowPassword(!showPassword);
   };
   const handleEmailChange = (event:React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +72,7 @@ const handlePasswordChange = (event:React.ChangeEvent<HTMLInputElement>) => {
                                 onChange={handlePasswordChange}
                                 className='InputPass'
                             />
-                            <div className="password-toggle" onClick={showPasswords}>
+                            <div className="password-toggle" onClick={visiblePassword}>
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </div>
                         </div>

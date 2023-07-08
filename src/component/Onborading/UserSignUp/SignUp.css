@@ -1,56 +1,78 @@
-.SignUpMain{
+.SignUpMain {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.SignUpLeft{
-    width: 50%;
+
+.SignUpLeft {
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-.SignUpForm{
+
+.SignUpForm {
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   margin-top: 40px;
+    margin-top: 20px;
 }
-.SignUpImage{
+
+.SignUpImage {
     width: 100%;
     height: 100%;
 }
-.SignUpRight{
+
+/* .SignUpRight{
     width: 50%;
     height: 100%;
-}
-.SignUpLeft{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.SignUpInputDiv{
+} */
+
+.SignUpInputDiv {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-   margin: 10px;
+    margin: 10px;
 }
-.SignUpinput{
+
+.SignUpinput {
     width: 400px;
     height: 40px;
     padding: 10px;
     outline: none;
+    border: none;
+    border-radius: 3px;
 }
-.SignUpBttn{
+
+.SignUpinputPass {
+    width: 350px;
+    height: 40px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+}
+
+.Input_Eye {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 3px;
+
+}
+
+.SignUpBttn {
     width: 400px;
     height: 40px;
     margin-top: 20px;
@@ -58,28 +80,44 @@
     border-radius: 8px;
     cursor: pointer;
 }
-.SigupSpan{
+
+.SigupSpan {
     margin-top: 15px;
 }
-.SigupSpan b{
+
+.SigupSpan b {
     color: rgb(84, 162, 246);
     cursor: pointer;
+    margin-left: 5px;
 }
-@media screen and (max-width: 426px){
-    .SignUpRight{
+
+@media screen and (max-width: 426px) {
+    .SignUpRight {
         display: none;
     }
-    .SignUpLeft{
+    .SignUpInputDiv{
+        margin: 5px;
+    }
+    .SignUpLeft {
         display: flex;
         width: 100%;
     }
-    .SignUpinput{
+
+    .SignUpinput {
         width: 350px;
         height: 40px;
         padding: 10px;
         outline: none;
     }
-    .SignUpBttn{
+    .Input_Eye {
+        width: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+    
+    }
+    .SignUpBttn {
         width: 350px;
         height: 40px;
         margin-top: 20px;

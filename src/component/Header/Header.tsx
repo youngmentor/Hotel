@@ -15,7 +15,7 @@ const Header: React.FC = () => {
             <div className='HeaderDrop'>
                 {/* <FaTimes/> */}
                 <p onClick={() => navigate("alllogin/adminlogin")} style={{ cursor:"pointer" }} >Login</p>
-                <p onClick={() => navigate("/signup")} style={{ cursor:"pointer" }}>sign up</p>
+                <p onClick={() => navigate("/allsignup/adminsignup")} style={{ cursor:"pointer" }}>sign up</p>
             </div>
         )
     )

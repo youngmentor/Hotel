@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import HotelSignUp from './HotelImg2.jpeg'
+// import HotelSignUp from './HotelImg2.jpeg'
 import './SignUp.css'
 import { useNavigate } from 'react-router-dom';
-
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 interface SignUpForm {
   name: string;
   email: string;
@@ -12,7 +12,7 @@ interface SignUpForm {
   phonenumber: string;
 }
 
-const SignUp: React.FC = () => {
+const SignUpUser: React.FC = () => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState<SignUpForm>({
     name: '',
@@ -21,7 +21,10 @@ const SignUp: React.FC = () => {
     confirmpassword: '',
     phonenumber: '',
   });
-
+  const[ showPassword, setShowPassword] = useState(false)
+  const visiblePassword = () => {
+    setShowPassword(!showPassword);
+  };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -43,7 +46,7 @@ const SignUp: React.FC = () => {
   return (
     <div className='SignUpMain'>
       <div className='SignUpLeft'>
-        <h2>Create an Account to continue</h2>
+        <h2>Create an Account to continue as a User</h2>
         <form onSubmit={handleSubmit} className='SignUpForm'>
           <div className='SignUpInputDiv'>
             <label htmlFor="name">Name</label>
@@ -73,29 +76,39 @@ const SignUp: React.FC = () => {
           </div>
           <div className='SignUpInputDiv'>
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className='SignUpinput'
-              placeholder='Password'
-            />
+            <div className='Input_Eye'>
+              <input
+                type= 'password' 
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                className='SignUpinputPass'
+                placeholder='Password'
+              />
+               <div className="password-toggle">
+             
+            </div>
+            </div>
           </div>
           <div className='SignUpInputDiv'>
             <label htmlFor="password">Confirm Password</label>
-            <input
-              type="password"
+          <div className='Input_Eye'>
+          <input
+              type={showPassword ? 'text' : 'password'}
               id="confirmpassword"
               name="confirmpassword"
               value={formData.confirmpassword}
               onChange={handleChange}
               required
-              className='SignUpinput'
+              className='SignUpinputPass'
               placeholder='Confirm Password'
             />
+             <div className="password-toggle" onClick={visiblePassword}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </div>
+          </div>
           </div>
           <div className='SignUpInputDiv'>
             <label htmlFor="password">Phone Number</label>
@@ -112,13 +125,14 @@ const SignUp: React.FC = () => {
           </div>
           <button type="submit" className='SignUpBttn'>Sign Up</button>
         </form>
-        <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/login")} >Login here</b></span>
+        <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/alllogin/login")} >Login here</b></span>
+        <span className='SigupSpan'>I am not a User <b onClick={() => navigate("/allsignup/adminsignup")} >SignUp here</b></span>
       </div>
-      <div className='SignUpRight'>
+      {/* <div className='SignUpRight'>
         <img src={HotelSignUp} alt='signupimage' className='SignUpImage' />
-      </div>
+      </div> */}
     </div>
   );
 };
 
-export default SignUp;
+export default SignUpUser;
