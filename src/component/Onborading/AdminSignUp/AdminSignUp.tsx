@@ -29,9 +29,16 @@ const AdminSignUp: React.FC = () => {
     });
   };
   const[ showPassword, setShowPassword] = useState(false)
+  const[ showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+
   const visiblePassword = () => {
     setShowPassword(!showPassword);
   };
+  const visibleConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -78,7 +85,7 @@ const AdminSignUp: React.FC = () => {
             <label htmlFor="password">Password</label>
             <div className='Input_Eye'>
               <input
-                type= 'password' 
+               type={showPassword ? 'text' : 'password'}
                 id="password"
                 name="password"
                 value={formData.password}
@@ -87,8 +94,8 @@ const AdminSignUp: React.FC = () => {
                 className='SignUpinputPass'
                 placeholder='Password'
               />
-               <div className="password-toggle">
-             
+               <div className="password-toggle" onClick={visiblePassword}>
+               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </div>
             </div>
           </div>
@@ -105,8 +112,8 @@ const AdminSignUp: React.FC = () => {
               className='SignUpinputPass'
               placeholder='Confirm Password'
             />
-             <div className="password-toggle" onClick={visiblePassword}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+             <div className="password-toggle" onClick={visibleConfirmPassword}>
+             {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
             </div>
           </div>
           </div>
