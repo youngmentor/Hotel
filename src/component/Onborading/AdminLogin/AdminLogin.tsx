@@ -78,7 +78,7 @@ const AdminLogin: React.FC = () => {
                     <button type="submit" className='LoginBttn'>Login</button>
                     {/* <button onClick={() => navigate("/signup")}>signup</button> */}
                 </form>
-                <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/signup")} >create account</b></span>
+                <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>
                 <span className='LoginSpan'>Not an Admin am a User <b onClick={() => navigate("/alllogin/login")} >login here</b></span>
             </div>
         </div>

@@ -80,7 +80,7 @@ const handlePasswordChange = (event:React.ChangeEvent<HTMLInputElement>) => {
           <button type="submit" className='LoginBttn'>Login</button>
           {/* <button onClick={() => navigate("/signup")}>signup</button> */}
         </form>
-        <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/signup")} >create account</b></span>
+        <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/usersignup")} >create account</b></span>
         <span className='LoginSpan'>I am an Admin  <b onClick={() => navigate("/alllogin/adminlogin")} >Login here</b></span>
       </div>
     </div>
