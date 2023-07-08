@@ -82,9 +82,11 @@
         position: relative;
         left: 200px;
         top: 30px;
+        font-size: 25px;
     }
     .MenuIcon{
         position: relative;
         left: 200px; 
+        font-size: 25px;
     }
 }
