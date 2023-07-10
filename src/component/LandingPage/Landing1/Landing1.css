@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(207, 195, 195, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     flex-direction: column;
 }
 .LandinHeadingText{
