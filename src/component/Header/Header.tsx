@@ -1,8 +1,8 @@
 import './Header.css'
 import Logo from './1 (12).png'
 // import { GiHamburgerMenu } from "react-icons/gi";
-import { MdOutlineMenu } from "react-icons/md";
-import { FaTimes } from "react-icons/fa";
+// import { MdOutlineMenu } from "react-icons/md";
+import { FaTimes,FaRegUserCircle } from "react-icons/fa";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
                 <div className='HeaderBurgeMenu'>
                     {
                         header ? <FaTimes onClick={() => { setHeader(!header) }} className='TimesIcon' /> :
-                            <MdOutlineMenu onClick={() => { setHeader(!header) }} className='MenuIcon' />
+                            <FaRegUserCircle onClick={() => { setHeader(!header) }} className='MenuIcon' />
                     }
                     {header && HeaderDrop}
                    
