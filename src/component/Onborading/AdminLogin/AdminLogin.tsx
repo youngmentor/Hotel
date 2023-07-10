@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
@@ -19,27 +19,28 @@ const AdminLogin: React.FC = () => {
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value);
     };
-    //   const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-    //     setLoginForm({ ...loginForm, [event.target.name]: event.target.value})
-    // };
-    //   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    //     event.preventDefault();
 
-    //     try {
-    //       const response = await axios.post('', loginForm);
+      const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
 
-    //       if (response.status === 200 && response.data.authenticated) {
-    //         setLoggedIn(true);
-    //         console.log('Logged in successfully');
-    //       } else {
-    //         setLoggedIn(false);
-    //         console.log('Invalid username or password');
-    //       }
-    //     } catch (error) {
-    //       console.error('Error occurred during login:', error);
-    //       setLoggedIn(false);
-    //     }
-    //   };
+        try {
+          const response = await axios.post('', {
+            email,
+            password
+          });
+
+          if (response.status === 200 && response.data.authenticated) {
+
+            console.log('Logged in successfully');
+          } else {
+           
+            console.log('Invalid username or password');
+          }
+        } catch (error) {
+          console.error('Error occurred during login:', error);
+    
+        }
+      };
 
 
 
@@ -47,7 +48,7 @@ const AdminLogin: React.FC = () => {
         <div className='LoginMain'>
             <div className='LoginRight'>
                 <h1>Welcome back Admin </h1>
-                <form className='LoginForm'>
+                <form className='LoginForm' onSubmit={handleSubmit}>
                     <div className='LoginInput'>
                         <label htmlFor="email">Email Address</label>
                         <input

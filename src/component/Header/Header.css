@@ -1,23 +1,21 @@
 .HeaderMain {
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #2ec4b6;
-    position: fixed;
-    z-index: 100;
-    top: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: blueviolet; */
+  border-bottom: 1px solid lightgray;
 }
 
 .HeaderWrap {
-    width: 90%;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-
+   width: 90%;
+   height: 100px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   /* margin-top: 100px; */
+   /* background-color: green; */
 }
 
 .HeaderNav {

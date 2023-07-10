@@ -8,15 +8,12 @@
     justify-content: center;
 }
 .HomeMainPageWrap{
-    width: 95%;
+    width: 100%;
     height: 100%;
-    /* background-color: green; */
-    margin-top: 150px;
 }
 .HomeLanding1{
     width: 100%;
     height: auto;
-    margin-top: 50px;
 }
 .HomeBttn button {
     width: 100px;
