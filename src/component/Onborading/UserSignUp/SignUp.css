@@ -14,7 +14,9 @@
     justify-content: center;
     flex-direction: column;
 }
-
+.SignUpLeft h2{
+    color: white;
+}
 .SignUpForm {
     width: 100%;
     height: auto;
@@ -52,7 +54,9 @@
     border: none;
     border-radius: 3px;
 }
-
+label{
+    color: white;
+}
 .SignUpinputPass {
     width: 350px;
     height: 40px;
@@ -79,10 +83,14 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    background-color: rgb(45, 185, 255);
+    color: white;
+    font-size: 18px;
 }
 
 .SigupSpan {
     margin-top: 15px;
+    color: white;
 }
 
 .SigupSpan b {
