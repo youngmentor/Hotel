@@ -21,7 +21,7 @@
     
 }
 .PopularLagos{
-    width: 300px;
+    width: 350px;
     height: 200px;
     border: 1px solid lightgray;
     display: flex;
@@ -30,8 +30,69 @@
     flex-direction: column;
     gap: 20px;
     cursor: pointer;
+    background-image: url('./HomeImg/Lagos.jpeg');
 }
-.PopularLagos p{
+.PopularAbuja{
+    width: 350px;
+    height: 200px;
+    border: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    background-image: url('./HomeImg/Abuja.jpeg');
+}
+.PopularKwara{
+    width: 350px;
+    height: 200px;
+    border: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    background-image: url('./HomeImg/Port.jpeg');
+}
+.PopularIbadan{
+    width: 350px;
+    height: 200px;
+    border: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    background-image: url('./HomeImg/Calabar.jpeg');
+}
+.PopularRiver{
+    width: 350px;
+    height: 200px;
+    border: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    background-image: url('./HomeImg/Owerri.jpeg');
+}
+.PopularKano{
+    width: 350px;
+    height: 200px;
+    border: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    background-image: url('./HomeImg/Uyo.jpeg');
+}
+.HotelNum{
  color: white;
 }
 .PopularLagosWrap{
@@ -41,9 +102,9 @@
     align-items: center;
     /* justify-content: center; */
     flex-direction: column;
-    background-color: rgb(0,0,0 , 0.4);
+    background-color: rgb(0,0,0 , 0.5);
 }
-.PopularLagos h4{
+.HotelName{
     color: white; 
 }
 .two{
@@ -78,4 +139,9 @@
     outline: none;
     cursor: pointer;
     border-radius: 5px;
+}
+.two button:hover{
+    background-color:  rgb(45, 185, 255);
+    transition: background-color 0.6s ease;
+    color: white;
 }
