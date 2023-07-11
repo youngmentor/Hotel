@@ -1,59 +1,45 @@
 
 import './PopularHotel.css'
+import PopularH from './PopularData'
+import { useState } from 'react'
 const Popular: React.FC = () => {
 
+    const [showButton, setShowButton] = useState<boolean>(false)
+
+    const isShow = (
+        showButton && (
+            <div className='Show_Button'>
+                <button>See Hotel</button>
+            </div>
+        )
+    )
     return (
         <div className="PopulaMain">
             <h4>Popular cities with Hotels travellers wants</h4>
             <div className="PopulaMainWrap">
-                <div className="PopularLagos">
-                    <p>1234</p>
-                    <h4>Lagos hotels</h4>
-                </div>
-                <div className="PopularAbuja">
-                    <p>1234</p>
-                    <h4>Abuja hotels</h4>
-                </div>
-                <div className="PopularKwara">
-                    <p>1234</p>
-                    <h4>Kwara hotels</h4>
-                </div>
-                <div className="PopularIbadan">
-                    <p>1234</p>
-                    <h4>Ibadan hotels</h4>
-                </div>
-                <div className="PopularOwerri">
-                    <p>1234</p>
-                    <h4>Ibadan hotels</h4>
-                </div>
-                <div className="PopularPort">
-                    <p>1234</p>
-                    <h4>Ibadan hotels</h4>
-                </div>
-                <div className="PopularLagos">
-                    <p>1234</p>
-                    <h4>Lagos hotels</h4>
-                </div>
-                <div className="PopularAbuja">
-                    <p>1234</p>
-                    <h4>Abuja hotels</h4>
-                </div>
-                <div className="PopularKwara">
-                    <p>1234</p>
-                    <h4>Kwara hotels</h4>
-                </div>
-                <div className="PopularIbadan">
-                    <p>1234</p>
-                    <h4>Ibadan hotels</h4>
-                </div>
-                <div className="PopularOwerri">
-                    <p>1234</p>
-                    <h4>Ibadan hotels</h4>
-                </div>
-                <div className="PopularPort">
-                    <p>1234</p>
-                    <h4>Ibadan hotels</h4>
-                </div>
+                {PopularH.map((i) => (
+                    <div className="PopularLagos" style={{
+                        backgroundImage: `url(${i.Avatar})`,
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center',
+                    }}
+                        onMouseEnter={() => { setShowButton(!showButton) }}
+                        onMouseLeave={() => { setShowButton(!showButton) }}
+                      key={i.id}
+                    >
+                        <div className='PopularLagosWrap'>
+                            <div className='PopularDetails'>
+                                <p>{i.HotelNum}</p>
+                                <h4>{i.name}</h4>
+                            </div>
+                            {
+                                showButton ? <div className='two'  ><button>See Hotel</button></div> : <div className=''></div>
+                            }
+                            {isShow && showButton}
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )

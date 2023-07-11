@@ -53,9 +53,23 @@
     gap: 20px;
     position: -webkit-sticky;
     position: sticky;
+    /* position: fixed; */
+    padding: 12px;
     top: 0;
 }
-.SearchInputWrap button{
+.SearchInputWrap2{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: -webkit-sticky;
+    /* position: sticky; */
+    position: fixed;
+    top: 0;
+    padding: 10px;
+}
+.SearchBttn{
     width: 150px;
     height: 45px;
     background-color: rgb(45, 185, 255);
