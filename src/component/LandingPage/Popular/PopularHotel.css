@@ -8,6 +8,11 @@
    margin-top: 20px;
    padding: 10px;
 }
+.PopulaMain h4{
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
 .PopulaMainWrap{
     width: 90%;
     height:auto;
@@ -106,6 +111,7 @@
 }
 .HotelName{
     color: white; 
+    font-size: 20px;
 }
 .two{
     width: 100%;
@@ -115,8 +121,7 @@
     justify-content: center;
     background-color: rgb(0, 0, 0, 0.5);
     animation: fadeInUp;
-    animation-duration: 6s;
-    --animate-delay: 0.5s
+    animation-duration: 1s;
 }
 .PopularDetails{
     width: 100%;
