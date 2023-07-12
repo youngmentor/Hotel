@@ -5,6 +5,8 @@ import Detail from './component/DetailPage/Detail'
 import AdminSignUp from './component/Onborading/AdminSignUp/AdminSignUp'
 import AllLogins from './component/Onborading/AllLogins'
 import AllSignUp from './component/Onborading/AllSignUp'
+import AdminMainDashBoard from './Component2/AdminDash/AdminDashMain'
+import UserMainDashBoard from './Component2/UserDash/UserDashMain'
 const App: React.FC =() =>{
 
 
@@ -18,6 +20,8 @@ const App: React.FC =() =>{
         <Route path='/allsignup/*' element={<AllSignUp/>}/>
         <Route path='/detail/:id' element={<Detail/>}/>
         <Route path='/adminsignup' element={<AdminSignUp/>}/>
+        <Route path='/admindash' element={<AdminMainDashBoard/>}/>
+        <Route path='/userdash' element={<UserMainDashBoard/>}/>
        </Routes>
      </BrowserRouter>
     </div>
