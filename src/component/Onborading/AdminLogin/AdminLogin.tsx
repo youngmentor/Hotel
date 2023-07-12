@@ -47,7 +47,7 @@ const AdminLogin: React.FC = () => {
     return (
         <div className='LoginMain'>
             <div className='LoginRight'>
-                <h1>Welcome back Admin </h1>
+                <h1>Welcome back Partner </h1>
                 <form className='LoginForm' onSubmit={handleSubmit}>
                     <div className='LoginInput'>
                         <label htmlFor="email">Email Address</label>

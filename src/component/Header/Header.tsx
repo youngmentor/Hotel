@@ -2,7 +2,7 @@ import './Header.css'
 import Logo from './1 (12).png'
 // import { GiHamburgerMenu } from "react-icons/gi";
 // import { MdOutlineMenu } from "react-icons/md";
-import { FaTimes,FaRegUserCircle } from "react-icons/fa";
+import { FaTimes, FaRegUserCircle } from "react-icons/fa";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,22 +14,25 @@ const Header: React.FC = () => {
         header && (
             <div className='HeaderDrop'>
                 {/* <FaTimes/> */}
-                <p onClick={() => navigate("alllogin/adminlogin")} style={{ cursor:"pointer" }} >Login</p>
-                <p onClick={() => navigate("/allsignup/adminsignup")} style={{ cursor:"pointer" }}>sign up</p>
+                <p onClick={() => navigate("alllogin/adminlogin")} style={{ cursor: "pointer" }} >Login</p>
+                <p onClick={() => navigate("/allsignup/adminsignup")} style={{ cursor: "pointer" }}>sign up</p>
+                <button className='Header_Bttn1' onClick={() => navigate("alllogin/adminlogin")} >Register Your Hotel</button>
+                    <button className='Header_Bttn2'>Book a room</button>
             </div>
         )
     )
     return (
         <div className="HeaderMain">
             <div className="HeaderWrap">
-               <div className='Header_LogoDiv'>
-               <img src={Logo} className='HeaderLogoImg' />
-               </div>
+                <div className='Header_LogoDiv'>
+                    <img src={Logo} className='HeaderLogoImg' />
+                </div>
                 <div className='HeaderNav'>
-                    <p>Home</p>
-                    <p>About</p>
-                    <p>Rooms</p>
-                    <p>Location</p>
+
+                </div>
+                <div className='Header_Bttn'>
+                    <button className='Header_Bttn1' onClick={() => navigate("alllogin/adminlogin")} >Register Your Hotel</button>
+                    <button className='Header_Bttn2'>Book a room</button>
                 </div>
                 <div className='HeaderBurgeMenu'>
                     {
@@ -37,11 +40,8 @@ const Header: React.FC = () => {
                             <FaRegUserCircle onClick={() => { setHeader(!header) }} className='MenuIcon' />
                     }
                     {header && HeaderDrop}
-                   
+
                 </div>
-                {/* <GiHamburgerMenu className='BurgerIcon' /> */}
-                {/* <button onClick={() => navigate("/allsignup/adminsignup")}>Signup</button>
-                <button onClick={() => navigate("alllogin/adminlogin")}>login</button> */}
             </div>
         </div>
     )

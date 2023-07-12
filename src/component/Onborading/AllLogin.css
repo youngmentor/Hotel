@@ -1,7 +1,7 @@
 .AllLoginMain{
     width: 100%;
     height: 100vh;
-    background-image: url('./HotelImg1.jpeg');
+    background-image: url('./HotelR4.jpeg');
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center;
@@ -9,6 +9,6 @@
 .AllLoginMainWrap{
     width: 100%;
     height: 100%;
-    background-color:rgba(0, 0, 0, 0.5);
+    background-color:rgba(0, 0, 0, 0.6);
     /* background-color: red; */
 }

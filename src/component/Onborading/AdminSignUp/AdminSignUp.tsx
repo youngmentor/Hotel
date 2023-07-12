@@ -53,7 +53,7 @@ const AdminSignUp: React.FC = () => {
   return (
     <div className='SignUpMain'>
       <div className='SignUpLeft'>
-        <h2>Create an Account to continue As an Admin</h2>
+        <h2>Create an Account to continue As a Partner</h2>
         <form onSubmit={handleSubmit} className='SignUpForm'>
           <div className='SignUpInputDiv'>
             <label htmlFor="name">Name</label>
@@ -117,7 +117,7 @@ const AdminSignUp: React.FC = () => {
             </div>
           </div>
           </div>
-          <div className='SignUpInputDiv'>
+          {/* <div className='SignUpInputDiv'>
             <label htmlFor="number">Phone Number</label>
             <input
               type="number"
@@ -129,7 +129,7 @@ const AdminSignUp: React.FC = () => {
               className='SignUpinput'
               placeholder='Phone Number'
             />
-          </div>
+          </div> */}
           <button type="submit" className='SignUpBttn'>Sign Up</button>
         </form>
         <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/alllogin/adminlogin")} >Login here</b></span>
