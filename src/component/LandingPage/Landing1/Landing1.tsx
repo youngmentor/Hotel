@@ -23,7 +23,7 @@ const Landing1: React.FC = () => {
     return (
         <div className="Landing1Main">
             <div className='Landing1MainWrap'>
-                <h1 className='LandinHeadingText' >Welcome to my room find the <br /> best hotel around you </h1>
+                <h1 className='LandinHeadingText' >Welcome to my Room find the <br /> best hotel around you </h1>
                 <div className={!scroll ? 'SearchInputWrap' : 'SearchInputWrap2'}  >
                     <div className='SearchInputDiv'>
                         <div className='SearchIcon'>
