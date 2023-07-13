@@ -1,7 +1,7 @@
 import AdminDashLeft from "./AdminDashLeft/AdminDashLeft"
 import AdminDashRight from "./AdminDashRight/AdminDashRight"
 
-
+import './AdminDashMain.css'
 const AdminMainDashBoard: React.FC = () => {
 
 
