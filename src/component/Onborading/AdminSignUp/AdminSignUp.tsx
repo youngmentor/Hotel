@@ -117,23 +117,9 @@ const AdminSignUp: React.FC = () => {
             </div>
           </div>
           </div>
-          {/* <div className='SignUpInputDiv'>
-            <label htmlFor="number">Phone Number</label>
-            <input
-              type="number"
-              id="phonenumber"
-              name="phonenumber"
-              value={formData.phonenumber}
-              onChange={handleChange}
-              required
-              className='SignUpinput'
-              placeholder='Phone Number'
-            />
-          </div> */}
           <button type="submit" className='SignUpBttn'>Sign Up</button>
         </form>
         <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/alllogin/adminlogin")} >Login here</b></span>
-        <span className='SigupSpan'>I am not an Admin <b onClick={() => navigate("/allsignup/usersignup")} >SignUp here</b></span>
       </div>
       {/* <div className='SignUpRight'>
         <img src={HotelSignUp} alt='signupimage' className='SignUpImage' />

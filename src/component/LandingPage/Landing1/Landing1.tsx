@@ -46,7 +46,7 @@ const Landing1: React.FC = () => {
                             className='SearcHInputLanding1'
                         />
                     </div>
-                    <div>
+                    {/* <div>
                         <div>
                             <label>Check-In Date:</label>
                             <DatePicker selected={checkInDate} onChange={handleCheckInChange} />
@@ -55,7 +55,7 @@ const Landing1: React.FC = () => {
                             <label>Check-Out Date:</label>
                             <DatePicker selected={checkOutDate} onChange={handleCheckOutChange} />
                         </div>
-                    </div>
+                    </div> */}
                     <button className='SearchBttn'>Find Hotel</button>
                 </div>
             </div>

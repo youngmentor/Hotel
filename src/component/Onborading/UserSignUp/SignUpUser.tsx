@@ -126,7 +126,6 @@ const SignUpUser: React.FC = () => {
           <button type="submit" className='SignUpBttn'>Sign Up</button>
         </form>
         <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/alllogin/login")} >Login here</b></span>
-        <span className='SigupSpan'>I am not a User <b onClick={() => navigate("/allsignup/adminsignup")} >SignUp here</b></span>
       </div>
       {/* <div className='SignUpRight'>
         <img src={HotelSignUp} alt='signupimage' className='SignUpImage' />
