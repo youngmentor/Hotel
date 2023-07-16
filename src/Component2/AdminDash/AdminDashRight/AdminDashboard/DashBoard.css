@@ -1,0 +1,38 @@
+.DashBoardMain_Dashboard {
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.DashBoardMain_Dashboard_Wrap {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.AllHotel-Div {
+    width: 220px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(228, 224, 224);
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+}
+
+.AllHotel-Div b {
+    width: 40px;
+    height: 40px;
+    background-color: lightgray;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

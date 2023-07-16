@@ -36,16 +36,24 @@
     justify-content: center;
     /* background-color: red; */
 }
-.AdminDashBoardLeftNav p{
+.AdminDashBoardLeftNav_Icon_Div p{
     cursor: pointer;
     height: 40px;
     display: flex;
     align-items: center;
+   
 }
-.AdminDashBoardLeftNav p:hover{
+.AdminDashBoardLeftNav_Icon_Div:hover{
     border-bottom: 2px solid rgb(255, 255, 255);
 }
 .UserImg{
     width: 200px;
     height: 200px;
+}
+.AdminDashBoardLeftNav_Icon_Div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+   gap: 40px;
+   color: white;
 }
