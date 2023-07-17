@@ -14,7 +14,7 @@ const AdminDashRight: React.FC = () => {
         <div className='AdminDashRightMain'>
             {/* <div className='AdminDashRightMainWrap'> */}
                 <div className='AdminDashRightHeader'>
-
+                         <h3>Welcome Precioous</h3>
                 </div>
                 <div className='AdminDashRightContent'>
                    <Routes>
