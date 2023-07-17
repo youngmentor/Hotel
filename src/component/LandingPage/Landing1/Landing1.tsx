@@ -3,20 +3,20 @@ import './Landing1.css'
 import { FaSearch } from "react-icons/fa";
 import React from 'react';
 import Popular from '../Popular/PopularHotel';
-import DatePicker from 'react-datepicker';
+// import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Landing1: React.FC = () => {
-    const [checkInDate, setCheckInDate] = useState<Date | null>(null);
-    const [checkOutDate, setCheckOutDate] = useState<Date | null>(null);
+    // const [checkInDate, setCheckInDate] = useState<Date | null>(null);
+    // const [checkOutDate, setCheckOutDate] = useState<Date | null>(null);
 
-    const handleCheckInChange = (date: Date | null) => {
-        setCheckInDate(date);
-    };
+    // const handleCheckInChange = (date: Date | null) => {
+    //     setCheckInDate(date);
+    // };
 
-    const handleCheckOutChange = (date: Date | null) => {
-        setCheckOutDate(date);
-    };
+    // const handleCheckOutChange = (date: Date | null) => {
+    //     setCheckOutDate(date);
+    // };
     const [scroll, setScroll] = useState<boolean>(false)
 
     useEffect(() => {

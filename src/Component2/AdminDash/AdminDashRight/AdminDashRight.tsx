@@ -6,7 +6,7 @@ import AllHotels from './AllHotels/AllHotels'
 import AddHotels from './AddHotels/AddHotels'
 import AllRooms from './AllRooms/AllRooms'
 import AddRooms from './AddRooms/AddRooms'
-
+import { FaRegUserCircle } from "react-icons/fa";
 const AdminDashRight: React.FC = () => {
 
 
@@ -15,6 +15,9 @@ const AdminDashRight: React.FC = () => {
             {/* <div className='AdminDashRightMainWrap'> */}
                 <div className='AdminDashRightHeader'>
                          <h3>Welcome Precioous</h3>
+                         <div>
+                            <FaRegUserCircle/>
+                         </div>
                 </div>
                 <div className='AdminDashRightContent'>
                    <Routes>

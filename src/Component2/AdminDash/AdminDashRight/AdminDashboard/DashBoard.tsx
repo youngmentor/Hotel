@@ -19,7 +19,7 @@ const DashBoard: React.FC = () => {
                 </div>
                 <div className='AllHotel-Div'>
                     <b>123</b>
-                    <p>All Hotel</p>
+                    <p>Bookings</p>
                 </div>
             </div>
         </div>
