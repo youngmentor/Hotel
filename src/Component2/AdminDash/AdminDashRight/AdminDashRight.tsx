@@ -13,21 +13,23 @@ const AdminDashRight: React.FC = () => {
     return (
         <div className='AdminDashRightMain'>
             {/* <div className='AdminDashRightMainWrap'> */}
-                <div className='AdminDashRightHeader'>
-                         <h3>Welcome Precioous</h3>
-                         <div>
-                            <FaRegUserCircle/>
-                         </div>
+            <div className='AdminDashRightHeader'>
+                <div className='AdminDashRightHeader_Wrap'>
+                    <h3>Welcome Precioous</h3>
+                    <div className='AdminDashRightHeaderIcon'>
+                        <FaRegUserCircle />
+                    </div>
                 </div>
-                <div className='AdminDashRightContent'>
-                   <Routes>
-                    <Route path='/dashmain' element={<DashBoard/>} />
-                    <Route path='allhotels' element={<AllHotels/>}/>
-                    <Route path='addhotels' element={<AddHotels/>}/>
-                    <Route path='allrooms' element={<AllRooms/>}/>
-                    <Route path='addrooms' element={<AddRooms/>}/>
-                   </Routes>
-                </div>
+            </div>
+            <div className='AdminDashRightContent'>
+                <Routes>
+                    <Route path='/dashmain' element={<DashBoard />} />
+                    <Route path='allhotels' element={<AllHotels />} />
+                    <Route path='addhotels' element={<AddHotels />} />
+                    <Route path='allrooms' element={<AllRooms />} />
+                    <Route path='addrooms' element={<AddRooms />} />
+                </Routes>
+            </div>
             {/* </div> */}
         </div>
     )

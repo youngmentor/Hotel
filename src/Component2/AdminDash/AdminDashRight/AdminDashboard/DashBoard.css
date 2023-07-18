@@ -11,8 +11,29 @@
     width: 95%;
     height: 95%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
+
+}
+
+.All_All_Div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    /* background-color: green; */
+
+}
+
+.All_User_Booking {
+    width: 55%;
+    height: 90%;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+
 }
 
 .AllHotel-Div {
@@ -37,3 +58,76 @@
     align-items: center;
     justify-content: center;
 }
+
+.All_User {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 60%;
+}
+.AllUser_Calender_Wrap{
+    width: 100%;
+    display: flex;
+    height: 400px;
+    justify-content: space-between;
+    padding: 15px;
+    /* background-color: red; */
+}
+.All_User_Booking_Wrap {
+    width: 100%;
+    max-height: 90%;
+    overflow-y: scroll;
+}
+
+.AllUser_Info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    gap: 20px;
+    padding: 10px;
+
+}
+
+.AllUser_Specific {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* gap: 20px; */
+    padding: 10px;
+    background-color: rgb(45, 185, 255);
+    color: white;
+    justify-content: center;
+
+}
+.AllUser_Specific_Wrap{
+    height: 100%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.AllUser_Info p {
+    height: 50px;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.All_User_Info_Wrap {
+    width: 50%;
+    /* overflow-y: scroll; */
+    height: auto;
+}
+.calendar-container {
+    width: 40%;
+    height: 330px;
+  }
+  .calender{
+    height: 100%;
+  }
