@@ -16,6 +16,8 @@ const RoomData  = [
         name:" Luxury room1 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Lagos",
+        city: "Ajegunle",
     },
     {
         id: 2,
@@ -23,6 +25,8 @@ const RoomData  = [
         name:" Luxury room2 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Lagos",
+        city: "Ojuelegba",
     },
     {
         id: 3,
@@ -30,6 +34,8 @@ const RoomData  = [
         name:" Luxury  room3",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Lagos",
+        city: "Lekki",
     },
     {
         id: 4,
@@ -37,6 +43,8 @@ const RoomData  = [
         name:" Luxury room4 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Ibadan",
+        city: "Moniya",
     },
     {
         id: 5,
@@ -44,6 +52,8 @@ const RoomData  = [
         name:" Luxury room5 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Kwara",
+        city: "Tanke",
     },
     {
         id: 6,
@@ -51,6 +61,8 @@ const RoomData  = [
         name:" Luxury room6 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Ibadan",
+        city: "Post Office",
     },
     {
         id: 7,
@@ -58,6 +70,8 @@ const RoomData  = [
         name:" Luxury room7 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Lagos",
+        city: "Orege wilmer",
     },
     {
         id: 8,
@@ -65,6 +79,8 @@ const RoomData  = [
         name:" Luxury room8 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Port-Harcourt",
+        city: "Safele",
     },
     {
         id: 9,
@@ -72,6 +88,8 @@ const RoomData  = [
         name:" Luxury room9 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Abuja",
+        city: "Gwagwalada",
     },
     {
         id: 10,
@@ -79,6 +97,8 @@ const RoomData  = [
         name:" Luxury room10 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Ibadan",
+        city: "Round-About",
     },
     {
         id: 1,
@@ -86,6 +106,8 @@ const RoomData  = [
         name:" Luxury room1 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Lagos",
+        city: "Ajegunle",
     },
     {
         id: 2,
@@ -93,6 +115,8 @@ const RoomData  = [
         name:" Luxury room2 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Lagos",
+        city: "Ajegunle",
     },
     {
         id: 3,
@@ -100,6 +124,8 @@ const RoomData  = [
         name:" Luxury  room3",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Niger",
+        city: "Mokwa",
     },
     {
         id: 4,
@@ -107,6 +133,8 @@ const RoomData  = [
         name:" Luxury room4 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Osun",
+        city: "Modakeke",
     },
     {
         id: 5,
@@ -114,6 +142,8 @@ const RoomData  = [
         name:" Luxury room5 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Lagos",
+        city: "Ajegunle",
     },
     {
         id: 6,
@@ -121,6 +151,8 @@ const RoomData  = [
         name:" Luxury room6 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Osun",
+        city: "Ede",
     },
     {
         id: 7,
@@ -128,6 +160,8 @@ const RoomData  = [
         name:" Luxury room7 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Osun",
+        city: "Ife",
     },
     {
         id: 8,
@@ -135,6 +169,8 @@ const RoomData  = [
         name:" Luxury room8 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Lagos",
+        city: "Ajegunle",
     },
     {
         id: 9,
@@ -142,6 +178,8 @@ const RoomData  = [
         name:" Luxury room9 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Lagos",
+        city: "Orile",
     },
     {
         id: 10,
@@ -149,6 +187,8 @@ const RoomData  = [
         name:" Luxury room10 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
+        state: "Lagos",
+        city: "Amukoko",
     },
 ]
 export default RoomData;

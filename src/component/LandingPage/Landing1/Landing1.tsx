@@ -5,6 +5,7 @@ import React from 'react';
 import Popular from '../Popular/PopularHotel';
 // import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Landing2 from '../Landing2/Landing2';
 
 const Landing1: React.FC = () => {
     // const [checkInDate, setCheckInDate] = useState<Date | null>(null);
@@ -60,6 +61,7 @@ const Landing1: React.FC = () => {
                 </div>
             </div>
             <Popular />
+            <Landing2/>
         </div>
     )
 }

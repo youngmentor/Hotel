@@ -1,0 +1,36 @@
+.Landing2Main{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid lightgrey;
+    margin-top: 50px;
+}
+.Landing2MainWrap{
+    width: 95%;
+    height: 90%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.Subscribe_Input{
+    width: 400px;
+    height: 50px;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid lightgray;
+    outline: 1px solid rgb(45, 185, 255);
+    font-size: 18px;
+}
+.SubscribeButton{
+    width: 150px;
+    height: 50px;
+    color: white;
+    background-color: rgb(45, 185, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
