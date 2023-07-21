@@ -1,0 +1,29 @@
+.Landing3Main{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.Landing3MainWrap{
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.Landing3RoomCard{
+    width: 350px;
+    height: 280px;
+}
+.LandingRoomImage{
+    width: 100%;
+    height: 200px;
+}
+.Landing3Heading{
+    margin: 20px;
+}

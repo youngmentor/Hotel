@@ -6,6 +6,8 @@ import Popular from '../Popular/PopularHotel';
 // import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Landing2 from '../Landing2/Landing2';
+import Footer from '../Footer/Footer';
+import Landing3 from '../Landing3/Landing3';
 
 const Landing1: React.FC = () => {
     // const [checkInDate, setCheckInDate] = useState<Date | null>(null);
@@ -61,7 +63,9 @@ const Landing1: React.FC = () => {
                 </div>
             </div>
             <Popular />
+            <Landing3/>
             <Landing2/>
+            <Footer/>
         </div>
     )
 }

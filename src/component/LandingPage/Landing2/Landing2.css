@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid lightgrey;
+    /* border-top: 1px solid lightgrey; */
     margin-top: 50px;
 }
 .Landing2MainWrap{
@@ -17,7 +17,7 @@
     gap: 20px;
 }
 .Subscribe_Input{
-    width: 400px;
+    width: 500px;
     height: 50px;
     border-radius: 8px;
     padding: 10px;
