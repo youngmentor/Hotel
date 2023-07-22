@@ -101,7 +101,7 @@ const RoomData  = [
         city: "Round-About",
     },
     {
-        id: 1,
+        id: 11,
         Avatar: Room1 ,
         name:" Luxury room1 ",
         desc: "A well furnished Apartment that suite you",
@@ -110,7 +110,7 @@ const RoomData  = [
         city: "Ajegunle",
     },
     {
-        id: 2,
+        id: 12,
         Avatar: Room2 ,
         name:" Luxury room2 ",
         desc: "A well furnished Apartment that suite you",
@@ -119,7 +119,7 @@ const RoomData  = [
         city: "Ajegunle",
     },
     {
-        id: 3,
+        id: 13,
         Avatar: Room3 ,
         name:" Luxury  room3",
         desc: "A well furnished Apartment that suite you",
@@ -128,7 +128,7 @@ const RoomData  = [
         city: "Mokwa",
     },
     {
-        id: 4,
+        id: 14,
         Avatar: Room4 ,
         name:" Luxury room4 ",
         desc: "A well furnished Apartment that suite you",
@@ -137,7 +137,7 @@ const RoomData  = [
         city: "Modakeke",
     },
     {
-        id: 5,
+        id: 15,
         Avatar: Room5 ,
         name:" Luxury room5 ",
         desc: "A well furnished Apartment that suite you",
@@ -146,7 +146,7 @@ const RoomData  = [
         city: "Ajegunle",
     },
     {
-        id: 6,
+        id: 16,
         Avatar: Room6 ,
         name:" Luxury room6 ",
         desc: "A well furnished Apartment that suite you",
@@ -155,7 +155,7 @@ const RoomData  = [
         city: "Ede",
     },
     {
-        id: 7,
+        id: 17,
         Avatar: Room7 ,
         name:" Luxury room7 ",
         desc: "A well furnished Apartment that suite you",
@@ -164,7 +164,7 @@ const RoomData  = [
         city: "Ife",
     },
     {
-        id: 8,
+        id: 18,
         Avatar: Room8 ,
         name:" Luxury room8 ",
         desc: "A well furnished Apartment that suite you",
@@ -173,7 +173,7 @@ const RoomData  = [
         city: "Ajegunle",
     },
     {
-        id: 9,
+        id: 19,
         Avatar: Room9 ,
         name:" Luxury room9 ",
         desc: "A well furnished Apartment that suite you",
@@ -182,7 +182,7 @@ const RoomData  = [
         city: "Orile",
     },
     {
-        id: 10,
+        id: 20,
         Avatar: Room10 ,
         name:" Luxury room10 ",
         desc: "A well furnished Apartment that suite you",

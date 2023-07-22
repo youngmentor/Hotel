@@ -18,7 +18,8 @@
 }
 .Landing3RoomCard{
     width: 350px;
-    height: 280px;
+    height: auto;
+    border: 1px solid lightgrey;
 }
 .LandingRoomImage{
     width: 100%;
@@ -26,4 +27,15 @@
 }
 .Landing3Heading{
     margin: 20px;
+}
+.Landing3RoomButton{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.Landing3RoomButton button{
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    
 }
