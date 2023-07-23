@@ -7,6 +7,8 @@ import AllLogins from './component/Onborading/AllLogins'
 import AllSignUp from './component/Onborading/AllSignUp'
 import AdminMainDashBoard from './Component2/AdminDash/AdminDashMain'
 import UserMainDashBoard from './Component2/UserDash/UserDashMain'
+import AdminVerify from './component/Onborading/AdminSignUp/AdminVerify'
+import UserVerify from './component/Onborading/UserSignUp/UserVerify'
 const App: React.FC =() =>{
 
 
@@ -22,6 +24,9 @@ const App: React.FC =() =>{
         <Route path='/adminsignup' element={<AdminSignUp/>}/>
         <Route path='/admindash/*' element={<AdminMainDashBoard/>}/>
         <Route path='/userdash' element={<UserMainDashBoard/>}/>
+        <Route path='/adminverify/:id' element={<AdminVerify/>}/>
+        <Route path='/userverify/:id' element={<UserVerify/>}/>
+
        </Routes>
      </BrowserRouter>
     </div>

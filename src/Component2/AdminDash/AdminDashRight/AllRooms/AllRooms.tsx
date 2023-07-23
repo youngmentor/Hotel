@@ -18,8 +18,8 @@ const AllRooms: React.FC = () => {
                             <div className="AllHotels_Card">
                                 <img src={i.Avatar} className='All_Hotels_Image' />
                                 <div className='AddHotels-Detail'>
-                                    <p>Hotel State: {i.state} </p>
-                                    <p>Hotel: city {i.city}</p>
+                                    <p>Hotel Name: {i.state} </p>
+                                    <p>Hotel city: {i.city}</p>
                                     <div>
                                         <Rating
                                             count={5}

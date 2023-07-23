@@ -7,6 +7,7 @@ import AddHotels from './AddHotels/AddHotels'
 import AllRooms from './AllRooms/AllRooms'
 import AddRooms from './AddRooms/AddRooms'
 import { FaRegUserCircle } from "react-icons/fa";
+import AddFacility from './AddFacility/AddFacility'
 const AdminDashRight: React.FC = () => {
 
 
@@ -28,6 +29,8 @@ const AdminDashRight: React.FC = () => {
                     <Route path='addhotels' element={<AddHotels />} />
                     <Route path='allrooms' element={<AllRooms />} />
                     <Route path='addrooms' element={<AddRooms />} />
+                    <Route path='addfacility' element={<AddFacility />} />
+
                 </Routes>
             </div>
             {/* </div> */}

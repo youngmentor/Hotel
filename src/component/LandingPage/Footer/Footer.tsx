@@ -2,6 +2,7 @@ import './Footer.css'
 import FooterLogo from './1 (12).png'
 import { FaFacebook,FaWhatsapp,FaInstagram,FaTwitter } from "react-icons/fa";
 const Footer: React.FC = () => {
+    // const Date = newDate()
     return (
         <div className="FooterMain">
             <div className="FooterMainWrap">
@@ -22,7 +23,7 @@ const Footer: React.FC = () => {
                   </div>
             </div>
             <div className='FooterCopywrite'>
-                <p>Copywrite@2002</p>
+                <p>Copywrite@2023</p>
             </div>
         </div>
     )

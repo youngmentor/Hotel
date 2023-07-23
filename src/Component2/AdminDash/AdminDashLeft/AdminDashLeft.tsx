@@ -35,6 +35,10 @@ const AdminDashLeft: React.FC = () => {
                         <MdAddHome/>
                         <p onClick={() => navigate("/admindash/addrooms")}>Add Rooms</p>
                     </div>
+                    <div className='AdminDashBoardLeftNav_Icon_Div'>
+                        <MdAddHome/>
+                        <p onClick={() => navigate("/admindash/addfacility")}>Add Facility</p>
+                    </div>
                 </div>
             </div>
         </div>
