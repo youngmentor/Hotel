@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes,Route } from 'react-router-dom'
+import { HashRouter, Routes,Route } from 'react-router-dom'
 import Home from './component/LandingPage/Home'
 import './App.css'
 import Detail from './component/DetailPage/Detail'
@@ -14,7 +14,7 @@ const App: React.FC =() =>{
 
   return (
     <div className='AppMain'>
-     <BrowserRouter>
+     <HashRouter>
      {/* <Header/> */}
        <Routes>
         <Route path="/" element={<Home/>}/>
@@ -28,7 +28,7 @@ const App: React.FC =() =>{
         <Route path='/userverify/:id' element={<UserVerify/>}/>
 
        </Routes>
-     </BrowserRouter>
+     </HashRouter>
     </div>
   )
 }
