@@ -31,7 +31,7 @@ const Header: React.FC = () => {
 
                 </div>
                 <div className='Header_Bttn'>
-                    <button className='Header_Bttn1' onClick={() => navigate(`/adminverify/${6464663}`)} >Register Your Hotel</button>
+                    <button className='Header_Bttn1' onClick={() => navigate(`/userverify/${6464663}`)} >Register Your Hotel</button>
                     <button className='Header_Bttn2' onClick={() => navigate("/alllogin/login")}>Book a room</button>
                 </div>
                 <div className='HeaderBurgeMenu'>

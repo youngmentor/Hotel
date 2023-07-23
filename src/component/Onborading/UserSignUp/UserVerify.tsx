@@ -30,7 +30,7 @@ const UserVerify: React.FC = () => {
   return (
     <div style={style} className='verify'>
     {!state ? <h1>Please Wait...</h1> :
-      <h1>Your verification was sucessful</h1>}
+      <h1>User  verification was sucessful</h1>}
   </div >
   )
 }
