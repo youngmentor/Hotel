@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 5000)
+    }, 3000)
   });
   return (
     <div className='HomeMainPage'>
