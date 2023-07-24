@@ -7,6 +7,10 @@
     align-items: center;
     justify-content: center;
 }
+.HomeMainWrap{
+    width: 100%;
+    height: 100%;
+}
 .HomeMainPageWrap{
     width: 100%;
     height: 100%;
@@ -21,7 +25,6 @@
     border: none;
     cursor: pointer;
 }
-
 .HomeBttn {
     width: 100%;
     height: auto;

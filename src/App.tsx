@@ -10,8 +10,6 @@ import UserMainDashBoard from './Component2/UserDash/UserDashMain'
 import AdminVerify from './component/Onborading/AdminSignUp/AdminVerify'
 import UserVerify from './component/Onborading/UserSignUp/UserVerify'
 const App: React.FC =() =>{
-
-
   return (
     <div className='AppMain'>
      <HashRouter>

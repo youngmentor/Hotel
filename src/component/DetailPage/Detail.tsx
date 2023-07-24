@@ -10,13 +10,6 @@ type RoomDetails = {
   price: number,
   state: string,
   city: string,
-  // AllFacility: {
-  //   Image1: string;
-  //   Image2: string;
-  //   Image3: string;
-  //   Image4?: string;
-  //   Image5?: string;
-  // };
 }
 const Detail: React.FC = () => {
   const { id } = useParams()

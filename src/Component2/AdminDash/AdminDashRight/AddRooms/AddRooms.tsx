@@ -46,6 +46,14 @@ const AddRooms: React.FC = () => {
             <form className="Add_Hotel_Main_Wrap">
                 <div className='InputMainLeft'>
                     <div className='InputDiv'>
+                        <label>Hotel Name</label>
+                        <div className='ImageInput'>
+                            <select>
+                                <option>Ex</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className='InputDiv'>
                         <label>Room Image</label>
                         <div className='ImageInput'>
                             <input type="file" accept="image/*" onChange={handleImageChange} />
@@ -71,13 +79,13 @@ const AddRooms: React.FC = () => {
                     </div>
                     <div className='InputDiv'>
                         <label>Room Description</label>
-                        <textarea name="Description" 
-                         className='InputDesc' 
-                         placeholder='Hotel Description' 
-                         onChange={handleText7Change} 
-                         rows={4}
-                         cols={30}
-                         />
+                        <textarea name="Description"
+                            className='InputDesc'
+                            placeholder='Hotel Description'
+                            onChange={handleText7Change}
+                            rows={4}
+                            cols={30}
+                        />
                     </div>
                     <button className='Add_Hotel_Bttn'>Add Hotel</button>
                 </div>

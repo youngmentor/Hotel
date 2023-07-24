@@ -8,7 +8,7 @@ const HotelData = [
         HotelName: "Exclusive Mansion" 
     },
     {
-        id: 1,
+        id: 2,
         Img: HotelImage,
         Location: "Lagos",
         HotelName: "City Point" 
