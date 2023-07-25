@@ -1,9 +1,20 @@
-const UserDashLeft: React.FC = () => {
+import { useNavigate } from "react-router-dom"
 
+const UserDashLeft: React.FC = () => {
+const navigate= useNavigate()
 
     return (
         <div>
-            <h1>this is my history</h1>
+            <div>
+                <div>
+                    <p onClick={() => navigate("/userdash/userprofile")} >User Profile</p>
+
+                </div>
+                <div>
+                    <p onClick={() => navigate("/userdash/userhistory")}>User History</p>
+                    
+                </div>
+            </div>
         </div>
     )
 }

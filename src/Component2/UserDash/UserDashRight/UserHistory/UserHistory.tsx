@@ -1,9 +1,9 @@
-const UserHistory: React.FC = ()=>{
+const UserHistory: React.FC = () => {
 
 
-    return(
+    return (
         <div>
-<h1>this is my history</h1>
+            <h1>this is my history</h1>
         </div>
     )
 }
