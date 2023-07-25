@@ -1,5 +1,5 @@
 import './Header.css'
-import Logo from './1 (12).png'
+import Logo from './RoomLogo-removebg-preview.png'
 // import { GiHamburgerMenu } from "react-icons/gi";
 // import { MdOutlineMenu } from "react-icons/md";
 import { FaTimes, FaRegUserCircle } from "react-icons/fa";

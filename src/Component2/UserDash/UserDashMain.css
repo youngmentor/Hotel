@@ -1,0 +1,24 @@
+.UserDashBoardMain {
+    width: 100%;
+    height: 100%;
+    background-color: yellow;
+}
+
+.UserDashboard_Main_Wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+
+.UserDasboard_Main_Left {
+    width: 20%;
+    height: 100vh;
+    background-color: green;
+}
+
+.UserDashboard_Main_Right {
+    width: 80%;
+    height: 100vh;
+
+}

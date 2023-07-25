@@ -38,9 +38,10 @@
     cursor: pointer;
     border-radius: 5px;
 }
-/* .Header_Bttn2:hover{
-    
-} */
+.HeaderLogoImg{
+    width: 200px;
+    height: 100px;
+}
 .HeaderNav {
     width: 10%;
     display: flex;
