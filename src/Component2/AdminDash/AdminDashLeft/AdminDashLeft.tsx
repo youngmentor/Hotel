@@ -12,7 +12,7 @@ const AdminDashLeft: React.FC = () => {
     return (
         <div className='AdminDashLeftMain'>
             <div className='AdminDashLeftMainWrap'>
-                <div className='AdminDashboardUserImgDiv'>
+                <div className='AdminDashboardUserImgDiv' onClick={() => navigate("/")}>
                     <img src={HomeLogo} alt='userimg' className='AdminHome_Logo' />
                 </div>
                 <div className='AdminDashBoardLeftNav'>

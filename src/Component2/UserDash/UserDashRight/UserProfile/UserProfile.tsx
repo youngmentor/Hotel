@@ -1,9 +1,10 @@
+import './UserProfile.css'
 const UserProfile: React.FC = () => {
-
-
     return (
-        <div>
-            <h1>this is my profile</h1>
+        <div className="UserProfile_Main">
+            <div className="UserProfile_Main_Wrap">
+                <h1>hello world</h1>
+            </div>
         </div>
     )
 }

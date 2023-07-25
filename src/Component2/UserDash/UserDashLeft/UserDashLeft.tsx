@@ -14,6 +14,7 @@ const UserDashLeft: React.FC = () => {
             <div className="User_DashBoardLeft_Wrap">
                 <div className='UserDashboardUserImgDiv'>
                     <img src={User} alt='userimg' className='UserImg' />
+                    <p>Suliton Olalere</p>
                 </div>
                 <div className="UserDashBoard_Nav">
                     <div className="UserDashBoardLeftNav_Icon_Div" onClick={() => navigate("/userdash/userprofile")}>

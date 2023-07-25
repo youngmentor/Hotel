@@ -1,0 +1,13 @@
+.UserProfile_Main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: blue; */
+}
+.UserProfile_Main_Wrap{
+    width: 98%;
+    height: 95%;
+    /* background-color: red; */
+}
