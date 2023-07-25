@@ -21,7 +21,7 @@ const App: React.FC =() =>{
         <Route path='/detail/:id' element={<Detail/>}/>
         <Route path='/adminsignup' element={<AdminSignUp/>}/>
         <Route path='/admindash/*' element={<AdminMainDashBoard/>}/>
-        <Route path='/userdash' element={<UserMainDashBoard/>}/>
+        <Route path='/userdash/*' element={<UserMainDashBoard/>}/>
         <Route path='/adminverify/:id' element={<AdminVerify/>}/>
         <Route path='/userverify/:id' element={<UserVerify/>}/>
 
