@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import User from './userimg.png'
 import './UserDashLeft.css'
 import { AiOutlineProfile,AiOutlineHistory } from "react-icons/ai";
-import HomeLogo from './RoomLogo-removebg-preview.png'
+import HomeLogo from './NewRoomLogo-removebg-preview.png'
 const UserDashLeft: React.FC = () => {
     const navigate = useNavigate()
 
@@ -19,12 +19,12 @@ const UserDashLeft: React.FC = () => {
                 <div className="UserDashBoard_Nav">
                     <div className="UserDashBoardLeftNav_Icon_Div" onClick={() => navigate("/userdash/userprofile")}>
                         <AiOutlineProfile/>
-                        <p>Personal Booking</p>
+                        <p>Current Booking</p>
 
                     </div>
                     <div className="UserDashBoardLeftNav_Icon_Div" onClick={() => navigate("/userdash/userhistory")}>
                         <AiOutlineHistory/>
-                        <p>User History</p>
+                        <p>Booking History</p>
 
                     </div>
                 </div>

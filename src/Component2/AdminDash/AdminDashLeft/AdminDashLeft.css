@@ -53,9 +53,10 @@
 }
 
 .AdminHome_Logo {
-    width: 200px;
-    height: 100px;
+    width: 120px;
+    height: 50px;
     color: white;
+    cursor: pointer;
 }
 
 .AdminDashBoardLeftNav_Icon_Div {

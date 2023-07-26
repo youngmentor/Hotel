@@ -5,7 +5,7 @@ import { RxDashboard } from "react-icons/rx";
 import { FaHotel } from "react-icons/fa";
 import { MdOutlineBedroomParent } from "react-icons/md";
 import { MdAddHome } from "react-icons/md";
-import HomeLogo from './RoomLogo-removebg-preview.png'
+import HomeLogo from './NewRoomLogo-removebg-preview.png'
 const AdminDashLeft: React.FC = () => {
 
     const navigate = useNavigate()
