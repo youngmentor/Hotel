@@ -66,6 +66,9 @@
     gap: 20px;
     height: 60%;
 }
+.All_User h3{
+    margin-left: 20px;
+}
 .AllUser_Calender_Wrap{
     width: 100%;
     display: flex;
@@ -85,7 +88,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* flex-direction: column; */
     gap: 20px;
     padding: 10px;
 
@@ -130,4 +132,32 @@
   }
   .calender{
     height: 100%;
+  }
+  @media screen and (max-width: 426px){
+    .AllHotel-Div{
+        width: 380px;
+        height: 200px;
+    }
+    .All_User_Booking{
+        width: 100%;
+        height: auto;
+    }
+    .AllUser_Calender_Wrap{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .calendar-container{
+        width: 100%;
+    }
+    .calender{
+        width: 100%;
+    }
+    .All_User_Booking_Wrap{
+        max-height: 90%;
+    }
+    .All_User_Booking{
+        height: 100%;
+    }
   }

@@ -16,3 +16,11 @@
     height: 100vh;
     /* background-color: blue; */
 }
+@media screen and (max-width: 426px){
+    .AdminDashboard_Main_Right{
+        width: 100%;
+    }
+    .AdminDasboard_Main_Left{
+        display: none;
+    }
+}

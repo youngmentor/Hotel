@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
     const navigate = useNavigate()
-    const [header, setHeader] = useState(false)
+    const [header, setHeader] = useState<boolean>(false)
 
     const HeaderDrop = (
         header && (

@@ -41,9 +41,9 @@ const DashBoard: React.FC = () => {
                         <div className='All_User_Booking'>
                             <div className='AllUser_Specific'>
                                 <div className='AllUser_Specific_Wrap'>
+                                    <p>Id</p>
                                     <p>Name</p>
                                     <p>Room No</p>
-                                    <p>Email</p>
                                     <p>Date From</p>
                                     <p>Date To</p>
                                 </div>
@@ -52,9 +52,9 @@ const DashBoard: React.FC = () => {
                                 {
                                     UserData.map((i) => (
                                         <div className='AllUser_Info'>
+                                            <p>{i.id}</p>
                                             <p>{i.name}</p>
                                             <p>{i.roomNo}</p>
-                                            <p>{i.email}</p>
                                             <p>{i.dateFrom}</p>
                                             <p>{i.dateTo}</p>
                                         </div>

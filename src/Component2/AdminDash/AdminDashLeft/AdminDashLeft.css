@@ -66,3 +66,9 @@
     color: white;
     padding: 10px;
 }
+@media screen and (max-width: 426px){
+   .AdminDashLeftMain{
+    display: none;
+    
+   } 
+}
