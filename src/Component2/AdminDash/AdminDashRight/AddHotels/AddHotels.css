@@ -14,19 +14,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-   /* background-color: cornflowerblue; */
+    /* background-color: cornflowerblue; */
     /* flex-direction: column; */
 }
+
 .InputDiv {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
-.InputDiv label{
+
+.InputDiv label {
     color: black;
     font-weight: lighter;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .InputMainLeft {
     width: 60%;
     height: 100%;
@@ -45,50 +48,57 @@
     outline: 1px solid rgb(45, 185, 255);
     padding: 10px;
 }
-.InputDivLocation{
+
+.InputDivLocation {
     width: 80%;
     height: 50px;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     gap: 18px;
-    
+
 }
-.InputLocation{
+
+.InputLocation {
     width: 240px;
     display: flex;
     align-items: center;
-    
+
 }
-.ImageInput{
+
+.ImageInput {
     width: 500px;
     height: 40px;
     border-radius: 5px;
     border: 1px solid rgb(45, 185, 255);
-     display: flex;
-     align-items: center;
-     padding: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
 }
-.InputLocation label{
+
+.InputLocation label {
     color: black;
     font-weight: lighter;
     font-family: Arial, Helvetica, sans-serif;
 
 
 }
-.InputDesc{
-   width: 500px;
-   border: none;
-   outline: 1px solid rgb(45, 185, 255);
-   height: 100px;
-   padding: 10px;
+
+.InputDesc {
+    width: 500px;
+    border: none;
+    outline: 1px solid rgb(45, 185, 255);
+    height: 100px;
+    padding: 10px;
 }
-.InputPreview{
+
+.InputPreview {
     width: 100%;
     height: 69%;
     /* background-color: aqua; */
     margin-top: 20px;
 }
-.InputMaiRight{
+
+.InputMaiRight {
     width: 40%;
     height: 100%;
     /* background-color: red; */
@@ -97,26 +107,31 @@
     justify-content: space-between;
 
 }
-.ImagePreviewDiv{
+
+.ImagePreviewDiv {
     width: 100%;
     height: 31%;
     /* background-color: rebeccapurple; */
 }
+
 .Hotel_Image_Preview {
     width: 300px;
     height: 200px;
 }
-.Name{
+
+.Name {
     height: 40px;
     width: 100%;
     font-size: 18px;
 }
-.description{
-   width: 100%;
-   height: 120px;
-   /* background-color:yellow; */
+
+.description {
+    width: 100%;
+    height: 120px;
+    /* background-color:yellow; */
 }
-.Add_Hotel_Bttn{
+
+.Add_Hotel_Bttn {
     width: 93%;
     height: 50px;
     margin-bottom: 20px;
@@ -126,4 +141,56 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 426px) {
+    .InputMainLeft {
+        width: 100%;
+    }
+
+    .InputMaiRight {
+        display: none;
+    }
+
+    .Add_Hotel_Main {
+        width: 100%;
+    }
+
+    .InputDiv {
+        width: 100%;
+    }
+
+    .AddHotelInput {
+        width: 350px;
+    }
+
+    .ImageInput {
+        width: 350px;
+    }
+
+    .InputDivLocation {
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        /* background-color: red; */
+    }
+
+    .InputDesc {
+        width: 350px;
+    }
+
+    .InputDiv label {
+        width: 200px;
+    }
+
+    .InputLocation label {
+        width: 350px;
+    }
+    .InputLocation{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+    }
 }
