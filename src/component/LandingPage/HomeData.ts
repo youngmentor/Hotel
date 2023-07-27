@@ -44,8 +44,8 @@ const RoomData = [
         name: " Luxury  room3",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
-        state: "Lagos",
-        city: "Lekki",
+        state: "Kwara",
+        city: "Agri Estate",
         AllFacility: {
             Image1: Room2,
             Image2: Room10,
@@ -114,7 +114,7 @@ const RoomData = [
         name: " Luxury room8 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
-        state: "Port-Harcourt",
+        state: "River",
         city: "Safele",
         AllFacility: {
             Image1: Room2,
@@ -184,7 +184,7 @@ const RoomData = [
         name: " Luxury  room3",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
-        state: "Niger",
+        state: "Kano",
         city: "Mokwa",
         AllFacility: {
             Image1: Room2,
@@ -198,8 +198,8 @@ const RoomData = [
         name: " Luxury room4 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
-        state: "Osun",
-        city: "Modakeke",
+        state: "River",
+        city: "River",
         AllFacility: {
             Image1: Room2,
             Image2: Room10,
@@ -228,8 +228,8 @@ const RoomData = [
         name: " Luxury room6 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
-        state: "Osun",
-        city: "Ede",
+        state: "Kano",
+        city: "Kano",
         AllFacility: {
             Image1: Room2,
             Image2: Room10,
@@ -245,8 +245,8 @@ const RoomData = [
         name: " Luxury room7 ",
         desc: "A well furnished Apartment that suite you",
         price: 15000,
-        state: "Osun",
-        city: "Ife",
+        state: "Kano",
+        city: "Kano",
         AllFacility: {
             Image1: Room2,
             Image2: Room10,

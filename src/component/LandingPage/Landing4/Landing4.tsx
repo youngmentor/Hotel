@@ -1,5 +1,7 @@
 import './Landing4.css'
 import HotelData from './HotelData'
+
+
 const Landing4: React.FC = () => {
     return (
         <div className='Landing4Main'>

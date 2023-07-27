@@ -1,8 +1,23 @@
 import './Landing3.css'
 import RoomData from '../HomeData'
 import { useNavigate } from 'react-router-dom'
+
+type MyObject ={
+    id: number,
+    Avatar: string,
+    name: string,
+    desc:string,
+    price: number,
+    state: string,
+    city: string,
+}
 const Landing3: React.FC = () => {
     const navigate = useNavigate()
+
+    const myArray: MyObject[] = [...RoomData]; // Your array of 20 objects
+
+    // Get the first 10 objects from the array
+    const firstTenObjects: MyObject[] = myArray.slice(0, 9);
     return (
         <div className="Landing3Main">
             <div className='Landing3Heading'>
@@ -10,7 +25,7 @@ const Landing3: React.FC = () => {
             </div>
             <div className="Landing3MainWrap">
                 {
-                    RoomData.map((i) => (
+                    firstTenObjects.map((i) => (
                         <div className='Landing3RoomCard' key={i.id} onClick={() => navigate(`/detail/${i.id}`)}>
                             <img src={i.Avatar} className='LandingRoomImage' />
                             <div className='LandingRoomDetails'>
