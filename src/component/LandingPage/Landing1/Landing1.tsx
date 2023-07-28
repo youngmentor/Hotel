@@ -7,6 +7,8 @@ import Landing2 from '../Landing2/Landing2';
 import Footer from '../Footer/Footer';
 import Landing3 from '../Landing3/Landing3';
 import Landing4 from '../Landing4/Landing4';
+import Landing5 from '../Landing5/Landing5';
+import Landing6 from '../Landing6/Landing6';
 
 const Landing1: React.FC = () => {
     const [scroll, setScroll] = useState<boolean>(false)
@@ -44,6 +46,8 @@ const Landing1: React.FC = () => {
             <Popular />
             <Landing4/>
             <Landing3/>
+            <Landing5/>
+            <Landing6/>
             <Landing2/>
             <Footer/>
         </div>
