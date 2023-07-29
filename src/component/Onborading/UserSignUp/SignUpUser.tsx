@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './SignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { UserSignUpForm, signUpMutation } from '../../APIS/SignUpApi';
+import { UserSignUpForm, signUpMutation,  } from '../../APIS/SignUpApi';
 
 const SignUpUser: React.FC = () => {
   const navigate = useNavigate()
@@ -32,9 +32,9 @@ const handleUserSignUp = async (event: React.FormEvent) => {
     console.log(response.data.data.message);
     console.log(response.data.data)
     console.log( response.status);
-    response.status === 201 ? navigate("/alllogin/adminlogin") : null 
+    response.status === 201 ? navigate("/alllogin/login") : null 
   } catch (error) {
-    console.error('Sign-up error:', error);
+    console.error(error);
   }
 };
 

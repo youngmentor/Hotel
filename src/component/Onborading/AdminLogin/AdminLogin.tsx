@@ -3,7 +3,7 @@ import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { LoginRequest,LoginResponse, login } from '../../APIS/LoginApi';
+import { LoginRequest,LoginResponse, adminLogin } from '../../APIS/LoginApi';
 const AdminLogin: React.FC = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState<string>('')
@@ -22,7 +22,7 @@ const AdminLogin: React.FC = () => {
         setPassword(event.target.value);
     };
 
-      const mutation = useMutation<LoginResponse, Error, LoginRequest>(login, {
+      const mutation = useMutation<LoginResponse, Error, LoginRequest>(adminLogin, {
         onSuccess: (data) => {
           console.log(data.message);
           console.log(data);
