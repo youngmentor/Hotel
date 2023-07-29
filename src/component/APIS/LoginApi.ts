@@ -17,11 +17,11 @@ export interface LoginResponse {
   };
 }
 
-const api = axios.create({
+const Api = axios.create({
   baseURL: 'https://your-api-url.com', // Replace with your API endpoint
 });
 
 export const login = async (data: LoginRequest): Promise<LoginResponse> => {
-  const response = await api.post('https://hotel-api-7wlm.onrender.com/api/v1/manager/login', data);
+  const response = await Api.post('https://hotel-api-7wlm.onrender.com/api/v1/manager/login', data);
   return response.data;
 };
