@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-// import HotelSignUp from './HotelImg2.jpeg'
+import { useMutation } from 'react-query';
+import axios, { AxiosResponse } from 'axios';
 import './AdminSignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-interface SignUpForm {
-  name: string;
-  email: string;
-  password: string;
-  confirmpassword: string;
-  phonenumber: string;
-}
+import { SignUpForm, SignUpResponse } from '../../APIS/SignUpApi';
 
 const AdminSignUp: React.FC = () => {
   const navigate = useNavigate()
@@ -38,23 +32,30 @@ const AdminSignUp: React.FC = () => {
   const visibleConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('', formData);
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-
-    }
-  };
+  const signUpMutation = useMutation<AxiosResponse<SignUpResponse>, Error, SignUpForm>(
+     (formData) =>
+      axios.post<SignUpResponse>('https://hotel-api-7wlm.onrender.com/api/v1//manager/register', formData)
+  
+);
+const handleSignUp = async (event: React.FormEvent) => {
+  event.preventDefault();
+  console.log('clicked')
+  try {
+    const response =  await signUpMutation.mutateAsync(formData);
+    console.log(response.data.data.message);
+    console.log(response.data.data)
+    console.log( response.status);
+    response.status === 201 ? navigate("/alllogin/adminlogin") : null 
+  } catch (error) {
+    console.error('Sign-up error:', error);
+  }
+};
 
   return (
     <div className='SignUpMain'>
       <div className='SignUpLeft'>
         <h2>Create an Account to continue As a Partner</h2>
-        <form onSubmit={handleSubmit} className='SignUpForm'>
+        <form onSubmit={handleSignUp} className='SignUpForm'>
           <div className='SignUpInputDiv'>
             <label htmlFor="name">Name</label>
             <input

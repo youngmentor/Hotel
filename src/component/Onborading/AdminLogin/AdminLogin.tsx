@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { LoginRequest,LoginResponse, login } from '../../APIS/LoginApi';
 const AdminLogin: React.FC = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
+
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
     const showPasswords = () => {
@@ -20,35 +22,28 @@ const AdminLogin: React.FC = () => {
         setPassword(event.target.value);
     };
 
-      const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-
-        try {
-          const response = await axios.post('', {
-            email,
-            password
-          });
-
-          if (response.status === 200 && response.data.authenticated) {
-
-            console.log('Logged in successfully');
-          } else {
-           
-            console.log('Invalid username or password');
-          }
-        } catch (error) {
-          console.error('Error occurred during login:', error);
+      const mutation = useMutation<LoginResponse, Error, LoginRequest>(login, {
+        onSuccess: (data) => {
+          console.log(data.message);
+          console.log(data);
+          navigate("/admindash/dashmain")
+        },
+        onError: (error) => {
+          console.error(error.message);
+        },
+      });
     
-        }
+      const handleLogin = () => {
+        console.log("clicked")
+        const data: LoginRequest = { email, password };
+        mutation.mutate(data);
       };
-
-
 
     return (
         <div className='LoginMain'>
             <div className='LoginRight'>
                 <h1>Welcome back Partner </h1>
-                <form className='LoginForm' onSubmit={handleSubmit}>
+                <form className='LoginForm' onSubmit={handleLogin}>
                     <div className='LoginInput'>
                         <label htmlFor="email">Email Address</label>
                         <input
@@ -76,7 +71,7 @@ const AdminLogin: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" className='LoginBttn' onClick={() => navigate("/admindash/dashmain")} >Login</button>
+                    <button type="submit" className='LoginBttn'>Login</button>
                 </form>
                 <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>
             </div>
