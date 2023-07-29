@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-// import HotelSignUp from './HotelImg2.jpeg'
 import './SignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-interface SignUpForm {
-  name: string;
-  email: string;
-  password: string;
-  confirmpassword: string;
-  phonenumber: string;
-}
+import { UserSignUpForm, signUpMutation } from '../../APIS/SignUpApi';
 
 const SignUpUser: React.FC = () => {
   const navigate = useNavigate()
-  const [formData, setFormData] = useState<SignUpForm>({
+  const [formData, setFormData] = useState<UserSignUpForm>({
     name: '',
     email: '',
     password: '',
@@ -32,22 +24,25 @@ const SignUpUser: React.FC = () => {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('', formData);
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-
-    }
-  };
+const handleUserSignUp = async (event: React.FormEvent) => {
+  event.preventDefault();
+  console.log('clicked')
+  try {
+    const response =  await signUpMutation.mutateAsync(formData);
+    console.log(response.data.data.message);
+    console.log(response.data.data)
+    console.log( response.status);
+    response.status === 201 ? navigate("/alllogin/adminlogin") : null 
+  } catch (error) {
+    console.error('Sign-up error:', error);
+  }
+};
 
   return (
     <div className='SignUpMain'>
       <div className='SignUpLeft'>
         <h2>Create an Account to continue as a User</h2>
-        <form onSubmit={handleSubmit} className='SignUpForm'>
+        <form onSubmit={handleUserSignUp} className='SignUpForm'>
           <div className='SignUpInputDiv'>
             <label htmlFor="name">Name</label>
             <input
