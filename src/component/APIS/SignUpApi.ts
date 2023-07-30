@@ -1,5 +1,4 @@
-import { useMutation } from "react-query";
-import axios, {AxiosResponse} from "axios";
+
 export interface SignUpForm {
     name: string;
     email: string;
@@ -17,11 +16,11 @@ export interface SignUpResponse {
 }
 
 export interface UserSignUpForm {
-    name: string;
+    fullname: string;
     email: string;
     password: string;
-    confirmpassword: string;
-    phonenumber: string;
+    confirmPassword: string;
+    phoneNumber: number | string;
 }
 
 export interface UserSignUpResponse{
@@ -31,10 +30,8 @@ export interface UserSignUpResponse{
         id: string;
     };
     message: string;
+    error: {
+        message: string;
+    }
 }
 
-export const signUpMutation = useMutation<AxiosResponse<UserSignUpResponse>, Error, UserSignUpForm>(
-    (formData) =>
-     axios.post<UserSignUpResponse>('https://hotel-api-7wlm.onrender.com/api/v1//user/register', formData)
- 
-);

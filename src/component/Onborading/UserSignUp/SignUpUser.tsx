@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import './SignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { UserSignUpForm, signUpMutation,  } from '../../APIS/SignUpApi';
-
+import { UserSignUpForm,UserSignUpResponse  } from '../../APIS/SignUpApi';
+import { useMutation } from "react-query";
+import axios, {AxiosResponse} from "axios";
 const SignUpUser: React.FC = () => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState<UserSignUpForm>({
-    name: '',
+    fullname: '',
     email: '',
     password: '',
-    confirmpassword: '',
-    phonenumber: '',
+    confirmPassword: '',
+    phoneNumber: '',
   });
   const[ showPassword, setShowPassword] = useState(false)
   const visiblePassword = () => {
@@ -23,7 +24,15 @@ const SignUpUser: React.FC = () => {
       [e.target.name]: e.target.value
     });
   };
-
+  const handlePhoneNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const phoneNumber = event.target.value; 
+    setFormData((prevData) => ({ ...prevData, phoneNumber }));
+  };
+  const signUpMutation = useMutation<AxiosResponse<UserSignUpResponse>, Error, UserSignUpForm>(
+    (formData) =>
+     axios.post<UserSignUpResponse>('https://hotel-api-7wlm.onrender.com/api/v1//user/register', formData)
+ 
+);
 const handleUserSignUp = async (event: React.FormEvent) => {
   event.preventDefault();
   console.log('clicked')
@@ -48,8 +57,8 @@ const handleUserSignUp = async (event: React.FormEvent) => {
             <input
               type="text"
               id="name"
-              name="name"
-              value={formData.name}
+              name="fullname"
+              value={formData.fullname}
               onChange={handleChange}
               required
               className='SignUpinput'
@@ -93,8 +102,8 @@ const handleUserSignUp = async (event: React.FormEvent) => {
           <input
               type={showPassword ? 'text' : 'password'}
               id="confirmpassword"
-              name="confirmpassword"
-              value={formData.confirmpassword}
+              name="confirmPassword"
+              value={formData.confirmPassword}
               onChange={handleChange}
               required
               className='SignUpinputPass'
@@ -110,9 +119,9 @@ const handleUserSignUp = async (event: React.FormEvent) => {
             <input
               type="number"
               id="phonenumber"
-              name="phonenumber"
-              value={formData.phonenumber}
-              onChange={handleChange}
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handlePhoneNumberChange}
               required
               className='SignUpinput'
               placeholder='Phone Number'
