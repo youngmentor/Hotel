@@ -20,7 +20,7 @@ export interface UserSignUpForm {
     email: string;
     password: string;
     confirmPassword: string;
-    phoneNumber: number | string;
+    phoneNumber: string;
 }
 
 export interface UserSignUpResponse{

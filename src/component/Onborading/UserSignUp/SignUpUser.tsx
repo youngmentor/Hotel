@@ -12,7 +12,7 @@ const SignUpUser: React.FC = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    phoneNumber: '',
+    phoneNumber:  '',
   });
   const[ showPassword, setShowPassword] = useState(false)
   const visiblePassword = () => {
@@ -24,11 +24,7 @@ const SignUpUser: React.FC = () => {
       [e.target.name]: e.target.value
     });
   };
-  const handlePhoneNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const phoneNumber = event.target.value; 
-    setFormData((prevData) => ({ ...prevData, phoneNumber }));
-  };
-  const signUpMutation = useMutation<AxiosResponse<UserSignUpResponse>, Error, UserSignUpForm>(
+  const usersignUpMutation = useMutation<AxiosResponse<UserSignUpResponse>, Error, UserSignUpForm>(
     (formData) =>
      axios.post<UserSignUpResponse>('https://hotel-api-7wlm.onrender.com/api/v1//user/register', formData)
  
@@ -37,13 +33,13 @@ const handleUserSignUp = async (event: React.FormEvent) => {
   event.preventDefault();
   console.log('clicked')
   try {
-    const response =  await signUpMutation.mutateAsync(formData);
+    const response =  await usersignUpMutation.mutateAsync(formData);
     console.log(response.data.data.message);
     console.log(response.data.data)
     console.log( response.status);
     response.status === 201 ? navigate("/alllogin/login") : null 
   } catch (error) {
-    console.error(error);
+    console.error(error  );
   }
 };
 
@@ -121,7 +117,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               id="phonenumber"
               name="phoneNumber"
               value={formData.phoneNumber}
-              onChange={handlePhoneNumberChange}
+              onChange={handleChange}
               required
               className='SignUpinput'
               placeholder='Phone Number'
