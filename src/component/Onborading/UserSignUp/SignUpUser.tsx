@@ -56,7 +56,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               name="fullname"
               value={formData.fullname}
               onChange={handleChange}
-              required
+              required={true}
               className='SignUpinput'
               placeholder='Name'
             />
@@ -69,7 +69,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
+              required={true}
               className='SignUpinput'
               placeholder='Email'
             />
@@ -83,7 +83,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                required
+                required={true}
                 className='SignUpinputPass'
                 placeholder='Password'
               />
@@ -101,7 +101,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              required
+              required={true}
               className='SignUpinputPass'
               placeholder='Confirm Password'
             />
@@ -118,7 +118,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              required
+              required={true}
               className='SignUpinput'
               placeholder='Phone Number'
             />
@@ -127,9 +127,6 @@ const handleUserSignUp = async (event: React.FormEvent) => {
         </form>
         <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/alllogin/login")} >Login here</b></span>
       </div>
-      {/* <div className='SignUpRight'>
-        <img src={HotelSignUp} alt='signupimage' className='SignUpImage' />
-      </div> */}
     </div>
   );
 };
