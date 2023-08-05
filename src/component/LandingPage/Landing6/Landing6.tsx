@@ -1,5 +1,5 @@
 import './Landing6.css'
-
+// import RoomData from '../HomeData'
 const Landing6: React.FC = () => {
     return(
         <div>
