@@ -3,7 +3,12 @@
     height: 100%;
     display: flex;
 }
-
+.LoginNewRoomLogo{
+    width: 150px;
+    height: 80px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
 .LoginLeft {
     width: 50%;
     height: 100%;

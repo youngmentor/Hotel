@@ -40,6 +40,7 @@ const Login: React.FC = () => {
   return (
     <div className='LoginMain'>
       <div className='LoginRight'>
+        <img src='/NewRoomLogo.png' alt='NewRoomLogo' className='LoginNewRoomLogo' onClick={(()=> navigate('/'))}/>
         <h1>Welcome back User</h1>
         <form onSubmit={handleUserLogin} className='LoginForm'>
           <div className='LoginInput'>
