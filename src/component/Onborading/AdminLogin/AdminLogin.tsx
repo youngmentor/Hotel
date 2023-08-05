@@ -72,6 +72,7 @@ const AdminLogin: React.FC = () => {
                         </div>
                     </div>
                     <button type="submit" className='LoginBttn'>Login</button>
+                    <button onClick={(()=>navigate("/admindash/dashmain"))} className='LoginBttn'>Login</button>
                 </form>
                 <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>
             </div>

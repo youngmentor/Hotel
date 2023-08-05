@@ -55,7 +55,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    position: -webkit-sticky;
+    /* position: -webkit-sticky; */
     position: sticky;
     animation: backInRight;
     animation-duration: 3s;

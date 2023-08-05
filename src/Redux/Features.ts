@@ -93,7 +93,6 @@ const featuresSlice = createSlice({
         state.total = state.room.reduce((acc, item) => acc + item.QTY * item.price, 0);
       }
     },
-    // },
   },
 });
 

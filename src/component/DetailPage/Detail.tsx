@@ -26,19 +26,7 @@ const Detail: React.FC = () => {
     setRooms({ ...Room[0], ...roomWithQty });
   },[id])
   // console.log(room)
-  const handleAddToRoom = () => {
-    if (rooms) {
-      dispatch(addToRoom(rooms));
-    }
-    console.log("clicked")
-  };
 
-  const handleRemoveFromRoom = () => {
-    if (rooms) {
-      dispatch(minusRoom(rooms));
-    }
-    console.log("clicked")
-  };
   return (
     <div key={rooms?.id} className="DetailMain">
       <div className="DetailMainWrap">
@@ -58,9 +46,9 @@ const Detail: React.FC = () => {
             <p>${rooms?.price}</p>
           </div>
           <div className="DeatailIncrement_Decrement-Bttn">
-            <button className="DetailMinusBttn" onClick={handleRemoveFromRoom}>-</button>
-            <p>{rooms?.QTY ?? 0}</p>
-            <button className="DetailAddBttn" onClick={handleAddToRoom}>+</button>
+            <button className="DetailMinusBttn" onClick={()=>dispatch(minusRoom)}>-</button>
+            <p>{rooms?.QTY }</p>
+            <button className="DetailAddBttn" onClick={()=>dispatch(addToRoom)}>+</button>
           </div>
         </div>
       </div>
