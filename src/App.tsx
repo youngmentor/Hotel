@@ -15,6 +15,10 @@ import AbujaHotels from './component/LandingPage/Popular/Abuja'
 import IbadanHotels from './component/LandingPage/Popular/IbadanHotels'
 import RiverHotels from './component/LandingPage/Popular/RiverHotels'
 import KwaraHotels from './component/LandingPage/Popular/KwaraHotels'
+import AdminForgetPassword from './component/Onborading/AdminLogin/AdminForgetPassword/AdminForgetPassword'
+import UserForgetPassword from './component/Onborading/UserLogin/UserForgetPassword/UserForgetPassword'
+import AdminResetPassword from './component/Onborading/AdminLogin/AdminResetPassword/AdminResetPassword'
+import UserResetPassword from './component/Onborading/UserLogin/UserResetPassword/UserResetPassword'
 const App: React.FC = () => {
   return (
     <div className='AppMain'>
@@ -36,6 +40,10 @@ const App: React.FC = () => {
           <Route path='/ibadanhotel' element={<IbadanHotels />} />
           <Route path='/riverhotel' element={<RiverHotels />} />
           <Route path='/kwarahotel' element={<KwaraHotels />} />
+          <Route path='adminforgetpassword' element={<AdminForgetPassword/>}/>
+          <Route path='user-forgetpassword' element={<UserForgetPassword/>}/>
+          <Route path='adminresetpassword/:id' element={<AdminResetPassword/>}/>
+          <Route path='user-resetpassword/:id' element={<UserResetPassword/>}/>
         </Routes>
       </HashRouter>
     </div>
