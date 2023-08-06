@@ -3,7 +3,7 @@ import { useMutation } from 'react-query';
 import axios, { AxiosResponse } from 'axios';
 import './AdminSignUp.css'
 import { useNavigate } from 'react-router-dom';
-import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { FaEyeSlash, FaEye,} from "react-icons/fa";
 import { SignUpForm, SignUpResponse } from '../../APIS/SignUpApi';
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 const AdminSignUp: React.FC = () => {
@@ -50,6 +50,7 @@ const handleSignUp = async (event: React.FormEvent) => {
     console.log( response.status);
     response.status === 201 ? navigate("/alllogin/adminlogin") : null 
   } catch (error) {
+    setLoading(false)
     console.error('Sign-up error:', error);
   }
 };

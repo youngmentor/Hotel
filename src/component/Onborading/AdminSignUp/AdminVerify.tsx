@@ -1,38 +1,50 @@
-import React,{useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useMutation} from 'react-query';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
-const AdminVerify: React.FC = () => {
-  const { id } = useParams()
-  const navigate = useNavigate()
-  const [state, setState] = useState<boolean>(false)
 
-    const handleSubmit = async () => {
-        const response = await axios.post(`${id}`)
-        console.log(response)
-        setState(true)
-        setTimeout(() => {
-        response.status === 200 ?  navigate('loginuser/login') : null
-        }, 3000);
-    }
-    useEffect(() => {
-      handleSubmit()
-    }, [])
-
-
-    const style = {
-      width: '100%',
-      height: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#f8f8f8',
-    }
-  return (
-    <div style={style} className='verify'>
-    {!state ? <h1>Please Wait...</h1> :
-      <h1>Your verification was sucessful</h1>}
-  </div >
-  )
+interface Params {
+  id: string;
+  [key: string]: string | undefined;
 }
 
-export default AdminVerify
+const AdminVerify: React.FC = () => {
+  const { id } = useParams<Params>();
+  const navigate = useNavigate();
+  const [state, setState] = useState<boolean>(false);
+
+  const verifyAdmin = async () => {
+    const response = await axios.post(`https://hotel-api-7wlm.onrender.com/api/v1/manager/verify/${id}`);
+    return response.data; // Modify this if your response contains different data.
+  };
+
+  const { mutate, isLoading, isError, isSuccess } = useMutation(verifyAdmin, {
+    onSuccess: () => {
+      setState(!state);
+      setTimeout(() => {
+        navigate('/alllogin/adminlogin');
+      }, 3000);
+    },
+  });
+
+  useEffect(() => {
+    mutate();
+  }, [mutate]);
+
+  const style = {
+    width: '100%',
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f8f8f8',
+  };
+
+  return (
+    <div style={style} className='verify'>
+      {isLoading ? <h1>Please Wait...</h1> : isError ? <h1>Error occurred.</h1> : isSuccess ? <h1>Your verification was successful</h1> : null}
+    </div>
+  );
+};
+
+export default AdminVerify;
