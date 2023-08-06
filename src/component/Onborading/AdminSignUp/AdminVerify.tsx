@@ -14,8 +14,8 @@ const AdminVerify: React.FC = () => {
   const [state, setState] = useState<boolean>(false);
 
   const verifyAdmin = async () => {
-    const response = await axios.post(`https://hotel-api-7wlm.onrender.com/api/v1/manager/verify/${id}`);
-    return response.data; // Modify this if your response contains different data.
+    const response = await axios.patch(`https://hotel-api-7wlm.onrender.com/api/v1/manager/verify/${id}`);
+    return response.data; 
   };
 
   const { mutate, isLoading, isError, isSuccess } = useMutation(verifyAdmin, {
