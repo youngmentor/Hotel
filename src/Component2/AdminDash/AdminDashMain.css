@@ -24,3 +24,11 @@
         display: none;
     }
 }
+@media screen and (max-width: 769px){
+    .AdminDashboard_Main_Right{
+        width: 100%;
+    }
+    .AdminDasboard_Main_Left{
+        display: none;
+    }
+}

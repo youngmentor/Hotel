@@ -16,7 +16,7 @@ const AdminLogin: React.FC = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [buttonLoading, setButtonLoading] = useState<boolean>(false)
     const { verifyAlert, } = useContext(ThemeContext)
-
+   const [isClicked, setIsClicked] = useState<boolean>(false)
     const showPasswords = () => {
         setShowPassword(!showPassword);
     };
@@ -45,6 +45,7 @@ const AdminLogin: React.FC = () => {
     const handleLogin = () => {
         console.log("clicked")
         setButtonLoading(true)
+        setIsClicked(true)
         const data: LoginRequest = { email, password };
         mutation.mutate(data);
     };
@@ -86,7 +87,7 @@ const AdminLogin: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" className='LoginBttn'>{buttonLoading ? <ButtonLoading /> : "Login"}</button>
+                    <button type="submit" className='LoginBttn' disabled={isClicked}>{buttonLoading ? <ButtonLoading /> : "Login"}</button>
                     {/* <button onClick={(()=>navigate("/admindash/dashmain"))} className='LoginBttn'>Login</button> */}
                 </form>
                 <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>

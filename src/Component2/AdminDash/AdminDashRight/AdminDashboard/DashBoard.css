@@ -42,7 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(228, 224, 224);
+    background-color: #dffbff;
     flex-direction: column;
     gap: 20px;
     border-radius: 5px;
@@ -52,7 +52,7 @@
 .AllHotel-Div b {
     width: 45px;
     height: 45px;
-    background-color: lightgray;
+    background-color: white;
     border-radius: 100%;
     display: flex;
     align-items: center;

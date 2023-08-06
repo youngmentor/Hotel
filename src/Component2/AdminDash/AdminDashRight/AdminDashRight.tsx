@@ -14,10 +14,21 @@ import { FaRegUserCircle } from "react-icons/fa";
 import AddFacility from './AddFacility/AddFacility'
 import { useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
+
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
 
+    const handlMobileChange = () => {
+        setMobile(!mobile)
+    }
+    const handlecloseMobile = () => {
+        setMobile(false)
+    }
+    const handleNavigate = (path: string) => {
+        navigate(path);
+        handlecloseMobile();
+    };
     const MobileDropDown = (
         mobile && (
             <div className='AdminDashLeftMain_Mobile'>
@@ -28,47 +39,46 @@ const AdminDashRight: React.FC = () => {
                     <div className='AdminDashBoardLeftNav'>
                         <div className='AdminDashBoardLeftNav_Icon_Div'>
                             <RxDashboard />
-                            <p onClick={() => navigate("/admindash/dashmain")}>DashBoard</p>
+                            <p onClick={() => handleNavigate('/admindash/dashmain')}>DashBoard</p>
                         </div>
                         <div className='AdminDashBoardLeftNav_Icon_Div'>
                             <FaHotel />
-                            <p onClick={() => navigate("/admindash/allhotels")}>All Hotels</p>
+                            <p onClick={() => handleNavigate("/admindash/allhotels")}>All Hotels</p>
                         </div>
                         <div className='AdminDashBoardLeftNav_Icon_Div'>
                             <MdAddHome />
-                            <p onClick={() => navigate("/admindash/addhotels")}>Add Hotels</p>
+                            <p onClick={() => handleNavigate("/admindash/addhotels")}>Add Hotels</p>
                         </div>
                         <div className='AdminDashBoardLeftNav_Icon_Div'>
                             <MdOutlineBedroomParent />
-                            <p onClick={() => navigate("/admindash/allrooms")}>All Rooms</p>
+                            <p onClick={() => handleNavigate("/admindash/allrooms")}>All Rooms</p>
                         </div>
                         <div className='AdminDashBoardLeftNav_Icon_Div'>
                             <MdAddHome />
-                            <p onClick={() => navigate("/admindash/addrooms")}>Add Rooms</p>
+                            <p onClick={() => handleNavigate("/admindash/addrooms")}>Add Rooms</p>
                         </div>
                         <div className='AdminDashBoardLeftNav_Icon_Div'>
                             <MdAddHome />
-                            <p onClick={() => navigate("/admindash/addfacility")}>Add Facility</p>
+                            <p onClick={() => handleNavigate("/admindash/addfacility")}>Add Facility</p>
                         </div>
                     </div>
                 </div>
             </div>
         )
     )
-
     return (
         <div className='AdminDashRightMain'>
             {/* <div className='AdminDashRightMainWrap'> */}
             <div className='AdminDashRightHeader'>
                 <div className='AdminDashRightHeader_Wrap'>
-                    <h3>Welcome Precioous</h3>
+                    <p>welcome admin</p>
                     <div className='AdminDashRightHeaderIcon'>
                         <FaRegUserCircle />
                     </div>
                     <div className='AdminDashRightHeaderIcon2'>
                         {
-                            mobile ? <FaRegUserCircle onClick={() => { setMobile(!mobile) }} /> :
-                            <FaRegUserCircle onClick={() => { setMobile(!mobile) }} />
+                            mobile ? <FaRegUserCircle onClick={handlMobileChange} /> :
+                                <FaRegUserCircle onClick={handlMobileChange} />
                         }
                         {mobile && MobileDropDown}
                     </div>

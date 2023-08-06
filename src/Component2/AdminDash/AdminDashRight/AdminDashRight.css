@@ -81,3 +81,31 @@
     z-index: 1000;
    }
 }
+@media screen and (max-width: 769px){
+    .AdminDashRightMain{
+     width: 100%;
+    } 
+    .AdminDashRightHeader{
+     width: 100%;
+     position: sticky;
+     top: 0;
+    }
+    .AdminDashRightContent{
+     width: 100%;
+    }
+    .AdminDashRightHeaderIcon{
+     display: none;
+    }
+    .AdminDashRightHeaderIcon2{
+     display: flex;
+     cursor: pointer;
+    }
+    .AdminDashLeftMain_Mobile{
+     position: absolute;
+     left: 0;
+     top: 0;
+     background-color: rgb(45, 185, 255);
+     width: 80%;
+     z-index: 1000;
+    }
+ }
