@@ -34,10 +34,10 @@ const featuresSlice = createSlice({
   initialState,
   reducers: {
     addAdmin: (state, { payload }: PayloadAction<any>) => {
-      state.admin =[ payload];
+      state.admin =[ ...state.admin, payload];
     },
     addUser: (state, { payload }: PayloadAction<any>) => {
-      state.user = [payload];
+      state.user = [...state.user ,payload];
     },
     clearUser: (state) => {
       state.user = {};
