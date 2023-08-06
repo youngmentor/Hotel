@@ -3,14 +3,17 @@ import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { LoginRequest,LoginResponse, adminLogin } from '../../APIS/LoginApi';
+import { LoginRequest, LoginResponse, adminLogin } from '../../APIS/LoginApi';
+import { useDispatch } from 'react-redux';
+import { addAdmin } from '../../../Redux/Features';
+import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 const AdminLogin: React.FC = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-
+    const dispatch = useDispatch()
     const [showPassword, setShowPassword] = useState<boolean>(false);
-
+    const [buttonLoading, setButtonLoading] = useState<boolean>(false)
     const showPasswords = () => {
         setShowPassword(!showPassword);
     };
@@ -22,22 +25,25 @@ const AdminLogin: React.FC = () => {
         setPassword(event.target.value);
     };
 
-      const mutation = useMutation<LoginResponse, Error, LoginRequest>(adminLogin, {
+    const mutation = useMutation<LoginResponse, Error, LoginRequest>(adminLogin, {
         onSuccess: (data) => {
-          console.log(data.message);
-          console.log(data);
-          navigate("/admindash/dashmain")
+            dispatch(addAdmin(data.data))
+            setButtonLoading(false)
+            console.log(data.message);
+            console.log(data);
+            navigate("/admindash/dashmain")
         },
         onError: (error) => {
-          console.error(error.message);
+            console.error(error.message);
         },
-      });
-    
-      const handleLogin = () => {
+    });
+
+    const handleLogin = () => {
         console.log("clicked")
+        setButtonLoading(true)
         const data: LoginRequest = { email, password };
         mutation.mutate(data);
-      };
+    };
 
     return (
         <div className='LoginMain'>
@@ -71,8 +77,8 @@ const AdminLogin: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" className='LoginBttn'>Login</button>
-                    <button onClick={(()=>navigate("/admindash/dashmain"))} className='LoginBttn'>Login</button>
+                    <button type="submit" className='LoginBttn'>{buttonLoading ? <ButtonLoading /> : "Login"}</button>
+                    {/* <button onClick={(()=>navigate("/admindash/dashmain"))} className='LoginBttn'>Login</button> */}
                 </form>
                 <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>
             </div>

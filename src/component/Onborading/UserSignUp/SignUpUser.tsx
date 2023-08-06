@@ -5,8 +5,10 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { UserSignUpForm,UserSignUpResponse  } from '../../APIS/SignUpApi';
 import { useMutation } from "react-query";
 import axios, {AxiosResponse} from "axios";
+import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 const SignUpUser: React.FC = () => {
   const navigate = useNavigate()
+  const [loading, setLoading] =useState<boolean>(false)
   const [formData, setFormData] = useState<UserSignUpForm>({
     fullname: '',
     email: '',
@@ -32,8 +34,10 @@ const SignUpUser: React.FC = () => {
 const handleUserSignUp = async (event: React.FormEvent) => {
   event.preventDefault();
   console.log('clicked')
+  setLoading(true)
   try {
     const response =  await usersignUpMutation.mutateAsync(formData);
+    setLoading(false)
     console.log(response.data.data.message);
     console.log(response.data.data)
     console.log( response.status);
@@ -124,7 +128,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               placeholder='Phone Number'
             />
           </div>
-          <button type="submit" className='SignUpBttn'>Sign Up</button>
+          <button type="submit" className='SignUpBttn'>{loading ? <ButtonLoading/>: "Sign Up"}</button>
         </form>
         <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/alllogin/login")} >Login here</b></span>
       </div>

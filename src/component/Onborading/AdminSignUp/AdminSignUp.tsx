@@ -5,9 +5,10 @@ import './AdminSignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { SignUpForm, SignUpResponse } from '../../APIS/SignUpApi';
-
+import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 const AdminSignUp: React.FC = () => {
   const navigate = useNavigate()
+  const [loading, setLoading] =useState<boolean>(false)
   const [formData, setFormData] = useState<SignUpForm>({
     name: '',
     email: '',
@@ -40,9 +41,11 @@ const AdminSignUp: React.FC = () => {
 const handleSignUp = async (event: React.FormEvent) => {
   event.preventDefault();
   console.log('clicked')
+  setLoading(true)
   try {
     const response =  await signUpMutation.mutateAsync(formData);
-    console.log(response.data.data.message);
+    setLoading(false)
+    console.log(response.data.message);
     console.log(response.data.data)
     console.log( response.status);
     response.status === 201 ? navigate("/alllogin/adminlogin") : null 
@@ -118,7 +121,7 @@ const handleSignUp = async (event: React.FormEvent) => {
             </div>
           </div>
           </div>
-          <button type="submit" className='SignUpBttn'>Sign Up</button>
+          <button type="submit" className='SignUpBttn'>{loading ? <ButtonLoading/>: "SignUp"}</button>
         </form>
         <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/alllogin/adminlogin")} >Login here</b></span>
       </div>

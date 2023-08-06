@@ -17,7 +17,7 @@ const Header: React.FC = () => {
                 <p onClick={() => navigate("alllogin/adminlogin")} style={{ cursor: "pointer" }} >Login</p>
                 <p onClick={() => navigate("/allsignup/adminsignup")} style={{ cursor: "pointer" }}>sign up</p>
                 <button className='Header_Bttn1' onClick={() => navigate("alllogin/adminlogin")} >Register Your Hotel</button>
-                    <button className='Header_Bttn2'>Book a room</button>
+                    <button className='Header_Bttn2' onClick={() => navigate("/alllogin/login")}>Book a room</button>
             </div>
         )
     )

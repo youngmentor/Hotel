@@ -5,8 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { userLogin, userLoginRequest, userLoginResponse } from '../../APIS/LoginApi';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../../Redux/Features';
 const Login: React.FC = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -22,6 +25,7 @@ const Login: React.FC = () => {
   };
   const mutation = useMutation<userLoginResponse, Error, userLoginRequest>(userLogin, {
     onSuccess: (data) => {
+      dispatch(addUser(data.data)) 
       console.log(data.message);
       console.log(data);
       navigate("/userdash/userprofile")

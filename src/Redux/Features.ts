@@ -1,21 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-
 interface Room {
   id: number;
   name: string;
   price: number;
-}
-
-interface RooDetails extends Room {
   QTY: number;
 }
 
+// interface RoomDetail extends Room {
+//   QTY: number;
+// }
+
 interface BookingState {
   products: Room[];
-  room: RooDetails[];
+  room: Room[];
   total: number;
   amount: number;
+  admin: any;
+  user: any;
+  QTY: number;
 }
 
 const initialState: BookingState = {
@@ -23,12 +25,26 @@ const initialState: BookingState = {
   room: [],
   total: 0,
   amount: 0,
+  user: {},
+  admin: {},
+  QTY:0,
 };
-
 const featuresSlice = createSlice({
   name: 'e-booking',
   initialState,
   reducers: {
+    addAdmin: (state, { payload }: PayloadAction<any>) => {
+      state.admin = payload;
+    },
+    addUser: (state, { payload }: PayloadAction<any>) => {
+      state.user = payload;
+    },
+    clearUser: (state) => {
+      state.user = {};
+    },
+    clearAdmin: (state) => {
+      state.admin = {};
+    },
     collectProducts: (state, action: PayloadAction<Room[]>) => {
       state.products = action.payload;
     },
@@ -37,7 +53,7 @@ const featuresSlice = createSlice({
     //   if (check >= 0) {
     //     state.room[check].QTY += 1;
     //   } else {
-    //     const newItem: RooDetails = { ...action.payload, QTY: 1 };
+    //     const newItem: Room = { ...action.payload, QTY: 1 };
     //     state.room.push(newItem);
     //   }
     // },
@@ -72,7 +88,7 @@ const featuresSlice = createSlice({
       if (roomToAdd) {
         roomToAdd.QTY += 1;
       } else {
-        const newItem: RooDetails = { ...action.payload, QTY: 1 };
+        const newItem: Room = { ...action.payload, QTY: 1 };
         state.room.push(newItem);
       }
       // Recalculate total and amount after adding/removing rooms
@@ -96,6 +112,6 @@ const featuresSlice = createSlice({
   },
 });
 
-export const { collectProducts, addToRoom, removeItem, updateTotal, minusRoom } = featuresSlice.actions;
+export const { collectProducts, addToRoom, removeItem, updateTotal, minusRoom ,addAdmin,addUser,clearAdmin,clearUser} = featuresSlice.actions;
 
 export default featuresSlice.reducer;

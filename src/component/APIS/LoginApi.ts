@@ -1,6 +1,5 @@
 
 import axios from 'axios';
-
 export interface LoginRequest {
   email: string;
   password: string;

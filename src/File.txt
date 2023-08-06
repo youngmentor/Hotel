@@ -1,0 +1,72 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Dispatch } from 'redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from './store'; // Replace './store' with the path to your store setup
+
+// Define the initial state interface
+interface AppState {
+  user: any;
+  student: any;
+  teacher: any[];
+  allclass: any[];
+  file: any[];
+  payment: any[];
+}
+
+// Define the initial state
+const initialState: AppState = {
+  user: {},
+  student: {},
+  teacher: [],
+  allclass: [],
+  file: [],
+  payment: [{}],
+};
+
+const featuresSlice = createSlice({
+  name: 'eduglobal',
+  initialState,
+  reducers: {
+    addUser: (state, { payload }: PayloadAction<any>) => {
+      state.user = payload;
+    },
+    clearUser: (state) => {
+      state.user = {};
+    },
+    addStudent: (state, { payload }: PayloadAction<any>) => {
+      state.student = payload;
+    },
+    clearStudent: (state) => {
+      state.student = {};
+    },
+    addClass: (state, { payload }: PayloadAction<any>) => {
+      state.allclass = [...state.allclass, payload];
+    },
+    addPayment: (state, { payload }: PayloadAction<any>) => {
+      state.payment = [payload];
+    },
+    addFile: (state, { payload }: PayloadAction<any>) => {
+      state.file = [payload];
+    },
+    addTeacher: (state, { payload }: PayloadAction<any>) => {
+      state.teacher = [payload];
+    },
+    clearTeacher: (state) => {
+      state.teacher = [];
+    },
+  },
+});
+
+export const {
+  addUser,
+  clearUser,
+  clearTeacher,
+  clearStudent,
+  addFile,
+  addClass,
+  addStudent,
+  addPayment,
+  addTeacher,
+} = featuresSlice.actions;
+
+export default featuresSlice.reducer;
