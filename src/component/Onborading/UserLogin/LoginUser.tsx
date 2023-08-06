@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 // import Hotel1 from './HotelImg1.jpeg'
@@ -7,13 +7,16 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { userLogin, userLoginRequest, userLoginResponse } from '../../APIS/LoginApi';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../../../Redux/Features';
+import { ThemeContext } from '../../ContextApi/ContextApi';
+import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 const Login: React.FC = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [showPassword, setShowPassword] = useState<boolean>(false);
-
+  const {verifyAlert} = useContext(ThemeContext)
+  const [loading, setLoading] =useState<boolean>(false)
   const visiblePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -25,24 +28,32 @@ const Login: React.FC = () => {
   };
   const mutation = useMutation<userLoginResponse, Error, userLoginRequest>(userLogin, {
     onSuccess: (data) => {
+      setLoading(false)
       dispatch(addUser(data.data)) 
       console.log(data.message);
       console.log(data);
       navigate("/userdash/userprofile")
     },
     onError: (error) => {
+      setLoading(false)
       console.error(error.message);
     },
   });
 
   const handleUserLogin = () => {
     console.log("clicked")
+    setLoading(true)
     const data: userLoginRequest = { email, password };
     mutation.mutate(data);
   };
 
   return (
     <div className='LoginMain'>
+       {verifyAlert && <div className='AdminwelcomeMssg'>
+                <div>
+                    <p>Please check your Email a verification link has been sent to you</p>
+                </div>
+            </div>}
       <div className='LoginRight'>
         <img src='/NewRoomLogo.png' alt='NewRoomLogo' className='LoginNewRoomLogo' onClick={(()=> navigate('/'))}/>
         <h1>Welcome back User</h1>
@@ -74,7 +85,7 @@ const Login: React.FC = () => {
               </div>
             </div>
           </div>
-          <button type="submit" className='LoginBttn'>Login</button>
+          <button type="submit" className='LoginBttn'>{loading? <ButtonLoading/> : "Login"}</button>
         </form>
         <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/usersignup")} >create account</b></span>
       </div>

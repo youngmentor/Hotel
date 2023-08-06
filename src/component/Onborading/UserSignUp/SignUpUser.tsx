@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './SignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
@@ -6,8 +6,10 @@ import { UserSignUpForm,UserSignUpResponse  } from '../../APIS/SignUpApi';
 import { useMutation } from "react-query";
 import axios, {AxiosResponse} from "axios";
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
+import { ThemeContext } from '../../ContextApi/ContextApi';
 const SignUpUser: React.FC = () => {
   const navigate = useNavigate()
+  const {login_alert} =useContext(ThemeContext)
   const [loading, setLoading] =useState<boolean>(false)
   const [formData, setFormData] = useState<UserSignUpForm>({
     fullname: '',
@@ -42,6 +44,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
     console.log(response.data.data)
     console.log( response.status);
     response.status === 201 ? navigate("/alllogin/login") : null 
+    login_alert()
   } catch (error) {
     console.error(error  );
   }

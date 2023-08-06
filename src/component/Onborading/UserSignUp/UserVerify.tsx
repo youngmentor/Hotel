@@ -22,7 +22,7 @@ const UserVerify: React.FC = () => {
     onSuccess: () => {
       setState(!state);
       setTimeout(() => {
-        navigate('/alllogin/adminlogin');
+        navigate('/alllogin/login');
       }, 3000);
     },
   });
