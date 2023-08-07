@@ -19,6 +19,7 @@ const AdminResetPassword: React.FC = () => {
                     <input className='forget_input' ref={inputRef}
                         type="password" id="new-password"
                         value={confirmNewPassword}
+                        pattern={newPassword}
                         placeholder="Enter your new password..."
                         onChange={e => setConfirmNewPassword(e.target.value)} />
                     <button className='forget_button pointer' type='submit' >Submit</button>
