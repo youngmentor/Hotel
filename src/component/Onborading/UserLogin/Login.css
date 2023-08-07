@@ -124,7 +124,7 @@ label {
 }
 
 .LoginSpan b {
-    color: rgb(84, 162, 246);
+    color: rgb(84, 185, 255);
     cursor: pointer;
 }
 .ForgetPassword{
@@ -136,6 +136,7 @@ label {
 }
 .ForgetPassword:hover{
     color: rgb(45, 185, 255);
+    text-decoration: underline;
 }
 @media screen and (max-width: 426px) {
     .LoginLeft {
