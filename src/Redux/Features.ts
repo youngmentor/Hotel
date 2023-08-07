@@ -6,9 +6,7 @@ interface Room {
   QTY: number;
 }
 
-// interface RoomDetail extends Room {
-//   QTY: number;
-// }
+
 
 interface BookingState {
   products: Room[];
@@ -25,8 +23,8 @@ const initialState: BookingState = {
   room: [],
   total: 0,
   amount: 0,
-  user: [],
-  admin: [],
+  user: {},
+  admin: {},
   QTY:0,
 };
 const featuresSlice = createSlice({
@@ -34,10 +32,10 @@ const featuresSlice = createSlice({
   initialState,
   reducers: {
     addAdmin: (state, { payload }: PayloadAction<any>) => {
-      state.admin =[ ...state.admin, payload];
+      state.admin = payload;
     },
     addUser: (state, { payload }: PayloadAction<any>) => {
-      state.user = [...state.user ,payload];
+      state.user = payload;
     },
     clearUser: (state) => {
       state.user = {};

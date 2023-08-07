@@ -14,11 +14,13 @@ import { FaRegUserCircle } from "react-icons/fa";
 import AddFacility from './AddFacility/AddFacility'
 import { useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
-
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../Redux/Store'
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
-
+    const {  getAdminName } = useSelector((state: RootState) => state.eBooking.admin);
+    const Name = getAdminName?.admin?.name || 'No Admin';
     const handlMobileChange = () => {
         setMobile(!mobile)
     }
@@ -66,12 +68,13 @@ const AdminDashRight: React.FC = () => {
             </div>
         )
     )
+
     return (
         <div className='AdminDashRightMain'>
             {/* <div className='AdminDashRightMainWrap'> */}
             <div className='AdminDashRightHeader'>
                 <div className='AdminDashRightHeader_Wrap'>
-                    <p>welcome admin</p>
+                    <p>welcome {Name}! </p>
                     <div className='AdminDashRightHeaderIcon'>
                         <FaRegUserCircle />
                     </div>
