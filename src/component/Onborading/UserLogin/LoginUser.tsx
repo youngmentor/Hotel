@@ -87,6 +87,7 @@ const Login: React.FC = () => {
           </div>
           <button type="submit" className='LoginBttn'>{loading? <ButtonLoading/> : "Login"}</button>
         </form>
+        <p onClick={()=>navigate('/user-forgetpassword')} className='ForgetPassword'>Forgot password?</p>
         <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/usersignup")} >create account</b></span>
       </div>
     </div>

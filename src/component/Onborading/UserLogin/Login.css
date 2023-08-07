@@ -127,7 +127,16 @@ label {
     color: rgb(84, 162, 246);
     cursor: pointer;
 }
-
+.ForgetPassword{
+    width: 400px;
+    color: white;
+    text-align: right;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.ForgetPassword:hover{
+    color: rgb(45, 185, 255);
+}
 @media screen and (max-width: 426px) {
     .LoginLeft {
         display: none;
