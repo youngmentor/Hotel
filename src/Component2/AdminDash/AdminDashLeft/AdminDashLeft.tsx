@@ -5,9 +5,23 @@ import { RxDashboard } from "react-icons/rx";
 import { FaHotel } from "react-icons/fa";
 import { MdOutlineBedroomParent } from "react-icons/md";
 import { MdAddHome } from "react-icons/md";
+import { BiLogOut } from "react-icons/bi";
+import { logOut } from '../../../component/APIS/LoginApi';
 import HomeLogo from './NewRoomLogo-removebg-preview.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../Redux/Store';
+
 const AdminDashLeft: React.FC = () => {
 
+    const { id } = useSelector((state: RootState) => state.eBooking.admin);
+  console.log(id)
+    const dispatch = useDispatch()
+    const user = { id: "id" };
+    const handleLogoutClick = async () => {
+        console.log('Button clicked!');
+        await logOut(user, dispatch);
+        navigate('/alllogin/adminlogin')
+      };
     const navigate = useNavigate()
     return (
         <div className='AdminDashLeftMain'>
@@ -41,6 +55,10 @@ const AdminDashLeft: React.FC = () => {
                         <p onClick={() => navigate("/admindash/addfacility")}>Add Facility</p>
                     </div>
                 </div>
+                <div className='AdminDashBoardLeftNav_Icon_Div'>
+                            <BiLogOut />
+                            <p onClick={handleLogoutClick}>Log Out</p>
+                        </div>
             </div>
         </div>
     )

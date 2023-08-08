@@ -6,21 +6,26 @@ import AllHotels from './AllHotels/AllHotels'
 import AddHotels from './AddHotels/AddHotels'
 import AllRooms from './AllRooms/AllRooms'
 import AddRooms from './AddRooms/AddRooms'
-import { RxDashboard } from "react-icons/rx";
-import { FaHotel } from "react-icons/fa";
+import { RxDashboard, RxHamburgerMenu } from "react-icons/rx";
+import { FaHotel, FaTimes } from "react-icons/fa";
 import { MdOutlineBedroomParent } from "react-icons/md";
 import { MdAddHome } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
+import { BiLogOut } from "react-icons/bi";
 import AddFacility from './AddFacility/AddFacility'
 import { useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../Redux/Store'
+import { logOut } from '../../../component/APIS/LoginApi'
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const user = { id: 'user_id_here' };
     const [mobile, setMobile] = useState<boolean>(false)
-    const {  getAdminName } = useSelector((state: RootState) => state.eBooking.admin);
-    const Name = getAdminName?.admin?.name || 'No Admin';
+    const { name } = useSelector((state: RootState) => state.eBooking.admin);
+    // console.log(name)
+    const Name = name || 'No Admin';
     const handlMobileChange = () => {
         setMobile(!mobile)
     }
@@ -31,12 +36,18 @@ const AdminDashRight: React.FC = () => {
         navigate(path);
         handlecloseMobile();
     };
+    const handleLogoutClick = async () => {
+        console.log('Button clicked!');
+        await logOut(user, dispatch);
+    };
     const MobileDropDown = (
         mobile && (
             <div className='AdminDashLeftMain_Mobile'>
                 <div className='AdminDashLeftMainWrap'>
-                    <div className='AdminDashboardUserImgDiv' onClick={() => navigate("/")}>
-                        <img src={HomeLogo} alt='userimg' className='AdminHome_Logo' />
+                    <div className='AdminDashboardUserImgDiv'>
+                        <img src={HomeLogo} alt='userimg' className='AdminHome_Logo' onClick={() => navigate("/")} />
+                        <p className='AdminNameDisplayMobile'>Welcome back {name}! </p>
+                        <FaTimes onClick={handlMobileChange} />
                     </div>
                     <div className='AdminDashBoardLeftNav'>
                         <div className='AdminDashBoardLeftNav_Icon_Div'>
@@ -64,6 +75,10 @@ const AdminDashRight: React.FC = () => {
                             <p onClick={() => handleNavigate("/admindash/addfacility")}>Add Facility</p>
                         </div>
                     </div>
+                    <div className='AdminDashBoardLeftNav_Icon_Div'>
+                        <BiLogOut />
+                        <p onClick={handleLogoutClick}>Log Out</p>
+                    </div>
                 </div>
             </div>
         )
@@ -74,17 +89,14 @@ const AdminDashRight: React.FC = () => {
             {/* <div className='AdminDashRightMainWrap'> */}
             <div className='AdminDashRightHeader'>
                 <div className='AdminDashRightHeader_Wrap'>
-                    <p>welcome {Name}! </p>
-                    <div className='AdminDashRightHeaderIcon'>
-                        <FaRegUserCircle />
-                    </div>
-                    <div className='AdminDashRightHeaderIcon2'>
-                        {
-                            mobile ? <FaRegUserCircle onClick={handlMobileChange} /> :
-                                <FaRegUserCircle onClick={handlMobileChange} />
-                        }
-                        {mobile && MobileDropDown}
-                    </div>
+                    <p className='AdminNameDisplay'>Welcome back {Name}! </p>
+                    {
+                        mobile ? null : <RxHamburgerMenu onClick={handlMobileChange} className="AdminMobileBurger" />
+                    }
+                    {mobile && MobileDropDown}
+                </div>
+                <div className='AdminDashRightHeaderIcon'>
+                    <FaRegUserCircle />
                 </div>
             </div>
             <div className='AdminDashRightContent'>

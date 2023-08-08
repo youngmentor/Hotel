@@ -31,7 +31,7 @@
 .AdminDashBoardLeftNav {
     width: 100%;
     height: 90%;
-    gap: 40px;
+    gap: 10px;
     display: flex;
     flex-direction: column;
     /* align-items: center; */
@@ -72,10 +72,23 @@
     display: none;
     
    } 
+   .AdminDashboardUserImgDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
 }
 @media screen and (max-width: 769px){
     .AdminDashLeftMain{
      display: none;
      
     } 
+    .AdminDashboardUserImgDiv{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+       }   .AdminDashboardUserImgDiv{
+        display: flex;
+        justify-content: space-between;
+       }
 }

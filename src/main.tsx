@@ -6,15 +6,20 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import store from './Redux/Store.ts';
 import { ThemeProvider } from './component/ContextApi/ContextApi.tsx';
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist'
 const queryClient = new QueryClient();
+const persistor = persistStore(store)
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <QueryClientProvider client={queryClient}>
-    <Provider store={store}>
-      <ThemeProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </ThemeProvider>
-    </Provider>
-  </QueryClientProvider>
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <ThemeProvider>
+          <PersistGate persistor={persistor} >
+            <App />
+          </PersistGate>
+        </ThemeProvider>
+      </Provider>
+    </QueryClientProvider>
+  </React.StrictMode>
 )
