@@ -103,7 +103,7 @@
     }
     .TimesIcon{
         position:absolute;
-        left: 325px;
+        left: 10px;
         top: 36px;
         font-size: 25px;
     }
@@ -118,7 +118,7 @@
     .HeaderDrop{
         width: 300px;
         position: relative;
-        left: 12px;  
+        /* left: 12px;   */
         top: 160px;
     }
     .Header_Bttn1{
@@ -127,4 +127,41 @@
     .Header_Bttn2{
         width: 230px; 
      }
+     .HeaderLogoImg{
+        width: 120px;
+        height: 60px;
+     }
+}
+@media screen and (max-width:769px){
+    .HeaderNav {
+        display: none;
+    }
+    .Header_Bttn{
+        display: none;
+    }
+    .HeaderBurgeMenu{
+        display: flex;
+        width: 250px;
+    }
+    .HeaderWrap{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .TimesIcon{
+        position:absolute;
+        left: 93%;
+        top: 36px;
+        font-size: 25px;
+    }
+    .MenuIcon{
+        position: relative;
+        left: 200px; 
+        font-size: 25px;
+    }
+    .HeaderDrop{
+        width: 300px;
+        position: relative;
+        top: 160px;
+    }
 }

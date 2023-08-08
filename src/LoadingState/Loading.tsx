@@ -6,7 +6,7 @@ const Loading: React.FC = () => {
     <div className='loader'>
         {/* <img src={Loader}/> */}
         {/* <p>Welcome to Room where we serve you better</p> */}
-        <img src='/RoomLogo-removebg-preview.png' alt='LoadingNewRoomLogo' className='LoadingLogo'/>
+        <img src='/RoomLogo-RBG.png' alt='LoadingNewRoomLogo' className='LoadingLogo'/>
     </div>
   )
 }

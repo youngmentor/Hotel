@@ -55,16 +55,16 @@ export const userLogin = async (data: userLoginRequest): Promise<userLoginRespon
 
 import { Dispatch } from 'redux';
 
-export const logOut = async (user: { id: string } | null, dispatch: Dispatch<any>) => {
+export const logOut = async (admin : { id: string } | null, dispatch: Dispatch<any>) => {
   try {
-    if (!user) {
+    if (!admin) {
       throw new Error('User is not defined.');
     }
 
     const res: AxiosResponse<any> = await axios.post(
-      `https://hotel-api-7wlm.onrender.com/api/v1/manager/logout/${user.id}`
+      `https://hotel-api-7wlm.onrender.com/api/v1/manager/logout/${admin?.id}`
     );
-    console.log(user.id)
+    console.log(admin.id)
     console.log(res.data);
 
     if (res.status === 200) {

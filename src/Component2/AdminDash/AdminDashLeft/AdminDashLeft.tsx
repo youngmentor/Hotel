@@ -20,7 +20,7 @@ const AdminDashLeft: React.FC = () => {
     const handleLogoutClick = async () => {
         console.log('Button clicked!');
         await logOut(user, dispatch);
-        navigate('/alllogin/adminlogin')
+        navigate('/')
       };
     const navigate = useNavigate()
     return (
