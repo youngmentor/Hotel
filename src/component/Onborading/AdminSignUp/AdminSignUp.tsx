@@ -61,6 +61,7 @@ const handleSignUp = async (event: React.FormEvent) => {
   return (
     <div className='SignUpMain'>
       <div className='SignUpLeft'>
+      <img src='/NewRoomLogo.png' alt='NewRoomLogo' className='LoginNewRoomLogo' onClick={(() => navigate('/'))} />
         <h2>Create an Account to continue As a Partner</h2>
         <form onSubmit={handleSignUp} className='SignUpForm'>
           <div className='SignUpInputDiv'>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Landing1.css'
 import { FaSearch } from "react-icons/fa";
 import React from 'react';
@@ -10,24 +10,12 @@ import Landing4 from '../Landing4/Landing4';
 import Landing5 from '../Landing5/Landing5';
 import Landing6 from '../Landing6/Landing6';
 import { useMutation } from 'react-query';
-import axios from 'axios';
+// import axios from 'axios';
+import { fetchSearchResults } from '../../APIS/Mutation';
 
-interface SearchResult {
-    id: number;
-    hotelName: string;
-    description: string;
-    address: string;
-    city: string;
-    state: string;
-    imageId: string;
-}
-const fetchSearchResults = async (searchTerm: string): Promise<SearchResult[]> => {
-    const response = await axios.post(`https://hotel-api-7wlm.onrender.com/api/v1/hotel/search`, { query: searchTerm });
-    return response.data;
-};
+
 const Landing1: React.FC = () => {
     const [scroll, setScroll] = useState<boolean>(false)
-
     useEffect(() => {
         function handleScroll() {
             window.scrollY >= 543 ? setScroll(true) : setScroll(false);
@@ -40,17 +28,24 @@ const Landing1: React.FC = () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, [scroll]);
+    const inputRef = useRef<HTMLInputElement | null>(null)
+    // const [searchValue, setSearchValue] = useState<string>('');
 
-    const [searchTerm, setSearchTerm] = useState<string>('');
-
-    const searchMutation = useMutation((newSearchTerm: string) => fetchSearchResults(newSearchTerm));
-
-    const handleSearch = () => {
-        console.log('clicked')
-        searchMutation.mutate(searchTerm);
-    };
-
-
+    const {
+        data,
+        error,
+        isLoading,
+        mutate
+    } = useMutation( ["search"], fetchSearchResults, {
+        onSuccess:() =>{
+            // console.log(data?.data.data)
+        }
+    });
+    // console.log (typeof inputRef.current?.value)
+    useEffect(()=>{
+        // console.log(error)
+        // console.log(isLoading)
+    })
     return (
         <div className="Landing1Main">
             <div className='Landing1MainWrap'>
@@ -64,20 +59,19 @@ const Landing1: React.FC = () => {
                             type='text'
                             placeholder='Search hotel according to your location'
                             className='SearcHInputLanding1'
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
+                            // value={inputRef.current?.value}
+                            ref={inputRef}
                         />
                     </div>
-                    <button className='SearchBttn' onClick={handleSearch}>Find Hotel</button>
+                    <button className='SearchBttn' onClick={()=>mutate(inputRef.current?.value)}>Find Hotel</button>  
                 </div>
             </div>
             <div>
-                {searchMutation.isLoading && <div>Loading...</div>}
+                {isLoading && <div>Loading...</div>}
 
-                {searchMutation.isError && <div>Error</div>}
+                {error ? <div>Error</div> : null}
                 {
-                    searchMutation.isSuccess &&
-                    searchMutation?.data?.map((result) => (
+                    data?.data.data.map((result:any) => (
                         <div key={result.id}>
                             <p>{result.hotelName}</p>
                             <p>{result.address}</p>

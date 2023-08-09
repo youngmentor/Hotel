@@ -18,8 +18,8 @@
     padding: 10px;
   }
 .LoginNewRoomLogo{
-    width: 150px;
-    height: 80px;
+    width: 100px;
+    height: 60px;
     margin-bottom: 20px;
     cursor: pointer;
 }
@@ -39,6 +39,8 @@
 
 .LoginRight h1 {
     color: white;
+    margin: 0px;
+    padding: 0px;
 }
 
 .LoginImageLeft {
@@ -128,9 +130,9 @@ label {
     cursor: pointer;
 }
 .ForgetPassword{
-    width: 400px;
+    width: 350px;
     color: white;
-    text-align: right;
+    text-align: left;
     cursor: pointer;
     margin-top: 10px;
 }

@@ -18,13 +18,15 @@ import HomeLogo from './RoomLogo-removebg-preview.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../Redux/Store'
 import { logOut } from '../../../component/APIS/LoginApi'
+import { clearAdmin } from '../../../Redux/Features'
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const user = { id: 'user_id_here' };
     const [mobile, setMobile] = useState<boolean>(false)
     const { name } = useSelector((state: RootState) => state.eBooking.admin);
+    const {id}= useSelector((state:RootState)=> state.eBooking.admin)
     // console.log(name)
+    const user = { id: id };
     const Name = name || 'No Admin';
     const handlMobileChange = () => {
         setMobile(!mobile)
@@ -39,6 +41,9 @@ const AdminDashRight: React.FC = () => {
     const handleLogoutClick = async () => {
         console.log('Button clicked!');
         await logOut(user, dispatch);
+        // console.log(user.id)
+        dispatch(clearAdmin());
+        navigate('/')
     };
     const MobileDropDown = (
         mobile && (

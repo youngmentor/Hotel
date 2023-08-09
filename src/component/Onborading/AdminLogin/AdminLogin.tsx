@@ -16,7 +16,7 @@ const AdminLogin: React.FC = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [buttonLoading, setButtonLoading] = useState<boolean>(false)
     const { verifyAlert, } = useContext(ThemeContext)
-   const [isClicked, setIsClicked] = useState<boolean>(false)
+    const [isClicked, setIsClicked] = useState<boolean>(false)
     const showPasswords = () => {
         setShowPassword(!showPassword);
     };
@@ -52,12 +52,13 @@ const AdminLogin: React.FC = () => {
 
     return (
         <div className='LoginMain'>
-             {verifyAlert && <div className='AdminwelcomeMssg'>
+            {verifyAlert && <div className='AdminwelcomeMssg'>
                 <div>
                     <p>Please check your Email a verification link has been sent to you</p>
                 </div>
             </div>}
             <div className='LoginRight'>
+                <img src='/NewRoomLogo.png' alt='NewRoomLogo' className='LoginNewRoomLogo' onClick={(() => navigate('/'))} />
                 <h1>Welcome back Partner </h1>
                 <form className='LoginForm' onSubmit={handleLogin}>
                     <div className='LoginInput'>
@@ -87,9 +88,9 @@ const AdminLogin: React.FC = () => {
                             </div>
                         </div>
                     </div>
+                    <p onClick={(() => navigate("/adminforgetpassword"))} className='ForgetPassword'>Forgot Password?</p>
                     <button type="submit" className='LoginBttn' disabled={isClicked}>{buttonLoading ? <ButtonLoading /> : "Login"}</button>
                 </form>
-                <p onClick={(()=>navigate("/adminforgetpassword"))} className='ForgetPassword'>Forgot Password?</p>
                 <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>
             </div>
         </div>

@@ -10,16 +10,18 @@ import { logOut } from '../../../component/APIS/LoginApi';
 import HomeLogo from './NewRoomLogo-removebg-preview.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../Redux/Store';
-
+import { clearAdmin } from '../../../Redux/Features';
 const AdminDashLeft: React.FC = () => {
 
     const { id } = useSelector((state: RootState) => state.eBooking.admin);
-  console.log(id)
+//   console.log(id)
     const dispatch = useDispatch()
-    const user = { id: "id" };
+    const user = { id: id };
     const handleLogoutClick = async () => {
         console.log('Button clicked!');
         await logOut(user, dispatch);
+        // console.log(user.id)
+        dispatch(clearAdmin());
         navigate('/')
       };
     const navigate = useNavigate()

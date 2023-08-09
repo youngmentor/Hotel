@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate,} from 'react-router-dom';
 import { useMutation} from 'react-query';
-import axios from 'axios';
-
-interface Params {
-  id: string;
-  [key: string]: string | undefined;
-}
+import { verifyAdmin } from '../../APIS/Mutation';
+// interface Params {
+//   id: string;
+//   [key: string]: string | undefined;
+// }
 
 const AdminVerify: React.FC = () => {
-  const { id } = useParams<Params>();
   const navigate = useNavigate();
   const [state, setState] = useState<boolean>(false);
 
-  const verifyAdmin = async () => {
-    const response = await axios.patch(`https://hotel-api-7wlm.onrender.com/api/v1/manager/verify/${id}`);
-    return response.data; 
-  };
 
-  const { mutate, isLoading, isError, isSuccess } = useMutation(verifyAdmin, {
+
+  const { mutate, isLoading, isError, isSuccess } = useMutation(['verify'],verifyAdmin, {
     onSuccess: () => {
       setState(!state);
       setTimeout(() => {
@@ -28,7 +23,7 @@ const AdminVerify: React.FC = () => {
   });
 
   useEffect(() => {
-    mutate();
+    // mutate();
   }, [mutate]);
 
   const style = {
