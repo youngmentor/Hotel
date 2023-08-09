@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import './UserResetPassword.css'
 const UserResetPassword: React.FC = () => {
 
     const inputRef = useRef<HTMLInputElement>(null);
@@ -7,21 +8,26 @@ const UserResetPassword: React.FC = () => {
 
     return (
         <div className='forget'>
-            <div className='resetwrap'>
+            <div className='UserResetwrap'>
+            <img
+                    src="/RoomLogo-RBG.png"
+                    alt="NewRoomLogo"
+                    className="Admin_Forget_Password_NewRoomLogo1"
+                />
                 <div className='forget_text'>
                     <h2>Please Enter a New password</h2>
                 </div>
-                <form className='forget_text'>
-                    <input className='forget_input' ref={inputRef}
+                <form className='UserResetPasswordForm'>
+                    <input className='UserResetPasswordInput' ref={inputRef}
                         type="password" id="new-password"
                         value={newPassword}
                         placeholder="Enter your new password..."
                         onChange={e => setNewPassword(e.target.value)} />
-                    <input className='forget_input' ref={inputRef}
+                    <input className='UserResetPasswordInput' ref={inputRef}
                         type="password" id="new-password"
                         value={confirmNewPassword}
                         pattern={newPassword}
-                        placeholder="Enter your new password..."
+                        placeholder="Confirm your new password..."
                         onChange={e => setConfirmNewPassword(e.target.value)} />
                     <button className='forget_button pointer' type='submit' >Submit</button>
                 </form>

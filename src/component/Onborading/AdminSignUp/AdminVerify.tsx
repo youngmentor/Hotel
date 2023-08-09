@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate,} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useMutation} from 'react-query';
 import { verifyAdmin } from '../../APIS/Mutation';
-// interface Params {
-//   id: string;
-//   [key: string]: string | undefined;
-// }
+interface Params {
+  id: string;
+  [key: string]: string | undefined;
+}
 
 const AdminVerify: React.FC = () => {
+  const { id } = useParams<Params>();
   const navigate = useNavigate();
   const [state, setState] = useState<boolean>(false);
 
 
 
-  const { mutate, isLoading, isError, isSuccess } = useMutation(['verify'],verifyAdmin, {
+  const { mutate, isLoading, isError, isSuccess } = useMutation(verifyAdmin, {
     onSuccess: () => {
       setState(!state);
       setTimeout(() => {
@@ -23,7 +24,7 @@ const AdminVerify: React.FC = () => {
   });
 
   useEffect(() => {
-    // mutate();
+    mutate(id);
   }, [mutate]);
 
   const style = {

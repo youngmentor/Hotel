@@ -1,32 +1,68 @@
 import { useRef, useState } from "react";
+import { useMutation } from "react-query";
+import { resetAdminPassword } from "../../../APIS/Mutation";
+import { Params, useParams } from "react-router-dom";
+import './AdminResetPassword.css'
 const AdminResetPassword: React.FC = () => {
+    const newPasswordRef = useRef<HTMLInputElement>(null);
+    const confirmPasswordRef = useRef<HTMLInputElement>(null);
+    const { id } = useParams<Params>()
+    const [password, setPassword] = useState<string>('');
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
 
-    const inputRef = useRef<HTMLInputElement>(null);
-    const [newPassword, setNewPassword] = useState<string>('');
-    const [confirmNewPassword, setConfirmNewPassword] = useState<string>('');
+    const { data, mutate, error } = useMutation(resetAdminPassword, {
+        onSuccess: () => {
+            console.log(data);
+
+        },
+        onError: () => {
+            console.log(error);
+        }
+    });
+
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+
+        if (password !== confirmPassword) {
+            console.log("Passwords do not match");
+            return;
+        }
+        mutate({ password, id });
+    };
     return (
         <div className='forget'>
-            <div className='resetwrap'>
+            <div className='Admin_Resetwrap'>
+            <img
+                    src="/RoomLogo-RBG.png"
+                    alt="NewRoomLogo"
+                    className="Admin_Forget_Password_NewRoomLogo1"
+                    // onClick={() => navigate("/")}
+                />
                 <div className='forget_text'>
                     <h2>Please Enter a New password</h2>
                 </div>
-                <form className='forget_text'>
-                    <input className='forget_input' ref={inputRef}
-                        type="password" id="new-password"
-                        value={newPassword}
+                <form className='AdminResetPasswordForm' onSubmit={handleSubmit}>
+                    <input
+                        className='forget_input'
+                        ref={newPasswordRef}
+                        type="password"
+                        value={password}
                         placeholder="Enter your new password..."
-                        onChange={e => setNewPassword(e.target.value)} />
-                    <input className='forget_input' ref={inputRef}
-                        type="password" id="new-password"
-                        value={confirmNewPassword}
-                        pattern={newPassword}
-                        placeholder="Enter your new password..."
-                        onChange={e => setConfirmNewPassword(e.target.value)} />
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                    <input
+                        className='forget_input'
+                        ref={confirmPasswordRef}
+                        type="password"
+                        value={confirmPassword}
+                        placeholder="Confirm your new password..."
+                        onChange={e => setConfirmPassword(e.target.value)}
+                    />
                     <button className='forget_button pointer' type='submit' >Submit</button>
                 </form>
             </div>
         </div>
-    )
+    );
 }
 
-export default AdminResetPassword
+export default AdminResetPassword;
