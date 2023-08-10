@@ -1,22 +1,20 @@
 import React, { useContext, useState } from 'react';
 import { useMutation } from 'react-query';
-import axios, { AxiosResponse } from 'axios';
 import './AdminSignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye,} from "react-icons/fa";
-import { SignUpForm, SignUpResponse } from '../../APIS/SignUpApi';
+import { SignUpForm} from '../../APIS/TypeChecks';
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 import { ThemeContext } from '../../ContextApi/ContextApi';
+import { adminSignUp } from '../../APIS/Mutation';
 const AdminSignUp: React.FC = () => {
   const {login_alert} = useContext(ThemeContext)
   const navigate = useNavigate()
-  const [loading, setLoading] =useState<boolean>(false)
   const [formData, setFormData] = useState<SignUpForm>({
     name: '',
     email: '',
     password: '',
     confirmpassword: '',
-    phonenumber: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,27 +33,21 @@ const AdminSignUp: React.FC = () => {
   const visibleConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
-  const signUpMutation = useMutation<AxiosResponse<SignUpResponse>, Error, SignUpForm>(
-     (formData) =>
-      axios.post<SignUpResponse>('https://hotel-api-7wlm.onrender.com/api/v1//manager/register', formData)
-  
-);
+  const {isLoading,  mutate} = useMutation(['adminSignup'], adminSignUp,{
+    onSuccess: ()=>{
+      login_alert()
+      setTimeout(()=>{
+        navigate('/alllogin/adminlogin')
+      },500)
+    }
+  });
+
 const handleSignUp = async (event: React.FormEvent) => {
   event.preventDefault();
   console.log('clicked')
-  setLoading(true)
-  try {
-    const response =  await signUpMutation.mutateAsync(formData);
-    setLoading(false)
-    console.log(response.data.message);
-    console.log(response.data.data)
-    console.log( response.status);
-    response.status === 201 ? navigate("/alllogin/adminlogin") : null 
-    login_alert()
-  } catch (error) {
-    setLoading(false)
-    console.error('Sign-up error:', error);
-  }
+  const {confirmpassword, ...others}= formData
+   mutate(others)
+  console.log(others)
 };
 
   return (
@@ -127,7 +119,7 @@ const handleSignUp = async (event: React.FormEvent) => {
             </div>
           </div>
           </div>
-          <button type="submit" className='SignUpBttn'>{loading ? <ButtonLoading/>: "SignUp"}</button>
+          <button type="submit" className='SignUpBttn'>{isLoading ? <ButtonLoading/>: "SignUp"}</button>
         </form>
         <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/alllogin/adminlogin")} >Login here</b></span>
       </div>

@@ -3,51 +3,46 @@ import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { LoginRequest, LoginResponse, adminLogin } from '../../APIS/LoginApi';
+import { LoginRequest} from '../../APIS/LoginApi';
 import { useDispatch } from 'react-redux';
 import { addAdmin } from '../../../Redux/Features';
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 import { ThemeContext } from '../../ContextApi/ContextApi';
+import { adminLogin } from '../../APIS/Mutation';
 const AdminLogin: React.FC = () => {
     const navigate = useNavigate()
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
+    const [login, setLogin] = useState<LoginRequest>({
+        email: '',
+        password: ''
+    })
     const dispatch = useDispatch()
     const [showPassword, setShowPassword] = useState<boolean>(false);
-    const [buttonLoading, setButtonLoading] = useState<boolean>(false)
     const { verifyAlert, } = useContext(ThemeContext)
-    const [isClicked, setIsClicked] = useState<boolean>(false)
     const showPasswords = () => {
         setShowPassword(!showPassword);
     };
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLogin({
+          ...login,
+          [e.target.name]: e.target.value
+        });
+      };
 
-    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
-    };
-    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(event.target.value);
-    };
-
-    const mutation = useMutation<LoginResponse, Error, LoginRequest>(adminLogin, {
+    const {mutate, isLoading} = useMutation( ['adminlogin'], adminLogin, {
         onSuccess: (data) => {
-            dispatch(addAdmin(data.data))
-            setButtonLoading(false)
-            console.log(data.message);
+            dispatch(addAdmin(data))
+            // console.log(data.message);
             console.log(data);
             navigate("/admindash/dashmain")
         },
         onError: (error) => {
-            setButtonLoading(false)
-            console.error(error.message);
+            console.error(error);
         },
     });
 
     const handleLogin = () => {
         console.log("clicked")
-        setButtonLoading(true)
-        setIsClicked(true)
-        const data: LoginRequest = { email, password };
-        mutation.mutate(data);
+        mutate(login);
     };
 
     return (
@@ -67,9 +62,10 @@ const AdminLogin: React.FC = () => {
                             placeholder='Email Address'
                             type="text"
                             id="email"
-                            value={email}
-                            onChange={handleEmailChange}
+                            value={login.email}
+                            onChange={handleChange}
                             className='Input'
+                            name='email'
                         />
                     </div>
                     <div className='LoginInputPass'>
@@ -79,9 +75,10 @@ const AdminLogin: React.FC = () => {
                                 placeholder='Password'
                                 type={showPassword ? 'text' : 'password'}
                                 id="password"
-                                value={password}
-                                onChange={handlePasswordChange}
+                                value={login.password}
+                                onChange={handleChange}
                                 className='InputPass'
+                                name='password'
                             />
                             <div className="password-toggle" onClick={showPasswords}>
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -89,7 +86,7 @@ const AdminLogin: React.FC = () => {
                         </div>
                     </div>
                     <p onClick={(() => navigate("/adminforgetpassword"))} className='ForgetPassword'>Forgot Password?</p>
-                    <button type="submit" className='LoginBttn' disabled={isClicked}>{buttonLoading ? <ButtonLoading /> : "Login"}</button>
+                    <button type="submit" className='LoginBttn'>{ isLoading ? <ButtonLoading /> : "Login"}</button>
                 </form>
                 <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>
             </div>

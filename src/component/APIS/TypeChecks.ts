@@ -3,8 +3,7 @@ export interface SignUpForm {
     name: string;
     email: string;
     password: string;
-    confirmpassword: string;
-    phonenumber: string;
+    confirmpassword?: string;
 }
 export interface SignUpResponse {
     status: number;

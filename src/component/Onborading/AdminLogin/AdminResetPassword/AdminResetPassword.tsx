@@ -1,19 +1,22 @@
 import { useRef, useState } from "react";
 import { useMutation } from "react-query";
 import { resetAdminPassword } from "../../../APIS/Mutation";
-import { Params, useParams } from "react-router-dom";
+import { Params, useNavigate, useParams } from "react-router-dom";
 import './AdminResetPassword.css'
+import ButtonLoading from "../../../../ButtonLoader/ButtonLoader";
+
 const AdminResetPassword: React.FC = () => {
+    const navigate= useNavigate()
     const newPasswordRef = useRef<HTMLInputElement>(null);
     const confirmPasswordRef = useRef<HTMLInputElement>(null);
     const { id } = useParams<Params>()
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
 
-    const { data, mutate, error } = useMutation(resetAdminPassword, {
-        onSuccess: () => {
+    const {data, mutate, error, isLoading } = useMutation( ['resetadminpassword'], resetAdminPassword, {
+        onSuccess: (data) => {
             console.log(data);
-
+            navigate('/alllogin/adminlogin')
         },
         onError: () => {
             console.log(error);
@@ -27,16 +30,16 @@ const AdminResetPassword: React.FC = () => {
             console.log("Passwords do not match");
             return;
         }
-        mutate({ password, id });
+        mutate({id, password});
     };
     return (
         <div className='forget'>
+            <p>{data?.data.message}</p>
             <div className='Admin_Resetwrap'>
-            <img
+                <img
                     src="/RoomLogo-RBG.png"
                     alt="NewRoomLogo"
                     className="Admin_Forget_Password_NewRoomLogo1"
-                    // onClick={() => navigate("/")}
                 />
                 <div className='forget_text'>
                     <h2>Please Enter a New password</h2>
@@ -58,7 +61,11 @@ const AdminResetPassword: React.FC = () => {
                         placeholder="Confirm your new password..."
                         onChange={e => setConfirmPassword(e.target.value)}
                     />
-                    <button className='forget_button pointer' type='submit' >Submit</button>
+                    <button className='forget_button pointer' type='submit' >
+                        {
+                            isLoading ? <ButtonLoading /> : 'Submit'
+                        }
+                    </button>
                 </form>
             </div>
         </div>

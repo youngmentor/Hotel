@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import './SignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { UserSignUpForm,UserSignUpResponse  } from '../../APIS/SignUpApi';
+import { UserSignUpForm,UserSignUpResponse  } from '../../APIS/TypeChecks';
 import { useMutation } from "react-query";
 import axios, {AxiosResponse} from "axios";
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';

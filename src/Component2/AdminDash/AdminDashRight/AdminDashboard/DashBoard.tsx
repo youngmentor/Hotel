@@ -51,7 +51,7 @@ const DashBoard: React.FC = () => {
                             <div className='All_User_Booking_Wrap'>
                                 {
                                     UserData.map((i) => (
-                                        <div className='AllUser_Info'>
+                                        <div key={i.id} className='AllUser_Info'>
                                             <p>{i.id}</p>
                                             <p>{i.name}</p>
                                             <p>{i.roomNo}</p>

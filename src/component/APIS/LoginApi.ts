@@ -18,14 +18,14 @@ export interface LoginResponse {
   };
 }
 
-const adminApi = axios.create({
-  baseURL: 'https://hotel-api-7wlm.onrender.com/api/v1/manager/login',
-});
+// const adminApi = axios.create({
+//   baseURL: 'https://hotel-api-7wlm.onrender.com/api/v1/manager/login',
+// });
 
-export const adminLogin = async (data: LoginRequest): Promise<LoginResponse> => {
-  const response = await adminApi.post('https://hotel-api-7wlm.onrender.com/api/v1/manager/login', data);
-  return response.data;
-};
+// export const adminLogin = async (data: LoginRequest): Promise<LoginResponse> => {
+//   const response = await adminApi.post('https://hotel-api-7wlm.onrender.com/api/v1/manager/login', data);
+//   return response.data;
+// };
 
 export interface userLoginRequest {
   email: string;
