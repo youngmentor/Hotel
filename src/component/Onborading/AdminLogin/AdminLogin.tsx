@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { LoginRequest} from '../../APIS/LoginApi';
-import { useDispatch } from 'react-redux';
-import { addAdmin } from '../../../Redux/Features';
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 import { ThemeContext } from '../../ContextApi/ContextApi';
 import { adminLogin } from '../../APIS/Mutation';
@@ -15,9 +13,9 @@ const AdminLogin: React.FC = () => {
         email: '',
         password: ''
     })
-    const dispatch = useDispatch()
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const { verifyAlert, } = useContext(ThemeContext)
+    // const [errorMessage, setErrorMessage] = useState<string>('')
     const showPasswords = () => {
         setShowPassword(!showPassword);
     };
@@ -28,10 +26,8 @@ const AdminLogin: React.FC = () => {
         });
       };
 
-    const {mutate, isLoading} = useMutation( ['adminlogin'], adminLogin, {
+    const {mutate, isLoading,} = useMutation( ['adminlogin'], adminLogin, {
         onSuccess: (data) => {
-            dispatch(addAdmin(data))
-            // console.log(data.message);
             console.log(data);
             navigate("/admindash/dashmain")
         },
@@ -40,7 +36,8 @@ const AdminLogin: React.FC = () => {
         },
     });
 
-    const handleLogin = () => {
+    const handleLogin = (event: any) => {
+        event.preventDefault()
         console.log("clicked")
         mutate(login);
     };

@@ -1,37 +1,45 @@
 import axios from 'axios';
-// import { MutationFunction } from 'react-query';
-// import { SignUpForm } from './TypeChecks';
+
+const {VITE_ENDPOINT } = import.meta.env;
 export const fetchSearchResults = async (data: string | undefined) => {
-  return await axios.post(`https://hotel-api-7wlm.onrender.com/api/v1/hotel/search`, { searchValue: data });
+  return await axios.post(`${VITE_ENDPOINT}/hotel/search`, { searchValue: data });
 };
 export const verifyAdmin = async (data: string | undefined) => {
-  console.log(data)
-  return await axios.patch(`https://hotel-api-7wlm.onrender.com/api/v1/manager/verify/${data}`);
+  // console.log(data)
+  return await axios.patch(`${VITE_ENDPOINT}/manager/verify/${data}`);
 };
 export const verifyUser = async (data: any) => {
   const {id}= data
-  return await axios.patch(`https://hotel-api-7wlm.onrender.com/api/v1/user/verify/${id}`);
+  return await axios.patch(`${VITE_ENDPOINT}/user/verify/${id}`);
 };
 export const adminForgotPassword = async (email: string) => {
-  return await axios.post(`https://hotel-api-7wlm.onrender.com/api/v1/manager/forgotten`, { email })
+  return await axios.post(`${VITE_ENDPOINT}/manager/forgotten`, { email })
 };
-
 export const resetAdminPassword = async (data: {id: string | undefined, password: string}) => {
   const {id, password} = data
-  return await axios.patch(`https://hotel-api-7wlm.onrender.com/api/v1/manager/change/${id}` ,{password: password})
+  return await axios.patch(`${VITE_ENDPOINT}/manager/change/${id}` ,{password: password})
 };
 export const adminSignUp = async (data: any) => {
   // console.log(data)
-  return await axios.post(`https://hotel-api-7wlm.onrender.com/api/v1/manager/register`, data)
+  return await axios.post(`${VITE_ENDPOINT}/manager/register`, data)
 };
 export const userSignUp = async (data: any) => {
   console.log(data)
-  return await axios.post(`https://hotel-api-7wlm.onrender.com/api/v1/user/register`, data)
+  return await axios.post(`${VITE_ENDPOINT}/user/register`, data)
 };
 export const adminLogin = async (data: any) => {
-  console.log(data)
-  return await axios.post(`https://hotel-api-7wlm.onrender.com/api/v1/manager/login`, data)
+  // console.log(data)
+  return await axios.post(`${VITE_ENDPOINT}/manager/login`, data)
 }
-export const userLogin = async () => {
+export const userLogin = async (data: any) => {
+  return await axios.post(`${VITE_ENDPOINT}//user/login`, data)
+}
+export const addHotel = async ()=>{
   return await axios.post(``)
+};
+export const addRoom = async ()=>{
+  return await axios.post(``)
+};
+export const logoutAdmin = async () => {
+  return await axios.post('${VITE_ENDPOINT}/manager/logout/')
 }

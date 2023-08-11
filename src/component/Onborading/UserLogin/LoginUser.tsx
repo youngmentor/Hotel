@@ -4,48 +4,42 @@ import { useNavigate } from 'react-router-dom';
 // import Hotel1 from './HotelImg1.jpeg'
 import './Login.css'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { userLogin, userLoginRequest, userLoginResponse } from '../../APIS/LoginApi';
-import { useDispatch } from 'react-redux';
-import { addUser } from '../../../Redux/Features';
+import { userLoginRequest} from '../../APIS/LoginApi';
 import { ThemeContext } from '../../ContextApi/ContextApi';
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
+import { userLogin } from '../../APIS/Mutation';
 const Login: React.FC = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const {verifyAlert} = useContext(ThemeContext)
-  const [loading, setLoading] =useState<boolean>(false)
+  const [login, setLogin] = useState<userLoginRequest>({
+    email: '',
+    password: ''
+})
   const visiblePassword = () => {
     setShowPassword(!showPassword);
   };
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLogin({
+      ...login,
+      [e.target.name]: e.target.value
+    });
   };
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-  const mutation = useMutation<userLoginResponse, Error, userLoginRequest>(userLogin, {
+  const {mutate, isLoading} = useMutation( ['userlogin'], userLogin , {
     onSuccess: (data) => {
-      setLoading(false)
-      dispatch(addUser(data.data)) 
-      console.log(data.message);
-      console.log(data);
-      navigate("/userdash/userprofile")
+        console.log(data);
+        navigate("/userdash/userprofile")
     },
     onError: (error) => {
-      setLoading(false)
-      console.error(error.message);
+        console.error(error);
     },
-  });
+});
 
-  const handleUserLogin = () => {
-    console.log("clicked")
-    setLoading(true)
-    const data: userLoginRequest = { email, password };
-    mutation.mutate(data);
-  };
+const handleUserLogin = (e: any) => {
+  e.preventDefault()
+  console.log("clicked")
+  mutate(login);
+};
 
   return (
     <div className='LoginMain'>
@@ -64,9 +58,10 @@ const Login: React.FC = () => {
               placeholder='EmaIL Address'
               type="text"
               id="username"
-              value={email}
-              onChange={handleEmailChange}
+              value={login.email}
+              onChange={handleChange}
               className='Input'
+              name='email'
             />
           </div>
           <div className='LoginInput'>
@@ -76,8 +71,9 @@ const Login: React.FC = () => {
                 placeholder='Password'
                 type={showPassword ? 'text' : 'password'}
                 id="password"
-                value={password}
-                onChange={handlePasswordChange}
+                name='password'
+                value={login.password}
+                onChange={handleChange}
                 className='InputPass'
               />
               <div className="password-toggle" onClick={visiblePassword}>
@@ -86,7 +82,7 @@ const Login: React.FC = () => {
             </div>
           </div>
         <p onClick={()=>navigate('/user-forgetpassword')} className='ForgetPassword'>Forgot password?</p>
-          <button type="submit" className='LoginBttn'>{loading? <ButtonLoading/> : "Login"}</button>
+          <button type="submit" className='LoginBttn'>{isLoading ? <ButtonLoading/> : "Login"}</button>
         </form>
         <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/usersignup")} >create account</b></span>
       </div>

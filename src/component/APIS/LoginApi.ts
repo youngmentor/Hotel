@@ -43,14 +43,14 @@ export interface userLoginResponse {
   };
 };
 
-const userApi = axios.create({
-  baseURL: 'https://hotel-api-7wlm.onrender.com/api/v1//user/login',
-});
+// const userApi = axios.create({
+//   baseURL: 'https://hotel-api-7wlm.onrender.com/api/v1//user/login',
+// });
 
-export const userLogin = async (data: userLoginRequest): Promise<userLoginResponse> => {
-  const response = await userApi.post('https://hotel-api-7wlm.onrender.com/api/v1//user/login', data);
-  return response.data;
-};
+// export const userLogin = async (data: userLoginRequest): Promise<userLoginResponse> => {
+//   const response = await userApi.post('https://hotel-api-7wlm.onrender.com/api/v1//user/login', data);
+//   return response.data;
+// };
 
 
 import { Dispatch } from 'redux';
