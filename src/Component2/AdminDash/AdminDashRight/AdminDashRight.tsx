@@ -13,7 +13,7 @@ import { MdAddHome } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import AddFacility from './AddFacility/AddFacility'
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
 import { getAdmin } from '../../../component/APIS/query';
 import {  useQuery } from '@tanstack/react-query'
@@ -39,14 +39,10 @@ const AdminDashRight: React.FC = () => {
     // });
     const handleLogoutClick = async () => {
         console.log('Button clicked!');
-        console.log(data?.data.data.id)
-        navigate('/')
         // mutate() 
     };
     const {
         data,
-        isFetching,
-        isLoading
     } = useQuery(["getadmin"], getAdmin, {
         enabled: !!localStorage.getItem(VITE_TOKEN),
         refetchOnWindowFocus: false,
@@ -54,12 +50,8 @@ const AdminDashRight: React.FC = () => {
             // console.log(data?.data.data)
         },
     });
-    const value: any = data?.data.data
-    useEffect(() => {
-        // console.log(isFetching)
-        // console.log(isLoading)
-        // console.log(value)
-    }, [isFetching, isLoading, value])
+    const value: any = data?.data?.data
+
 
 
     const MobileDropDown = (
