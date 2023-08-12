@@ -40,11 +40,10 @@ export const addHotel = async ()=>{
 export const addRoom = async ()=>{
   return await axios.post(``)
 };
-export const logoutAdmin = async () => {
+export const logOutAdmin = async (id: any) => {
   const token = localStorage.getItem(VITE_TOKEN)
   console.log(token)
-  const removeUser = token?.replace(/""/, "");
-
-  return await axios.post(`${VITE_ENDPOINT}/manager/logout/${removeUser}`)
+  // const removeUser = token;
+  return await axios.post(`${VITE_ENDPOINT}/manager/logout/${id}`)
   
 }

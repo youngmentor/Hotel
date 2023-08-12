@@ -16,8 +16,8 @@ import AddFacility from './AddFacility/AddFacility'
 import { useEffect, useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
 import { getAdmin } from '../../../component/APIS/query'
-import { useQuery } from '@tanstack/react-query'
-import { logoutAdmin } from '../../../component/APIS/Mutation';
+import {  useQuery } from '@tanstack/react-query'
+// import { logOutAdmin,} from '../../../component/APIS/Mutation';
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
@@ -32,11 +32,17 @@ const AdminDashRight: React.FC = () => {
         navigate(path);
         handlecloseMobile();
     };
-    // const handleLogoutClick = async () => {
-    //     console.log('Button clicked!');
-    //     logoutAdmin()
-    //     navigate('/')
-    // };
+    // const { error, mutate}= useMutation(['logoutAdmin'], logOutAdmin,{
+    //     onSuccess: (data)=>{
+    //         console.log(data?.data.data.id)
+    //     }
+    // });
+    const handleLogoutClick = async () => {
+        console.log('Button clicked!');
+        console.log(data?.data.data.id)
+        navigate('/')
+        // mutate() 
+    };
     const {
         data,
         isFetching,
@@ -93,7 +99,7 @@ const AdminDashRight: React.FC = () => {
                     </div>
                     <div className='AdminDashBoardLeftNav_Icon_Div'>
                         <BiLogOut />
-                        <p onClick={logoutAdmin}>Log Out</p>
+                        <p onClick={handleLogoutClick}>Log Out</p>
                     </div>
                 </div>
             </div>
