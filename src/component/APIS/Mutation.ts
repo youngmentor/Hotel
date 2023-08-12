@@ -1,5 +1,5 @@
 import axios from 'axios';
-const { VITE_TOKEN } = import.meta.env;
+// const { VITE_TOKEN } = import.meta.env;
 const {VITE_ENDPOINT } = import.meta.env;
 export const fetchSearchResults = async (data: string | undefined) => {
   return await axios.post(`${VITE_ENDPOINT}/hotel/search`, { searchValue: data });
@@ -40,10 +40,7 @@ export const addHotel = async ()=>{
 export const addRoom = async ()=>{
   return await axios.post(``)
 };
-export const logOutAdmin = async (id: any) => {
-  const token = localStorage.getItem(VITE_TOKEN)
-  console.log(token)
-  // const removeUser = token;
+export const logOutAdmin = async (id: number) => {
+  console.log(typeof id)
   return await axios.post(`${VITE_ENDPOINT}/manager/logout/${id}`)
-  
 }

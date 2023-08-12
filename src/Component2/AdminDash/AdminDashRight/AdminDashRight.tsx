@@ -16,8 +16,8 @@ import AddFacility from './AddFacility/AddFacility'
 import {  useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
 import { getAdmin } from '../../../component/APIS/query';
-import {  useQuery } from '@tanstack/react-query'
-// import { logOutAdmin,} from '../../../component/APIS/Mutation';
+import {  useMutation, useQuery } from '@tanstack/react-query'
+import { logOutAdmin,} from '../../../component/APIS/Mutation';
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
@@ -32,26 +32,26 @@ const AdminDashRight: React.FC = () => {
         navigate(path);
         handlecloseMobile();
     };
-    // const { error, mutate}= useMutation(['logoutAdmin'], logOutAdmin,{
-    //     onSuccess: (data)=>{
-    //         console.log(data?.data.data.id)
-    //     }
-    // });
-    const handleLogoutClick = async () => {
-        console.log('Button clicked!');
-        // mutate() 
-    };
+    const {  mutate}= useMutation(['logoutAdmin'], logOutAdmin,{
+        onSuccess: ()=>{
+            // console.log(data?.data.data.id)
+            navigate('/')
+        }
+    });
+   
     const {
         data,
     } = useQuery(["getadmin"], getAdmin, {
         enabled: !!localStorage.getItem(VITE_TOKEN),
         refetchOnWindowFocus: false,
         onSuccess: () => {
-            // console.log(data?.data.data)
         },
     });
     const value: any = data?.data?.data
 
+    const handleLogoutClick = async () => {
+        mutate(value.id)
+    };
 
 
     const MobileDropDown = (
