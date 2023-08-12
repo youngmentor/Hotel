@@ -3,7 +3,7 @@ import './SignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { UserSignUpForm,UserSignUpResponse  } from '../../APIS/TypeChecks';
-import { useMutation } from "react-query";
+import { useMutation } from '@tanstack/react-query';
 import axios, {AxiosResponse} from "axios";
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 import { ThemeContext } from '../../ContextApi/ContextApi';

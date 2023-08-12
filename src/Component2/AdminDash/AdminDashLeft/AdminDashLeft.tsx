@@ -6,22 +6,11 @@ import { FaHotel } from "react-icons/fa";
 import { MdOutlineBedroomParent } from "react-icons/md";
 import { MdAddHome } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
-import { logOut } from '../../../component/APIS/LoginApi';
 import HomeLogo from './NewRoomLogo-removebg-preview.png'
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../Redux/Store';
-import { clearAdmin } from '../../../Redux/Features';
 const AdminDashLeft: React.FC = () => {
 
-    const { id } = useSelector((state: RootState) => state.eBooking.admin);
-//   console.log(id)
-    const dispatch = useDispatch()
-    const user = { id: id };
     const handleLogoutClick = async () => {
         console.log('Button clicked!');
-        await logOut(user, dispatch);
-        // console.log(user.id)
-        dispatch(clearAdmin());
         navigate('/')
       };
     const navigate = useNavigate()

@@ -3,9 +3,9 @@ import UserData from './BookingData'
 import './DashBoard.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-const DashBoard: React.FC = () => {
+const DashBoard = () => {
     const [date, setDate] = useState(new Date());
-
+    
     const handleDateChange = (date: Date | Date[]) => {
         if (Array.isArray(date)) {
             // Handle multiple dates if necessary

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 import './AdminSignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye,} from "react-icons/fa";

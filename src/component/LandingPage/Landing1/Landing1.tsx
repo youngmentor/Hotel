@@ -9,7 +9,7 @@ import Landing3 from '../Landing3/Landing3';
 import Landing4 from '../Landing4/Landing4';
 import Landing5 from '../Landing5/Landing5';
 import Landing6 from '../Landing6/Landing6';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 // import axios from 'axios';
 import { fetchSearchResults } from '../../APIS/Mutation';
 

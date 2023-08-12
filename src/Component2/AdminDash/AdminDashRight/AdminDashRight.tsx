@@ -1,4 +1,4 @@
-
+const { VITE_TOKEN } = import.meta.env;
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import './AdminDashRight.css'
 import DashBoard from './AdminDashboard/DashBoard'
@@ -13,21 +13,15 @@ import { MdAddHome } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import AddFacility from './AddFacility/AddFacility'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../../Redux/Store'
-import { logOut } from '../../../component/APIS/LoginApi'
-import { clearAdmin } from '../../../Redux/Features'
+import { getAdmin } from '../../../component/APIS/query'
+import { useQuery } from '@tanstack/react-query'
+import { logoutAdmin } from '../../../component/APIS/Mutation';
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const [mobile, setMobile] = useState<boolean>(false)
-    const { name } = useSelector((state: RootState) => state.eBooking.admin);
-    const {id}= useSelector((state:RootState)=> state.eBooking.admin)
-    // console.log(name)
-    const user = { id: id };
-    const Name = name || 'No Admin';
+
     const handlMobileChange = () => {
         setMobile(!mobile)
     }
@@ -38,20 +32,37 @@ const AdminDashRight: React.FC = () => {
         navigate(path);
         handlecloseMobile();
     };
-    const handleLogoutClick = async () => {
-        console.log('Button clicked!');
-        await logOut(user, dispatch);
-        // console.log(user.id)
-        dispatch(clearAdmin());
-        navigate('/')
-    };
+    // const handleLogoutClick = async () => {
+    //     console.log('Button clicked!');
+    //     logoutAdmin()
+    //     navigate('/')
+    // };
+    const {
+        data,
+        isFetching,
+        isLoading
+    } = useQuery(["getadmin"], getAdmin, {
+        enabled: !!localStorage.getItem(VITE_TOKEN),
+        refetchOnWindowFocus: false,
+        onSuccess: () => {
+            // console.log(data?.data.data.name)
+        },
+    });
+    const value: any = data?.data.data
+    useEffect(() => {
+        // console.log(isFetching)
+        // console.log(isLoading)
+        // console.log(value)
+    }, [isFetching, isLoading, value])
+
+
     const MobileDropDown = (
         mobile && (
             <div className='AdminDashLeftMain_Mobile'>
                 <div className='AdminDashLeftMainWrap'>
                     <div className='AdminDashboardUserImgDiv'>
                         <img src={HomeLogo} alt='userimg' className='AdminHome_Logo' onClick={() => navigate("/")} />
-                        <p className='AdminNameDisplayMobile'>Welcome back {name}! </p>
+                        <p className='AdminNameDisplayMobile'>Welcome back {value?.name}! </p>
                         <FaTimes onClick={handlMobileChange} />
                     </div>
                     <div className='AdminDashBoardLeftNav'>
@@ -82,7 +93,7 @@ const AdminDashRight: React.FC = () => {
                     </div>
                     <div className='AdminDashBoardLeftNav_Icon_Div'>
                         <BiLogOut />
-                        <p onClick={handleLogoutClick}>Log Out</p>
+                        <p onClick={logoutAdmin}>Log Out</p>
                     </div>
                 </div>
             </div>
@@ -94,7 +105,7 @@ const AdminDashRight: React.FC = () => {
             {/* <div className='AdminDashRightMainWrap'> */}
             <div className='AdminDashRightHeader'>
                 <div className='AdminDashRightHeader_Wrap'>
-                    <p className='AdminNameDisplay'>Welcome back {Name}! </p>
+                    <p className='AdminNameDisplay'>Welcome back {value?.name} ! </p>
                     {
                         mobile ? null : <RxHamburgerMenu onClick={handlMobileChange} className="AdminMobileBurger" />
                     }

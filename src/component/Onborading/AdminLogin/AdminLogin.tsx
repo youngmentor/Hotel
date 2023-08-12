@@ -1,12 +1,14 @@
+const { VITE_TOKEN } = import.meta.env;
 import React, { useContext, useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { LoginRequest} from '../../APIS/LoginApi';
+import { LoginRequest } from '../../APIS/LoginApi';
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 import { ThemeContext } from '../../ContextApi/ContextApi';
 import { adminLogin } from '../../APIS/Mutation';
+
 const AdminLogin: React.FC = () => {
     const navigate = useNavigate()
     const [login, setLogin] = useState<LoginRequest>({
@@ -21,15 +23,16 @@ const AdminLogin: React.FC = () => {
     };
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLogin({
-          ...login,
-          [e.target.name]: e.target.value
+            ...login,
+            [e.target.name]: e.target.value
         });
-      };
+    };
 
-    const {mutate, isLoading,} = useMutation( ['adminlogin'], adminLogin, {
+    const { mutate, isLoading, } = useMutation(['adminlogin'], adminLogin, {
         onSuccess: (data) => {
-            console.log(data);
+            console.log(data?.data.accessToken);
             navigate("/admindash/dashmain")
+            localStorage.setItem(VITE_TOKEN, data?.data.accessToken)
         },
         onError: (error) => {
             console.error(error);
@@ -83,7 +86,7 @@ const AdminLogin: React.FC = () => {
                         </div>
                     </div>
                     <p onClick={(() => navigate("/adminforgetpassword"))} className='ForgetPassword'>Forgot Password?</p>
-                    <button type="submit" className='LoginBttn'>{ isLoading ? <ButtonLoading /> : "Login"}</button>
+                    <button type="submit" className='LoginBttn'>{isLoading ? <ButtonLoading /> : "Login"}</button>
                 </form>
                 <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>
             </div>

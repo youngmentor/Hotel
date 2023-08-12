@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { resetAdminPassword } from "../../../APIS/Mutation";
 import { Params, useNavigate, useParams } from "react-router-dom";
 import './AdminResetPassword.css'

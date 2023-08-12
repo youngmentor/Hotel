@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineArrowBack } from "react-icons/md";
 import "./AdminForgetPassword.css";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { adminForgotPassword } from "../../../APIS/Mutation";
 import ButtonLoading from "../../../../ButtonLoader/ButtonLoader";
 const AdminForgetPassword: React.FC = () => {

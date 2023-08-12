@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, } from 'react-router-dom';
-import { useMutation} from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 import { verifyUser } from '../../APIS/Mutation';
 
 const UserVerify: React.FC = () => {

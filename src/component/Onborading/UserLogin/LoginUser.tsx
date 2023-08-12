@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 // import Hotel1 from './HotelImg1.jpeg'
 import './Login.css'
