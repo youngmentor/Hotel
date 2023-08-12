@@ -5,7 +5,7 @@ const { VITE_TOKEN } = import.meta.env;
 export const getAdmin = async () => {
     const token = localStorage.getItem(VITE_TOKEN)
     return await axios.get(`${VITE_ENDPOINT}/manager/${token}`)
-}
+};
 export const getAllRoom = async () => {
     return await axios.get(``)
 };

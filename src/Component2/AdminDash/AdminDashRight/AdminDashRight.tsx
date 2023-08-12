@@ -15,7 +15,7 @@ import { BiLogOut } from "react-icons/bi";
 import AddFacility from './AddFacility/AddFacility'
 import { useEffect, useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
-import { getAdmin } from '../../../component/APIS/query'
+import { getAdmin } from '../../../component/APIS/query';
 import {  useQuery } from '@tanstack/react-query'
 // import { logOutAdmin,} from '../../../component/APIS/Mutation';
 const AdminDashRight: React.FC = () => {
@@ -51,7 +51,7 @@ const AdminDashRight: React.FC = () => {
         enabled: !!localStorage.getItem(VITE_TOKEN),
         refetchOnWindowFocus: false,
         onSuccess: () => {
-            // console.log(data?.data.data.name)
+            // console.log(data?.data.data)
         },
     });
     const value: any = data?.data.data
