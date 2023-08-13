@@ -144,53 +144,5 @@
 }
 
 @media screen and (max-width: 426px) {
-    .InputMainLeft {
-        width: 100%;
-    }
-
-    .InputMaiRight {
-        display: none;
-    }
-
-    .Add_Hotel_Main {
-        width: 100%;
-    }
-
-    .InputDiv {
-        width: 100%;
-    }
-
-    .AddHotelInput {
-        width: 350px;
-    }
-
-    .ImageInput {
-        width: 350px;
-    }
-
-    .InputDivLocation {
-        height: auto;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        background-color: red;
-    }
-
-    .InputDesc {
-        width: 350px;
-    }
-
-    .InputDiv label {
-        width: 200px;
-    }
-
-    .InputLocation label {
-        width: 350px;
-    }
-    .InputLocation{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        margin-right: 20px;
-    }
+   
 }

@@ -1,83 +1,95 @@
 import React, { useState, ChangeEvent, useEffect, } from 'react';
 import './AddHotels.css'
-const AddHotels: React.FC = () => {
-    const [imageData, setImageData] = useState<string>('');
+import { RegisterHotel } from '../../../../component/APIS/TypeChecks';
+import { useMutation } from '@tanstack/react-query';
+import { addHotel } from '../../../../component/APIS/Mutation';
+import ButtonLoading from '../../../../ButtonLoader/ButtonLoader';
+const AddHotels = (props: { value: any }) => {
+    // const [newValue, setNewValue] = useState(props.value);
+    // const [imageData, setImageData] = useState<string>('');
+    const [registerHotel, setRegisterHotel] = useState<RegisterHotel>({
+        hotelName: '',
+        address: '',
+        website: '',
+        description: '',
+        email: '',
+        city: '',
+        state: '',
+        imageId: '',
+    })
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRegisterHotel({
+            ...registerHotel,
+            [event.target.name]: event.target.value
+        });
+    };
 
-    const [textValue1, setTextValue1] = useState<string>('');
-    const [textValue2, setTextValue2] = useState<string>('');
-    const [textValue3, setTextValue3] = useState<string>('');
-    const [textValue4, setTextValue4] = useState<string>('');
-    const [textValue5, setTextValue5] = useState<string>('');
-    const [textValue6, setTextValue6] = useState<string>('');
-    const [textValue7, setTextValue7] = useState<string>('');
-
-    const handleText1Change = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setTextValue1(value);
-    };
-    const handleText2Change = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setTextValue2(value);
-    };
-    const handleText3Change = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setTextValue3(value);
-    };
-    const handleText4Change = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setTextValue4(value);
-    };
-    const handleText5Change = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setTextValue5(value);
-    };
-    const handleText6Change = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setTextValue6(value);
-    };
-    const handleText7Change = (event: ChangeEvent<HTMLTextAreaElement>): void => {
-        const value = event.target.value;
-        setTextValue7(value);
-    };
     const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+        // console.log(imageData)
         const file = event.target.files?.[0];
+        setRegisterHotel({
+            ...registerHotel,
+            imageId: file
+        });
+        console.log(file)
+    };
 
-        if (file) {
-            const reader = new FileReader();
+    const { mutate, isLoading, } = useMutation(addHotel, {
+        onMutate: () => {
+            setRegisterHotel((prevHotel) => ({
+                ...prevHotel,
+            }));
+        },
+        onSuccess: (data) => {
+            console.log(data)
+        },
+        onError: (error) => {
+            console.error(error);
+        },
+    });
 
-            reader.onload = () => {
-                const dataURL = reader.result as string;
-                setImageData(dataURL);
-                localStorage.setItem('imageData', dataURL);
-            };
-
-            reader.readAsDataURL(file);
-        }
+    const handlSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('hotelName', registerHotel.hotelName);
+        formData.append('address', registerHotel.address);
+        formData.append('description', registerHotel.description);
+        formData.append('email', registerHotel.email);
+        formData.append('city', registerHotel.city);
+        formData.append('state', registerHotel.state);
+        formData.append('imageId', registerHotel.imageId);
+        formData.append('website', registerHotel.website);
+        console.log(formData)
+        mutate({ id: props?.value?.id, formData });
     };
     useEffect(() => {
-        const storedImageData = localStorage.getItem('imageData');
-        if (storedImageData) {
-            setImageData(storedImageData);
-        };
-        localStorage.setItem('textValue1', textValue1);
+        console.log(props?.value?.id)
     }, []);
-
     return (
         <div className="Add_Hotel_Main">
-            <form className="Add_Hotel_Main_Wrap">
+            <form className="Add_Hotel_Main_Wrap" onSubmit={handlSubmit}>
                 <div className='InputMainLeft'>
                     <div className='InputDiv'>
                         <label>Hotel Image</label>
-                        <div className='ImageInput'>
-                            <input type="file" accept="image/*" onChange={handleImageChange} />
-                        </div>
+                        <label className='ImageInput'>
+                           
+                            <input
+                                // style={{ display: "none" }}
+                                type="file"
+                                accept=".jpeg, .jpg, .png"
+                                onChange={handleImageChange}
+                                name='imageId'
+                            />
+                        </label>
                     </div>
                     <div className='InputDiv'>
                         <label>Hotel Name</label>
                         <input
                             className='AddHotelInput'
                             placeholder='Hotel Name'
-                            onChange={handleText1Change}
+                            onChange={handleChange}
+                            name='hotelName'
+                            value={registerHotel.hotelName}
                         />
                     </div>
                     <div className='InputDiv'>
@@ -85,7 +97,9 @@ const AddHotels: React.FC = () => {
                         <input
                             className='AddHotelInput'
                             placeholder='Address'
-                            onChange={handleText2Change}
+                            onChange={handleChange}
+                            value={registerHotel.address}
+                            name='address'
                         />
                     </div>
                     <div className='InputDiv'>
@@ -93,7 +107,9 @@ const AddHotels: React.FC = () => {
                         <input
                             className='AddHotelInput'
                             placeholder='Email Address'
-                            onChange={handleText3Change}
+                            onChange={handleChange}
+                            name='email'
+                            value={registerHotel.email}
                         />
                     </div>
                     <div className='InputDivLocation'>
@@ -102,7 +118,9 @@ const AddHotels: React.FC = () => {
                             <input
                                 className='AddHotelInput'
                                 placeholder='City'
-                                onChange={handleText4Change}
+                                onChange={handleChange}
+                                name='city'
+                                value={registerHotel.city}
                             />
                         </div>
                         <div className='InputLocation'>
@@ -110,7 +128,9 @@ const AddHotels: React.FC = () => {
                             <input
                                 className='AddHotelInput'
                                 placeholder='State'
-                                onChange={handleText5Change}
+                                onChange={handleChange}
+                                name='state'
+                                value={registerHotel.state}
                             />
                         </div>
                     </div>
@@ -119,35 +139,45 @@ const AddHotels: React.FC = () => {
                         <input
                             className='AddHotelInput'
                             placeholder='Website(optional)'
-                            onChange={handleText6Change}
+                            onChange={handleChange}
+                            name='website'
+                            value={registerHotel.website}
                         />
                     </div>
                     <div className='InputDiv'>
                         <label>Description</label>
-                        <textarea name="Description" 
-                         className='InputDesc' 
-                         placeholder='Hotel Description' 
-                         onChange={handleText7Change} 
-                         rows={4}
-                         cols={30}
-                         />
+                        <textarea
+                            name="description"
+                            className='InputDesc'
+                            placeholder='Hotel Description'
+                            onChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
+                                const value = event.target.value;
+                                setRegisterHotel({
+                                    ...registerHotel,
+                                    description: value
+                                });
+                            }}
+                            value={registerHotel.description}
+                            rows={4}
+                            cols={30}
+                        />
                     </div>
                 </div>
-                <div className='InputMaiRight'>
+                {/* <div className='InputMaiRight'>
                     <div className='ImagePreviewDiv'>
                         {imageData && <img src={imageData} alt="Preview" className='Hotel_Image_Preview' />}
                     </div>
                     <div className='InputPreview'>
-                        <p className='Name'>Hotel Name: {textValue1}</p>
-                        <p className='Name'>Address: {textValue2}</p>
-                        <p className='Name'>Email: {textValue3}</p>
-                        <p className='Name'>City: {textValue4}</p>
-                        <p className='Name'>State: {textValue5}</p>
-                        <p className='Name'>Website: {textValue6}</p>
-                        <p className='description'>Description: {textValue7}</p>
+                        <p className='Name'>Hotel Name: {registerHotel.hotelName}</p>
+                        <p className='Name'>Address: {registerHotel.address}</p>
+                        <p className='Name'>Email: {registerHotel.email}</p>
+                        <p className='Name'>City: {registerHotel.city}</p>
+                        <p className='Name'>State: {registerHotel.state}</p>
+                        <p className='Name'>Website: {registerHotel.website}</p>
+                        <p className='description'>Description: {registerHotel.description}</p>
                     </div>
-                     <button className='Add_Hotel_Bttn'>Add Hotel</button>
-                </div>
+                </div> */}
+                <button className='Add_Hotel_Bttn' type='submit'>{isLoading ? <ButtonLoading /> : 'Add Hotel'}</button>
             </form>
         </div>
     )

@@ -58,6 +58,9 @@
 .AdminMobileBurger{
     display: none;
 }
+.AdminDashLeftMain_Mobile{
+    display: none;
+}
 
 @media screen and (max-width: 426px) {
     .AdminDashRightMain {

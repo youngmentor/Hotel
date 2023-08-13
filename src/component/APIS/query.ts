@@ -15,6 +15,7 @@ export const getCheapRoom = async () => {
 export const getLuxuryRoom = async () => {
     return await axios.get(``)
 };
-export const getAllHotel = async () => {
-    return await axios.get(``)
+export const getAllHotel = async (id: any) => {
+    console.log(id)
+    return await axios.get(`${VITE_ENDPOINT}/hotel/hotels/${id}`)
 };

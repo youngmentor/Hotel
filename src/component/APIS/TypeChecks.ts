@@ -33,4 +33,14 @@ export interface UserSignUpResponse{
         message: string;
     }
 }
+export interface RegisterHotel{
+    hotelName: string;
+    address: string;
+    website: string;
+    description: string;
+    email: string;
+    city: string;
+    state: string;
+    imageId: string | any;
+}
 
