@@ -1,0 +1,50 @@
+.AllRooms_Main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow-y: scroll; */
+}
+.AllRooms_Main_Wrap{
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    /* background-color: red; */
+}
+.AllRoomWrap{
+    width: 100%;
+    height: 90%;
+    /* background-color: blue; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    gap: 20px;
+}
+.AddRoomBttDiv{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    margin-left: 28px;
+}
+.AddRoomButton{
+    width: 200px;
+    height: 50px;
+  
+}
+.AllRooms_Card{
+    width: 300px;
+    height: 280px;
+    border: 1px solid lightgrey;
+}
+.All_Rooms_Image{
+    width: 100%;
+    height: 200px;
+}
+.AddRooms-Detail{
+    width: 100%;
+    padding: 10px;
+}

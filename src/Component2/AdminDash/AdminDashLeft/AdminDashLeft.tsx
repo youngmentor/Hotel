@@ -3,7 +3,6 @@ import './AdminDashLeft.css'
 import { useNavigate } from 'react-router-dom'
 import { RxDashboard } from "react-icons/rx";
 import { FaHotel } from "react-icons/fa";
-import { MdOutlineBedroomParent } from "react-icons/md";
 import { MdAddHome } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
 import HomeLogo from './NewRoomLogo-removebg-preview.png'
@@ -33,14 +32,14 @@ const AdminDashLeft: React.FC = () => {
                         <MdAddHome />
                         <p onClick={() => navigate("/admindash/addhotels")}>Add Hotels</p>
                     </div>
-                    <div className='AdminDashBoardLeftNav_Icon_Div'>
+                    {/* <div className='AdminDashBoardLeftNav_Icon_Div'>
                         <MdOutlineBedroomParent />
                         <p onClick={() => navigate("/admindash/allrooms")}>All Rooms</p>
                     </div>
                     <div className='AdminDashBoardLeftNav_Icon_Div'>
                         <MdAddHome />
                         <p onClick={() => navigate("/admindash/addrooms")}>Add Rooms</p>
-                    </div>
+                    </div> */}
                     <div className='AdminDashBoardLeftNav_Icon_Div'>
                         <MdAddHome />
                         <p onClick={() => navigate("/admindash/addfacility")}>Add Facility</p>

@@ -1,40 +1,38 @@
 import RoomData from '../../../../component/LandingPage/HomeData'
 import './AllRooms.css'
-import React from 'react';
-import Rating from 'react-rating-stars-component';
+import React, { useState } from 'react';
+import AddRooms from '../AddRooms/AddRooms';
+import { useParams } from 'react-router-dom';
 const AllRooms: React.FC = () => {
-    const [rating, setRating] = React.useState<number>(0);
-
-    const handleRatingChange = (newRating: number) => {
-        setRating(newRating);
-    };
-
+    const { adminId, hotelId } = useParams()
+    const [addRoom, setAddRoom] = useState<boolean>(false)
+    const allRoom = (): void => {
+        setAddRoom(!addRoom)
+    }
     return (
-        <div className="AllHotels_Main">
-            <div className="AllHotels_Main_Wrap">
-                {
-                    RoomData.map((i) => {
-                        return (
-                            <div className="AllHotels_Card">
-                                <img src={i.Avatar} className='All_Hotels_Image' />
-                                <div className='AddHotels-Detail'>
-                                    <p>Hotel Name: {i.state} </p>
-                                    <p>Hotel city: {i.city}</p>
-                                    <div>
-                                        <Rating
-                                            count={5}
-                                            value={rating}
-                                            onChange={handleRatingChange}
-                                            size={15}
-                                            activeColor="rgb(45, 185, 255)"
-                                        />
+        <div className="AllRooms_Main">
+            {!addRoom &&
+                <div className="AllRooms_Main_Wrap">
+                     <div className='AddRoomBttDiv'>
+                        <button onClick={allRoom} className='AddRoomButton'>Add Room</button>
+                    </div>
+                    <div className='AllRoomWrap'>
+                        {
+                            RoomData.map((i) =>
+                            (
+                                <div className="AllRooms_Card">
+                                    <img src={i.Avatar} className='All_Rooms_Image' />
+                                    <div className='AddRooms-Detail'>
+                                        <p>Hotel Name: {i.state} </p>
+                                        <p>Hotel city: {i.city}</p>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
+                            )
+                            )
+                        }
+                    </div>
+                </div>}
+            {addRoom && <AddRooms adminId={adminId} hotelId={hotelId} allRoom={allRoom} />}
         </div>
     )
 }

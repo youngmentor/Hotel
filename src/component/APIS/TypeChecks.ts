@@ -43,4 +43,9 @@ export interface RegisterHotel{
     state: string;
     imageId: string | any;
 }
-
+export interface RegisterRoom{
+     roomNumber: string;
+     roomDescription: string;
+     price: any;
+    imageId: string | any;
+}

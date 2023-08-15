@@ -4,9 +4,7 @@ import { RegisterHotel } from '../../../../component/APIS/TypeChecks';
 import { useMutation } from '@tanstack/react-query';
 import { addHotel } from '../../../../component/APIS/Mutation';
 import ButtonLoading from '../../../../ButtonLoader/ButtonLoader';
-const AddHotels = (props: { value: any }) => {
-    // const [newValue, setNewValue] = useState(props.value);
-    // const [imageData, setImageData] = useState<string>('');
+const AddHotels = ({value}: { value: any }) => {
     const [registerHotel, setRegisterHotel] = useState<RegisterHotel>({
         hotelName: '',
         address: '',
@@ -25,23 +23,17 @@ const AddHotels = (props: { value: any }) => {
     };
 
     const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-        // console.log(imageData)
         const file = event.target.files?.[0];
         setRegisterHotel({
             ...registerHotel,
             imageId: file
         });
-        console.log(file)
+        // console.log(file)
     };
 
     const { mutate, isLoading, } = useMutation(addHotel, {
-        onMutate: () => {
-            setRegisterHotel((prevHotel) => ({
-                ...prevHotel,
-            }));
-        },
-        onSuccess: (data) => {
-            console.log(data)
+        onSuccess: () => {
+            // console.log(data)
         },
         onError: (error) => {
             console.error(error);
@@ -60,10 +52,21 @@ const AddHotels = (props: { value: any }) => {
         formData.append('imageId', registerHotel.imageId);
         formData.append('website', registerHotel.website);
         console.log(formData)
-        mutate({ id: props?.value?.id, formData });
+        mutate({ id: value?.id, formData });
+
+        setRegisterHotel({
+            hotelName: '',
+            address: '',
+            website: '',
+            description: '',
+            email: '',
+            city: '',
+            state: '',
+            imageId: '',
+          });
     };
     useEffect(() => {
-        console.log(props?.value?.id)
+        // console.log(value?.id)
     }, []);
     return (
         <div className="Add_Hotel_Main">
@@ -72,7 +75,6 @@ const AddHotels = (props: { value: any }) => {
                     <div className='InputDiv'>
                         <label>Hotel Image</label>
                         <label className='ImageInput'>
-                           
                             <input
                                 // style={{ display: "none" }}
                                 type="file"

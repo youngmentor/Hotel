@@ -1,105 +1,121 @@
 import React, { useState, ChangeEvent, useEffect, } from 'react';
 import './AddRooms.css'
-const AddRooms: React.FC = () => {
-    const [imageData, setImageData] = useState<string>('');
-    const [textValue1, setTextValue1] = useState<string>('');
-    const [textValue2, setTextValue2] = useState<string>('');
-    const [textValue7, setTextValue7] = useState<string>('');
-
-    const handleText1Change = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setTextValue1(value);
-    };
-    const handleText2Change = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setTextValue2(value);
-    };
-    const handleText7Change = (event: ChangeEvent<HTMLTextAreaElement>): void => {
-        const value = event.target.value;
-        setTextValue7(value);
+import { RegisterRoom } from '../../../../component/APIS/TypeChecks';
+import { addRoom } from '../../../../component/APIS/Mutation';
+import { useMutation } from '@tanstack/react-query';
+import ButtonLoading from '../../../../ButtonLoader/ButtonLoader';
+const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, hotelId: string | undefined, allRoom: () => void }) => {
+    const [createRoom, setCreateRoom] = useState<RegisterRoom>({
+        roomNumber: '',
+        roomDescription: '',
+        price: '',
+        imageId: '',
+    })
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCreateRoom({
+            ...createRoom,
+            [event.target.name]: event.target.value
+        });
     };
     const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
-
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = () => {
-                const dataURL = reader.result as string;
-                setImageData(dataURL);
-                localStorage.setItem('imageData', dataURL);
-            };
-
-            reader.readAsDataURL(file);
-        }
+        setCreateRoom({
+            ...createRoom,
+            imageId: file
+        });
+        console.log(file)
+        event.target.value = '';
+    };
+    const { mutate, isLoading } = useMutation(addRoom, {
+        onSuccess: (data) => {
+            allRoom()
+            console.log(data)
+        },
+        onError: (error) => {
+            console.error(error);
+        },
+    });
+    const handlSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('roomNumber', createRoom.roomNumber);
+        formData.append('roomDescription', createRoom.roomDescription);
+        formData.append('price', createRoom.price);
+        formData.append('imageId', createRoom.imageId);
+        console.log(formData)
+        mutate({ adminId, hotelId, formData });
     };
     useEffect(() => {
-        const storedImageData = localStorage.getItem('imageData');
-        if (storedImageData) {
-            setImageData(storedImageData);
-        };
-        localStorage.setItem('textValue1', textValue1);
+
     }, []);
 
     return (
-        <div className="Add_Hotel_Main">
-            <form className="Add_Hotel_Main_Wrap">
-                <div className='InputMainLeft'>
-                    <div className='InputDiv'>
-                        <label>Hotel Name</label>
-                        <div className='ImageInput'>
-                            <select>
-                                <option>Ex</option>
-                            </select>
-                        </div>
+        <div className="Add_Room_Main">
+            <form className="Add_Room_Main_Wrap" onSubmit={handlSubmit}>
+                <div className='RoomInputMainLeft'>
+                    <div className="RoomInputDiv">
+                        <label>Hotel Image</label>
+                        {!createRoom.imageId ? (
+                            <label className="RoomImageInput">
+                                Add Image
+                                <input
+                                    style={{ display: "none" }}
+                                    type="file"
+                                    accept=".jpeg, .jpg, .png"
+                                    onChange={handleImageChange}
+                                    name="imageId"
+                                />
+                            </label>
+                        ) : (
+                            <p>Image selected</p>
+                        )}
                     </div>
-                    <div className='InputDiv'>
-                        <label>Room Image</label>
-                        <div className='ImageInput'>
-                            <input type="file" accept="image/*" onChange={handleImageChange} />
-                        </div>
-                    </div>
-                    <div className='InputDiv'>
+                    <div className='RoomInputDiv'>
                         <label>Room Number</label>
                         <input
-                            className='AddHotelInput'
+                            className='AddRoomInput'
                             placeholder='Hotel Number'
-                            onChange={handleText1Change}
+                            onChange={handleChange}
                             type='number'
+                            name='roomNumber'
+                            value={createRoom.roomNumber}
                         />
                     </div>
-                    <div className='InputDiv'>
+                    <div className='RoomInputDiv'>
                         <label>Room Price</label>
                         <input
-                            className='AddHotelInput'
+                            className='AddRoomInput'
                             placeholder='Price'
-                            onChange={handleText2Change}
+                            onChange={handleChange}
                             type='number'
+                            name='price'
+                            value={createRoom.price}
                         />
                     </div>
-                    <div className='InputDiv'>
+                    <div className='RoomInputDiv'>
                         <label>Room Description</label>
-                        <textarea name="Description"
-                            className='InputDesc'
+                        <textarea
+                            name="roomDescription"
+                            className='RoomInputDesc'
                             placeholder='Hotel Description'
-                            onChange={handleText7Change}
+                            onChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
+                                const value = event.target.value;
+                                setCreateRoom({
+                                    ...createRoom,
+                                    roomDescription: value
+                                });
+                            }}
+                            value={createRoom.roomDescription}
                             rows={4}
                             cols={30}
                         />
                     </div>
-                    <button className='Add_Hotel_Bttn'>Add Hotel</button>
-                </div>
-                <div className='InputMaiRight'>
-                    <div className='ImagePreviewDiv'>
-                        {imageData && <img src={imageData} alt="Preview" className='Hotel_Image_Preview' />}
-                    </div>
-                    <div className='InputPreview'>
-                        <p className='Name'>Room Number: {textValue1}</p>
-                        <p className='Name'>Room Price: ${textValue2}</p>
-                        <p className='description'>Room Description: {textValue7}</p>
-                    </div>
+                    <button className='Add_Room_Bttn'>{isLoading ? <ButtonLoading /> : "Add Hotel"}</button>
                 </div>
             </form>
+            <div className='Back_To_All_Room_Bttn_Div'>
+                <button onClick={allRoom} className='Back_To_All_Room_Bttn'>Back to All Room</button>
+            </div>
         </div>
     )
 }
