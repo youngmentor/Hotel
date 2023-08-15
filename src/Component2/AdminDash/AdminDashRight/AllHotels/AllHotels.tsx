@@ -22,8 +22,8 @@ const AllHotels = ({value}: { value: any }) => {
                                     <p>Hotel State: {Hotel.state} </p>
                                     <p>Hotel city: {Hotel.city}</p>
                                 </div>
-                                <Link to={`/admindash/allrooms/${value?.id}/${Hotel.id}`} className='AddStudent_icon'>
-                                    <p>Add Room</p>
+                                <Link to={`/admindash/allrooms/${value?.id}/${Hotel.id}`} className='Add_Room_Button'>
+                                   <button>Add Room</button>
                                 </Link>
                             </div>
                         )

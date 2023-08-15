@@ -17,7 +17,7 @@
 }
 .AllHotels_Card{
     width: 300px;
-    height: 280px;
+    height: 300px;
     border: 1px solid lightgrey;
 }
 .All_Hotels_Image{
@@ -27,4 +27,20 @@
 .AddHotels-Detail{
     width: 100%;
     padding: 10px;
+    height: 60px;
+}
+.Add_Room_Button{
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+.Add_Room_Button button{
+    padding-left: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: rgb(45, 185, 255);
+    cursor: pointer;
+    color: white;
+    height: 40px;
+    border: none;
 }

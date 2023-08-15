@@ -160,8 +160,8 @@ const AddHotels = ({value}: { value: any }) => {
                                 });
                             }}
                             value={registerHotel.description}
-                            rows={4}
-                            cols={30}
+                            rows={20}
+                            cols={50}
                         />
                     </div>
                 </div>

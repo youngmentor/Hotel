@@ -37,14 +37,17 @@
 }
 .AllRooms_Card{
     width: 300px;
-    height: 280px;
+    height: 300px;
     border: 1px solid lightgrey;
 }
 .All_Rooms_Image{
     width: 100%;
     height: 200px;
 }
-.AddRooms-Detail{
+.All_Rooms-Detail{
     width: 100%;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
