@@ -42,7 +42,7 @@ export const addHotel = async (data: any) => {
     },
   })
 };
-export const addRoom = async (data: any,) => {
+export const addRoom = async (data: any) => {
   console.log(data)
   return await axios.post(`${VITE_ENDPOINT}/room/register/${data?.adminId}/${data?.hotelId}`, data?.formData, {
     headers: {
