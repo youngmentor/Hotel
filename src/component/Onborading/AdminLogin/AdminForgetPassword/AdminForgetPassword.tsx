@@ -14,13 +14,14 @@ const AdminForgetPassword: React.FC = () => {
         setEmail(newEmail);
     };
     const {isLoading, mutate} = useMutation(['email'], (email: string) => adminForgotPassword(email), {
-        onSuccess: () => {
+        onSuccess: (data) => {
+            console.log(data)
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Check your email for a reset passsword link',
+                title: data?.data?.message,
                 showConfirmButton: false,
-                timer: 2500
+                timer: 4000
               })
         },
         onError: () => {
