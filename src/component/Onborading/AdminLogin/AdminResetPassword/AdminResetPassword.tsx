@@ -15,7 +15,7 @@ const AdminResetPassword: React.FC = () => {
 
     const {data, mutate, error, isLoading } = useMutation( ['resetadminpassword'], resetAdminPassword, {
         onSuccess: (data) => {
-            console.log(data);
+            // console.log(data);
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',

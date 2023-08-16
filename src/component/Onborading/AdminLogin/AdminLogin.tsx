@@ -40,7 +40,7 @@ const AdminLogin: React.FC = () => {
                 showConfirmButton: false,
                 timer: 2500
               })
-              console.log(data?.data?.message)
+            //   console.log(data?.data?.message)
         },
         onError: (error) => {
             console.error(error);

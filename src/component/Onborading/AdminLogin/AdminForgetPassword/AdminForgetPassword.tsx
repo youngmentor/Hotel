@@ -15,7 +15,7 @@ const AdminForgetPassword: React.FC = () => {
     };
     const {isLoading, mutate} = useMutation(['email'], (email: string) => adminForgotPassword(email), {
         onSuccess: (data) => {
-            console.log(data)
+            // console.log(data)
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
