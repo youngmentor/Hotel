@@ -4,7 +4,7 @@ import { resetAdminPassword } from "../../../APIS/Mutation";
 import { Params, useNavigate, useParams } from "react-router-dom";
 import './AdminResetPassword.css'
 import ButtonLoading from "../../../../ButtonLoader/ButtonLoader";
-
+import Swal from "sweetalert2";
 const AdminResetPassword: React.FC = () => {
     const navigate= useNavigate()
     const newPasswordRef = useRef<HTMLInputElement>(null);
@@ -16,7 +16,17 @@ const AdminResetPassword: React.FC = () => {
     const {data, mutate, error, isLoading } = useMutation( ['resetadminpassword'], resetAdminPassword, {
         onSuccess: (data) => {
             console.log(data);
-            navigate('/alllogin/adminlogin')
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: data?.data?.message,
+                showConfirmButton: false,
+                timer: 3000
+              })
+              setTimeout(() => {
+                navigate('/alllogin/adminlogin')
+            }, 4000)
+            
         },
         onError: () => {
             console.log(error);

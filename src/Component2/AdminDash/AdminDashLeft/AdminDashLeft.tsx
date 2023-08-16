@@ -21,7 +21,7 @@ const AdminDashLeft: React.FC = () => {
         },
     });
     const value: any = data?.data?.data
-    const { mutate } = useMutation(['logoutAdmin'], logOutAdmin, {
+    const { mutate} = useMutation(['logoutAdmin'], logOutAdmin, {
         onSuccess: () => {
             localStorage.removeItem(VITE_TOKEN);
             setTimeout(() => {
@@ -34,10 +34,17 @@ const AdminDashLeft: React.FC = () => {
                 showConfirmButton: false,
                 timer: 2500
               })
-
         },
         onError: (error) => {
           console.log(error);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Please Verify Your Account',
+            showConfirmButton: false,
+            timer: 2500
+          })
+
         },
       });
     const handleLogoutClick = async () => {

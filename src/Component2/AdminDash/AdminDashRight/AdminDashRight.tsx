@@ -42,7 +42,7 @@ const AdminDashRight: React.FC = () => {
                 icon: 'success',
                 title: 'Log out successful',
                 showConfirmButton: false,
-                timer: 2500
+                timer: 4000
               })
         },
         onError: (error) => {
@@ -61,9 +61,7 @@ const AdminDashRight: React.FC = () => {
             // please log in!
         },
     });
-    // console.log(userError?.response?.data.message)
     const value: any = data?.data?.data
-    // console.log(value?.id)
     const handleLogoutClick = async () => {
         mutate(value?.id)
     };

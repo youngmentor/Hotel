@@ -51,6 +51,6 @@ export const addRoom = async (data: any) => {
   })
 };
 export const logOutAdmin = async (id: any) => {
-  console.log(id)
+  // console.log(id)
   return await axios.post(`${VITE_ENDPOINT}/manager/logout/${id}`)
 }

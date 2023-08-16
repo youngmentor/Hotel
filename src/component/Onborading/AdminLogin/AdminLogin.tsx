@@ -30,7 +30,7 @@ const AdminLogin: React.FC = () => {
 
     const { mutate, isLoading,} = useMutation(['adminlogin'], adminLogin, {
         onSuccess: (data) => {
-            console.log(data?.data.accessToken);
+            // console.log(data?.data.accessToken);
             navigate("/admindash/dashmain")
             localStorage.setItem(VITE_TOKEN, data?.data.accessToken)
             Swal.fire({
@@ -49,7 +49,7 @@ const AdminLogin: React.FC = () => {
 
     const handleLogin = (event: any) => {
         event.preventDefault()
-        console.log("clicked")
+        // console.log("clicked")
         mutate(login);
     };
 

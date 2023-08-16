@@ -5,45 +5,34 @@ import "./AdminForgetPassword.css";
 import { useMutation } from "@tanstack/react-query";
 import { adminForgotPassword } from "../../../APIS/Mutation";
 import ButtonLoading from "../../../../ButtonLoader/ButtonLoader";
+import Swal from "sweetalert2";
 const AdminForgetPassword: React.FC = () => {
     const [email, setEmail] = useState<string>("");
     const navigate = useNavigate();
-    const [loading, setLoading] = useState<boolean>(false)
-    const [succesMessage, setSuccesMessage] = useState<string | null>('')
-    // const [errorMessage,setErrorMessage] = useState<string>('')
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newEmail = event.target.value;
         setEmail(newEmail);
     };
-    const mutation = useMutation(['email'], (email: string) => adminForgotPassword(email), {
-        onSuccess: (data) => {
-            setSuccesMessage(data.data.message)
-            setTimeout(() => {
-                setSuccesMessage(null);
-            }, 10000);
-            console.log(data);
-            setLoading(false)
-            console.log(data);
+    const {isLoading, mutate} = useMutation(['email'], (email: string) => adminForgotPassword(email), {
+        onSuccess: () => {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Check your email for a reset passsword link',
+                showConfirmButton: false,
+                timer: 2500
+              })
         },
-        onError: (error) => {
-            setLoading(false)
-            console.log(error);
+        onError: () => {
         }
     });
     const handleSubmit = (event: React.FormEvent) => {
-        setLoading(true)
         event.preventDefault();
-        event.preventDefault();
-        mutation.mutate(email);
+        mutate(email);
     };
 
     return (
         <div className="Admin_forget">
-            <div className="Admin_Forget_Succes_MessageDiv">
-                {
-                    succesMessage && <p className="SuccessMessage">{succesMessage}</p>
-                }
-            </div>
             <form className="Admin_forget_Form" onSubmit={handleSubmit}>
                 <img
                     src="/RoomLogo-RBG.png"
@@ -70,7 +59,7 @@ const AdminForgetPassword: React.FC = () => {
                     className="Admin_forget_button"
                 >
                     {
-                        loading ? <ButtonLoading /> : " Submit"
+                        isLoading ? <ButtonLoading /> : " Submit"
                     }
                 </button>
                 <div className="Admin_forget_pointer" onClick={() => navigate("/alllogin/adminlogin")}>

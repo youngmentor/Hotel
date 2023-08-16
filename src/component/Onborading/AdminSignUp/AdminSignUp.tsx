@@ -34,7 +34,7 @@ const AdminSignUp: React.FC = () => {
   const visibleConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
-  const {isLoading,  mutate, data} = useMutation(['adminSignup'], adminSignUp,{
+  const {isLoading,  mutate} = useMutation(['adminSignup'], adminSignUp,{
     onSuccess: ()=>{
       login_alert()
       setTimeout(()=>{
@@ -43,7 +43,7 @@ const AdminSignUp: React.FC = () => {
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: data?.data?.message,
+        title: 'Sign Up successful ',
         showConfirmButton: false,
         timer: 2500
       })

@@ -17,7 +17,7 @@ const DashBoard = ({value}: {value: any}) => {
 // console.log(value?.Hotels)
 // console.log(value?.Hotels?.[0].id)
 const hotelNumber =value?.Hotels?.length
-const oneHotelId = value?.Hotels?.[0].id
+const oneHotelId = value?.Hotels?.[0]?.id
     return (
         <div className="DashBoardMain_Dashboard">
             <div className='DashBoardMain_Dashboard_Wrap'>
