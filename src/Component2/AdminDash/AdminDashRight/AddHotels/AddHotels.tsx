@@ -4,7 +4,10 @@ import { RegisterHotel } from '../../../../component/APIS/TypeChecks';
 import { useMutation } from '@tanstack/react-query';
 import { addHotel } from '../../../../component/APIS/Mutation';
 import ButtonLoading from '../../../../ButtonLoader/ButtonLoader';
-const AddHotels = ({value}: { value: any }) => {
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+const AddHotels = ({ value }: { value: any }) => {
+    const navigate = useNavigate()
     const [registerHotel, setRegisterHotel] = useState<RegisterHotel>({
         hotelName: '',
         address: '',
@@ -34,7 +37,14 @@ const AddHotels = ({value}: { value: any }) => {
 
     const { mutate, isLoading, } = useMutation(addHotel, {
         onSuccess: () => {
-            // console.log(data)
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Hotel as been added successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              navigate('/admindash/allhotels')
         },
         onError: (error) => {
             console.error(error);
@@ -64,7 +74,7 @@ const AddHotels = ({value}: { value: any }) => {
             city: '',
             state: '',
             imageId: '',
-          });
+        });
     };
     useEffect(() => {
         // console.log(value?.id)
@@ -74,7 +84,7 @@ const AddHotels = ({value}: { value: any }) => {
             <form className="Add_Hotel_Main_Wrap" onSubmit={handlSubmit}>
                 <div className='InputMainLeft'>
                     <div className='InputDiv'>
-                        <label>Hotel Image</label>
+                        {/* <label>Hotel Image</label> */}
                         <label className='ImageInput'>
                             Add Image
                             <input
@@ -87,101 +97,103 @@ const AddHotels = ({value}: { value: any }) => {
                         </label>
                     </div>
                     <div className='InputDiv'>
-                        <label>Hotel Name</label>
-                        <input
-                            className='AddHotelInput'
-                            placeholder='Hotel Name'
-                            onChange={handleChange}
-                            name='hotelName'
-                            value={registerHotel.hotelName}
-                        />
+                        <label className='Label2'>
+                            Hotel Name
+                            <input
+                                className='AddHotelInput'
+                                placeholder='Hotel Name'
+                                onChange={handleChange}
+                                name='hotelName'
+                                value={registerHotel.hotelName}
+                            />
+                        </label>
                     </div>
                     <div className='InputDiv'>
-                        <label>Address</label>
-                        <input
-                            className='AddHotelInput'
-                            placeholder='Address'
-                            onChange={handleChange}
-                            value={registerHotel.address}
-                            name='address'
-                        />
+                        <label className='Label2'>
+                            Address
+                            <input
+                                className='AddHotelInput'
+                                placeholder='Address'
+                                onChange={handleChange}
+                                value={registerHotel.address}
+                                name='address'
+                            />
+                        </label>
                     </div>
                     <div className='InputDiv'>
-                        <label>Email</label>
-                        <input
-                            className='AddHotelInput'
-                            placeholder='Email Address'
-                            onChange={handleChange}
-                            name='email'
-                            value={registerHotel.email}
-                        />
+                        <label className='Label2'>
+                            Email
+                            <input
+                                className='AddHotelInput'
+                                placeholder='Email Address'
+                                onChange={handleChange}
+                                name='email'
+                                value={registerHotel.email}
+                            />
+                        </label>
                     </div>
                     <div className='InputDivLocation'>
                         <div className='InputLocation'>
-                            <label>City</label>
-                            <input
-                                className='AddHotelInput'
-                                placeholder='City'
-                                onChange={handleChange}
-                                name='city'
-                                value={registerHotel.city}
-                            />
+                            <label className='label1'>
+                                City
+                                <input
+                                    className='AddHotelInput'
+                                    placeholder='City'
+                                    onChange={handleChange}
+                                    name='city'
+                                    value={registerHotel.city}
+                                />
+                            </label>
                         </div>
                         <div className='InputLocation'>
-                            <label>State</label>
-                            <input
-                                className='AddHotelInput'
-                                placeholder='State'
-                                onChange={handleChange}
-                                name='state'
-                                value={registerHotel.state}
-                            />
+                            <label className='label1'>
+                                State
+                                <input
+                                    className='AddHotelInput'
+                                    placeholder='State'
+                                    onChange={handleChange}
+                                    name='state'
+                                    value={registerHotel.state}
+                                />
+                            </label>
                         </div>
                     </div>
                     <div className='InputDiv'>
-                        <label>Website</label>
-                        <input
-                            className='AddHotelInput'
-                            placeholder='Website(optional)'
-                            onChange={handleChange}
-                            name='website'
-                            value={registerHotel.website}
-                        />
+                        <label className='Label2'>
+                            Website
+                            <input
+                                className='AddHotelInput'
+                                placeholder='Website(optional)'
+                                onChange={handleChange}
+                                name='website'
+                                value={registerHotel.website}
+                            />
+                        </label>
                     </div>
                     <div className='InputDiv'>
-                        <label>Description</label>
-                        <textarea
-                            name="description"
-                            className='InputDesc'
-                            placeholder='Hotel Description'
-                            onChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
-                                const value = event.target.value;
-                                setRegisterHotel({
-                                    ...registerHotel,
-                                    description: value
-                                });
-                            }}
-                            value={registerHotel.description}
-                            rows={20}
-                            cols={50}
-                        />
+                        <label className='Label2'>
+                            Description
+                            <textarea
+                                name="description"
+                                className='InputDesc'
+                                placeholder='Hotel Description'
+                                onChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
+                                    const value = event.target.value;
+                                    setRegisterHotel({
+                                        ...registerHotel,
+                                        description: value
+                                    });
+                                }}
+                                value={registerHotel.description}
+                                rows={20}
+                                cols={50}
+                            />
+                        </label>
+                    </div>
+                    <div className='Add_Hotel_Bttn_Div' >
+                        <button className='Add_Hotel_Bttn' type='submit'>{isLoading ? <ButtonLoading /> : 'Add Hotel'}</button>
                     </div>
                 </div>
-                {/* <div className='InputMaiRight'>
-                    <div className='ImagePreviewDiv'>
-                        {imageData && <img src={imageData} alt="Preview" className='Hotel_Image_Preview' />}
-                    </div>
-                    <div className='InputPreview'>
-                        <p className='Name'>Hotel Name: {registerHotel.hotelName}</p>
-                        <p className='Name'>Address: {registerHotel.address}</p>
-                        <p className='Name'>Email: {registerHotel.email}</p>
-                        <p className='Name'>City: {registerHotel.city}</p>
-                        <p className='Name'>State: {registerHotel.state}</p>
-                        <p className='Name'>Website: {registerHotel.website}</p>
-                        <p className='description'>Description: {registerHotel.description}</p>
-                    </div>
-                </div> */}
-                <button className='Add_Hotel_Bttn' type='submit'>{isLoading ? <ButtonLoading /> : 'Add Hotel'}</button>
             </form>
         </div>
     )

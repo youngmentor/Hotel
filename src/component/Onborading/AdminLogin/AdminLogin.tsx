@@ -8,7 +8,7 @@ import { LoginRequest } from '../../APIS/LoginApi';
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 import { ThemeContext } from '../../ContextApi/ContextApi';
 import { adminLogin } from '../../APIS/Mutation';
-
+import Swal from 'sweetalert2';
 const AdminLogin: React.FC = () => {
     const navigate = useNavigate()
     const [login, setLogin] = useState<LoginRequest>({
@@ -28,11 +28,19 @@ const AdminLogin: React.FC = () => {
         });
     };
 
-    const { mutate, isLoading, } = useMutation(['adminlogin'], adminLogin, {
+    const { mutate, isLoading,} = useMutation(['adminlogin'], adminLogin, {
         onSuccess: (data) => {
             console.log(data?.data.accessToken);
             navigate("/admindash/dashmain")
             localStorage.setItem(VITE_TOKEN, data?.data.accessToken)
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: data?.data?.message,
+                showConfirmButton: false,
+                timer: 2500
+              })
+              console.log(data?.data?.message)
         },
         onError: (error) => {
             console.error(error);

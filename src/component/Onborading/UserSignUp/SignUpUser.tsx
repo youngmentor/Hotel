@@ -2,15 +2,15 @@ import React, { useContext, useState } from 'react';
 import './SignUp.css'
 import { useNavigate } from 'react-router-dom';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { UserSignUpForm,UserSignUpResponse  } from '../../APIS/TypeChecks';
+import { UserSignUpForm} from '../../APIS/TypeChecks';
 import { useMutation } from '@tanstack/react-query';
-import axios, {AxiosResponse} from "axios";
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 import { ThemeContext } from '../../ContextApi/ContextApi';
+import Swal from 'sweetalert2';
+import { userSignUp } from '../../APIS/Mutation';
 const SignUpUser: React.FC = () => {
   const navigate = useNavigate()
   const {login_alert} =useContext(ThemeContext)
-  const [loading, setLoading] =useState<boolean>(false)
   const [formData, setFormData] = useState<UserSignUpForm>({
     fullname: '',
     email: '',
@@ -28,26 +28,26 @@ const SignUpUser: React.FC = () => {
       [e.target.name]: e.target.value
     });
   };
-  const usersignUpMutation = useMutation<AxiosResponse<UserSignUpResponse>, Error, UserSignUpForm>(
-    (formData) =>
-     axios.post<UserSignUpResponse>('https://hotel-api-7wlm.onrender.com/api/v1//user/register', formData)
- 
-);
+const {isLoading,  mutate} = useMutation(['adminSignup'],userSignUp ,{
+  onSuccess: ()=>{
+    login_alert()
+    setTimeout(()=>{
+      navigate('/alllogin/adminlogin')
+    },500)
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Log in successful',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  }
+});
 const handleUserSignUp = async (event: React.FormEvent) => {
   event.preventDefault();
   console.log('clicked')
-  setLoading(true)
-  try {
-    const response =  await usersignUpMutation.mutateAsync(formData);
-    setLoading(false)
-    console.log(response.data.data.message);
-    console.log(response.data.data)
-    console.log( response.status);
-    response.status === 201 ? navigate("/alllogin/login") : null 
-    login_alert()
-  } catch (error) {
-    console.error(error  );
-  }
+   mutate(formData)
+  console.log(formData)
 };
 
   return (
@@ -131,7 +131,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               placeholder='Phone Number'
             />
           </div>
-          <button type="submit" className='SignUpBttn'>{loading ? <ButtonLoading/>: "Sign Up"}</button>
+          <button type="submit" className='SignUpBttn'>{isLoading? <ButtonLoading/>: "Sign Up"}</button>
         </form>
         <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/alllogin/login")} >Login here</b></span>
       </div>

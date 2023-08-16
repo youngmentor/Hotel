@@ -7,6 +7,7 @@ import { SignUpForm} from '../../APIS/TypeChecks';
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 import { ThemeContext } from '../../ContextApi/ContextApi';
 import { adminSignUp } from '../../APIS/Mutation';
+import Swal from 'sweetalert2';
 const AdminSignUp: React.FC = () => {
   const {login_alert} = useContext(ThemeContext)
   const navigate = useNavigate()
@@ -33,12 +34,19 @@ const AdminSignUp: React.FC = () => {
   const visibleConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
-  const {isLoading,  mutate} = useMutation(['adminSignup'], adminSignUp,{
+  const {isLoading,  mutate, data} = useMutation(['adminSignup'], adminSignUp,{
     onSuccess: ()=>{
       login_alert()
       setTimeout(()=>{
         navigate('/alllogin/adminlogin')
       },500)
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: data?.data?.message,
+        showConfirmButton: false,
+        timer: 2500
+      })
     }
   });
 

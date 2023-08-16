@@ -8,6 +8,7 @@ import { userLoginRequest} from '../../APIS/LoginApi';
 import { ThemeContext } from '../../ContextApi/ContextApi';
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 import { userLogin } from '../../APIS/Mutation';
+import Swal from 'sweetalert2';
 const Login: React.FC = () => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -29,6 +30,13 @@ const Login: React.FC = () => {
     onSuccess: (data) => {
         console.log(data);
         navigate("/userdash/userprofile")
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Log in successful',
+          showConfirmButton: false,
+          timer: 2500
+        })
     },
     onError: (error) => {
         console.error(error);

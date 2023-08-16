@@ -51,6 +51,9 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
 
     return (
         <div className="Add_Room_Main">
+             <div className='Back_To_All_Room_Bttn_Div'>
+                <button onClick={allRoom} className='Back_To_All_Room_Bttn'>Back to All Room</button>
+            </div>
             <form className="Add_Room_Main_Wrap" onSubmit={handlSubmit}>
                 <div className='RoomInputMainLeft'>
                     <div className="RoomInputDiv">
@@ -113,9 +116,6 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                     <button className='Add_Room_Bttn'>{isLoading ? <ButtonLoading /> : "Add Hotel"}</button>
                 </div>
             </form>
-            <div className='Back_To_All_Room_Bttn_Div'>
-                <button onClick={allRoom} className='Back_To_All_Room_Bttn'>Back to All Room</button>
-            </div>
         </div>
     )
 }

@@ -11,11 +11,12 @@ import { MdAddHome } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import AddFacility from './AddFacility/AddFacility'
-import {  useState } from 'react'
+import { useEffect, useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
 import { getAdmin } from '../../../component/APIS/query';
-import {  useMutation, useQuery } from '@tanstack/react-query'
-import { logOutAdmin,} from '../../../component/APIS/Mutation';
+import { useMutation, useQuery } from '@tanstack/react-query'
+import { logOutAdmin, } from '../../../component/APIS/Mutation';
+import Swal from 'sweetalert2';
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
@@ -30,13 +31,24 @@ const AdminDashRight: React.FC = () => {
         navigate(path);
         handlecloseMobile();
     };
-    const {  mutate}= useMutation(['logoutAdmin'], logOutAdmin,{
-        onSuccess: ()=>{
-            // console.log(data?.data.data.id)
-            navigate('/')
+    const { mutate} = useMutation(['logoutAdmin'], logOutAdmin, {
+        onSuccess: () => {
+            localStorage.removeItem(VITE_TOKEN)
+            setTimeout(() => {
+                navigate('/')
+            }, 500)
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Log out successful',
+                showConfirmButton: false,
+                timer: 2500
+              })
+        },
+        onError: (error) => {
+            console.log(error)
         }
     });
-   
     const {
         data,
     } = useQuery(["getadmin"], getAdmin, {
@@ -44,13 +56,23 @@ const AdminDashRight: React.FC = () => {
         refetchOnWindowFocus: false,
         onSuccess: () => {
         },
+        onError: () => {
+            // console.log(error?.response?.data?.message)
+            // please log in!
+        },
     });
+    // console.log(userError?.response?.data.message)
     const value: any = data?.data?.data
-
+    // console.log(value?.id)
     const handleLogoutClick = async () => {
-        mutate(value.id)
+        mutate(value?.id)
     };
-
+    useEffect(() => {
+        // console.log(localStorage.getItem(VITE_TOKEN))
+        if(localStorage.getItem(VITE_TOKEN) === null){
+            navigate('/alllogin/adminlogin') 
+        }
+    })
 
     const MobileDropDown = (
         mobile && (
@@ -95,9 +117,9 @@ const AdminDashRight: React.FC = () => {
                 <div className='AdminDashRightHeader_Wrap'>
                     <p className='AdminNameDisplay'>Welcome back {value?.name} ! </p>
                     {
-                        mobile ? <FaTimes onClick={handlMobileChange}/>: <RxHamburgerMenu onClick={handlMobileChange} className="AdminMobileBurger" />
+                        mobile ? <FaTimes onClick={handlMobileChange} /> : <RxHamburgerMenu onClick={handlMobileChange} className="AdminMobileBurger" />
                     }
-                    
+
                 </div>
                 {mobile && MobileDropDown}
                 <div className='AdminDashRightHeaderIcon'>
@@ -107,7 +129,7 @@ const AdminDashRight: React.FC = () => {
             <div className='AdminDashRightContent'>
                 <Routes>
                     <Route path='/dashmain' element={<DashBoard value={value} />} />
-                    <Route path='/allhotels' element={<AllHotels value={value}/>} />
+                    <Route path='/allhotels' element={<AllHotels value={value} />} />
                     <Route path='/addhotels' element={<AddHotels value={value} />} />
                     <Route path='/allrooms/:adminId/:hotelId' element={<AllRooms />} />
                     <Route path='/addfacility' element={<AddFacility />} />
