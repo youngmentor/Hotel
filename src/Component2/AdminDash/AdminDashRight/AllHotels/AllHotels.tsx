@@ -9,7 +9,7 @@ const AllHotels = ({value}: { value: any }) => {
    
     }
     )
-    // console.log(value?.id)
+    // console.log(data?.data?.data)
     return (
         <div className="AllHotels_Main">
             <div className="AllHotels_Main_Wrap">

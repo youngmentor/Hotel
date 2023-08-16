@@ -3,9 +3,10 @@ import UserData from './BookingData'
 import './DashBoard.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-const DashBoard = () => {
+import { useNavigate } from 'react-router-dom';
+const DashBoard = ({value}: {value: any}) => {
     const [date, setDate] = useState(new Date());
-    
+    const navigate=useNavigate()
     const handleDateChange = (date: Date | Date[]) => {
         if (Array.isArray(date)) {
             // Handle multiple dates if necessary
@@ -13,16 +14,19 @@ const DashBoard = () => {
             setDate(date);
         }
     };
-
+// console.log(value?.Hotels)
+// console.log(value?.Hotels?.[0].id)
+const hotelNumber =value?.Hotels?.length
+const oneHotelId = value?.Hotels?.[0].id
     return (
         <div className="DashBoardMain_Dashboard">
             <div className='DashBoardMain_Dashboard_Wrap'>
                 <div className='All_All_Div'>
-                    <div className='AllHotel-Div'>
-                        <b>123</b>
+                    <div className='AllHotel-Div' onClick={(()=>navigate('/admindash/allhotels'))}>
+                        <b>{hotelNumber}</b>
                         <p>Hotel</p>
                     </div>
-                    <div className='AllHotel-Div'>
+                    <div className='AllHotel-Div' onClick={(()=>navigate(`/admindash/allrooms/${value?.id}/${oneHotelId}`))}>
                         <b>247</b>
                         <p>Rooms</p>
                     </div>

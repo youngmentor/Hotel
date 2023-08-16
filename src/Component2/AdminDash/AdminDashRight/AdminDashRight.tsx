@@ -106,7 +106,7 @@ const AdminDashRight: React.FC = () => {
             </div>
             <div className='AdminDashRightContent'>
                 <Routes>
-                    <Route path='/dashmain' element={<DashBoard />} />
+                    <Route path='/dashmain' element={<DashBoard value={value} />} />
                     <Route path='/allhotels' element={<AllHotels value={value}/>} />
                     <Route path='/addhotels' element={<AddHotels value={value} />} />
                     <Route path='/allrooms/:adminId/:hotelId' element={<AllRooms />} />

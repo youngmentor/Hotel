@@ -10,8 +10,8 @@ const AdminDashLeft: React.FC = () => {
 
     const handleLogoutClick = async () => {
         console.log('Button clicked!');
-        navigate('/')
-      };
+        // navigate('/')
+    };
     const navigate = useNavigate()
     return (
         <div className='AdminDashLeftMain'>
@@ -32,23 +32,15 @@ const AdminDashLeft: React.FC = () => {
                         <MdAddHome />
                         <p onClick={() => navigate("/admindash/addhotels")}>Add Hotels</p>
                     </div>
-                    {/* <div className='AdminDashBoardLeftNav_Icon_Div'>
-                        <MdOutlineBedroomParent />
-                        <p onClick={() => navigate("/admindash/allrooms")}>All Rooms</p>
-                    </div>
-                    <div className='AdminDashBoardLeftNav_Icon_Div'>
-                        <MdAddHome />
-                        <p onClick={() => navigate("/admindash/addrooms")}>Add Rooms</p>
-                    </div> */}
                     <div className='AdminDashBoardLeftNav_Icon_Div'>
                         <MdAddHome />
                         <p onClick={() => navigate("/admindash/addfacility")}>Add Facility</p>
                     </div>
                 </div>
                 <div className='AdminDashBoardLeftNav_Icon_Div'>
-                            <BiLogOut />
-                            <p onClick={handleLogoutClick}>Log Out</p>
-                        </div>
+                    <BiLogOut />
+                    <p onClick={handleLogoutClick}>Log Out</p>
+                </div>
             </div>
         </div>
     )

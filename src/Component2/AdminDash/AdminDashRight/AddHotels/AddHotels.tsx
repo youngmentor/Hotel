@@ -29,6 +29,7 @@ const AddHotels = ({value}: { value: any }) => {
             imageId: file
         });
         // console.log(file)
+        event.target.value = '';
     };
 
     const { mutate, isLoading, } = useMutation(addHotel, {
@@ -75,8 +76,9 @@ const AddHotels = ({value}: { value: any }) => {
                     <div className='InputDiv'>
                         <label>Hotel Image</label>
                         <label className='ImageInput'>
+                            Add Image
                             <input
-                                // style={{ display: "none" }}
+                                style={{ display: "none" }}
                                 type="file"
                                 accept=".jpeg, .jpg, .png"
                                 onChange={handleImageChange}
