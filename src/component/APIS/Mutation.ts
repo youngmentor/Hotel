@@ -58,3 +58,7 @@ export const logOutUser = async (id: any) => {
   console.log(id)
   return await axios.post(`${VITE_ENDPOINT}/user/logout/${id} `)
 }
+export const deleteRoom = async (id: any)=>{
+  console.log(id)
+  return await axios.delete(`${VITE_ENDPOINT}/room/${id}`)
+}

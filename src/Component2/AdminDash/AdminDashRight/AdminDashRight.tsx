@@ -17,6 +17,7 @@ import { getAdmin } from '../../../component/APIS/query';
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { logOutAdmin, } from '../../../component/APIS/Mutation';
 import Swal from 'sweetalert2';
+import Update from './Delete/Update_Room';
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
@@ -131,7 +132,7 @@ const AdminDashRight: React.FC = () => {
                     <Route path='/addhotels' element={<AddHotels value={value} />} />
                     <Route path='/allrooms/:adminId/:hotelId' element={<AllRooms />} />
                     <Route path='/addfacility' element={<AddFacility />} />
-
+                    <Route path='/updateroom/:roomId' element={<Update/>}/>
                 </Routes>
             </div>
             {/* </div> */}

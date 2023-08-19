@@ -94,7 +94,7 @@ const AdminLogin: React.FC = () => {
                         </div>
                     </div>
                     <p onClick={(() => navigate("/adminforgetpassword"))} className='ForgetPassword'>Forgot Password?</p>
-                    <button type="submit" className='LoginBttn'>{isLoading ? <ButtonLoading /> : "Login"}</button>
+                    <button type="submit" className='LoginBttn'>{isLoading ? <ButtonLoading/> : "Login"}</button>
                 </form>
                 <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>
             </div>
