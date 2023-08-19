@@ -43,8 +43,8 @@ export const addHotel = async (data: any) => {
   })
 };
 export const addRoom = async (data: any) => {
-  console.log(data)
-  return await axios.post(`${VITE_ENDPOINT}/room/register/${data?.adminId}/${data?.hotelId}`, data?.formData, {
+  const {adminId, hotelId, formData}= data
+  return await axios.post(`${VITE_ENDPOINT}/room/register/${adminId}/${hotelId}`, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -53,4 +53,8 @@ export const addRoom = async (data: any) => {
 export const logOutAdmin = async (id: any) => {
   // console.log(id)
   return await axios.post(`${VITE_ENDPOINT}/manager/logout/${id}`)
+}
+export const logOutUser = async (id: any) => {
+  console.log(id)
+  return await axios.post(`${VITE_ENDPOINT}/user/logout/${id} `)
 }

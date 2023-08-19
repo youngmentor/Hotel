@@ -4,9 +4,11 @@ import './DashBoard.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useNavigate } from 'react-router-dom';
-const DashBoard = ({value}: {value: any}) => {
+import { getOneAdminAllRoom, getOneAdminVacantRoom } from '../../../../component/APIS/query';
+import { useQuery } from '@tanstack/react-query';
+const DashBoard = ({ value }: { value: any }) => {
     const [date, setDate] = useState(new Date());
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const handleDateChange = (date: Date | Date[]) => {
         if (Array.isArray(date)) {
             // Handle multiple dates if necessary
@@ -14,25 +16,36 @@ const DashBoard = ({value}: {value: any}) => {
             setDate(date);
         }
     };
-// console.log(value?.Hotels)
-// console.log(value?.Hotels?.[0].id)
-const hotelNumber =value?.Hotels?.length
-const oneHotelId = value?.Hotels?.[0]?.id
+    const { data } = useQuery(['getoneAdminRoom', value?.id], getOneAdminAllRoom, {
+        onSuccess: () => {
+        }
+    });
+    const {data: vacantRoomData} = useQuery(['getoneVacnatRoom', value?.id], getOneAdminVacantRoom,{
+        onSuccess: ()=>{
+        }
+    })
+    // console.log(vacantRoomData?.data)
+    // console.log(value?.Hotels)
+    // console.log(value?.Hotels?.[0].id)
+    const hotelNumber = value?.Hotels?.length
+    const oneHotelId = value?.Hotels?.[0]?.id
+    const oneHotelRoom = data?.data?.data?.length
+    const oneAdminVacantRoom = vacantRoomData?.data?.data?.length
     return (
         <div className="DashBoardMain_Dashboard">
             <div className='DashBoardMain_Dashboard_Wrap'>
                 <div className='All_All_Div'>
-                    <div className='AllHotel-Div' onClick={(()=>navigate('/admindash/allhotels'))}>
+                    <div className='AllHotel-Div' onClick={(() => navigate('/admindash/allhotels'))}>
                         <b>{hotelNumber}</b>
                         <p>Hotel</p>
                     </div>
-                    <div className='AllHotel-Div' onClick={(()=>navigate(`/admindash/allrooms/${value?.id}/${oneHotelId}`))}>
-                        <b>247</b>
+                    <div className='AllHotel-Div' onClick={(() => navigate(`/admindash/allrooms/${value?.id}/${oneHotelId}`))}>
+                        <b>{oneHotelRoom}</b>
                         <p>Rooms</p>
                     </div>
                     <div className='AllHotel-Div'>
-                        <b>555</b>
-                        <p>Customers</p>
+                        <b>{oneAdminVacantRoom}</b>
+                        <p>Vacant Rooms</p>
                     </div>
                     <div className='AllHotel-Div'>
                         <b>123</b>
@@ -67,7 +80,7 @@ const oneHotelId = value?.Hotels?.[0]?.id
                             </div>
                         </div>
                         <div className="calendar-container">
-                            <Calendar value={date} onChange={handleDateChange as any} className="calender"/>
+                            <Calendar value={date} onChange={handleDateChange as any} className="calender" />
                         </div>
                     </div>
                 </div>

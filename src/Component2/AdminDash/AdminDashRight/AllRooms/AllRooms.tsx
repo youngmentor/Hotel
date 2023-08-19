@@ -2,7 +2,7 @@ import './AllRooms.css'
 import React, { useState } from 'react';
 import AddRooms from '../AddRooms/AddRooms';
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery} from '@tanstack/react-query';
 import { getOneHotelRooms } from '../../../../component/APIS/query';
 const AllRooms: React.FC = () => {
     const { adminId, hotelId,  } = useParams()
@@ -11,6 +11,8 @@ const AllRooms: React.FC = () => {
         setAddRoom(!addRoom)
     }
     const {data} =useQuery(['getOneHotelRooms', hotelId], getOneHotelRooms,{
+        onSuccess: ()=>{
+        }
        
     })
     // console.log(hotelId)

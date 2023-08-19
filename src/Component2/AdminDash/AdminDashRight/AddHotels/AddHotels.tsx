@@ -35,8 +35,9 @@ const AddHotels = ({ value }: { value: any }) => {
         event.target.value = '';
     };
 
-    const { mutate, isLoading, } = useMutation(addHotel, {
-        onSuccess: () => {
+    const { mutate, isLoading } = useMutation(addHotel, {
+        onSuccess: (data) => {
+            console.log(data)
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',

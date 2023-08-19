@@ -2,47 +2,61 @@ import React, { useState, ChangeEvent, useEffect, } from 'react';
 import './AddRooms.css'
 import { RegisterRoom } from '../../../../component/APIS/TypeChecks';
 import { addRoom } from '../../../../component/APIS/Mutation';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import ButtonLoading from '../../../../ButtonLoader/ButtonLoader';
+import Swal from 'sweetalert2';
 const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, hotelId: string | undefined, allRoom: () => void }) => {
+    const queryClient = useQueryClient();
     const [createRoom, setCreateRoom] = useState<RegisterRoom>({
         roomNumber: '',
         roomDescription: '',
         price: '',
-        imageId: '',
+        image: '',
     })
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCreateRoom({
             ...createRoom,
             [event.target.name]: event.target.value
         });
+        // console.log(createRoom)
     };
     const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         setCreateRoom({
             ...createRoom,
-            imageId: file
+            image: file
         });
-        console.log(file)
+        // console.log(file)
         event.target.value = '';
     };
-    const { mutate, isLoading } = useMutation(addRoom, {
+    
+    const { mutate, isLoading, } = useMutation(addRoom, {
         onSuccess: (data) => {
             allRoom()
             console.log(data)
+            queryClient.invalidateQueries({ queryKey: ["getOneHotelRooms"] });
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Room Created Successfully',
+                showConfirmButton: false,
+                timer: 2500
+              })
         },
         onError: (error) => {
             console.error(error);
         },
     });
+
     const handlSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         const formData = new FormData();
         formData.append('roomNumber', createRoom.roomNumber);
         formData.append('roomDescription', createRoom.roomDescription);
         formData.append('price', createRoom.price);
-        formData.append('imageId', createRoom.imageId);
-        console.log(formData)
+        formData.append('image', createRoom.image);
+        // console.log(formData)
+        // console.log(createRoom)
         mutate({ adminId, hotelId, formData });
     };
     useEffect(() => {
@@ -51,14 +65,14 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
 
     return (
         <div className="Add_Room_Main">
-             <div className='Back_To_All_Room_Bttn_Div'>
+            <div className='Back_To_All_Room_Bttn_Div'>
                 <button onClick={allRoom} className='Back_To_All_Room_Bttn'>Back to All Room</button>
             </div>
             <form className="Add_Room_Main_Wrap" onSubmit={handlSubmit}>
                 <div className='RoomInputMainLeft'>
                     <div className="RoomInputDiv">
-                        <label>Hotel Image</label>
-                        {!createRoom.imageId ? (
+                        <label>Room Image</label>
+                        {!createRoom.image ? (
                             <label className="RoomImageInput">
                                 Add Image
                                 <input
@@ -66,7 +80,7 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                                     type="file"
                                     accept=".jpeg, .jpg, .png"
                                     onChange={handleImageChange}
-                                    name="imageId"
+                                    name="image"
                                 />
                             </label>
                         ) : (
@@ -79,7 +93,7 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                             className='AddRoomInput'
                             placeholder='Hotel Number'
                             onChange={handleChange}
-                            type='number'
+                            type='text'
                             name='roomNumber'
                             value={createRoom.roomNumber}
                         />
@@ -90,7 +104,7 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                             className='AddRoomInput'
                             placeholder='Price'
                             onChange={handleChange}
-                            type='number'
+                            type='text'
                             name='price'
                             value={createRoom.price}
                         />
@@ -107,13 +121,15 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                                     ...createRoom,
                                     roomDescription: value
                                 });
+                                // console.log(createRoom
+                                // )
                             }}
                             value={createRoom.roomDescription}
                             rows={4}
                             cols={30}
                         />
                     </div>
-                    <button className='Add_Room_Bttn'>{isLoading ? <ButtonLoading /> : "Add Hotel"}</button>
+                    <button className='Add_Room_Bttn'>{isLoading ? <ButtonLoading /> : "Add Room"}</button>
                 </div>
             </form>
         </div>

@@ -44,8 +44,8 @@ export interface RegisterHotel{
     imageId: string | any;
 }
 export interface RegisterRoom{
-     roomNumber: string;
+     roomNumber: string ;
      roomDescription: string;
-     price: any;
-    imageId: string | any;
+     price: string ;
+    image:  any;
 }
