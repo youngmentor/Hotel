@@ -91,7 +91,7 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                         <label>Room Number</label>
                         <input
                             className='AddRoomInput'
-                            placeholder='Hotel Number'
+                            placeholder='Room Number'
                             onChange={handleChange}
                             type='text'
                             name='roomNumber'
@@ -114,7 +114,7 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                         <textarea
                             name="roomDescription"
                             className='RoomInputDesc'
-                            placeholder='Hotel Description'
+                            placeholder='Room Description'
                             onChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
                                 const value = event.target.value;
                                 setCreateRoom({

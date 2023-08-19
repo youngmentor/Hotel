@@ -1,0 +1,32 @@
+.CheapRoom_Main{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.CheapRoom_Main_Wrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    gap: 20px;
+}
+.CheapRoom_Card{
+    width: 350px;
+    height: auto;
+    border: 1px solid lightgrey;
+}
+.CheapRoom_Img{
+    width: 100%;
+    height: 200px;
+}
+.CheapRoom_Details{
+    width: 100%;
+    padding: 10px;
+}

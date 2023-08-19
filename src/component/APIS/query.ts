@@ -14,12 +14,16 @@ export const getOneAdminAllRoom = async (data: any) => {
     return await axios.get(`${VITE_ENDPOINT}/room/admin/${data?.queryKey[1]}`)
 };
 export const getCheapRoom = async (data: any) => {
-    console.log(data)
+    // console.log(data)
     return await axios.get(`${VITE_ENDPOINT}/room/cheaprooms`, data)
 };
-export const getLuxuryRoom = async () => {
-    return await axios.get(``)
+export const getLuxuryRoom = async (data: any) => {
+    return await axios.get(`${VITE_ENDPOINT}/room/luxury`, data)
 };
+export const fourStarRoom = async (data: any)=>{
+    // console.log(data)
+    return await axios.get(`${VITE_ENDPOINT}/room/starrooms`, data)
+}
 export const getAllHotel = async (data: any) => {
     // console.log(data?.queryKey[1])
     return await axios.get(`${VITE_ENDPOINT}/manager/hotels/${data?.queryKey[1]}`)
