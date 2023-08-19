@@ -74,6 +74,7 @@ const AdminLogin: React.FC = () => {
                             onChange={handleChange}
                             className='Input'
                             name='email'
+                            required
                         />
                     </div>
                     <div className='LoginInputPass'>
@@ -87,6 +88,7 @@ const AdminLogin: React.FC = () => {
                                 onChange={handleChange}
                                 className='InputPass'
                                 name='password'
+                                required
                             />
                             <div className="password-toggle" onClick={showPasswords}>
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}

@@ -67,6 +67,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               // required={true}
               className='SignUpinput'
               placeholder='Name'
+              required
             />
           </div>
           <div className='SignUpInputDiv'>
@@ -80,6 +81,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               // required={true}
               className='SignUpinput'
               placeholder='Email'
+              required
             />
           </div>
           <div className='SignUpInputDiv'>
@@ -94,6 +96,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
                 // required={true}
                 className='SignUpinputPass'
                 placeholder='Password'
+                required
               />
                <div className="password-toggle">
              
@@ -112,6 +115,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               // required={true}
               className='SignUpinputPass'
               placeholder='Confirm Password'
+              required
             />
              <div className="password-toggle" onClick={visiblePassword}>
               {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -129,6 +133,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               // required={true}
               className='SignUpinput'
               placeholder='Phone Number'
+              required
             />
           </div>
           <button type="submit" className='SignUpBttn'>{isLoading? <ButtonLoading/>: "Sign Up"}</button>

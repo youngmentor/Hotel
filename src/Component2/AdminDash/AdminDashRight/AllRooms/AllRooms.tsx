@@ -34,6 +34,7 @@ const AllRooms: React.FC = () => {
                                     <div className='All_Rooms-Detail'>
                                         <p>Room Price: {i.price} </p>
                                         <p>Room Number: {i.roomNumber}</p>
+                                        <p>Room Hotel: {i.hotelname}</p>
                                         {
                                             i.booked ? "booked" : "Available"
                                         }

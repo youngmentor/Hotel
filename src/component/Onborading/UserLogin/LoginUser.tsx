@@ -70,6 +70,7 @@ const handleUserLogin = (e: any) => {
               onChange={handleChange}
               className='Input'
               name='email'
+              required
             />
           </div>
           <div className='LoginInput'>
@@ -83,6 +84,7 @@ const handleUserLogin = (e: any) => {
                 value={login.password}
                 onChange={handleChange}
                 className='InputPass'
+                required
               />
               <div className="password-toggle" onClick={visiblePassword}>
                 {showPassword ? <FaEyeSlash /> : <FaEye />}

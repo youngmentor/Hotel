@@ -11,7 +11,7 @@
 
 .Add_Room_Main_Wrap {
     width: 95%;
-    height: 70%;
+    height: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,7 +85,7 @@
 }
 .Back_To_All_Room_Bttn_Div{
     width: 100%;
-    height: 30%;
+    height: 10%;
     display: flex;
     align-items: center;
     margin-left: 40px;
@@ -103,11 +103,10 @@
 @media screen and (max-width: 426px) {
    .Add_Room_Main{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     gap: 20px;
-    margin-top: 20px;
-  
+   margin-top: 40px;
    }
    .RoomInputMainLeft{
     width: 100%;
