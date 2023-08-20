@@ -1,0 +1,56 @@
+.UpdateRoom_Main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.DeleteRoomOption{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.DeleteBttn1{
+    width: 200px;
+    height: 40px;
+    border: none;
+    background-color: rgb(45, 185, 255);
+    color: white;
+    border-radius: 8px;
+}
+.DeleteBttn2{
+    width: 200px;
+    height: 40px;
+    border: none;
+    background-color: rgb(45, 185, 255);
+    color: white;
+    border-radius: 8px; 
+}
+.UpdateBttnDiv{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.DeleteBttnDiv{
+    width: 50%;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+.UpdateBttnDiv p{
+    cursor: pointer;
+}
+.UpdateBttnDiv_Wrap{
+    width: 50%;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}

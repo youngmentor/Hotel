@@ -43,7 +43,7 @@ const AddHotels = ({ value }: { value: any }) => {
                 icon: 'success',
                 title: 'Hotel as been added successfully',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
               })
               navigate('/admindash/allhotels')
         },

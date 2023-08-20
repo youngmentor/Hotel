@@ -18,7 +18,7 @@ const Landing5: React.FC = () => {
             {isLoading ? (
                 <ButtonLoading/>
             ) : (
-                cheapRoom.map((i: any) => (
+                cheapRoom?.map((i: any) => (
                     <div className="CheapRoom_Card" key={i.id}>
                         <img src={i.image} className='CheapRoom_Img' />
                         <div className='CheapRoom_Details'>

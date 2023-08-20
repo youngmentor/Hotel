@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import './PopularHotel.css'
 import { useState } from 'react'
 import RoomData from '../HomeData'
+import { useQuery } from "@tanstack/react-query";
+import { getAbujaHotel,getLagosHotel } from "../../APIS/query";
 type RoomDetails = {
     id: number,
     Avatar: string,
@@ -27,18 +29,28 @@ const navigate= useNavigate()
             </div>
         )
     )
-    const lagosRooms: RoomDetails[] = RoomData.filter((room) => room.state === "Lagos");
-    const numberOfLagosHotels = lagosRooms.length;
     const kwaraRooms: RoomDetails[] = RoomData.filter((room) => room.state === "Kwara");
     const numberOfKwaraHotels = kwaraRooms.length;
     const riverRooms: RoomDetails[] = RoomData.filter((room) => room.state === "River");
     const numberOfRiverHotels = riverRooms.length;
-    const abujaRooms: RoomDetails[] = RoomData.filter((room) => room.state === "Abuja");
-    const numberOfAbujaHotels = abujaRooms.length;
     const ibadanRooms: RoomDetails[] = RoomData.filter((room) => room.state === "Ibadan");
     const numberOfIbadanHotels = ibadanRooms.length;
     const  kanoRooms: RoomDetails[] = RoomData.filter((room) => room.state === "Kano");
     const numberOfKanoHotels = kanoRooms.length;
+
+    const { data } = useQuery(['getabujahotel'], getAbujaHotel, {
+        onSuccess: () => {
+            // console.log(data?.data?.message?.length)
+        }
+    });
+    const AllAbujaHotelTotal = data?.data?.message?.length
+    const { data: lagosData } = useQuery(['getlagoshotel'], getLagosHotel, {
+        onSuccess: () => {
+            // console.log(data?.data?.message)
+        }
+    });
+    const AllLagosHotelTotal = lagosData?.data?.message?.length
+
     return (
         <div className="PopulaMain">
             <h4>Popular cities with Hotels travellers wants</h4>
@@ -49,7 +61,7 @@ const navigate= useNavigate()
                 >
                     <div className='PopularLagosWrap'>
                         <div className='PopularDetails'>
-                            <p className='HotelNum'>{numberOfLagosHotels} Hotels </p>
+                            <p className='HotelNum'>{AllLagosHotelTotal} Hotels </p>
                             <h4 className='HotelName'>In Lagos</h4>
                         </div>
                         {
@@ -78,7 +90,7 @@ const navigate= useNavigate()
                 >
                     <div className='PopularLagosWrap'>
                         <div className='PopularDetails'>
-                            <p className='HotelNum'>{numberOfAbujaHotels}</p>
+                            <p className='HotelNum'>{AllAbujaHotelTotal}</p>
                             <h4 className='HotelName'>Abuja</h4>
                         </div>
                         {

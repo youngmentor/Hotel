@@ -64,7 +64,6 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               name="fullname"
               value={formData.fullname}
               onChange={handleChange}
-              // required={true}
               className='SignUpinput'
               placeholder='Name'
               required
@@ -78,7 +77,6 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              // required={true}
               className='SignUpinput'
               placeholder='Email'
               required
@@ -93,7 +91,6 @@ const handleUserSignUp = async (event: React.FormEvent) => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                // required={true}
                 className='SignUpinputPass'
                 placeholder='Password'
                 required
@@ -112,7 +109,6 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              // required={true}
               className='SignUpinputPass'
               placeholder='Confirm Password'
               required
@@ -130,7 +126,6 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              // required={true}
               className='SignUpinput'
               placeholder='Phone Number'
               required

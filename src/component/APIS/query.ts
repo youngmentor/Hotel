@@ -36,3 +36,11 @@ export const getOneAdminVacantRoom = async (data: any) => {
     // console.log(data?.queryKey[1])
     return await axios.get(`${VITE_ENDPOINT}/room/vacant/${data?.queryKey[1]}`)
 };
+export const getAbujaHotel = async (data: any) => {
+    // console.log(data)
+    return await axios.get(`${VITE_ENDPOINT}/hotel/abuja/`, data)
+};
+export const getLagosHotel = async (data: any) => {
+    // console.log(data)
+    return await axios.get(`${VITE_ENDPOINT}/hotel/lagos/`, data)
+};

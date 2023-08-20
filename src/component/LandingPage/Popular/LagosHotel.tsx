@@ -1,35 +1,30 @@
-// import { useState } from "react"
-import RoomData from "../HomeData"
 import './AllPopularHotel.css'
 import { Link } from "react-router-dom"
-type RoomDetails = {
-    id: number,
-    Avatar: string,
-    name: string,
-    desc: string,
-    price: number,
-    state: string,
-    city: string,
-}
-const LagosHotel: React.FC = () => {
-    // const [room, setRoom] = useState<RoomDetails>()
-    const lagosRooms: RoomDetails[] = RoomData.filter((room) => room.state === "Lagos");
+import { useQuery } from "@tanstack/react-query";
+import { getLagosHotel } from "../../APIS/query";
 
+const LagosHotel: React.FC = () => {
+    const { data } = useQuery(['getlagoshotel'], getLagosHotel, {
+        onSuccess: () => {
+            // console.log(data?.data?.message)
+        }
+    });
+    const AllLagosHotelTotal = data?.data?.message
 
     return (
         <div className="AllHotelsMainCard">
             <div className="AllHotelsMainCardWrap">
                 {
-                    lagosRooms.map((room) => (
+                    AllLagosHotelTotal?.map((room:any) => (
                         <Link key={room.id} className="AllHotelContent" to={`/detail/${room.id}`}>
                             <div className="AllHotelImageDiv">
-                                <img src={room.Avatar} className="AllHotelsImg"/>
+                                <img src={room.imageId} className="AllHotelsImg"/>
                             </div>
                             <div className="AllHotelDetails">
-                                <h4>{room.name}</h4>
-                                <p>{room.desc}</p>
+                                <h4>{room.hotelName}</h4>
+                                <p>{room.description}</p>
                                 <p>{room.city}</p>
-                                <p>{room.price}</p>
+                                <p>{room.state}</p>
                             </div>
                             <button className="AllHotelsButton" >Book Now</button>
                         </Link>
