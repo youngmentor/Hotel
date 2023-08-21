@@ -44,3 +44,19 @@ export const getLagosHotel = async (data: any) => {
     // console.log(data)
     return await axios.get(`${VITE_ENDPOINT}/hotel/lagos/`, data)
 };
+export const getKanoHotel = async (data: any) => {
+    // console.log(data)
+    return await axios.get(`${VITE_ENDPOINT}/hotel/kano/`, data)
+};
+export const getCalabarHotel = async (data: any) => {
+    // console.log(data)
+    return await axios.get(`${VITE_ENDPOINT}/hotel/calabar/`, data)
+};
+// export const getIbadanHotel = async (data: any) => {
+//     console.log(data)
+//     return await axios.get(`${VITE_ENDPOINT}/hotel/ibadan/`, data)
+// };
+// export const getKwaraHotel = async (data: any) => {
+//     console.log(data)
+//     return await axios.get(`${VITE_ENDPOINT}/hotel/kwara/`, data)
+// };

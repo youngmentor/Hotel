@@ -1,19 +1,8 @@
-
 import { useNavigate } from 'react-router-dom'
 import './PopularHotel.css'
 import { useState } from 'react'
-import RoomData from '../HomeData'
 import { useQuery } from "@tanstack/react-query";
-import { getAbujaHotel,getLagosHotel } from "../../APIS/query";
-type RoomDetails = {
-    id: number,
-    Avatar: string,
-    name: string,
-    desc: string,
-    price: number,
-    state: string,
-    city: string,
-  }
+import { getAbujaHotel,getLagosHotel,getKanoHotel,getCalabarHotel } from "../../APIS/query";
 const Popular: React.FC = () => {
 const navigate= useNavigate()
     const [showButton, setShowButton] = useState<boolean>(false)
@@ -29,14 +18,6 @@ const navigate= useNavigate()
             </div>
         )
     )
-    const kwaraRooms: RoomDetails[] = RoomData.filter((room) => room.state === "Kwara");
-    const numberOfKwaraHotels = kwaraRooms.length;
-    const riverRooms: RoomDetails[] = RoomData.filter((room) => room.state === "River");
-    const numberOfRiverHotels = riverRooms.length;
-    const ibadanRooms: RoomDetails[] = RoomData.filter((room) => room.state === "Ibadan");
-    const numberOfIbadanHotels = ibadanRooms.length;
-    const  kanoRooms: RoomDetails[] = RoomData.filter((room) => room.state === "Kano");
-    const numberOfKanoHotels = kanoRooms.length;
 
     const { data } = useQuery(['getabujahotel'], getAbujaHotel, {
         onSuccess: () => {
@@ -44,12 +25,27 @@ const navigate= useNavigate()
         }
     });
     const AllAbujaHotelTotal = data?.data?.message?.length
+
     const { data: lagosData } = useQuery(['getlagoshotel'], getLagosHotel, {
         onSuccess: () => {
             // console.log(data?.data?.message)
         }
     });
     const AllLagosHotelTotal = lagosData?.data?.message?.length
+
+    const { data: kanoData } = useQuery(['getlagoshotel'], getKanoHotel, {
+        onSuccess: () => {
+            // console.log(data?.data?.message)
+        }
+    });
+    const AllLanoHotelTotal = kanoData?.data?.message?.length
+
+    const { data: CalabarData } = useQuery(['getcalabarhotel'], getCalabarHotel, {
+        onSuccess: () => {
+            // console.log(data?.data?.message)
+        }
+    });
+    const AllCalabarHotelLength = CalabarData?.data?.message?.length
 
     return (
         <div className="PopulaMain">
@@ -76,7 +72,7 @@ const navigate= useNavigate()
                 >
                     <div className='PopularLagosWrap'>
                         <div className='PopularDetails'>
-                            <p className='HotelNum'>{numberOfKanoHotels}</p>
+                            <p className='HotelNum'>{AllLanoHotelTotal}</p>
                             <h4 className='HotelName'>Kano</h4>
                         </div>
                         {
@@ -104,7 +100,7 @@ const navigate= useNavigate()
                 >
                     <div className='PopularLagosWrap'>
                         <div className='PopularDetails'>
-                            <p className='HotelNum'>{numberOfRiverHotels}</p>
+                            <p className='HotelNum'>{AllCalabarHotelLength}</p>
                             <h4 className='HotelName'>River</h4>
                         </div>
                         {
@@ -118,7 +114,7 @@ const navigate= useNavigate()
                 >
                     <div className='PopularLagosWrap'>
                         <div className='PopularDetails'>
-                            <p className='HotelNum'>{numberOfKwaraHotels}</p>
+                            <p className='HotelNum'>{}</p>
                             <h4 className='HotelName'>Kwara</h4>
                         </div>
                         {
@@ -132,7 +128,7 @@ const navigate= useNavigate()
                 >
                     <div className='PopularLagosWrap'>
                         <div className='PopularDetails'>
-                            <p className='HotelNum'>{numberOfIbadanHotels}</p>
+                            <p className='HotelNum'>{}</p>
                             <h4 className='HotelName'>Ibadan</h4>
                         </div>
                         {

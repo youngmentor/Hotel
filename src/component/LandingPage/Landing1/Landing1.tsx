@@ -45,6 +45,7 @@ const Landing1: React.FC = () => {
     useEffect(()=>{
         // console.log(error)
         // console.log(isLoading)
+        
     })
     return (
         <div className="Landing1Main">
