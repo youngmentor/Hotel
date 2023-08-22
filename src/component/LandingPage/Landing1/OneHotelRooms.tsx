@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { getOneHotelRooms } from "../../APIS/query"
 
 
@@ -19,7 +19,7 @@ const OneHotelRoom = () => {
                 {
                     oneHotelRoom?.map((i: any) =>
                     (
-                        <div className="AllRooms_Card" key={i.id} >
+                        <Link className="AllRooms_Card" key={i.id} to={`/detail/${i.id}`}>
                             <img src={i.image} className='All_Rooms_Image' />
                             <div className='All_Rooms-Detail'>
                                 <p>Room Price: {i.price} </p>
@@ -30,7 +30,7 @@ const OneHotelRoom = () => {
                                 }
                             </div>
                             <button>Book Now</button>
-                        </div>
+                        </Link>
                     )
                     )
                 }
