@@ -62,3 +62,7 @@ export const deleteRoom = async (id: any)=>{
   console.log(id)
   return await axios.delete(`${VITE_ENDPOINT}/room/${id}`)
 }
+
+export const bookRoom = async (data: { checkIn: string; checkOut: string; price: number; })=>{
+  return await axios.post(`${VITE_ENDPOINT}/rooms/booking`, data)
+}

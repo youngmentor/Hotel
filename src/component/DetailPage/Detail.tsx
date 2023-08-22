@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom"
 import { useState } from "react"
 import { DatePickerInput } from '@mantine/dates';
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import './Detail.css'
+import { bookRoom } from "../APIS/Mutation";
 import { getOneRoom } from '../APIS/query'
 const Detail: React.FC = () => {
   const { id } = useParams()
   const { data } = useQuery(['getoneroom', id], getOneRoom, {
-
   })
   //  console.log(data?.data?.data)
   const oneRoomDetail = data?.data?.data
@@ -21,9 +21,27 @@ const Detail: React.FC = () => {
     ? Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24))
     : 0;
 
-  // Calculate the updated total price
-  const nightlyPrice = oneRoomDetail?.price || 0; // Assuming you have the nightly price in your data
+  const nightlyPrice = oneRoomDetail?.price || 0;
   const updatedTotalPrice = numberOfNights * nightlyPrice;
+
+  const {mutate} = useMutation(['bookroom'], bookRoom, {
+    onSuccess: () => {
+    },
+    onError: () => {
+    },
+  });
+  const handleBookRoom = () => {
+    console.log('clicked')
+    if (checkInDate && checkOutDate) {
+      const bookingData = {
+        checkIn: checkInDate.toISOString().split('T')[0],
+        checkOut: checkOutDate.toISOString().split('T')[0],
+        price: updatedTotalPrice,
+      };
+      mutate(bookingData);
+      console.log(bookingData)
+    }
+  };
   return (
     <div className="DetailsMainPages">
       <div className="DetailsMainWrap">
@@ -49,12 +67,12 @@ const Detail: React.FC = () => {
             </div>
             <div className="DetailsPaymentInfo1">
               <p>Total Price: ${updatedTotalPrice}</p>
-              <button className="DetailMinusBttn" >pay</button>
+              <button className="DetailMinusBttn" onClick={handleBookRoom}>pay</button>
             </div>
           </div>
           <div className="DetailsPaymentInfo2">
             <p>Total Price: ${updatedTotalPrice}</p>
-            <button className="DetailMinusBttn" >pay</button>
+            <button className="DetailMinusBttn" onClick={handleBookRoom}>pay</button>
           </div>
         </div>
       </div>
