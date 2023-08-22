@@ -19,6 +19,7 @@ import AdminForgetPassword from './component/Onborading/AdminLogin/AdminForgetPa
 import UserForgetPassword from './component/Onborading/UserLogin/UserForgetPassword/UserForgetPassword'
 import AdminResetPassword from './component/Onborading/AdminLogin/AdminResetPassword/AdminResetPassword'
 import UserResetPassword from './component/Onborading/UserLogin/UserResetPassword/UserResetPassword'
+import OneHotelRoom from './component/LandingPage/Landing1/OneHotelRooms'
 const App: React.FC = () => {
   return (
     <div className='AppMain'>
@@ -44,6 +45,7 @@ const App: React.FC = () => {
           <Route path='user-forgetpassword' element={<UserForgetPassword/>}/>
           <Route path='adminresetpassword/:id' element={<AdminResetPassword/>}/>
           <Route path='user-resetpassword/:id' element={<UserResetPassword/>}/>
+          <Route path='onehotelroom/:hotelId' element={<OneHotelRoom/>}/>
         </Routes>
       </HashRouter>
     </div>

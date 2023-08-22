@@ -12,6 +12,8 @@ import Landing6 from '../Landing6/Landing6';
 import { useMutation } from '@tanstack/react-query';
 // import axios from 'axios';
 import { fetchSearchResults } from '../../APIS/Mutation';
+import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
+import { Link } from 'react-router-dom';
 
 
 const Landing1: React.FC = () => {
@@ -36,16 +38,16 @@ const Landing1: React.FC = () => {
         error,
         isLoading,
         mutate
-    } = useMutation( ["search"], fetchSearchResults, {
-        onSuccess:() =>{
+    } = useMutation(["search"], fetchSearchResults, {
+        onSuccess: () => {
             // console.log(data?.data.data)
         }
     });
     // console.log (typeof inputRef.current?.value)
-    useEffect(()=>{
+    useEffect(() => {
         // console.log(error)
         // console.log(isLoading)
-        
+        console.log(data?.data.data)
     })
     return (
         <div className="Landing1Main">
@@ -64,21 +66,22 @@ const Landing1: React.FC = () => {
                             ref={inputRef}
                         />
                     </div>
-                    <button className='SearchBttn' onClick={()=>mutate(inputRef.current?.value)}>Find Hotel</button>  
+                    <button className='SearchBttn' onClick={() => mutate(inputRef.current?.value)}>Find Hotel</button>
                 </div>
             </div>
-            <div>
-                {isLoading && <div>Loading...</div>}
+            <div className='SearchedResult_Main'>
+                {isLoading && <ButtonLoading />}
 
                 {error ? <div>Error</div> : null}
                 {
-                    data?.data.data.map((result:any) => (
-                        <div key={result.id}>
+                    data?.data.data.map((result: any) => (
+                        <Link key={result.id} className='SearchedResult_Card' to={`/onehotelroom/${result.id}`}>
+                            <img src={result.imageId} className='SearchedResult_Img'/>
                             <p>{result.hotelName}</p>
                             <p>{result.address}</p>
                             <p>{result.city}</p>
                             <p>{result.state}</p>
-                        </div>
+                        </Link>
                     ))
                 }
             </div>

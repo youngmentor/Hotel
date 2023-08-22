@@ -6,8 +6,9 @@ export const getAdmin = async () => {
     const token = localStorage.getItem(VITE_TOKEN)
     return await axios.get(`${VITE_ENDPOINT}/manager/${token}`)
 };
-export const getAllRoom = async () => {
-    return await axios.get(``)
+export const getOneRoom = async (data: any) => {
+    console.log(data?.queryKey[1])
+    return await axios.get(`${VITE_ENDPOINT}/room/${data?.queryKey[1]}`)
 };
 export const getOneAdminAllRoom = async (data: any) => {
     // console.log(data?.queryKey[1])

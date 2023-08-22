@@ -16,7 +16,7 @@ const LagosHotel: React.FC = () => {
             <div className="AllHotelsMainCardWrap">
                 {
                     AllLagosHotelTotal?.map((room:any) => (
-                        <Link key={room.id} className="AllHotelContent" to={`/detail/${room.id}`}>
+                        <Link key={room.id} className="AllHotelContent" to={`/onehotelroom/${room.id}`}>
                             <div className="AllHotelImageDiv">
                                 <img src={room.imageId} className="AllHotelsImg"/>
                             </div>
@@ -26,7 +26,7 @@ const LagosHotel: React.FC = () => {
                                 <p>{room.city}</p>
                                 <p>{room.state}</p>
                             </div>
-                            <button className="AllHotelsButton" >Book Now</button>
+                            <button className="AllHotelsButton" >View Rooms</button>
                         </Link>
                     ))}
             </div>
