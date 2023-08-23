@@ -2,8 +2,10 @@ import { useQuery } from '@tanstack/react-query'
 import './Landing5.css'
 import { getCheapRoom } from '../../APIS/query'
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader'
+import { useNavigate } from 'react-router-dom'
 
 const Landing5: React.FC = () => {
+    const navigate= useNavigate()
     const { data, isLoading } = useQuery(['getcheaproom'], getCheapRoom, {
         onSuccess: () => {
 
@@ -25,7 +27,7 @@ const Landing5: React.FC = () => {
                             <p>Hotel Name: {i.price}</p>
                             <p>Desc: {i.roomDescription}</p>
                         </div>
-                        <button>Book Now</button>
+                        <button onClick={(()=>navigate(`detail/${i.id}`))}>Book Now</button>
                     </div>
                 ))
             )}

@@ -17,6 +17,7 @@
     width: 300px;
     height: auto;
     text-decoration: none;
+    color: inherit;
 }
 .AllHotelImageDiv{
     width: 100%;

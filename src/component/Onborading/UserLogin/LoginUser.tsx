@@ -1,3 +1,4 @@
+const { VITE_TOKEN } = import.meta.env;
 import React, { useContext, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
@@ -29,11 +30,12 @@ const Login: React.FC = () => {
   const {mutate, isLoading} = useMutation( ['userlogin'], userLogin , {
     onSuccess: (data) => {
         console.log(data);
+        localStorage.setItem(VITE_TOKEN, data?.data.accessToken)
         navigate("/userdash/userprofile")
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Log in successful',
+          title: data?.data?.message,
           showConfirmButton: false,
           timer: 2500
         })

@@ -63,6 +63,7 @@ export const deleteRoom = async (id: any)=>{
   return await axios.delete(`${VITE_ENDPOINT}/room/${id}`)
 }
 
-export const bookRoom = async (data: { checkIn: string; checkOut: string; price: number; })=>{
-  return await axios.post(`${VITE_ENDPOINT}/rooms/booking`, data)
+export const bookRoom = async (data: { bookingData:{checkIn: string| undefined; checkOut: string| undefined; price: number;}, userId: string | undefined; roomId: string | undefined; })=>{
+  const {userId, roomId,bookingData} =data
+  return await axios.post(`${VITE_ENDPOINT}/rooms/booking/${userId}/${roomId}`, bookingData)
 }

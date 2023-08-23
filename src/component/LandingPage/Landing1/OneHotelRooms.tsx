@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { getOneHotelRooms } from "../../APIS/query"
 
 
 const OneHotelRoom = () => {
+    const navigate= useNavigate()
     const { hotelId } = useParams()
     const { data } = useQuery(['getOneHotelRooms', hotelId], getOneHotelRooms, {
         onSuccess: () => {
@@ -29,7 +30,7 @@ const OneHotelRoom = () => {
                                     i.booked ? "booked" : "Available"
                                 }
                             </div>
-                            <button>Book Now</button>
+                            <button onClick={(()=>navigate(`detail/${i.id}`))}>Book Now</button>
                         </Link>
                     )
                     )

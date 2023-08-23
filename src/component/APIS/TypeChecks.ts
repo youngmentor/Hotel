@@ -49,3 +49,8 @@ export interface RegisterRoom{
      price: string ;
     image:  any;
 }
+export interface Visitor{
+    adult: any,
+    children: any,
+    infant: any
+}
