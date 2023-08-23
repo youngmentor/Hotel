@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, } from 'react-router-dom';
+import { Params, useNavigate, useParams, } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { verifyUser } from '../../APIS/Mutation';
 
 const UserVerify: React.FC = () => {
   const navigate = useNavigate();
+  const { id } = useParams<Params>();
+
   const [state, setState] = useState<boolean>(false);
 
-  const { mutate, isLoading, isError, isSuccess } = useMutation(verifyUser, {
-    onSuccess: () => {
+  const { mutate, isLoading, isError, isSuccess, data } = useMutation(verifyUser, {
+    onSuccess: (data) => {
       setState(!state);
       setTimeout(() => {
         navigate('/alllogin/login');
       }, 3000);
+      console.log(data)
     },
   });
+  console.log(data)
   useEffect(() => {
-    // mutate();
+  console.log(data)
+  mutate(id);
   }, [mutate]);
 
   const style = {

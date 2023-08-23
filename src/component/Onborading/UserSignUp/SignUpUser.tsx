@@ -29,7 +29,7 @@ const SignUpUser: React.FC = () => {
     });
   };
 const {isLoading,  mutate} = useMutation(['adminSignup'],userSignUp ,{
-  onSuccess: ()=>{
+  onSuccess: (data)=>{
     login_alert()
     setTimeout(()=>{
       navigate('/alllogin/adminlogin')
@@ -37,7 +37,7 @@ const {isLoading,  mutate} = useMutation(['adminSignup'],userSignUp ,{
     Swal.fire({
       position: 'top-end',
       icon: 'success',
-      title: 'Log in successful',
+      title: data?.data?.message,
       showConfirmButton: false,
       timer: 2500
     })

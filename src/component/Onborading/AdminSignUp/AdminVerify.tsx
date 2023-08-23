@@ -35,7 +35,7 @@ const AdminVerify: React.FC = () => {
     justifyContent: 'center',
     backgroundColor: '#f8f8f8',
   };
-
+  
   return (
     <div style={style} className='verify'>
       {isLoading ? <h1>Please Wait...</h1> : isError ? <h1>Error occurred.</h1> : isSuccess ? <h1>Your verification was successful</h1> : null}

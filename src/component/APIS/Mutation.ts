@@ -10,6 +10,7 @@ export const verifyAdmin = async (data: string | undefined) => {
 };
 export const verifyUser = async (data: any) => {
   const { id } = data
+  console.log(id)
   return await axios.patch(`${VITE_ENDPOINT}/user/verify/${id}`);
 };
 export const adminForgotPassword = async (email: string) => {
