@@ -1,5 +1,5 @@
 const { VITE_TOKEN } = import.meta.env;
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useState } from "react"
 import { DatePickerInput } from '@mantine/dates';
 import { useMutation, useQuery } from '@tanstack/react-query'
@@ -10,7 +10,7 @@ import { Visitor } from "../APIS/TypeChecks";
 import ButtonLoading from "../../ButtonLoader/ButtonLoader";
 import Swal from "sweetalert2";
 const Detail: React.FC = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const { roomId } = useParams()
   const { data } = useQuery(['getoneroom', roomId], getOneRoom, {
   })
@@ -62,9 +62,6 @@ const Detail: React.FC = () => {
         title: data?.data?.data?.message,
         showConfirmButton: false,
         timer: 4000
-      })
-      setTimeout(() => {
-        navigate('/')
       })
     },
     onError: () => {

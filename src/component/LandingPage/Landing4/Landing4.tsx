@@ -1,14 +1,14 @@
 import './Landing4.css'
 // import HotelData from './HotelData'
 import { useQuery } from '@tanstack/react-query'
-import {fourStarRoom } from '../../APIS/query'
+import { fourStarRoom } from '../../APIS/query'
 import { useNavigate } from 'react-router-dom'
 
 
 const Landing4: React.FC = () => {
-const navigate=useNavigate()
-    const {data} =useQuery(['luxuryroom'], fourStarRoom,{
-        onSuccess: ()=>{
+    const navigate = useNavigate()
+    const { data, isLoading } = useQuery(['luxuryroom'], fourStarRoom, {
+        onSuccess: () => {
 
         }
     })
@@ -19,20 +19,28 @@ const navigate=useNavigate()
             <div className='Landing4Heading'>
                 <h3>Popular 4 star Room the City</h3>
             </div>
-            <div className='Landing4Card'>
-                {
-                    starRoom?.map((i: any) => (
-                        <div key={i.id} className='Landing4CardWrap'>
-                            <img src={i.image} alt='Landing4Img' className='Landing4HotelImg' />
-                            <div className='Landing4Details'>
-                                <p>Price: {i.price}</p>
-                                <p>Desc: {i.roomDescription}</p>
-                            </div>
-                            <button onClick={(()=>navigate(`detail/${i.id}`))}>Book Now</button>
-                        </div>
-                    ))
-                }
-            </div>
+            {
+                isLoading ? (
+                    "Loading rooms ..."
+                ) : (
+                    <div className='Landing4Card'>
+                        {
+                            starRoom?.map((i: any) => (
+                                <div key={i.id} className='Landing4CardWrap'>
+                                    <img src={i.image} alt='Landing4Img' className='Landing4HotelImg' />
+                                    <div className='Landing4Details'>
+                                        <p>Price: {i.price}</p>
+                                        <p>Desc: {i.roomDescription}</p>
+                                        <p>Location: {i.address}</p>
+                                    </div>
+                                    <button onClick={(() => navigate(`detail/${i.id}`))} className='BookNow_Button'>Book Now</button>
+                                </div>
+                            ))
+                        }
+                    </div>
+                )
+            }
+
         </div>
     )
 }

@@ -20,7 +20,7 @@ const Landing3: React.FC = () => {
     return (
         <div className="Landing3Main">
             <div className='Landing3Heading'>
-                <h3>Pick from our top rooms from around the wolrd</h3>
+                <h3>Pick a rooms from around the wolrd</h3>
             </div>
             <div className="Landing3MainWrap">
                 {

@@ -24,6 +24,7 @@ export const getCheapRoom = async (data: any) => {
     return await axios.get(`${VITE_ENDPOINT}/room/cheaprooms`, data)
 };
 export const getLuxuryRoom = async (data: any) => {
+    // console.log(data)
     return await axios.get(`${VITE_ENDPOINT}/room/luxury`, data)
 };
 export const fourStarRoom = async (data: any)=>{
@@ -66,3 +67,7 @@ export const getCalabarHotel = async (data: any) => {
 //     console.log(data)
 //     return await axios.get(`${VITE_ENDPOINT}/hotel/kwara/`, data)
 // };
+export const getUserHistory = async (data: any)=>{
+    // console.log(data?.queryKey[1])
+    return await axios.get(`${VITE_ENDPOINT}/user/booking/${data?.queryKey[1]}`)
+}

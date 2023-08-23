@@ -43,7 +43,7 @@ const AddHotels = ({ value }: { value: any }) => {
                 icon: 'success',
                 title: 'Hotel as been added successfully',
                 showConfirmButton: false,
-                timer: 2500
+                timer: 4000
               })
               navigate('/admindash/allhotels')
         },
@@ -51,7 +51,6 @@ const AddHotels = ({ value }: { value: any }) => {
             console.error(error);
         },
     });
-
     const handlSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         const formData = new FormData();

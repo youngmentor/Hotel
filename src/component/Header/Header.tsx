@@ -3,13 +3,13 @@ import Logo from './RoomLogo-removebg-preview.png'
 // import { GiHamburgerMenu } from "react-icons/gi";
 // import { MdOutlineMenu } from "react-icons/md";
 import { FaTimes, FaRegUserCircle } from "react-icons/fa";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
     const navigate = useNavigate()
     const [header, setHeader] = useState<boolean>(false)
-
+    // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const HeaderDrop = (
         header && (
             <div className='HeaderDrop'>
@@ -21,6 +21,9 @@ const Header: React.FC = () => {
             </div>
         )
     )
+    useEffect(()=>{
+       
+    })
     return (
         <div className="HeaderMain">
             <div className="HeaderWrap">

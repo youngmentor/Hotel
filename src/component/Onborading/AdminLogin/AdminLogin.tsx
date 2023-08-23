@@ -31,7 +31,7 @@ const AdminLogin: React.FC = () => {
     const { mutate, isLoading,} = useMutation(['adminlogin'], adminLogin, {
         onSuccess: (data) => {
             localStorage.setItem(VITE_TOKEN, data?.data.accessToken)
-            // console.log(data?.data.accessToken);
+            console.log(data?.data);
             navigate("/admindash/dashmain")
             Swal.fire({
                 position: 'top-end',
