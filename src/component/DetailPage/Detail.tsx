@@ -103,11 +103,10 @@ const Detail: React.FC = () => {
             <div className="DetailsDateSelector">
               <DatePickerInput
                 type="range"
-                label="Slect a stay dates range"
+                id="dateRange"
                 placeholder="Pick dates range"
                 value={value}
                 onChange={handleDateChange}
-                // mx="auto"
                 maw={260}
               />
             </div>
