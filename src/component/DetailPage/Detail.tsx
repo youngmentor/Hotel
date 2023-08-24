@@ -1,7 +1,7 @@
 const { VITE_TOKEN } = import.meta.env;
 import { useParams } from "react-router-dom"
 import { useState } from "react"
-import { DatePickerInput } from '@mantine/dates';
+// import { DatePickerInput } from '@mantine/dates';
 import { useMutation, useQuery } from '@tanstack/react-query'
 import './Detail.css'
 import { bookRoom } from "../APIS/Mutation";
@@ -29,9 +29,9 @@ const Detail: React.FC = () => {
   };
   const oneRoomDetail = data?.data?.data
   const [value, setValue] = useState<[Date | null, Date | null]>([null, null]);
-  const handleDateChange = (dates: [Date | null, Date | null]) => {
-    setValue(dates);
-  };
+  // const handleDateChange = (dates: [Date | null, Date | null]) => {
+  //   setValue(dates);
+  // };
   const checkInDate = value[0];
   const checkOutDate = value[1];
   const numberOfNights = checkInDate && checkOutDate
@@ -46,6 +46,7 @@ const Detail: React.FC = () => {
     enabled: !!localStorage.getItem(VITE_TOKEN),
     refetchOnWindowFocus: false,
     onSuccess: () => {
+      setValue(value)
     },
     onError: () => {
 
@@ -100,7 +101,7 @@ const Detail: React.FC = () => {
             <p> Room Number: {oneRoomDetail?.roomNumber}</p>
             <p>Room Price: ${oneRoomDetail?.price}</p>
             <div className="DetailsDateSelector">
-              <DatePickerInput
+              {/* <DatePickerInput
                 type="range"
                 label="Slect a stay dates range"
                 placeholder="Pick dates range"
@@ -108,7 +109,7 @@ const Detail: React.FC = () => {
                 onChange={handleDateChange}
                 // mx="auto"
                 maw={260}
-              />
+              /> */}
             </div>
             <label>
               <p style={{ color: 'black' }}>Adult</p>
