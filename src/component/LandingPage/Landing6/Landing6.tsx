@@ -20,13 +20,13 @@ const Landing6: React.FC = () => {
                     <div className='Landing4Card'>
                     {
                         luxuryRoom?.map((i: any) => (
-                            <div key={i.id} className='Landing4CardWrap'>
-                                <img src={i.image} alt='Landing4Img' className='Landing4HotelImg' />
+                            <div key={i?.id} className='Landing4CardWrap'>
+                                <img src={i?.image} alt='Landing4Img' className='Landing4HotelImg' />
                                 <div className='Landing4Details'>
-                                    <p>Price: {i.price}</p>
-                                    <p>Desc: {i.roomDescription}</p>
+                                    <p>Price: {i?.price}</p>
+                                    <p>Desc: {i?.roomDescription}</p>
                                 </div>
-                                <button onClick={(()=>navigate(`detail/${i.id}`))}>Book Now</button>
+                                <button onClick={(()=>navigate(`detail/${i.id}`))} className='BookNow_Button'>Book Now</button>
                             </div>
                         ))
                     }

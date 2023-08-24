@@ -1,0 +1,27 @@
+.AdminAllRoomWrap{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    gap: 20px;
+    margin-top: 40px;
+}
+.AdminAllRooMain{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+.AdminAllRooms_Card{
+    width: 300px;
+    height: auto;
+    border: 1px solid lightgrey;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}

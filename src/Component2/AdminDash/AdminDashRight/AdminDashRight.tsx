@@ -18,6 +18,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { logOutAdmin, } from '../../../component/APIS/Mutation';
 import Swal from 'sweetalert2';
 import Update from './Delete/Update_Room';
+import AdminAllRoom from './AdminAllRoom/AdminAllRoom';
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
@@ -99,6 +100,10 @@ const AdminDashRight: React.FC = () => {
                             <MdAddHome />
                             <p onClick={() => handleNavigate("/admindash/addfacility")}>Add Facility</p>
                         </div>
+                        <div className='AdminDashBoardLeftNav_Icon_Div'>
+                        <MdAddHome />
+                        <p onClick={() => handleNavigate("/admindash/adminallroom")}>All Room</p>
+                    </div>
                     </div>
                     <div className='AdminDashBoardLeftNav_Icon_Div'>
                         <BiLogOut />
@@ -133,6 +138,7 @@ const AdminDashRight: React.FC = () => {
                     <Route path='/allrooms/:adminId/:hotelId' element={<AllRooms />} />
                     <Route path='/addfacility' element={<AddFacility />} />
                     <Route path='/updateroom/:roomId' element={<Update value={value}/>}/>
+                    <Route path='/alladminroom/:adminId' element={<AdminAllRoom  value={value}/>}/>
                 </Routes>
             </div>
             {/* </div> */}

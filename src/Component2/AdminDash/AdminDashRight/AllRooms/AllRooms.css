@@ -29,6 +29,7 @@
     overflow-y: scroll;
     /* display: none; */
     gap: 20px;
+    margin-top: 30px;
 }
 .AllRoomWrap::-webkit-scrollbar {
     width: 6px;

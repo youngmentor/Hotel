@@ -26,7 +26,7 @@ const DashBoard = ({ value }: { value: any }) => {
     })
     // console.log(vacantRoomData?.data)
     // console.log(value?.Hotels)
-    // console.log(value?.Hotels?.[0].id)
+    console.log( data?.data?.data)
     const hotelNumber = value?.Hotels?.length
     const oneHotelId = value?.Hotels?.[0]?.id
     const oneHotelRoom = data?.data?.data?.length
@@ -39,7 +39,7 @@ const DashBoard = ({ value }: { value: any }) => {
                         <b>{hotelNumber}</b>
                         <p>Hotel</p>
                     </div>
-                    <div className='AllHotel-Div' onClick={(() => navigate(`/admindash/allrooms/${value?.id}/${oneHotelId}`))}>
+                    <div className='AllHotel-Div' onClick={(() => navigate(`/admindash/alladminroom/${value?.id}`))}>
                         <b>{oneHotelRoom}</b>
                         <p>Rooms</p>
                     </div>

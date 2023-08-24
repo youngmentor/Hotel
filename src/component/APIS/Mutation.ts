@@ -8,10 +8,10 @@ export const verifyAdmin = async (data: string | undefined) => {
   // console.log(data)
   return await axios.patch(`${VITE_ENDPOINT}/manager/verify/${data}`);
 };
-export const verifyUser = async (data: any) => {
-  const { id } = data
-  console.log(id)
-  return await axios.patch(`${VITE_ENDPOINT}/user/verify/${id}`);
+export const verifyUser = async (data: string | undefined) => {
+  // const { id } = data
+  // console.log(id)
+  return await axios.patch(`${VITE_ENDPOINT}/user/verify/${data}`);
 };
 export const adminForgotPassword = async (email: string) => {
   return await axios.post(`${VITE_ENDPOINT}/manager/forgotten`, { email })
