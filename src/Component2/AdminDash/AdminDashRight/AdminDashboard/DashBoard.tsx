@@ -28,7 +28,6 @@ const DashBoard = ({ value }: { value: any }) => {
     // console.log(value?.Hotels)
     console.log( data?.data?.data)
     const hotelNumber = value?.Hotels?.length
-    const oneHotelId = value?.Hotels?.[0]?.id
     const oneHotelRoom = data?.data?.data?.length
     const oneAdminVacantRoom = vacantRoomData?.data?.data?.length
     return (
