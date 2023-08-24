@@ -11,6 +11,8 @@ import { userSignUp } from '../../APIS/Mutation';
 const SignUpUser: React.FC = () => {
   const navigate = useNavigate()
   const {login_alert} =useContext(ThemeContext)
+  const [passwordMatch, setPasswordMatch] = useState<boolean>(true);
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [formData, setFormData] = useState<UserSignUpForm>({
     fullname: '',
     email: '',
@@ -23,6 +25,8 @@ const SignUpUser: React.FC = () => {
     setShowPassword(!showPassword);
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorMessage('');
+    setPasswordMatch(true);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -41,11 +45,18 @@ const {isLoading,  mutate} = useMutation(['adminSignup'],userSignUp ,{
       showConfirmButton: false,
       timer: 2500
     })
+  },
+  onError:(data)=>{
+    console.log(data)
   }
 });
 const handleUserSignUp = async (event: React.FormEvent) => {
   event.preventDefault();
-  console.log('clicked')
+  if (formData.password !== formData.confirmPassword) {
+    setPasswordMatch(false);
+    setErrorMessage('Passwords do not match');
+    return;
+  }
    mutate(formData)
   console.log(formData)
 };
@@ -117,6 +128,7 @@ const handleUserSignUp = async (event: React.FormEvent) => {
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </div>
           </div>
+          {!passwordMatch && <p className="ErrorMessage">{errorMessage}</p>}
           </div>
           <div className='SignUpInputDiv'>
             <label htmlFor="password">Phone Number</label>
