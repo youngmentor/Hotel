@@ -32,7 +32,7 @@ const {isLoading,  mutate} = useMutation(['adminSignup'],userSignUp ,{
   onSuccess: (data)=>{
     login_alert()
     setTimeout(()=>{
-      navigate('/alllogin/adminlogin')
+      navigate('/alllogin/login')
     },500)
     Swal.fire({
       position: 'top-end',
