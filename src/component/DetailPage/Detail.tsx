@@ -107,7 +107,7 @@ const Detail: React.FC = () => {
                 placeholder="Pick dates range"
                 value={value}
                 onChange={handleDateChange}
-                maw={260}
+                // maw={260}
               />
             </div>
             <label>
