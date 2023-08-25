@@ -50,7 +50,7 @@ export interface RegisterRoom{
     image:  any;
 }
 export interface Visitor{
-    adult: any,
-    children: any,
-    infant: any
+    adult: number,
+    children: number,
+    infant: number
 }

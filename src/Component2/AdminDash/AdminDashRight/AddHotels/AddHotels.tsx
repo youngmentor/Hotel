@@ -47,8 +47,14 @@ const AddHotels = ({ value }: { value: any }) => {
               })
               navigate('/admindash/allhotels')
         },
-        onError: (error) => {
-            console.error(error);
+        onError: (error: any) => {
+            if (error?.response && error?.response?.data && error?.response?.data?.message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.response.data.message,
+                });
+            }
         },
     });
     const handlSubmit = async (event: React.FormEvent) => {

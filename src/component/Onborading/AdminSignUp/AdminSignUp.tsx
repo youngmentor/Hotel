@@ -51,8 +51,14 @@ const AdminSignUp: React.FC = () => {
         timer: 2500
       })
     },
-    onError:(data)=>{
-      console.log(data)
+    onError:(error: any)=>{
+      if (error?.response && error?.response?.data && error?.response?.data?.message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.response.data.message,
+        });
+    }
     }
   });
   const handleSignUp = async (event: React.FormEvent) => {

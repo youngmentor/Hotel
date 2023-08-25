@@ -43,8 +43,14 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                 timer: 2500
               })
         },
-        onError: (error) => {
-            console.error(error);
+        onError: (error: any) => {
+            if (error?.response && error?.response?.data && error?.response?.data?.message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.response.data.message,
+                });
+            }
         },
     });
 

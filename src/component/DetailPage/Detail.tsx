@@ -1,5 +1,5 @@
 const { VITE_TOKEN } = import.meta.env;
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useState } from "react"
 import { useMutation, useQuery } from '@tanstack/react-query'
 import './Detail.css'
@@ -8,18 +8,18 @@ import { getOneRoom, getUser } from '../APIS/query'
 import { Visitor } from "../APIS/TypeChecks";
 import ButtonLoading from "../../ButtonLoader/ButtonLoader";
 import Swal from "sweetalert2";
+
 const Detail: React.FC = () => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const { roomId } = useParams()
   const { data } = useQuery(['getoneroom', roomId], getOneRoom, {
   })
 
   const [visitorType, setVisitorType] = useState<Visitor>({
-    adult: '0',
-    children: '0',
-    infant: '0'
+    adult: 0,
+    children: 0,
+    infant: 0,
   })
-  //  console.log(data?.data?.data)
   const handleVisitorType = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVisitorType({
       ...visitorType,
@@ -29,11 +29,10 @@ const Detail: React.FC = () => {
   const [checkInDate, setCheckInDate] = useState<Date | null>(null);
   const [checkOutDate, setCheckOutDate] = useState<Date | null>(null);
   const oneRoomDetail = data?.data?.data
-  const [value, setValue] = useState<[Date | null, Date | null]>([null, null]);
+
   const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheckInDate(new Date(e.target.value));
   };
-
   const handleCheckOutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheckOutDate(new Date(e.target.value));
   };
@@ -50,7 +49,6 @@ const Detail: React.FC = () => {
     enabled: !!localStorage.getItem(VITE_TOKEN),
     refetchOnWindowFocus: false,
     onSuccess: () => {
-      setValue(value)
     },
     onError: () => {
 
@@ -69,10 +67,17 @@ const Detail: React.FC = () => {
         timer: 4000
       })
     },
-    onError: () => {
+    onError: (error: any) => {
+      console.error(error); 
+      if (error?.response && error?.response?.data && error?.response?.data?.message) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.response.data.message,
+        });
+      }
     },
   });
-
   const handleBookRoom = () => {
     console.log('clicked')
     if (checkInDate && checkOutDate) {
@@ -88,8 +93,38 @@ const Detail: React.FC = () => {
       console.log(bookingData)
     }
   };
+  const debounce = (fn: any, delay: any) => {
+    let timer: any;
+    return () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        fn()
+      }, delay);
+    }
+  }
+  const createBooking = debounce(handleBookRoom, 2000)
+  function payKorapay() {
+    let key = `key${Math.random()}`
+    window.Korapay.initialize({
+      key: "pk_test_SKQe8hh1yRqbAtaNLwzUdDeR159KL9ovvuvFwFYW",
+      reference: key,
+      amount: updatedTotalPrice,
+      currency: "NGN",
+      customer: {
+        name: `${userData?.data?.data?.fullname}`,
+        email: `${userData?.data?.data?.email}`,
+      },
+      onClose: function () {
 
-  // console.log(userValue)
+      },
+      onSuccess: function () {
+        createBooking();
+        navigate("/")
+      },
+      onFailed: function () {
+      },
+    });
+  }
   return (
     <div className="DetailsMainPages">
       <div className="DetailsMainWrap">
@@ -124,6 +159,8 @@ const Detail: React.FC = () => {
                 type="number"
                 placeholder="0"
                 onChange={handleVisitorType}
+                name="adult"
+                value={visitorType.adult}
               />
             </label>
             <label>
@@ -132,24 +169,28 @@ const Detail: React.FC = () => {
                 type="number"
                 placeholder="0"
                 onChange={handleVisitorType}
+                name="children"
+                value={visitorType.children}
               />
             </label>
             <label>
-              <p style={{ color: 'black' }}>children</p>
+              <p style={{ color: 'black' }}>infant</p>
               <input
                 type="number"
                 placeholder="0"
                 onChange={handleVisitorType}
+                name="infant"
+                value={visitorType.infant}
               />
             </label>
             <div className="DetailsPaymentInfo1">
               <p>Total Price: ${updatedTotalPrice}</p>
-              <button className="DetailMinusBttn" onClick={handleBookRoom}>pay</button>
+              <button className="DetailMinusBttn" onClick={payKorapay}>pay</button>
             </div>
           </div>
           <div className="DetailsPaymentInfo2">
             <p>Total Price: ${updatedTotalPrice}</p>
-            <button className="DetailMinusBttn" onClick={handleBookRoom}>{isLoading ? <ButtonLoading /> : 'pay'}</button>
+            <button className="DetailMinusBttn" onClick={payKorapay}>{isLoading ? <ButtonLoading /> : 'pay'}</button>
           </div>
         </div>
       </div>

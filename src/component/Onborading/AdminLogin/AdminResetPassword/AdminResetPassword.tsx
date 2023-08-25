@@ -13,7 +13,7 @@ const AdminResetPassword: React.FC = () => {
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
 
-    const {data, mutate, error, isLoading } = useMutation( ['resetadminpassword'], resetAdminPassword, {
+    const {data, mutate, isLoading } = useMutation( ['resetadminpassword'], resetAdminPassword, {
         onSuccess: (data) => {
             // console.log(data);
             Swal.fire({
@@ -28,8 +28,14 @@ const AdminResetPassword: React.FC = () => {
             }, 4000)
             
         },
-        onError: () => {
-            console.log(error);
+        onError: (error: any) => {
+            if (error?.response && error?.response?.data && error?.response?.data?.message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.response.data.message,
+                });
+            }
         }
     });
 

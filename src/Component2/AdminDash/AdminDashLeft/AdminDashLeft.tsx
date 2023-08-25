@@ -77,7 +77,7 @@ const AdminDashLeft: React.FC = () => {
                     </div>
                     <div className='AdminDashBoardLeftNav_Icon_Div'>
                         <MdAddHome />
-                        <p onClick={() => navigate("/admindash/adminallroom")}>All Room</p>
+                        <p onClick={(() => navigate(`/admindash/alladminroom/${value?.id}`))}>All Room</p>
                     </div>
                 </div>
                 <div className='AdminDashBoardLeftNav_Icon_Div'>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Params, useNavigate, useParams, } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { verifyUser } from '../../APIS/Mutation';
-
+import Swal from 'sweetalert2';
 const UserVerify: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<Params>();
@@ -17,6 +17,15 @@ const UserVerify: React.FC = () => {
       }, 3000);
       console.log(data)
     },
+    onError: (error: any)=>{
+      if (error?.response && error?.response?.data && error?.response?.data?.message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.response.data.message,
+        });
+    }
+    }
   });
   console.log(data)
   useEffect(() => {

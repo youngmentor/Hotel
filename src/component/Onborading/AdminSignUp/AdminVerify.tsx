@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { verifyAdmin } from '../../APIS/Mutation';
+import Swal from 'sweetalert2';
 interface Params {
   id: string;
   [key: string]: string | undefined;
@@ -21,6 +22,15 @@ const AdminVerify: React.FC = () => {
         navigate('/alllogin/adminlogin');
       }, 3000);
     },
+    onError: (error: any)=>{
+      if (error?.response && error?.response?.data && error?.response?.data?.message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.response.data.message,
+        });
+    }
+    }
   });
 
   useEffect(() => {

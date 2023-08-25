@@ -24,7 +24,14 @@ const AdminForgetPassword: React.FC = () => {
                 timer: 4000
               })
         },
-        onError: () => {
+        onError: (error: any) => {
+            if (error?.response && error?.response?.data && error?.response?.data?.message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.response.data.message,
+                });
+            }
         }
     });
     const handleSubmit = (event: React.FormEvent) => {

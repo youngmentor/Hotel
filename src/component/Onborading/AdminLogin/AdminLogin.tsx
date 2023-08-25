@@ -28,7 +28,7 @@ const AdminLogin: React.FC = () => {
         });
     };
 
-    const { mutate, isLoading,} = useMutation(['adminlogin'], adminLogin, {
+    const { mutate, isLoading, } = useMutation(['adminlogin'], adminLogin, {
         onSuccess: (data) => {
             localStorage.setItem(VITE_TOKEN, data?.data.accessToken)
             console.log(data?.data);
@@ -39,11 +39,18 @@ const AdminLogin: React.FC = () => {
                 title: data?.data?.message,
                 showConfirmButton: false,
                 timer: 2500
-              })
+            })
             //   console.log(data?.data?.message)
         },
-        onError: (error) => {
+        onError: (error: any) => {
             console.error(error);
+            if (error?.response && error?.response?.data && error?.response?.data?.message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.response.data.message,
+                });
+            }
         },
     });
 
@@ -96,7 +103,7 @@ const AdminLogin: React.FC = () => {
                         </div>
                     </div>
                     <p onClick={(() => navigate("/adminforgetpassword"))} className='ForgetPassword'>Forgot Password?</p>
-                    <button type="submit" className='LoginBttn'>{isLoading ? <ButtonLoading/> : "Login"}</button>
+                    <button type="submit" className='LoginBttn'>{isLoading ? <ButtonLoading /> : "Login"}</button>
                 </form>
                 <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>
             </div>

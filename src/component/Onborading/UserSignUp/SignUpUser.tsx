@@ -46,8 +46,14 @@ const {isLoading,  mutate} = useMutation(['adminSignup'],userSignUp ,{
       timer: 2500
     })
   },
-  onError:(data)=>{
-    console.log(data)
+  onError:(error: any)=>{
+    if (error?.response && error?.response?.data && error?.response?.data?.message) {
+      Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.response.data.message,
+      });
+  }
   }
 });
 const handleUserSignUp = async (event: React.FormEvent) => {
