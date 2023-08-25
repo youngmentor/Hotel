@@ -1,45 +1,45 @@
 import './Landing3.css'
-import RoomData from '../HomeData'
 import { useNavigate } from 'react-router-dom'
+import { getAllRoom } from '../../APIS/query'
+import { useQuery } from '@tanstack/react-query'
 
-type MyObject = {
-    id: number,
-    Avatar: string,
-    name: string,
-    desc: string,
-    price: number,
-    state: string,
-    city: string,
-}
 const Landing3: React.FC = () => {
     const navigate = useNavigate()
 
-    const myArray: MyObject[] = [...RoomData];
+    const { data, isLoading } = useQuery(['getallroom'], getAllRoom, {
+        onSuccess: () => {
 
-    const firstTenObjects: MyObject[] = myArray.slice(0, 9);
+        }
+    })
+    console.log(data?.data?.data)
+    const AllRoom = data?.data?.data
+    // const AllRoom: MyObject[] = myArray.slice(0, 9);
     return (
         <div className="Landing3Main">
             <div className='Landing3Heading'>
                 <h3>Pick a rooms from around the wolrd</h3>
             </div>
-            <div className="Landing3MainWrap">
-                {
-                    firstTenObjects.map((i) => (
-                        <div className='Landing3RoomCard' key={i.id} onClick={() => navigate(`/detail/${i.id}`)}>
-                            <img src={i.Avatar} className='LandingRoomImage' />
-                            <div className='LandingRoomDetails'>
-                                <p>{i.desc}</p>
-                                <p>${i.price}</p>
-                                <p>{i.state}</p>
-                                <p>{i.city}</p>
-                                <div className='Landing3RoomButton'>
-                                    <button onClick={() => navigate(`/detail/${i.id}`)} >Book Now</button>
+            {
+                isLoading ? (
+                    "Loading rooms ..."
+                ) : (
+                    <div className="Landing3MainWrap">
+                        {
+                            AllRoom?.map((i: any) => (
+                                <div key={i.id} className='Landing4CardWrap'>
+                                    <img src={i.image} alt='Landing4Img' className='Landing4HotelImg' />
+                                    <div className='Landing4Details'>
+                                        <p>Price: {i.price}</p>
+                                        <p>Desc: {i.roomDescription}</p>
+                                        <p>Location: {i.address}</p>
+                                    </div>
+                                    <button onClick={(() => navigate(`detail/${i.id}`))} className='BookNow_Button'>Book Now</button>
                                 </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
+                            ))
+                        }
+                    </div>
+                )
+            }
         </div>
     )
 }

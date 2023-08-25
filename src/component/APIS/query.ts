@@ -70,4 +70,7 @@ export const getCalabarHotel = async (data: any) => {
 export const getUserHistory = async (data: any)=>{
     // console.log(data?.queryKey[1])
     return await axios.get(`${VITE_ENDPOINT}/user/booking/${data?.queryKey[1]}`)
+};
+export const getAllRoom = async (data:any)=>{
+    return await axios.get(`${VITE_ENDPOINT}/room/rooms/`, data)
 }
