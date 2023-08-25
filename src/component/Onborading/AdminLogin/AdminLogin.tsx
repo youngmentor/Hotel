@@ -16,7 +16,7 @@ const AdminLogin: React.FC = () => {
         password: ''
     })
     const [showPassword, setShowPassword] = useState<boolean>(false);
-    const { verifyAlert, } = useContext(ThemeContext)
+    const { verifyAlert } = useContext(ThemeContext)
     // const [errorMessage, setErrorMessage] = useState<string>('')
     const showPasswords = () => {
         setShowPassword(!showPassword);

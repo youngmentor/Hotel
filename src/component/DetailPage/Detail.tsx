@@ -1,7 +1,6 @@
 const { VITE_TOKEN } = import.meta.env;
 import { useParams } from "react-router-dom"
 import { useState } from "react"
-import { DatePickerInput } from '@mantine/dates';
 import { useMutation, useQuery } from '@tanstack/react-query'
 import './Detail.css'
 import { bookRoom } from "../APIS/Mutation";
@@ -27,19 +26,24 @@ const Detail: React.FC = () => {
       [e.target.name]: e.target.value
     });
   };
+  const [checkInDate, setCheckInDate] = useState<Date | null>(null);
+  const [checkOutDate, setCheckOutDate] = useState<Date | null>(null);
   const oneRoomDetail = data?.data?.data
   const [value, setValue] = useState<[Date | null, Date | null]>([null, null]);
-  const handleDateChange = (dates: [Date | null, Date | null]) => {
-    setValue(dates);
+  const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckInDate(new Date(e.target.value));
   };
-  const checkInDate = value[0];
-  const checkOutDate = value[1];
+
+  const handleCheckOutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckOutDate(new Date(e.target.value));
+  };
   const numberOfNights = checkInDate && checkOutDate
     ? Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24))
     : 0;
 
   const nightlyPrice = oneRoomDetail?.price || 0;
   const updatedTotalPrice = numberOfNights * nightlyPrice;
+
   const {
     data: userData,
   } = useQuery(["getuser"], getUser, {
@@ -80,8 +84,6 @@ const Detail: React.FC = () => {
         children: visitorType.children,
         infant: visitorType.infant
       };
-      console.log(checkInDate)
-      console.log(checkOutDate)
       mutate({ bookingData, userId: userId, roomId: roomId });
       console.log(bookingData)
     }
@@ -101,14 +103,20 @@ const Detail: React.FC = () => {
             <p> Room Number: {oneRoomDetail?.roomNumber}</p>
             <p>Room Price: ${oneRoomDetail?.price}</p>
             <div className="DetailsDateSelector">
-              <DatePickerInput
-                type="range"
-                id="dateRange"
-                placeholder="Pick dates range"
-                value={value}
-                onChange={handleDateChange}
-                // maw={260} 
-              />
+              <label>
+                <p style={{ color: 'black' }}>Check-in Date</p>
+                <input
+                  type="date"
+                  onChange={handleCheckInChange}
+                />
+              </label>
+              <label>
+                <p style={{ color: 'black' }}>Check-out Date</p>
+                <input
+                  type="date"
+                  onChange={handleCheckOutChange}
+                />
+              </label>
             </div>
             <label>
               <p style={{ color: 'black' }}>Adult</p>
