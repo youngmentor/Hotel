@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 const Login: React.FC = () => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const {verifyAlert} = useContext(ThemeContext)
+  const {verifyAlert, selectedRoomId, setSelectedRoomId} = useContext(ThemeContext)
   const [login, setLogin] = useState<userLoginRequest>({
     email: '',
     password: ''
@@ -31,7 +31,12 @@ const Login: React.FC = () => {
     onSuccess: (data) => {
         console.log(data);
         localStorage.setItem(VITE_TOKEN, data?.data.accessToken)
-        navigate("/userdash/userprofile")
+        if (selectedRoomId) {
+          navigate(`/detail/${selectedRoomId}`);
+          setSelectedRoomId(''); // Clear the stored room ID
+        } else {
+          navigate('/alllogin/login');
+        }
         Swal.fire({
           position: 'top-end',
           icon: 'success',

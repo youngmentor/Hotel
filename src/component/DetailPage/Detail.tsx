@@ -7,11 +7,14 @@ import { bookRoom } from "../APIS/Mutation";
 import { getOneRoom, getUser } from '../APIS/query'
 import { Visitor } from "../APIS/TypeChecks";
 import ButtonLoading from "../../ButtonLoader/ButtonLoader";
+// import { ThemeContext } from "../ContextApi/ContextApi";
+import { useTheme } from "../ContextApi/ContextApi";
 import Swal from "sweetalert2";
 
 const Detail: React.FC = () => {
   const navigate = useNavigate()
   const { roomId } = useParams()
+  const {setSelectedRoomId}=useTheme()
   const { data } = useQuery(['getoneroom', roomId], getOneRoom, {
   })
 
@@ -55,7 +58,7 @@ const Detail: React.FC = () => {
     },
   });
   const userId: any = userData?.data?.data.id
-
+console.log(userId)
   const { mutate, isLoading } = useMutation(['bookroom'], bookRoom, {
     onSuccess: (data) => {
       console.log(data)
@@ -103,7 +106,8 @@ const Detail: React.FC = () => {
     }
   }
   const createBooking = debounce(handleBookRoom, 2000)
-  function payKorapay() {
+  function payKorapay(roomId: any) {
+    setSelectedRoomId(roomId)
     if (!userData?.data?.data) {
       Swal.fire({
         icon: 'info',
@@ -131,7 +135,7 @@ const Detail: React.FC = () => {
       onSuccess: function () {
         createBooking();
         navigate("/")
-        
+
         Swal.fire({
           icon: 'success',
           title: 'Payment Successful',
@@ -161,6 +165,7 @@ const Detail: React.FC = () => {
                 <input
                   type="date"
                   onChange={handleCheckInChange}
+                  required
                 />
               </label>
               <label>
@@ -168,6 +173,7 @@ const Detail: React.FC = () => {
                 <input
                   type="date"
                   onChange={handleCheckOutChange}
+                  required
                 />
               </label>
             </div>
