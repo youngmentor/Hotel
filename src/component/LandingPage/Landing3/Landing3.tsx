@@ -11,7 +11,7 @@ const Landing3: React.FC = () => {
 
         }
     })
-    console.log(data?.data?.data)
+    // console.log(data?.data?.data)
     const AllRoom = data?.data?.data
     // const AllRoom: MyObject[] = myArray.slice(0, 9);
     return (
@@ -24,7 +24,9 @@ const Landing3: React.FC = () => {
                     "Loading rooms ..."
                 ) : (
                     <div className="Landing3MainWrap">
-                        {
+                        {AllRoom?.length === 0 ? (
+                            "No room is available for this category"
+                        ) : (
                             AllRoom?.map((i: any) => (
                                 <div key={i.id} className='Landing4CardWrap'>
                                     <img src={i.image} alt='Landing4Img' className='Landing4HotelImg' />
@@ -36,6 +38,7 @@ const Landing3: React.FC = () => {
                                     <button onClick={(() => navigate(`detail/${i.id}`))} className='BookNow_Button'>Book Now</button>
                                 </div>
                             ))
+                        )
                         }
                     </div>
                 )

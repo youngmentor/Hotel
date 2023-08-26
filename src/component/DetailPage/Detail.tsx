@@ -104,6 +104,17 @@ const Detail: React.FC = () => {
   }
   const createBooking = debounce(handleBookRoom, 2000)
   function payKorapay() {
+    if (!userData?.data?.data) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Please log in to book a room',
+        showConfirmButton: true,
+      });
+      setTimeout(()=>{
+        navigate('/alllogin/login')
+      }, 4000)
+      return;
+    }
     let key = `key${Math.random()}`
     window.Korapay.initialize({
       key: "pk_test_SKQe8hh1yRqbAtaNLwzUdDeR159KL9ovvuvFwFYW",
@@ -120,6 +131,13 @@ const Detail: React.FC = () => {
       onSuccess: function () {
         createBooking();
         navigate("/")
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Payment Successful',
+          text: 'Please check your email for payment confirmation.',
+          showConfirmButton: true,
+        });
       },
       onFailed: function () {
       },
