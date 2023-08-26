@@ -51,14 +51,14 @@ const AdminSignUp: React.FC = () => {
         timer: 2500
       })
     },
-    onError:(error: any)=>{
+    onError: (error: any) => {
       if (error?.response && error?.response?.data && error?.response?.data?.message) {
         Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: error.response.data.message,
+          icon: 'error',
+          title: 'Oops...',
+          text: error.response.data.message,
         });
-    }
+      }
     }
   });
   const handleSignUp = async (event: React.FormEvent) => {
@@ -77,7 +77,6 @@ const AdminSignUp: React.FC = () => {
     <div className='SignUpMain'>
       <div className='SignUpLeft'>
         <img src='/NewRoomLogo.png' alt='NewRoomLogo' className='LoginNewRoomLogo' onClick={(() => navigate('/'))} />
-
         <h2>Create an Account to continue As a Partner</h2>
         <form onSubmit={handleSignUp} className='SignUpForm'>
           <div className='SignUpInputDiv'>
