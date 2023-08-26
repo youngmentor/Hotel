@@ -35,7 +35,7 @@ const Login: React.FC = () => {
           navigate(`/detail/${selectedRoomId}`);
           setSelectedRoomId(''); // Clear the stored room ID
         } else {
-          navigate('/alllogin/login');
+          navigate('/');
         }
         Swal.fire({
           position: 'top-end',
