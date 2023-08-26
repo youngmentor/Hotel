@@ -32,7 +32,7 @@ const Login: React.FC = () => {
         console.log(data);
         localStorage.setItem(VITE_TOKEN, data?.data.accessToken)
         if (selectedRoomId) {
-          navigate(`/detail/${selectedRoomId}`);
+          navigate(`/`);
           setSelectedRoomId(''); // Clear the stored room ID
         } else {
           navigate('/');

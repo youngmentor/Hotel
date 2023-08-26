@@ -68,6 +68,7 @@
    
 
 }
+
 .TimesIcon{
     position: relative;
     left: 80px;
@@ -120,6 +121,11 @@
         position: relative;
         /* left: 12px;   */
         top: 160px;
+        display: flex;
+    }
+    .HeaderUserName{
+        width: 100%;
+        display: flex;
     }
     .Header_Bttn1{
        width: 230px; 

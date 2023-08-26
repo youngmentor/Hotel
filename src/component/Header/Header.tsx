@@ -6,20 +6,44 @@ import Logo from './RoomLogo-removebg-preview.png'
 import { FaTimes, FaRegUserCircle } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getUser } from '../APIS/query';
+import { useQuery } from '@tanstack/react-query';
 
 const Header: React.FC = () => {
     const navigate = useNavigate()
     const [header, setHeader] = useState<boolean>(false)
     // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+    const {
+        data: userData,
+    } = useQuery(["getuser"], getUser, {
+        enabled: !!localStorage.getItem(VITE_TOKEN),
+        refetchOnWindowFocus: false,
+        onSuccess: () => {
+        },
+        onError: () => {
 
+        },
+    });
+    !userData?.data?.data
     const HeaderDrop = (
         header && (
             <div className='HeaderDrop'>
                 {/* <FaTimes/> */}
-                <p onClick={() => navigate("alllogin/adminlogin")} style={{ cursor: "pointer" }} >Login</p>
-                <p onClick={() => navigate("/allsignup/adminsignup")} style={{ cursor: "pointer" }}>sign up</p>
-                <button className='Header_Bttn1' onClick={() => navigate("alllogin/adminlogin")} >Register Your Hotel</button>
-                <button className='Header_Bttn2' onClick={() => navigate("/alllogin/login")}>Book a room</button>
+                {/* <p onClick={() => navigate("alllogin/adminlogin")} style={{ cursor: "pointer" }} >Login As Admin</p>
+                <p onClick={() => navigate("/allsignup/adminsignup")} style={{ cursor: "pointer" }}>sign up</p> */}
+                {
+                    !userData?.data?.data ?
+                        <div>
+                            <button className='Header_Bttn1' onClick={() => navigate("alllogin/adminlogin")} >Register Your Hotel</button>
+                            <button className='Header_Bttn2' onClick={() => navigate("/alllogin/login")}>Book a room</button>
+                        </div> :
+                        <div className='HeaderUserName'>
+                            <FaRegUserCircle />
+                            <p>{userData?.data?.data?.fullname}</p>
+                        </div>
+
+                }
+
             </div>
         )
     )
@@ -35,11 +59,14 @@ const Header: React.FC = () => {
                 <div className='HeaderNav'>
 
                 </div>
+                {!userData?.data?.data ?
+                    <div className='Header_Bttn'>
 
-                {localStorage.getItem(VITE_TOKEN) ? <div className='Header_Bttn'>
-                    <button className='Header_Bttn1' onClick={() => navigate("alllogin/adminlogin")} >Register Your Hotel</button>
-                    <button className='Header_Bttn2' onClick={() => navigate("/alllogin/login")}>Book a room</button>
-                </div>: <p>Dashboard</p>}
+                        <button className='Header_Bttn1' onClick={() => navigate("alllogin/adminlogin")} >Register Your Hotel</button>
+                        <button className='Header_Bttn2' onClick={() => navigate("/alllogin/login")}>Book a room</button>
+                    </div> : <p><FaRegUserCircle />{userData?.data?.data?.fullname}</p>
+                }
+
                 <div className='HeaderBurgeMenu'>
                     {
                         header ? <FaTimes onClick={() => { setHeader(!header) }} className='TimesIcon' /> :
