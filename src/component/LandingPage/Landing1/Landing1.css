@@ -85,7 +85,7 @@
 }
 
 .SearchBttn {
-    width: 150px;
+    width: 20%;
     height: 45px;
     background-color: rgb(45, 185, 255);
     border: none;
@@ -116,7 +116,7 @@ color: inherit;
 }
 @media screen and (max-width: 426px) {
     .SearcHInputLanding1 {
-        width: 250px;
+        width: 100%;
         height: 45px;
         outline: none;
         padding: 20px;
@@ -128,6 +128,7 @@ color: inherit;
         width: 100%;
         height: 100px;
         display: flex;
+        /* flex-direction: column; */
         align-items: center;
         justify-content: center;
         gap: 20px;
@@ -153,11 +154,20 @@ color: inherit;
     }
 
     .SearchInputDiv {
-        width: 250px;
-        height: 45px;
+        width: 100px;
+        height: 100px;
         background-color: rgb(45, 185, 255);
         display: flex;
         border-radius: 8px;
+    }
+    .SearchBttn {
+        width: 30%;
+        height: 45px;
+        background-color: rgb(45, 185, 255);
+        border: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
     }
 
 }

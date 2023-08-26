@@ -19,6 +19,10 @@
 }
 .Landing4Heading{
     margin: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 .Landing4CardWrap{
     width: 350px;

@@ -16,7 +16,7 @@ const Landing5: React.FC = () => {
     return (
         <div className='CheapRoom_Main'>
             <div className='CheapRoom_Main_Wrap'>
-                <div className='Landing4Heading'>
+                <div className='CheapRoomHeading'>
                     <h3>Perks from our cheap Room</h3>
                 </div>
                 {

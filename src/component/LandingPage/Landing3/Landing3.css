@@ -32,6 +32,10 @@
 
 .Landing3Heading {
     margin: 20px;
+    text-align: center;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .Landing3RoomButton {
