@@ -3,7 +3,7 @@ import './Header.css'
 import Logo from './RoomLogo-removebg-preview.png'
 // import { GiHamburgerMenu } from "react-icons/gi";
 // import { MdOutlineMenu } from "react-icons/md";
-import { FaTimes, FaRegUserCircle } from "react-icons/fa";
+import { FaTimes, FaRegUserCircle, FaAlignJustify } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../APIS/query';
@@ -27,23 +27,27 @@ const Header: React.FC = () => {
     !userData?.data?.data
     const HeaderDrop = (
         header && (
-            <div className='HeaderDrop'>
+            <div className='HeaderMobileDropDown'>
                 {/* <FaTimes/> */}
                 {/* <p onClick={() => navigate("alllogin/adminlogin")} style={{ cursor: "pointer" }} >Login As Admin</p>
                 <p onClick={() => navigate("/allsignup/adminsignup")} style={{ cursor: "pointer" }}>sign up</p> */}
                 {
                     !userData?.data?.data ?
-                        <div>
+                        <div className='HeaderOnboarding'>
                             <button className='Header_Bttn1' onClick={() => navigate("alllogin/adminlogin")} >Register Your Hotel</button>
                             <button className='Header_Bttn2' onClick={() => navigate("/alllogin/login")}>Book a room</button>
                         </div> :
                         <div className='HeaderUserName'>
-                            <FaRegUserCircle />
-                            <p>{userData?.data?.data?.fullname}</p>
+                            <div className='HeaderUserNameWrap'>
+                                <FaRegUserCircle />
+                                <p>{userData?.data?.data?.fullname}</p>
+                            </div>
+                            <div className='HeaderDashboardNav'>
+                                <FaAlignJustify />
+                                <p>DashBoard</p>
+                            </div>
                         </div>
-
                 }
-
             </div>
         )
     )
@@ -61,15 +65,17 @@ const Header: React.FC = () => {
                 </div>
                 {!userData?.data?.data ?
                     <div className='Header_Bttn'>
-
                         <button className='Header_Bttn1' onClick={() => navigate("alllogin/adminlogin")} >Register Your Hotel</button>
                         <button className='Header_Bttn2' onClick={() => navigate("/alllogin/login")}>Book a room</button>
-                    </div> : <p><FaRegUserCircle />{userData?.data?.data?.fullname}</p>
+                    </div> :
+                    <div className='HeaderUserNameDesktop'>
+                        <FaRegUserCircle />
+                        <p>{userData?.data?.data?.fullname}</p>
+                    </div>
                 }
-
                 <div className='HeaderBurgeMenu'>
                     {
-                        header ? <FaTimes onClick={() => { setHeader(!header) }} className='TimesIcon' /> :
+                        header ? <FaTimes onClick={() => { setHeader(!header) }} className='TimesIconone' /> :
                             <FaRegUserCircle onClick={() => { setHeader(!header) }} className='MenuIcon' />
                     }
                     {header && HeaderDrop}

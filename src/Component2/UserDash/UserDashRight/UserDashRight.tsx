@@ -2,7 +2,7 @@ import { Route,Routes } from "react-router-dom"
 import UserProfile from "./UserProfile/UserProfile"
 import UserHistory from "./UserHistory/UserHistory"
 import './UserDashRight.css'
-const UserDashRight: React.FC = () => {
+const UserDashRight = ({value}: {value: any}) => {
 
 
     return (
@@ -12,8 +12,8 @@ const UserDashRight: React.FC = () => {
            </div>
            <div className="UserDashRight_Content">
               <Routes>
-                <Route path="/userprofile" element={<UserProfile/>}/>
-                <Route path="/userhistory" element={<UserHistory/>}/>
+                <Route path="/userprofile" element={<UserProfile value={value} />}/>
+                <Route path="/userhistory" element={<UserHistory value={value}/>}/>
               </Routes>
            </div>
         </div>

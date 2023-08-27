@@ -1,26 +1,16 @@
-const { VITE_TOKEN } = import.meta.env;
+
 import { useQuery } from "@tanstack/react-query"
-import { getUser, getUserHistory } from "../../../../component/APIS/query"
+import { getUserHistory } from "../../../../component/APIS/query"
 
-const UserHistory: React.FC = () => {
-    const { data: userData } = useQuery(["getuser"], getUser, {
-        enabled: !!localStorage.getItem(VITE_TOKEN),
-        refetchOnWindowFocus: false,
-        onSuccess: () => {
-        },
-        onError: () => {
-
-        },
-    });
-    const userId: any = userData?.data?.data?.id
-
+const UserHistory= ({value}: {value: any}) => {
+   
+    const userId: any = value?.data?.data?.id
     const { data, isLoading } = useQuery(['getuserhistory', userId], getUserHistory, {
         onSuccess: () => {
             // console.log(data?.data?.data)
         }
     })
-    // console.log(userId)
-    // console.log(data?.data?.data)
+    
     const userBookingHistory = data?.data?.data?.[0]?.Room
     return (
         <div>

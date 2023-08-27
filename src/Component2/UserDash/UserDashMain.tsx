@@ -1,18 +1,29 @@
-
+const { VITE_TOKEN } = import.meta.env;
+import { useQuery } from '@tanstack/react-query';
 import UserDashLeft from './UserDashLeft/UserDashLeft'
 import './UserDashMain.css'
 import UserDashRight from './UserDashRight/UserDashRight'
+import { getUser } from '../../component/APIS/query';
 const UserMainDashBoard: React.FC = () => {
 
+    const { data: userData } = useQuery(["getuser"], getUser, {
+        enabled: !!localStorage.getItem(VITE_TOKEN),
+        refetchOnWindowFocus: false,
+        onSuccess: () => {
+        },
+        onError: () => {
 
+        },
+    });
+    const value: any = userData?.data?.data
     return (
         <div className="UserDashBoardMain">
             <div className='UserDashboard_Main_Wrap'>
                 <div className='UserDasboard_Main_Left'>
-                    <UserDashLeft />
+                    <UserDashLeft value={value}/>
                 </div>
                 <div className='UserDashboard_Main_Right'>
-                    <UserDashRight />
+                    <UserDashRight value={value} />
                 </div>
             </div>
         </div>

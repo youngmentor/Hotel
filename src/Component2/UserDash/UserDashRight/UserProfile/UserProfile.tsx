@@ -1,5 +1,8 @@
 import './UserProfile.css'
-const UserProfile: React.FC = () => {
+const UserProfile = ({value}: {value: any}) => {
+
+    const UserData: any = value?.data?.data
+    console.log(UserData)
     return (
         <div className="UserProfile_Main">
             <div className="UserProfile_Main_Wrap">
