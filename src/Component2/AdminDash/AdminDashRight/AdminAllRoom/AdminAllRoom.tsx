@@ -12,10 +12,8 @@ const AdminAllRoom = ({ value }: { value: any }) => {
     const oneHotelRoom = data?.data?.data
     // console.log(data?.data?.data)
     return (
-        <div className="AdminAllRooMain">
-            
-            <div className='AdminAllRoomWrap'>
-            
+        <div className="AdminAllRooMain">   
+            <div className='AdminAllRoomWrap'>          
                 {
                     oneHotelRoom?.map((i: any) =>
                     (

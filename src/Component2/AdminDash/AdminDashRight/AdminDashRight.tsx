@@ -7,10 +7,8 @@ import AddHotels from './AddHotels/AddHotels'
 import AllRooms from './AllRooms/AllRooms'
 import { RxDashboard, RxHamburgerMenu } from "react-icons/rx";
 import { FaHotel, FaTimes } from "react-icons/fa";
-import { MdAddHome } from "react-icons/md";
-import { FaRegUserCircle } from "react-icons/fa";
+import { MdAddHome, MdNotificationsNone } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
-import AddFacility from './AddFacility/AddFacility'
 import { useEffect, useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
 import { getAdmin } from '../../../component/APIS/query';
@@ -19,6 +17,7 @@ import { logOutAdmin, } from '../../../component/APIS/Mutation';
 import Swal from 'sweetalert2';
 import Update from './Delete/Update_Room';
 import AdminAllRoom from './AdminAllRoom/AdminAllRoom';
+import AdminVacantRoom from './AdminVacantRoom/AdminVacantRoom';
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
@@ -98,11 +97,11 @@ const AdminDashRight: React.FC = () => {
                         </div>
                         <div className='AdminDashBoardLeftNav_Icon_Div'>
                             <MdAddHome />
-                            <p onClick={() => handleNavigate("/admindash/addfacility")}>Add Facility</p>
+                            <p onClick={() => handleNavigate(`/admindash/adminvacantroom/${value?.id}`)}>Admin Vacant Room</p>
                         </div>
                         <div className='AdminDashBoardLeftNav_Icon_Div'>
                         <MdAddHome />
-                        <p onClick={() => handleNavigate("/admindash/adminallroom")}>All Room</p>
+                        <p onClick={() => handleNavigate(`/admindash/alladminroom/${value?.id}`)}>All Room</p>
                     </div>
                     </div>
                     <div className='AdminDashBoardLeftNav_Icon_Div'>
@@ -127,7 +126,7 @@ const AdminDashRight: React.FC = () => {
                 </div>
                 {mobile && MobileDropDown}
                 <div className='AdminDashRightHeaderIcon'>
-                    <FaRegUserCircle />
+                    <MdNotificationsNone />
                 </div>
             </div>
             <div className='AdminDashRightContent'>
@@ -136,7 +135,7 @@ const AdminDashRight: React.FC = () => {
                     <Route path='/allhotels' element={<AllHotels value={value} />} />
                     <Route path='/addhotels' element={<AddHotels value={value} />} />
                     <Route path='/allrooms/:adminId/:hotelId' element={<AllRooms />} />
-                    <Route path='/addfacility' element={<AddFacility />} />
+                    <Route path='/adminvacantroom/:adminId' element={<AdminVacantRoom  value={value} />} />
                     <Route path='/updateroom/:roomId' element={<Update value={value}/>}/>
                     <Route path='/alladminroom/:adminId' element={<AdminAllRoom  value={value}/>}/>
                 </Routes>

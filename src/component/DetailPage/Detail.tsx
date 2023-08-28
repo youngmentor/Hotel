@@ -1,4 +1,4 @@
-const { VITE_TOKEN } = import.meta.env;
+const { VITE_TOKEN , VITE_PAYMENT_KEY} = import.meta.env;
 import { Params, useNavigate, useParams } from "react-router-dom"
 import { useState } from "react"
 import { useMutation, useQuery } from '@tanstack/react-query'
@@ -120,7 +120,7 @@ console.log(userId)
     }
     let key = `key${Math.random()}`
     window.Korapay.initialize({
-      key: "pk_test_SKQe8hh1yRqbAtaNLwzUdDeR159KL9ovvuvFwFYW",
+      key: VITE_PAYMENT_KEY,
       reference: key,
       amount: updatedTotalPrice,
       currency: "NGN",

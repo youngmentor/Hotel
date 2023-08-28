@@ -20,8 +20,8 @@ const AllRooms = () => {
     //     }
     // });
     // console.log(hotelId)
-    // console.log(data?.data?.data)
-    const oneHotelRoom = data?.data?.data?.Room
+    // console.log(data?.data)
+    const oneHotelRoom = data?.data?.data?.Rooms
     return (
         <div className="AllRooms_Main">
             {!addRoom &&
@@ -39,9 +39,7 @@ const AllRooms = () => {
                                         <p>Room Price: {i?.price} </p>
                                         <p>Room Number: {i?.roomNumber}</p>
                                         <p>Room Hotel: {i?.hotelname}</p>
-                                        {
-                                            i.booked ? "booked" : "Available"
-                                        }
+                                        <p>This Room Is:  {i.booked ? "booked" : "Available"}</p>
                                     </div>
                                 </Link>
                             )

@@ -84,5 +84,6 @@
     .AllRooms_Main {
         width: 100%;
         height: auto;
+        margin-top: 100px;
     }
 }

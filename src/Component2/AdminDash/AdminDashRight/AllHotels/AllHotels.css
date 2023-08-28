@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     overflow-y: scroll;
+    margin-top: 100px;
 }
 .AllHotels_Main_Wrap{
     width: 95%;
