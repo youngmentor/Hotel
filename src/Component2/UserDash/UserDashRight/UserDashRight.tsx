@@ -14,7 +14,6 @@ import { BiLogOut } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaTimes } from "react-icons/fa";
 import { FaRegUserCircle } from "react-icons/fa";
-import ButtonLoading from "../../../ButtonLoader/ButtonLoader";
 
 const UserDashRight = ({ value }: { value: any }) => {
   const [userMobile, setUserMobile] = useState<boolean>(false)
@@ -30,7 +29,7 @@ const UserDashRight = ({ value }: { value: any }) => {
     navigate(path);
     handlecloseMobile();
   };
-  const { mutate, isLoading } = useMutation(['logoutAdmin'], logOutUser, {
+  const { mutate} = useMutation(['logoutAdmin'], logOutUser, {
     onSuccess: (data) => {
       localStorage.removeItem(VITE_TOKEN_USER);
       setTimeout(() => {
@@ -55,7 +54,7 @@ const UserDashRight = ({ value }: { value: any }) => {
 
     },
   });
-  // const UserName = value?.fullname
+  const UserName = value?.fullname
   const handleUserLogoutClick = async () => {
     console.log('Button clicked!');
     mutate(value?.id)
@@ -64,13 +63,14 @@ const UserDashRight = ({ value }: { value: any }) => {
 
     userMobile && (
       <div className="UserDashBoardLeftMobile_Main">
-        <div className="User_Home_Logo_Div" onClick={() => navigate("/")} >
-          <img src={HomeLogo} className="HomeLogo" />
+        <div className="User_Home_Logo_Div"  >
+          <img src={HomeLogo} className="HomeLogo" onClick={() => navigate("/")}/>
+          <FaTimes onClick={handleUserMobileChange} />
         </div>
         <div className="User_DashBoardLeft_Wrap">
           <div className='UserDashboardUserImgDiv'>
             <img src={User} alt='userimg' className='UserImg' />
-            <p>{ }</p>
+            <h3>{UserName}</h3>
           </div>
           <div className="UserDashBoard_Nav">
             <div className="UserDashBoardLeftNav_Icon_Div" onClick={() => handleNavigate("/userdash/userprofile")}>
@@ -81,14 +81,12 @@ const UserDashRight = ({ value }: { value: any }) => {
             <div className="UserDashBoardLeftNav_Icon_Div" onClick={() => handleNavigate("/userdash/userhistory")}>
               <AiOutlineHistory />
               <p>Current Booking</p>
-
+            </div>
+            <div className="UserDashBoardLeftNav_Icon_Div" onClick={handleUserLogoutClick}>
+              <BiLogOut />
+              <p onClick={handleUserLogoutClick}>Log Out</p>
             </div>
           </div>
-        </div>
-        <div className="UserDashBoardLeftNav_Icon_Div" onClick={handleUserLogoutClick}>
-          <BiLogOut />
-          <p onClick={handleUserLogoutClick}>Log Out</p>
-          {isLoading ? <ButtonLoading/>: null}
         </div>
       </div>
     )

@@ -56,7 +56,7 @@ const Detail: React.FC = () => {
     },
   });
   const userId: any = userData?.data?.data.id
-console.log(userId)
+// console.log(userId)
   const { mutate, isLoading } = useMutation(['bookroom'], bookRoom, {
     onSuccess: (data) => {
       console.log(data)
@@ -79,6 +79,27 @@ console.log(userId)
       }
     },
   });
+  const validateDateRange = () => {
+  if (!checkInDate || !checkOutDate) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid date range',
+      text: 'Please select both check-in and check-out dates.',
+    });
+    return false;
+  }
+
+  if (checkInDate >= checkOutDate) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid date range',
+      text: 'Check-out date must be after check-in date.',
+    });
+    return false;
+  }
+
+  return true;
+};
   const handleBookRoom = () => {
     console.log('clicked')
     if (checkInDate && checkOutDate) {
@@ -107,6 +128,9 @@ console.log(userId)
   const createBooking = debounce(handleBookRoom, 2000)
   
   function payKorapay() {
+    if (!validateDateRange()) {
+      return; 
+    }
     if (!userData?.data?.data) {
       Swal.fire({
         icon: 'info',
