@@ -5,10 +5,11 @@ import Landing1 from './Landing1/Landing1';
 import Loading from '../../LoadingState/Loading';
 const Home: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
+
   useEffect(() => {
-    setTimeout(() => {
+    // setTimeout(() => {
       setLoading(false)
-    }, 3000)
+    // }, 3000)
   });
   return (
     <div className='HomeMainPage'>

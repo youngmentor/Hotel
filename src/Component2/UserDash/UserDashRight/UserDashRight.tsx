@@ -14,6 +14,7 @@ import { BiLogOut } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaTimes } from "react-icons/fa";
 import { FaRegUserCircle } from "react-icons/fa";
+import ButtonLoading from "../../../ButtonLoader/ButtonLoader";
 
 const UserDashRight = ({ value }: { value: any }) => {
   const [userMobile, setUserMobile] = useState<boolean>(false)
@@ -29,7 +30,7 @@ const UserDashRight = ({ value }: { value: any }) => {
     navigate(path);
     handlecloseMobile();
   };
-  const { mutate } = useMutation(['logoutAdmin'], logOutUser, {
+  const { mutate, isLoading } = useMutation(['logoutAdmin'], logOutUser, {
     onSuccess: (data) => {
       localStorage.removeItem(VITE_TOKEN);
       setTimeout(() => {
@@ -87,6 +88,7 @@ const UserDashRight = ({ value }: { value: any }) => {
         <div className="UserDashBoardLeftNav_Icon_Div" onClick={handleUserLogoutClick}>
           <BiLogOut />
           <p onClick={handleUserLogoutClick}>Log Out</p>
+          {isLoading ? <ButtonLoading/>: null}
         </div>
       </div>
     )
