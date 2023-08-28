@@ -134,7 +134,9 @@ const SignUpUser: React.FC = () => {
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </div>
             </div>
-            {!passwordMatch && <p className="ErrorMessage">{errorMessage}</p>}
+            <span>
+              {!passwordMatch && <p className="ErrorMessage">{errorMessage}</p>}
+            </span>
           </div>
           <div className='SignUpInputDiv'>
             <label htmlFor="password">Phone Number</label>

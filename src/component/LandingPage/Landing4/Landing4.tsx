@@ -33,7 +33,11 @@ const Landing4: React.FC = () => {
                                         <p>Desc: {i.roomDescription}</p>
                                         <p>Location: {i.address}</p>
                                     </div>
-                                    <button onClick={(() => navigate(`detail/${i.id}`))} className='BookNow_Button'>Book Now</button>
+                                    <button onClick={(() => {
+                                        navigate(`detail/${i.id}`)
+                                        localStorage.setItem('roomid', i.id)
+                                        console.log(i.id)
+                                    })} className='BookNow_Button'>Book Now</button>
                                 </div>
                             ))
                         }

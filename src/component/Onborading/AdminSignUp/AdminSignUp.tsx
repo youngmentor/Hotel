@@ -139,8 +139,10 @@ const AdminSignUp: React.FC = () => {
               <div className="password-toggle" onClick={visibleConfirmPassword}>
                 {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
               </div>
-              {!passwordMatch && <p className="ErrorMessage">{errorMessage}</p>}
             </div>
+            <span>
+              {!passwordMatch && <p className="ErrorMessage">{errorMessage}</p>}
+            </span>
           </div>
           <button type="submit" className='SignUpBttn'>{isLoading ? <ButtonLoading /> : "SignUp"}</button>
         </form>

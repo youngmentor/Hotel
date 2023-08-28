@@ -6,10 +6,11 @@
     justify-content: center;
     flex-direction: column;
     background-color: rgb(45, 185, 255);
+    color: white;
 }
 .User_Home_Logo_Div{
     width: 100%;
-    height: 10%;
+    height: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,8 +26,8 @@
     gap: 40px;
 }
 .HomeLogo{
-    width: 120px;
-    height: 50px;
+    width: 90px;
+    height: 40px;
     cursor: pointer;
 }
 .UserDashBoard_Nav {
@@ -43,14 +44,15 @@
 .UserDashboardUserImgDiv {
     width: 100%;
     height: 40%;
-    /* background-color: gold; */
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     color: white;
 }
-
+.UserDashboardUserImgDiv p{
+    margin-top: 20px;
+}
 .UserImg {
     width: 200px;
     height: 200px;

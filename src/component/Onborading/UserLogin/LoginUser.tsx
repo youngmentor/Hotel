@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 const Login: React.FC = () => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const {verifyAlert, selectedRoomId, setSelectedRoomId} = useContext(ThemeContext)
+  const {verifyAlert} = useContext(ThemeContext)
   const [login, setLogin] = useState<userLoginRequest>({
     email: '',
     password: ''
@@ -31,9 +31,11 @@ const Login: React.FC = () => {
     onSuccess: (data) => {
         console.log(data);
         localStorage.setItem(VITE_TOKEN, data?.data.accessToken)
+        const selectedRoomId = localStorage.getItem('roomid');
+        console.log(selectedRoomId);
         if (selectedRoomId) {
-          navigate(`/`);
-          setSelectedRoomId(''); // Clear the stored room ID
+          navigate(`/detail/${selectedRoomId}`);
+          localStorage.removeItem('roomid');// Clear the stored room ID
         } else {
           navigate('/');
         }
@@ -45,8 +47,15 @@ const Login: React.FC = () => {
           timer: 2500
         })
     },
-    onError: (error) => {
+    onError: (error: any) => {
         console.error(error);
+        if (error?.response && error?.response?.data && error?.response?.data?.message) {
+          Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: error?.response?.data?.message,
+          });
+      }
     },
 });
 

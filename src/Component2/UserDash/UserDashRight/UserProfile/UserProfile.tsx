@@ -1,7 +1,7 @@
 import './UserProfile.css'
 const UserProfile = ({value}: {value: any}) => {
 
-    const UserData: any = value?.data?.data
+    const UserData= value
     console.log(UserData)
     return (
         <div className="UserProfile_Main">

@@ -24,7 +24,7 @@ const Header: React.FC = () => {
 
         },
     });
-    !userData?.data?.data
+    
     const HeaderDrop = (
         header && (
             <div className='HeaderMobileDropDown'>
@@ -52,7 +52,7 @@ const Header: React.FC = () => {
         )
     )
     useEffect(() => {
-
+        !userData?.data?.data
     })
     return (
         <div className="HeaderMain">
@@ -69,7 +69,7 @@ const Header: React.FC = () => {
                         <button className='Header_Bttn2' onClick={() => navigate("/alllogin/login")}>Book a room</button>
                     </div> :
                     <div className='HeaderUserNameDesktop'>
-                        <FaRegUserCircle />
+                        <FaRegUserCircle onClick={(()=>{navigate('/userdash/userprofile')})}/>
                         <p>{userData?.data?.data?.fullname}</p>
                     </div>
                 }

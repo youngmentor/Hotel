@@ -22,3 +22,19 @@
     height: 100%;
 /* background-color: aquamarine; */
 }
+@media screen and (max-width: 426px){
+    .UserDashboard_Main_Right{
+        width: 100%;
+    }
+    .UserDasboard_Main_Left{
+        display: none;
+    }
+}
+@media screen and (max-width: 769px){
+    .UserDashboard_Main_Right{
+        width: 100%;
+    }
+    .UserDasboard_Main_Left{
+        display: none;
+    }
+}

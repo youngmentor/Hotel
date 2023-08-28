@@ -7,10 +7,11 @@ import HomeLogo from './NewRoomLogo-removebg-preview.png'
 import { useMutation } from "@tanstack/react-query";
 import { logOutUser } from "../../../component/APIS/Mutation";
 import Swal from "sweetalert2";
-const UserDashLeft = ({value}: {value: any}) => {
+import { BiLogOut } from "react-icons/bi";
+const UserDashLeft = ({ value }: { value: any }) => {
     const navigate = useNavigate()
-    const { mutate} = useMutation(['logoutAdmin'], logOutUser, {
-        onSuccess: () => {
+    const { mutate } = useMutation(['logoutAdmin'], logOutUser, {
+        onSuccess: (data) => {
             localStorage.removeItem(VITE_TOKEN);
             setTimeout(() => {
                 navigate('/')
@@ -18,23 +19,23 @@ const UserDashLeft = ({value}: {value: any}) => {
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Log out successful',
+                title: data?.data?.message,
                 showConfirmButton: false,
                 timer: 2500
-              })
+            })
         },
-        onError: (error) => {
-          console.log(error);
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Please Verify Your Account',
-            showConfirmButton: false,
-            timer: 2500
-          })
+        onError: (error: any) => {
+            if (error?.response && error?.response?.data && error?.response?.data?.message) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.response.data.message,
+                });
+            }
 
         },
-      });
+    });
+    const UserName = value?.fullname
     const handleUserLogoutClick = async () => {
         console.log('Button clicked!');
         mutate(value?.id)
@@ -47,22 +48,23 @@ const UserDashLeft = ({value}: {value: any}) => {
             <div className="User_DashBoardLeft_Wrap">
                 <div className='UserDashboardUserImgDiv'>
                     <img src={User} alt='userimg' className='UserImg' />
-                    <p>Suliton Olalere</p>
+                    <p>{UserName}</p>
                 </div>
                 <div className="UserDashBoard_Nav">
                     <div className="UserDashBoardLeftNav_Icon_Div" onClick={() => navigate("/userdash/userprofile")}>
                         <AiOutlineProfile />
-                        <p>Current Booking</p>
+                        <p>User Profile</p>
 
                     </div>
                     <div className="UserDashBoardLeftNav_Icon_Div" onClick={() => navigate("/userdash/userhistory")}>
                         <AiOutlineHistory />
-                        <p>Booking History</p>
+                        <p>Current Booking</p>
 
                     </div>
                 </div>
             </div>
-            <div>
+            <div className="UserDashBoardLeftNav_Icon_Div" onClick={handleUserLogoutClick}>
+                <BiLogOut />
                 <p onClick={handleUserLogoutClick}>Log Out</p>
             </div>
         </div>

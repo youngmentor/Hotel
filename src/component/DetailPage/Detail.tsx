@@ -1,5 +1,5 @@
 const { VITE_TOKEN } = import.meta.env;
-import { useNavigate, useParams } from "react-router-dom"
+import { Params, useNavigate, useParams } from "react-router-dom"
 import { useState } from "react"
 import { useMutation, useQuery } from '@tanstack/react-query'
 import './Detail.css'
@@ -8,13 +8,11 @@ import { getOneRoom, getUser } from '../APIS/query'
 import { Visitor } from "../APIS/TypeChecks";
 import ButtonLoading from "../../ButtonLoader/ButtonLoader";
 // import { ThemeContext } from "../ContextApi/ContextApi";
-import { useTheme } from "../ContextApi/ContextApi";
 import Swal from "sweetalert2";
 
 const Detail: React.FC = () => {
   const navigate = useNavigate()
-  const { roomId } = useParams()
-  const {setSelectedRoomId}=useTheme()
+  const { roomId } = useParams<Params>()
   const { data } = useQuery(['getoneroom', roomId], getOneRoom, {
   })
 
@@ -94,6 +92,7 @@ console.log(userId)
       };
       mutate({ bookingData, userId: userId, roomId: roomId });
       console.log(bookingData)
+      console.log(roomId)
     }
   };
   const debounce = (fn: any, delay: any) => {
@@ -106,12 +105,12 @@ console.log(userId)
     }
   }
   const createBooking = debounce(handleBookRoom, 2000)
-  function payKorapay(roomId: any) {
-    setSelectedRoomId(roomId)
+  
+  function payKorapay() {
     if (!userData?.data?.data) {
       Swal.fire({
         icon: 'info',
-        title: 'Please log in to book a room',
+        title: "you need to log in to book a room",
         showConfirmButton: true,
       });
       setTimeout(()=>{
