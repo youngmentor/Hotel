@@ -1,4 +1,4 @@
-const { VITE_TOKEN } = import.meta.env;
+const { VITE_TOKEN_USER } = import.meta.env;
 import { Route, Routes, useNavigate } from "react-router-dom"
 import UserProfile from "./UserProfile/UserProfile"
 import UserHistory from "./UserHistory/UserHistory"
@@ -32,7 +32,7 @@ const UserDashRight = ({ value }: { value: any }) => {
   };
   const { mutate, isLoading } = useMutation(['logoutAdmin'], logOutUser, {
     onSuccess: (data) => {
-      localStorage.removeItem(VITE_TOKEN);
+      localStorage.removeItem(VITE_TOKEN_USER);
       setTimeout(() => {
         navigate('/')
       }, 500)

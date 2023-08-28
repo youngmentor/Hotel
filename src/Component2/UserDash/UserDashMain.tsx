@@ -1,4 +1,4 @@
-const { VITE_TOKEN } = import.meta.env;
+const { VITE_TOKEN_USER} = import.meta.env;
 import { useQuery } from '@tanstack/react-query';
 import UserDashLeft from './UserDashLeft/UserDashLeft'
 import './UserDashMain.css'
@@ -7,7 +7,7 @@ import { getUser } from '../../component/APIS/query';
 const UserMainDashBoard: React.FC = () => {
 
     const { data: userData } = useQuery(["getuser"], getUser, {
-        enabled: !!localStorage.getItem(VITE_TOKEN),
+        enabled: !!localStorage.getItem(VITE_TOKEN_USER),
         refetchOnWindowFocus: false,
         onSuccess: () => {
         },

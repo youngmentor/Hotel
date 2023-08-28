@@ -42,7 +42,7 @@ const DashBoard = ({ value }: { value: any }) => {
                         <b>{oneHotelRoom}</b>
                         <p>Rooms</p>
                     </div>
-                    <div className='AllHotel-Div'>
+                    <div className='AllHotel-Div' onClick={() => navigate(`/admindash/adminvacantroom/${value?.id}`)}>
                         <b>{oneAdminVacantRoom}</b>
                         <p>Vacant Rooms</p>
                     </div>

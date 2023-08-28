@@ -1,4 +1,4 @@
-const { VITE_TOKEN } = import.meta.env;
+const { VITE_TOKEN_USER } = import.meta.env;
 import { useNavigate } from "react-router-dom"
 import User from './userimg.png'
 import './UserDashLeft.css'
@@ -12,7 +12,7 @@ const UserDashLeft = ({ value }: { value: any }) => {
     const navigate = useNavigate()
     const { mutate } = useMutation(['logoutAdmin'], logOutUser, {
         onSuccess: (data) => {
-            localStorage.removeItem(VITE_TOKEN);
+            localStorage.removeItem(VITE_TOKEN_USER);
             setTimeout(() => {
                 navigate('/')
             }, 500)

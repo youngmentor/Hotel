@@ -1,4 +1,4 @@
-const { VITE_TOKEN } = import.meta.env;
+const {VITE_TOKEN_USER } = import.meta.env;
 import React, { useContext, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +30,7 @@ const Login: React.FC = () => {
   const {mutate, isLoading} = useMutation( ['userlogin'], userLogin , {
     onSuccess: (data) => {
         console.log(data);
-        localStorage.setItem(VITE_TOKEN, data?.data.accessToken)
+        localStorage.setItem(VITE_TOKEN_USER, data?.data.accessToken)
         const selectedRoomId = localStorage.getItem('roomid');
         console.log(selectedRoomId);
         if (selectedRoomId) {

@@ -1,4 +1,4 @@
-const { VITE_TOKEN , VITE_PAYMENT_KEY} = import.meta.env;
+const { VITE_TOKEN_USER , VITE_PAYMENT_KEY} = import.meta.env;
 import { Params, useNavigate, useParams } from "react-router-dom"
 import { useState } from "react"
 import { useMutation, useQuery } from '@tanstack/react-query'
@@ -47,7 +47,7 @@ const Detail: React.FC = () => {
   const {
     data: userData,
   } = useQuery(["getuser"], getUser, {
-    enabled: !!localStorage.getItem(VITE_TOKEN),
+    enabled: !!localStorage.getItem(VITE_TOKEN_USER),
     refetchOnWindowFocus: false,
     onSuccess: () => {
     },
