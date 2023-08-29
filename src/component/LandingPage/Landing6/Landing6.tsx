@@ -24,7 +24,8 @@ const Landing6: React.FC = () => {
                                 <img src={i?.image} alt='Landing4Img' className='Landing4HotelImg' />
                                 <div className='Landing4Details'>
                                     <p>Price: {i?.price}</p>
-                                    <p>Desc: {i?.roomDescription}</p>
+                                    {/* <p>Desc: {i?.roomDescription}</p> */}
+                                    <p>Location {i?.address}</p>
                                 </div>
                                 <button onClick={(()=>navigate(`detail/${i.id}`))} className='BookNow_Button'>Book Now</button>
                             </div>

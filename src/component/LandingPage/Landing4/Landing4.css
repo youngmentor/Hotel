@@ -14,7 +14,6 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    /* flex-direction: column; */
     gap: 20px;
 }
 .Landing4Heading{
@@ -28,6 +27,9 @@
     width: 350px;
     height: auto;
     border: 1px solid lightgrey;
+    border-radius: 8px ;
+    padding: 5px;
+
 }
 .Landing4HotelImg{
     width: 100%;
@@ -36,5 +38,5 @@
 .Landing4Details{
     width: 100%;
     padding: 10px;
-    height: 150px;
+    /* height: 150px; */
 }

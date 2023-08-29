@@ -32,7 +32,7 @@ const AdminDashRight: React.FC = () => {
         navigate(path);
         handlecloseMobile();
     };
-    const { mutate} = useMutation(['logoutAdmin'], logOutAdmin, {
+    const { mutate } = useMutation(['logoutAdmin'], logOutAdmin, {
         onSuccess: () => {
             localStorage.removeItem(VITE_TOKEN)
             setTimeout(() => {
@@ -44,7 +44,7 @@ const AdminDashRight: React.FC = () => {
                 title: 'Log out successful',
                 showConfirmButton: false,
                 timer: 4000
-              })
+            })
         },
         onError: (error) => {
             console.log(error)
@@ -68,8 +68,17 @@ const AdminDashRight: React.FC = () => {
     };
     useEffect(() => {
         // console.log(localStorage.getItem(VITE_TOKEN))
-        if(localStorage.getItem(VITE_TOKEN) === null){
-            navigate('/alllogin/adminlogin') 
+        if (localStorage.getItem(VITE_TOKEN) === null) {
+                navigate('/alllogin/adminlogin')
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Please login or create account to access the dashboard',
+                showConfirmButton: false,
+                timer: 4000
+            })
+
         }
     })
 
@@ -100,9 +109,9 @@ const AdminDashRight: React.FC = () => {
                             <p onClick={() => handleNavigate(`/admindash/adminvacantroom/${value?.id}`)}>Admin Vacant Room</p>
                         </div>
                         <div className='AdminDashBoardLeftNav_Icon_Div'>
-                        <MdAddHome />
-                        <p onClick={() => handleNavigate(`/admindash/alladminroom/${value?.id}`)}>All Room</p>
-                    </div>
+                            <MdAddHome />
+                            <p onClick={() => handleNavigate(`/admindash/alladminroom/${value?.id}`)}>All Room</p>
+                        </div>
                     </div>
                     <div className='AdminDashBoardLeftNav_Icon_Div'>
                         <BiLogOut />
@@ -135,9 +144,9 @@ const AdminDashRight: React.FC = () => {
                     <Route path='/allhotels' element={<AllHotels value={value} />} />
                     <Route path='/addhotels' element={<AddHotels value={value} />} />
                     <Route path='/allrooms/:adminId/:hotelId' element={<AllRooms />} />
-                    <Route path='/adminvacantroom/:adminId' element={<AdminVacantRoom  value={value} />} />
-                    <Route path='/updateroom/:roomId' element={<Update value={value}/>}/>
-                    <Route path='/alladminroom/:adminId' element={<AdminAllRoom  value={value}/>}/>
+                    <Route path='/adminvacantroom/:adminId' element={<AdminVacantRoom value={value} />} />
+                    <Route path='/updateroom/:roomId' element={<Update value={value} />} />
+                    <Route path='/alladminroom/:adminId' element={<AdminAllRoom value={value} />} />
                 </Routes>
             </div>
             {/* </div> */}

@@ -21,6 +21,8 @@
     width: 350px;
     height: auto;
     border: 1px solid lightgrey;
+    border-radius: 8px;
+    padding: 5px;
 }
 .CheapRoomHeading{
     width: 100%;
@@ -35,7 +37,7 @@
 .CheapRoom_Details{
     width: 100%;
     padding: 10px;
-    height: 150px;
+    /* height: 150px; */
 }
 .BookNow_Button{
     width: 100%;

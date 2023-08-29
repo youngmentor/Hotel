@@ -1,9 +1,12 @@
-
+const { VITE_TOKEN_USER } = import.meta.env;
 import { useQuery } from "@tanstack/react-query"
 import { getUserHistory } from "../../../../component/APIS/query"
 import './UserHistory.css'
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const UserHistory = ({ value }: { value: any }) => {
-
+    const navigate = useNavigate()
     const userId: any = value?.id
     const { data, isLoading } = useQuery(['getuserhistory', userId], getUserHistory, {
         onSuccess: () => {
@@ -12,17 +15,29 @@ const UserHistory = ({ value }: { value: any }) => {
     })
 
     const userBookingHistory = data?.data?.data
-// console.log(userBookingHistory)
+    useEffect(() => {
+        // console.log(localStorage.getItem(VITE_TOKEN))
+        if (localStorage.getItem(VITE_TOKEN_USER) === null) {
+            navigate('/alllogin/login')
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Please login or create account to access the dashboard',
+                showConfirmButton: false,
+                timer: 4000
+            })
+        }
+    })
     return (
         <div className="UserHistoryMain">
-            <p>This is my Booking history</p>
+            <p>This is my Booking istory</p>
             {
                 isLoading ? <p>Loading Booking....</p> :
                     <div className="UserHistoryWrap">
                         {
                             userBookingHistory?.map((i: any) => (
                                 <div key={i?.id} className="UserHistoryCard">
-                                    <img src={i?.Room?.image} className="UserHistoryRoomImg"/>
+                                    <img src={i?.Room?.image} className="UserHistoryRoomImg" />
                                     <p>Address: {i?.Room?.address}</p>
                                     <p>Hotel Name: {i?.Room?.hotelname}</p>
                                     <p>Price: {i?.amountToPay}</p>
