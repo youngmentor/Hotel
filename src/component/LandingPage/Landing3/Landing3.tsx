@@ -31,9 +31,9 @@ const Landing3: React.FC = () => {
                                 <div key={i.id} className='Landing4CardWrap'>
                                     <img src={i.image} alt='Landing4Img' className='Landing4HotelImg' />
                                     <div className='Landing4Details'>
-                                        <p>Price: {i.price}</p>
-                                        {/* <p>Desc: {i.roomDescription}</p> */}
-                                        <p>Location: {i.address}</p>
+                                        <p className='HotelName'> {i?.hotelname}</p>
+                                        <p>₦ {i?.price}</p>
+                                        <p> {i?.address}</p>
                                     </div>
                                     <button onClick={(() => navigate(`detail/${i.id}`))} className='BookNow_Button'>Book Now</button>
                                 </div>

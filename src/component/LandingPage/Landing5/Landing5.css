@@ -48,3 +48,7 @@
     border-radius: 4px;
     cursor: pointer;
 }
+.HotelName{
+    color: rgb(45, 188, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}

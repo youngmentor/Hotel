@@ -29,9 +29,9 @@ const Landing5: React.FC = () => {
                                     <div className="CheapRoom_Card" key={i.id}>
                                         <img src={i?.image} className='CheapRoom_Img' />
                                         <div className='CheapRoom_Details'>
-                                            <p>Price: {i?.price}</p>
-                                            {/* <p>Desc: {i?.roomDescription}</p> */}
-                                            <p>Location: {i?.address}</p>
+                                            <p className='HotelName'> {i?.hotelname}</p>
+                                            <p>₦ {i?.price}</p>
+                                            <p> {i?.address}</p>
                                         </div>
                                         <button onClick={(() => navigate(`detail/${i.id}`))} className='BookNow_Button'>Book Now</button>
                                     </div>

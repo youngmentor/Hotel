@@ -1,4 +1,4 @@
-const { VITE_TOKEN_USER , VITE_PAYMENT_KEY} = import.meta.env;
+const { VITE_TOKEN_USER, VITE_PAYMENT_KEY } = import.meta.env;
 import { Params, useNavigate, useParams } from "react-router-dom"
 import { useState } from "react"
 import { useMutation, useQuery } from '@tanstack/react-query'
@@ -56,7 +56,7 @@ const Detail: React.FC = () => {
     },
   });
   const userId: any = userData?.data?.data.id
-// console.log(userId)
+  // console.log(userId)
   const { mutate, isLoading } = useMutation(['bookroom'], bookRoom, {
     onSuccess: (data) => {
       console.log(data)
@@ -69,7 +69,7 @@ const Detail: React.FC = () => {
       })
     },
     onError: (error: any) => {
-      console.error(error); 
+      console.error(error);
       if (error?.response && error?.response?.data && error?.response?.data?.message) {
         Swal.fire({
           icon: 'error',
@@ -80,26 +80,53 @@ const Detail: React.FC = () => {
     },
   });
   const validateDateRange = () => {
-  if (!checkInDate || !checkOutDate) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Invalid date range',
-      text: 'Please select both check-in and check-out dates.',
-    });
-    return false;
-  }
+    if (!checkInDate || !checkOutDate) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid date range',
+        text: 'Please select both check-in and check-out dates.',
+      });
+      return false;
+    }
 
-  if (checkInDate >= checkOutDate) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Invalid date range',
-      text: 'Check-out date must be after check-in date.',
-    });
-    return false;
-  }
-
-  return true;
-};
+    if (checkInDate >= checkOutDate) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid date range',
+        text: 'Check-out date must be after check-in date.',
+      });
+      return false;
+    }
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    const checkInDateObject = new Date(checkInDate);
+    checkInDateObject.setHours(0, 0, 0, 0);
+    if (checkInDateObject < currentDate) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid date range',
+        text: 'Check-in date must be on or after the current date.',
+      });
+      return false;
+    }
+    if (checkInDateObject > currentDate) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid date range',
+        text: 'Check-in date must not be after the current date.',
+      });
+      return false;
+    }
+    if (checkOutDate == currentDate) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid date range',
+        text: 'check out date must be after chek in date',
+      });
+      return false
+    }
+    return true;
+  };
   const handleBookRoom = () => {
     console.log('clicked')
     if (checkInDate && checkOutDate) {
@@ -126,10 +153,10 @@ const Detail: React.FC = () => {
     }
   }
   const createBooking = debounce(handleBookRoom, 2000)
-  
+
   function payKorapay() {
     if (!validateDateRange()) {
-      return; 
+      return;
     }
     if (!userData?.data?.data) {
       Swal.fire({
@@ -137,7 +164,7 @@ const Detail: React.FC = () => {
         title: "you need to log in to book a room",
         showConfirmButton: true,
       });
-      setTimeout(()=>{
+      setTimeout(() => {
         navigate('/alllogin/login')
       }, 4000)
       return;
