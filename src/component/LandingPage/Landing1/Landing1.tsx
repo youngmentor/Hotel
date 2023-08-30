@@ -10,11 +10,9 @@ import Landing4 from '../Landing4/Landing4';
 import Landing5 from '../Landing5/Landing5';
 import Landing6 from '../Landing6/Landing6';
 import { useMutation } from '@tanstack/react-query';
-// import axios from 'axios';
 import { fetchSearchResults } from '../../APIS/Mutation';
 import ButtonLoading from '../../../ButtonLoader/ButtonLoader';
 import { Link } from 'react-router-dom';
-
 
 const Landing1: React.FC = () => {
     const [scroll, setScroll] = useState<boolean>(false)
@@ -43,11 +41,7 @@ const Landing1: React.FC = () => {
             // console.log(data?.data.data)
         }
     });
-    // console.log (typeof inputRef.current?.value)
     useEffect(() => {
-        // console.log(error)
-        // console.log(isLoading)
-        // console.log(data?.data.data)
     })
     return (
         <div className="Landing1Main">
@@ -90,6 +84,7 @@ const Landing1: React.FC = () => {
             <Landing3 />
             <Landing5 />
             <Landing6 />
+            {/* <Skeleton/> */}
             <Landing2 />
             <Footer />
         </div>

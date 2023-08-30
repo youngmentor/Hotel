@@ -3,6 +3,7 @@ import './Landing5.css'
 import { getCheapRoom } from '../../APIS/query'
 // import ButtonLoading from '../../../ButtonLoader/ButtonLoader'
 import { useNavigate } from 'react-router-dom'
+import Skeleton from '../../../SkeletonLoading/Skeleton'
 
 const Landing5: React.FC = () => {
     const navigate = useNavigate()
@@ -21,7 +22,7 @@ const Landing5: React.FC = () => {
                 </div>
                 {
                     isLoading ? (
-                        'Loading Rooms ...'
+                        <Skeleton/>
                     ) : (
                         <div className='Landing4Card'>
                             {

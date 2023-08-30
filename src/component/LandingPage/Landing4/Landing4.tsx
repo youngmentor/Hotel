@@ -3,6 +3,7 @@ import './Landing4.css'
 import { useQuery } from '@tanstack/react-query'
 import { fourStarRoom } from '../../APIS/query'
 import { useNavigate } from 'react-router-dom'
+import Skeleton from '../../../SkeletonLoading/Skeleton'
 
 
 const Landing4: React.FC = () => {
@@ -21,7 +22,7 @@ const Landing4: React.FC = () => {
             </div>
             {
                 isLoading ? (
-                    "Loading rooms ..."
+                   <Skeleton/>
                 ) : (
                     <div className='Landing4Card'>
                         {

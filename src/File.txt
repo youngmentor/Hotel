@@ -70,3 +70,22 @@ export const {
 } = featuresSlice.actions;
 
 export default featuresSlice.reducer;
+
+ .card-skeleton {
+    width: 300px;
+    height: 200px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 10px;
+    animation: skeleton-animation 1s infinite alternate;
+  }
+
+  @keyframes skeleton-animation {
+    0% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

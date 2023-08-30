@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import './Landing6.css'
 import { getLuxuryRoom } from '../../APIS/query'
 import { useNavigate } from 'react-router-dom'
+import Skeleton from '../../../SkeletonLoading/Skeleton'
 // import RoomData from '../HomeData'
 const Landing6: React.FC = () => {
     const navigate = useNavigate()
@@ -15,7 +16,7 @@ const Landing6: React.FC = () => {
             </div>
             {
                 isLoading ? (
-                    'Loading Rooms ...'
+                    <Skeleton/>
                 ) : (
                     <div className='Landing4Card'>
                         {

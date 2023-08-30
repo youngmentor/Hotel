@@ -2,6 +2,7 @@ import './Landing3.css'
 import { useNavigate } from 'react-router-dom'
 import { getAllRoom } from '../../APIS/query'
 import { useQuery } from '@tanstack/react-query'
+import Skeleton from '../../../SkeletonLoading/Skeleton'
 
 const Landing3: React.FC = () => {
     const navigate = useNavigate()
@@ -21,7 +22,7 @@ const Landing3: React.FC = () => {
             </div>
             {
                 isLoading ? (
-                    "Loading rooms ..."
+                    <Skeleton/>
                 ) : (
                     <div className="Landing3MainWrap">
                         {AllRoom?.length === 0 ? (
