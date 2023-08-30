@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import UserData from './BookingData'
 import './DashBoard.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -37,6 +36,8 @@ const DashBoard = ({ value }: { value: any }) => {
     const oneHotelRoom = data?.data?.data?.length
     const oneAdminVacantRoom = vacantRoomData?.data?.data?.length
     const oneAdminBookings = Notification?.data?.data?.length
+    const oneAdminCutomerInfo = Notification?.data?.data
+    // console.log(oneAdminCutomerInfo)
     return (
         <div className="DashBoardMain_Dashboard">
             <div className='DashBoardMain_Dashboard_Wrap'>
@@ -59,7 +60,7 @@ const DashBoard = ({ value }: { value: any }) => {
                     </div>
                 </div>
                 <div className='All_User' >
-                    <h3>All Bookings</h3>
+                    <h3>All Booking History</h3>
                     <div className='AllUser_Calender_Wrap'>
                         <div className='All_User_Booking'>
                             <div className='AllUser_Specific'>
@@ -67,19 +68,19 @@ const DashBoard = ({ value }: { value: any }) => {
                                     <p>Id</p>
                                     <p>Name</p>
                                     <p>Room No</p>
-                                    <p>Date From</p>
-                                    <p>Date To</p>
+                                    <p>Check-in</p>
+                                    <p>Check-out</p>
                                 </div>
                             </div>
                             <div className='All_User_Booking_Wrap'>
                                 {
-                                    UserData.map((i) => (
+                                    oneAdminCutomerInfo?.map((i:any) => (
                                         <div key={i.id} className='AllUser_Info'>
-                                            <p>{i.id}</p>
-                                            <p>{i.name}</p>
-                                            <p>{i.roomNo}</p>
-                                            <p>{i.dateFrom}</p>
-                                            <p>{i.dateTo}</p>
+                                            <p>{i?.id}</p>
+                                            <p>{i?.username}</p>
+                                            <p>{i?.roomNumber}</p>
+                                            <p>{i?.checkIn?.slice(0, 10)}</p>
+                                            <p>{i?.checkOut?.slice(0,10)}</p>
                                         </div>
                                     ))
                                 }

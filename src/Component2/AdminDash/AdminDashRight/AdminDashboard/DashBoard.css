@@ -81,13 +81,19 @@
     width: 100%;
     max-height: 90%;
     overflow-y: scroll;
+    /* background-color: red; */
 }
-
+.All_User_Booking_Wrap::-webkit-scrollbar{
+    width: 2px;
+}
+.All_User_Booking_Wrap::-webkit-scrollbar-thumb{
+background-color: transparent;
+}
 .AllUser_Info {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     gap: 20px;
     padding: 10px;
 
@@ -104,14 +110,15 @@
     background-color: rgb(45, 185, 255);
     color: white;
     justify-content: center;
+    padding: 5px;
 
 }
 .AllUser_Specific_Wrap{
     height: 100%;
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .AllUser_Info p {
     height: 50px;

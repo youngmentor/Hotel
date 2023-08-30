@@ -9,6 +9,12 @@
     gap: 20px;
     margin-top: 40px;
 }
+.AdminAllRoomWrap::-webkit-scrollbar{
+    width: 2px;
+}
+.AdminAllRoomWrap::-webkit-scrollbar-thumb{
+    background-color: transparent;
+}
 .AdminAllRooMain{
     width: 100%;
     height: 90vh;

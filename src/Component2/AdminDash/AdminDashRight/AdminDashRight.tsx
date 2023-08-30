@@ -1,4 +1,5 @@
-const { VITE_TOKEN } = import.meta.env;
+const { VITE_TOKEN, VITE_ENDPOINT } = import.meta.env;
+import { io } from 'socket.io-client';
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import './AdminDashRight.css'
 import DashBoard from './AdminDashboard/DashBoard'
@@ -7,7 +8,7 @@ import AddHotels from './AddHotels/AddHotels'
 import AllRooms from './AllRooms/AllRooms'
 import { RxDashboard, RxHamburgerMenu } from "react-icons/rx";
 import { FaHotel, FaTimes } from "react-icons/fa";
-import { MdAddHome, MdNotificationsNone } from "react-icons/md";
+import { MdAddHome, MdNotificationsNone,MdNotificationsActive } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
@@ -19,12 +20,17 @@ import Update from './Delete/Update_Room';
 import AdminAllRoom from './AdminAllRoom/AdminAllRoom';
 import AdminVacantRoom from './AdminVacantRoom/AdminVacantRoom';
 import AdminNotification from './AdminNotification/AdminNotification';
-
+// import AdminNotification from './AdminNotification/AdminNotification';
+const socket = io(`${VITE_ENDPOINT}`);
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
     // const [unreadNotification, setUnreadNotification] = useState<boolean>(false);
+    const [showNotiffication, setShowNotification] = useState<boolean>(false)
 
+    const handleNotification = () => {
+        setShowNotification(!showNotiffication)
+    }
     const handlMobileChange = () => {
         setMobile(!mobile)
     }
@@ -35,7 +41,7 @@ const AdminDashRight: React.FC = () => {
         navigate(path);
         handlecloseMobile();
     };
-  
+
     const { mutate } = useMutation(['logoutAdmin'], logOutAdmin, {
         onSuccess: () => {
             localStorage.removeItem(VITE_TOKEN)
@@ -71,6 +77,7 @@ const AdminDashRight: React.FC = () => {
         mutate(value?.id)
     };
     useEffect(() => {
+
         // console.log(localStorage.getItem(VITE_TOKEN))
         if (localStorage.getItem(VITE_TOKEN) === null) {
             navigate('/alllogin/adminlogin')
@@ -84,12 +91,19 @@ const AdminDashRight: React.FC = () => {
             })
 
         }
-    },[])
-
+    }, [])
+    useEffect(() => {
+        socket.on('Booked notification', (data) => {
+            console.log('Received message:', data);
+        });
+        return () => {
+            socket.disconnect();
+        }
+    }, [])
     // const {data: BookingsData} = useQuery(['getOneAdminBookings', value?.id], getOneAdminBookings,{
     //     onSuccess: ()=>{
     //         // console.log(data)
-            
+
     //     }
     // })
     const MobileDropDown = (
@@ -144,11 +158,12 @@ const AdminDashRight: React.FC = () => {
                 </div>
                 {mobile && MobileDropDown}
                 <div className='AdminDashRightNotificationIcon'>
-                    <MdNotificationsNone
-                        onClick={(() => {
-                            navigate('/admindash/adminnotify')
-                        })} />
+                    {
+
+                        showNotiffication ? <MdNotificationsNone onClick={handleNotification} className="NotifyTwo" /> : <MdNotificationsActive onClick={handleNotification} className="NotifyOne" />
+                    }
                 </div>
+                {showNotiffication ? <AdminNotification value={value} /> : null}
             </div>
             <div className='AdminDashRightContent'>
                 <Routes>
@@ -159,7 +174,6 @@ const AdminDashRight: React.FC = () => {
                     <Route path='/adminvacantroom/:adminId' element={<AdminVacantRoom value={value} />} />
                     <Route path='/updateroom/:roomId' element={<Update value={value} />} />
                     <Route path='/alladminroom/:adminId' element={<AdminAllRoom value={value} />} />
-                    <Route path='/adminnotify' element={<AdminNotification value={value} />} />
                 </Routes>
             </div>
             {/* </div> */}

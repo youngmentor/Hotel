@@ -7,6 +7,12 @@
     overflow-y: scroll;
     margin-top: 100px;
 }
+.AllHotels_Main::-webkit-scrollbar{
+    width: 2px;
+}
+.AllHotels_Main::-webkit-scrollbar-thumb{
+    background-color: transparent;
+}
 .AllHotels_Main_Wrap{
     width: 95%;
     height: 90%;

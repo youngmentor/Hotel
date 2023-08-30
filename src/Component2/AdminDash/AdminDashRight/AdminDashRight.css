@@ -38,7 +38,11 @@
     /* background-color: red; */
     padding: 10px;
 }
-
+.NotifyTwo{
+    /* background-color: red; */
+    position: absolute;
+    right: 26px;
+}
 .AdminDashRightNotificationIcon {
     width: 5%;
     height: 100%;

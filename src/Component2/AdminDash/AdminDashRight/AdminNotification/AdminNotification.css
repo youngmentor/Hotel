@@ -1,11 +1,33 @@
-.AdminNotificationMain{
-    width: 90%;
-    > ul {
-        width: 60%;
-        > li{
-           font-size: 20px;
-           line-height: 1.5;
-           margin-top: 10px;
-        }
-    }
+.AdminNotificationMain {
+    width: 60%;
+    height: auto;
+    position: relative;
+    top: 150px;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+  
+}
+
+ul {
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+ul::-webkit-scrollbar{
+    width: 2px;
+}
+ul::-webkit-scrollbar-thumb{
+    background-color: transparent;
+}
+li {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 20px;
+    color: black;
 }

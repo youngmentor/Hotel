@@ -23,9 +23,7 @@ const AdminAllRoom = ({ value }: { value: any }) => {
                                 <p>Room Price: {i?.price} </p>
                                 <p>Room Number: {i?.roomNumber}</p>
                                 <p>Room Hotel: {i?.hotelname}</p>
-                                {
-                                    i.booked ? "booked" : "Available"
-                                }
+                             <p>This Room is:{i.booked ? "booked" : "Available"}</p>
                             </div>
                         </Link>
                     )
