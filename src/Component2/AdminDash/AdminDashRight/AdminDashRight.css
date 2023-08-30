@@ -39,7 +39,7 @@
     padding: 10px;
 }
 
-.AdminDashRightHeaderIcon {
+.AdminDashRightNotificationIcon {
     width: 5%;
     height: 100%;
     display: flex;
@@ -73,16 +73,16 @@
     }
     .AdminDashRightHeader {
         width: 100%;
-        position: sticky;
+        position: fixed;
         top: 0;
     }
-
     .AdminDashRightContent {
+        display: flex;
         width: 100%;
         height: auto;
     }
 
-    .AdminDashRightHeaderIcon {
+    .AdminDashRightNotificationIcon {
         display: flex;
         cursor: pointer;
     }
@@ -121,7 +121,7 @@
         width: 100%;
     }
 
-    .AdminDashRightHeaderIcon {
+    .AdminDashRightNotificationIcon {
         display: flex;
         cursor: pointer;
     }

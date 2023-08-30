@@ -13,7 +13,7 @@ const Landing5: React.FC = () => {
         }
     })
     // console.log(data?.data?.data)
-    const cheapRoom = data?.data?.data
+    const cheapRoom = data?.data?.data?.slice(0, 9)
     return (
         <div className='CheapRoom_Main'>
             <div className='CheapRoom_Main_Wrap'>

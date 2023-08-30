@@ -4,8 +4,9 @@ import './DashBoard.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useNavigate } from 'react-router-dom';
-import { getOneAdminAllRoom, getOneAdminVacantRoom } from '../../../../component/APIS/query';
+import { getOneAdminAllRoom, getOneAdminBookings, getOneAdminVacantRoom } from '../../../../component/APIS/query';
 import { useQuery } from '@tanstack/react-query';
+// import Swal from 'sweetalert2';
 const DashBoard = ({ value }: { value: any }) => {
     const [date, setDate] = useState(new Date());
     const navigate = useNavigate()
@@ -24,12 +25,18 @@ const DashBoard = ({ value }: { value: any }) => {
         onSuccess: ()=>{
         }
     })
+    const {data: Notification} = useQuery(['getOneAdminBookings', value?.id], getOneAdminBookings,{
+        onSuccess: ()=>{
+        
+        }
+    })
     // console.log(vacantRoomData?.data)
     // console.log(value?.Hotels)
-    console.log( data?.data?.data)
+    // console.log( BookingsData?.data?.data?.[0].adminMessage)
     const hotelNumber = value?.Hotels?.length
     const oneHotelRoom = data?.data?.data?.length
     const oneAdminVacantRoom = vacantRoomData?.data?.data?.length
+    const oneAdminBookings = Notification?.data?.data?.length
     return (
         <div className="DashBoardMain_Dashboard">
             <div className='DashBoardMain_Dashboard_Wrap'>
@@ -47,7 +54,7 @@ const DashBoard = ({ value }: { value: any }) => {
                         <p>Vacant Rooms</p>
                     </div>
                     <div className='AllHotel-Div'>
-                        <b>123</b>
+                        <b>{oneAdminBookings}</b>
                         <p>Bookings</p>
                     </div>
                 </div>

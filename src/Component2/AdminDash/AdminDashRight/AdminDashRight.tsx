@@ -18,9 +18,12 @@ import Swal from 'sweetalert2';
 import Update from './Delete/Update_Room';
 import AdminAllRoom from './AdminAllRoom/AdminAllRoom';
 import AdminVacantRoom from './AdminVacantRoom/AdminVacantRoom';
+import AdminNotification from './AdminNotification/AdminNotification';
+
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
+    // const [unreadNotification, setUnreadNotification] = useState<boolean>(false);
 
     const handlMobileChange = () => {
         setMobile(!mobile)
@@ -32,6 +35,7 @@ const AdminDashRight: React.FC = () => {
         navigate(path);
         handlecloseMobile();
     };
+  
     const { mutate } = useMutation(['logoutAdmin'], logOutAdmin, {
         onSuccess: () => {
             localStorage.removeItem(VITE_TOKEN)
@@ -69,7 +73,7 @@ const AdminDashRight: React.FC = () => {
     useEffect(() => {
         // console.log(localStorage.getItem(VITE_TOKEN))
         if (localStorage.getItem(VITE_TOKEN) === null) {
-                navigate('/alllogin/adminlogin')
+            navigate('/alllogin/adminlogin')
 
             Swal.fire({
                 position: 'top-end',
@@ -80,8 +84,14 @@ const AdminDashRight: React.FC = () => {
             })
 
         }
-    })
+    },[])
 
+    // const {data: BookingsData} = useQuery(['getOneAdminBookings', value?.id], getOneAdminBookings,{
+    //     onSuccess: ()=>{
+    //         // console.log(data)
+            
+    //     }
+    // })
     const MobileDropDown = (
         mobile && (
             <div className='AdminDashLeftMain_Mobile'>
@@ -124,18 +134,20 @@ const AdminDashRight: React.FC = () => {
 
     return (
         <div className='AdminDashRightMain'>
-            {/* <div className='AdminDashRightMainWrap'> */}
             <div className='AdminDashRightHeader'>
                 <div className='AdminDashRightHeader_Wrap'>
-                    <p className='AdminNameDisplay'>Welcome back {value?.name} ! </p>
+                    <p className='AdminNameDisplay'>Welcome back {value?.name}</p>
                     {
                         mobile ? <FaTimes onClick={handlMobileChange} /> : <RxHamburgerMenu onClick={handlMobileChange} className="AdminMobileBurger" />
                     }
 
                 </div>
                 {mobile && MobileDropDown}
-                <div className='AdminDashRightHeaderIcon'>
-                    <MdNotificationsNone />
+                <div className='AdminDashRightNotificationIcon'>
+                    <MdNotificationsNone
+                        onClick={(() => {
+                            navigate('/admindash/adminnotify')
+                        })} />
                 </div>
             </div>
             <div className='AdminDashRightContent'>
@@ -147,6 +159,7 @@ const AdminDashRight: React.FC = () => {
                     <Route path='/adminvacantroom/:adminId' element={<AdminVacantRoom value={value} />} />
                     <Route path='/updateroom/:roomId' element={<Update value={value} />} />
                     <Route path='/alladminroom/:adminId' element={<AdminAllRoom value={value} />} />
+                    <Route path='/adminnotify' element={<AdminNotification value={value} />} />
                 </Routes>
             </div>
             {/* </div> */}

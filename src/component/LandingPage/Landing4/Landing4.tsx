@@ -14,7 +14,7 @@ const Landing4: React.FC = () => {
         }
     })
     // console.log(data?.data?.data)
-    const starRoom = data?.data?.data
+    const starRoom = data?.data?.data?.slice(0, 9)
     return (
         <div className='Landing4Main'>
             <div className='Landing4Heading'>

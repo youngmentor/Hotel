@@ -13,7 +13,7 @@ const Landing3: React.FC = () => {
         }
     })
     // console.log(data?.data?.data)
-    const AllRoom = data?.data?.data
+    const AllRoom = data?.data?.data?.slice(0, 9)
     // const AllRoom: MyObject[] = myArray.slice(0, 9);
     return (
         <div className="Landing3Main">

@@ -1,0 +1,11 @@
+.AdminNotificationMain{
+    width: 90%;
+    > ul {
+        width: 60%;
+        > li{
+           font-size: 20px;
+           line-height: 1.5;
+           margin-top: 10px;
+        }
+    }
+}

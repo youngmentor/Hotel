@@ -8,7 +8,7 @@ const Landing6: React.FC = () => {
     const navigate = useNavigate()
     const { data, isLoading } = useQuery([''], getLuxuryRoom, {})
     // console.log(data?.data?.data)
-    const luxuryRoom = data?.data?.data
+    const luxuryRoom = data?.data?.data?.slice(0, 9)
     return (
         <div className='Landing4Main'>
             <div className='Landing4Heading'>

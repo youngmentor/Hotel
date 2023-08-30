@@ -160,4 +160,12 @@
     .All_User_Booking{
         height: 100%;
     }
+    .DashBoardMain_Dashboard {
+        margin-top: 100px;
+    }
+  }
+  @media screen and (max-width: 769px){
+    .DashBoardMain_Dashboard {
+        margin-top: 150px;
+    }
   }

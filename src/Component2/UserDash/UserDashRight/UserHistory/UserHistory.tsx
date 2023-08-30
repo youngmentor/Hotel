@@ -42,8 +42,8 @@ const UserHistory = ({ value }: { value: any }) => {
                                     <p>Hotel Name: {i?.Room?.hotelname}</p>
                                     <p>Price: {i?.amountToPay}</p>
                                     <p>Room Number: {i?.roomNumber}</p>
-                                    <p>Check-In: {i?.checkIn} </p>
-                                    <p>Check-Out: {i?.checkOut} </p>
+                                    <p>Check-In: {i?.checkIn.slice(0, 10)} </p>
+                                    <p>Check-Out: {i?.checkOut.slice(0, 10)} </p>
                                 </div>
                             ))
                         }
