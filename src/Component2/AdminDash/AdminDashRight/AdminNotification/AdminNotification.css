@@ -31,3 +31,13 @@ li {
     margin-top: 20px;
     color: black;
 }
+@media screen and (max-width: 426px){
+    .AdminNotificationMain{
+        width: 100vw;
+        position: relative;
+        top: 200px;
+    }
+    li{
+        border-bottom: 1px solid black;
+    }
+}

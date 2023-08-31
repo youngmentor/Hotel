@@ -6,6 +6,8 @@
     display: inline-block;
     animation: skeleton-animation 1s ease-in-out 0.5s infinite alternate;
     padding: 10px;
+    z-index: 1000;
+
   }
 
   @keyframes skeleton-animation {
@@ -33,6 +35,8 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
+
   }
   .SkeletonImg{
     width: 100%;

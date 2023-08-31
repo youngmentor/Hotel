@@ -38,11 +38,13 @@
     /* background-color: red; */
     padding: 10px;
 }
-.NotifyTwo{
+
+.NotifyTwo {
     /* background-color: red; */
     position: absolute;
     right: 26px;
 }
+
 .AdminDashRightNotificationIcon {
     width: 5%;
     height: 100%;
@@ -59,10 +61,12 @@
     align-items: center;
     justify-content: center;
 }
-.AdminMobileBurger{
+
+.AdminMobileBurger {
     display: none;
 }
-.AdminDashLeftMain_Mobile{
+
+.AdminDashLeftMain_Mobile {
     display: flex;
 }
 
@@ -72,14 +76,23 @@
         height: 100%;
 
     }
-    .AdminMobileBurger{
+
+    .NotifyOne {
+        position: absolute;
+        right: 26px;
+    }
+
+
+    .AdminMobileBurger {
         display: flex;
     }
+
     .AdminDashRightHeader {
         width: 100%;
         position: fixed;
         top: 0;
     }
+
     .AdminDashRightContent {
         display: flex;
         width: 100%;
@@ -100,9 +113,11 @@
         /* z-index: 1000; */
         height: 100%;
     }
-.AdminDashLeftMainWrap_Mobile{
-    display: flex;
-}
+
+    .AdminDashLeftMainWrap_Mobile {
+        display: flex;
+    }
+
     .AdminNameDisplay {
         display: none;
     }
@@ -112,9 +127,11 @@
     .AdminDashRightMain {
         width: 100%;
     }
-.AdminNameDisplayMobile{
-    display: flex;
-}
+
+    .AdminNameDisplayMobile {
+        display: flex;
+    }
+
     .AdminDashRightHeader {
         width: 100%;
         position: fixed;
@@ -143,7 +160,8 @@
     .AdminNameDisplay {
         display: none;
     }
-    .AdminMobileBurger{
+
+    .AdminMobileBurger {
         display: flex;
     }
 }
