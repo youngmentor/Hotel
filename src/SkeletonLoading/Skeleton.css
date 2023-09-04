@@ -6,7 +6,6 @@
     display: inline-block;
     animation: skeleton-animation 1s ease-in-out 0.5s infinite alternate;
     padding: 10px;
-    z-index: 1000;
 
   }
 
@@ -27,6 +26,7 @@
     flex-direction: column;
     margin-top: 20px;
     gap: 10px;
+    z-index: 2;
    
   }
   .SkeletonWrap{

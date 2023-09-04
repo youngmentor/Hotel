@@ -67,6 +67,7 @@
     padding: 12px;
     top: 0;
     background-color: white;
+    z-index: 2;
 }
 
 .SearchInputWrap2 {
@@ -81,7 +82,7 @@
     top: 0;
     padding: 10px;
     background-color: white;
-
+    z-index: 2;
 }
 
 .SearchBttn {

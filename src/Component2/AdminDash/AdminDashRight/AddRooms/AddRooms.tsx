@@ -135,7 +135,7 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                             cols={30}
                         />
                     </div>
-                    <button className='Add_Room_Bttn'>{isLoading ? <ButtonLoading /> : "Add Room"}</button>
+                    <button className='Add_Room_Bttn'>{isLoading ? <ButtonLoading/> : "Add Room"}</button>
                 </div>
             </form>
         </div>
