@@ -38,7 +38,9 @@ const Landing4: React.FC = () => {
                                         navigate(`detail/${i.id}`)
                                         localStorage.setItem('roomid', i.id)
                                         console.log(i.id)
-                                    })} className='BookNow_Button'>Book Now</button>
+                                    })} className='BookNow_Button'>
+                                        Book Now
+                                    </button>
                                 </div>
                             ))
                         }

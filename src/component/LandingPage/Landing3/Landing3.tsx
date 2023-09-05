@@ -22,7 +22,7 @@ const Landing3: React.FC = () => {
             </div>
             {
                 isLoading ? (
-                    <Skeleton/>
+                    <Skeleton />
                 ) : (
                     <div className="Landing3MainWrap">
                         {AllRoom?.length === 0 ? (
@@ -36,7 +36,13 @@ const Landing3: React.FC = () => {
                                         <p>₦ {i?.price}</p>
                                         <p> {i?.address}</p>
                                     </div>
-                                    <button onClick={(() => navigate(`detail/${i.id}`))} className='BookNow_Button'>Book Now</button>
+                                    <button onClick={(() => {
+                                        navigate(`detail/${i.id}`)
+                                        localStorage.setItem('roomid', i.id)
+                                        console.log(i.id)
+                                    })} className='BookNow_Button'>
+                                        Book Now
+                                    </button>
                                 </div>
                             ))
                         )
