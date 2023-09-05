@@ -145,7 +145,6 @@ const AdminDashRight: React.FC = () => {
             </div>
         )
     )
-
     return (
         <div className='AdminDashRightMain'>
             <div className='AdminDashRightHeader'>
