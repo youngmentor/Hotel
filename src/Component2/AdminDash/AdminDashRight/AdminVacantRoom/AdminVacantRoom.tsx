@@ -8,7 +8,7 @@ const AdminVacantRoom = ({value}: {value: any}) => {
         }
     })
    const allvacantRoom = vacantRoomData?.data?.data
-   console.log(allvacantRoom)
+//    console.log(allvacantRoom)
     return (
         <div  className="AdminAllRooMain">
                      <div className='AdminAllRoomWrap'>
@@ -22,8 +22,7 @@ const AdminVacantRoom = ({value}: {value: any}) => {
                             <p>Room Price: {i?.price} </p>
                             <p>Room Number: {i?.roomNumber}</p>
                             <p>Room Hotel: {i?.hotelname}</p>
-                            <p>This Room Is: {i.booked ? "booked" : "Available"}</p>
-                            
+                            <p>This Room Is: {i.booked ? "booked" : "Available"}</p>                          
                         </div>
                     </Link>
                 )
