@@ -69,7 +69,15 @@
 .AdminDashLeftMain_Mobile {
     display: flex;
 }
-
+.new-message-indicator{
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background-color: green;
+    position: relative;
+    left: 15px;
+    bottom: 5px;
+}
 @media screen and (max-width: 426px) {
     .AdminDashRightMain {
         width: 100%;

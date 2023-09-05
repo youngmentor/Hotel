@@ -8,11 +8,11 @@ import AddHotels from './AddHotels/AddHotels'
 import AllRooms from './AllRooms/AllRooms'
 import { RxDashboard, RxHamburgerMenu } from "react-icons/rx";
 import { FaHotel, FaTimes } from "react-icons/fa";
-import { MdAddHome, MdNotificationsNone,MdNotificationsActive } from "react-icons/md";
+import { MdAddHome, MdNotificationsNone, MdNotificationsActive } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from 'react'
 import HomeLogo from './RoomLogo-removebg-preview.png'
-import { getAdmin } from '../../../component/APIS/query';
+import { getAdmin, getOneAdminBookings } from '../../../component/APIS/query';
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { logOutAdmin, } from '../../../component/APIS/Mutation';
 import Swal from 'sweetalert2';
@@ -100,12 +100,24 @@ const AdminDashRight: React.FC = () => {
             socket.disconnect();
         }
     }, [])
-    // const {data: BookingsData} = useQuery(['getOneAdminBookings', value?.id], getOneAdminBookings,{
-    //     onSuccess: ()=>{
-    //         // console.log(data)
+    const { data: BookingsData } = useQuery(['getOneAdminBookings', value?.id], getOneAdminBookings, {
+        onSuccess: () => {
+            // console.log(data)
 
-    //     }
-    // })
+        }
+    })
+    const message = BookingsData?.data?.data || []
+    const [hasNewMessage, setHasNewMessage] = useState(false);
+    useEffect(() => {
+        console.log(message)
+        // Check if there is a new message by comparing with some condition
+        const isNewMessage = message.some((message: any) => {
+            return message?.adminMessage;
+        });
+
+        // Update the state variable to reflect the presence of new messages
+        setHasNewMessage(isNewMessage);
+    }, [message]);
     const MobileDropDown = (
         mobile && (
             <div className='AdminDashLeftMain_Mobile'>
@@ -157,6 +169,7 @@ const AdminDashRight: React.FC = () => {
                 </div>
                 {mobile && MobileDropDown}
                 <div className='AdminDashRightNotificationIcon'>
+                    {hasNewMessage ? <div className="new-message-indicator"></div>: null}
                     {
 
                         showNotiffication ? <MdNotificationsNone onClick={handleNotification} className="NotifyTwo" /> : <MdNotificationsActive onClick={handleNotification} className="NotifyOne" />
