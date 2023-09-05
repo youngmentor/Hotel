@@ -87,7 +87,6 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                                     accept=".jpeg, .jpg, .png"
                                     onChange={handleImageChange}
                                     name="image"
-                                    required
                                 />
                             </label>
                         ) : (
