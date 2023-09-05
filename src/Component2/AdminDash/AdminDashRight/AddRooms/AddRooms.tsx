@@ -31,9 +31,9 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
     };
     
     const { mutate, isLoading, } = useMutation(addRoom, {
-        onSuccess: (data) => {
+        onSuccess: () => {
             allRoom()
-            console.log(data)
+            // console.log(data)
             queryClient.invalidateQueries({ queryKey: ["getOneHotelRooms"] });
             Swal.fire({
                 position: 'top-end',

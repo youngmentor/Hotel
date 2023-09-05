@@ -25,7 +25,7 @@ const AdminNotification = ({ value }: { value: any }) => {
       {
         message?.map((i: any) => (
           <ul key={i?.id}>
-            <li>{i?.adminMessage?.slice(0, 32)}</li>
+            <li>{i?.adminMessage}</li>
           </ul>
         ))
       }
