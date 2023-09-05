@@ -1,13 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
-import { getOneAdminAllRoom } from '../../../../component/APIS/query';
+import { getOneAdminVacantRoom } from '../../../../component/APIS/query';
 import './AdminVacantRoom.css'
 import { Link } from 'react-router-dom';
 const AdminVacantRoom = ({value}: {value: any}) => {
-    const { data } = useQuery(['getoneAdminRoom', value?.id], getOneAdminAllRoom, {
-        onSuccess: () => {
+    const {data: vacantRoomData} = useQuery(['getoneVacnatRoom', value?.id], getOneAdminVacantRoom,{
+        onSuccess: ()=>{
         }
-    });
-   const allvacantRoom = data?.data?.data
+    })
+   const allvacantRoom = vacantRoomData?.data?.data
+   console.log(allvacantRoom)
     return (
         <div  className="AdminAllRooMain">
                      <div className='AdminAllRoomWrap'>
