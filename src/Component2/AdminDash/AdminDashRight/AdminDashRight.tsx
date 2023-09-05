@@ -1,5 +1,5 @@
-const { VITE_TOKEN, VITE_ENDPOINT } = import.meta.env;
-import { io } from 'socket.io-client';
+const { VITE_TOKEN } = import.meta.env;
+// import { io } from 'socket.io-client';
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import './AdminDashRight.css'
 import DashBoard from './AdminDashboard/DashBoard'
@@ -21,7 +21,7 @@ import AdminAllRoom from './AdminAllRoom/AdminAllRoom';
 import AdminVacantRoom from './AdminVacantRoom/AdminVacantRoom';
 import AdminNotification from './AdminNotification/AdminNotification';
 // import AdminNotification from './AdminNotification/AdminNotification';
-const socket = io(`${VITE_ENDPOINT}`);
+// const socket = io(`${VITE_ENDPOINT}`);
 const AdminDashRight: React.FC = () => {
     const navigate = useNavigate()
     const [mobile, setMobile] = useState<boolean>(false)
@@ -92,14 +92,14 @@ const AdminDashRight: React.FC = () => {
 
         }
     }, [])
-    useEffect(() => {
-        socket.on('Booked notification', (data) => {
-            console.log('Received message:', data);
-        });
-        return () => {
-            socket.disconnect();
-        }
-    }, [])
+    // useEffect(() => {
+    //     socket.on('Booked notification', (data) => {
+    //         console.log('Received message:', data);
+    //     });
+    //     return () => {
+    //         socket.disconnect();
+    //     }
+    // }, [])
     const { data: BookingsData } = useQuery(['getOneAdminBookings', value?.id], getOneAdminBookings, {
         onSuccess: () => {
             // console.log(data)
@@ -169,10 +169,15 @@ const AdminDashRight: React.FC = () => {
                 </div>
                 {mobile && MobileDropDown}
                 <div className='AdminDashRightNotificationIcon'>
-                    {hasNewMessage ? <div className="new-message-indicator"></div>: null}
                     {
 
-                        showNotiffication ? <MdNotificationsNone onClick={handleNotification} className="NotifyTwo" /> : <MdNotificationsActive onClick={handleNotification} className="NotifyOne" />
+                        showNotiffication ?
+                            <MdNotificationsNone onClick={handleNotification} className="NotifyTwo" />
+                            : <div >
+                                 {hasNewMessage ?
+                                    <div className="new-message-indicator"></div> : null}
+                                <MdNotificationsActive onClick={handleNotification} className="NotifyOne" />
+                            </div>
                     }
                 </div>
                 {showNotiffication ? <AdminNotification value={value} /> : null}
