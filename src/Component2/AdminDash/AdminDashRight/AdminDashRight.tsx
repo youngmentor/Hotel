@@ -169,7 +169,7 @@ const AdminDashRight: React.FC = () => {
                 </div>
                 {mobile && MobileDropDown}
                 <div className='AdminDashRightNotificationIcon'>
-                    {/* {hasNewMessage ? <div className="new-message-indicator"></div>: null} */}
+                    {hasNewMessage ? <div className="new-message-indicator"></div>: null}
                     {
 
                         showNotiffication ? <MdNotificationsNone onClick={handleNotification} className="NotifyTwo" /> : <MdNotificationsActive onClick={handleNotification} className="NotifyOne" />

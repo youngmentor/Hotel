@@ -64,7 +64,7 @@ const SignUpUser: React.FC = () => {
       return;
     }
     mutate(formData)
-    console.log(formData)
+    // console.log(formData)
   };
 
   return (
