@@ -87,6 +87,7 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                                     accept=".jpeg, .jpg, .png"
                                     onChange={handleImageChange}
                                     name="image"
+                                    required
                                 />
                             </label>
                         ) : (
@@ -102,6 +103,7 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                             type='text'
                             name='roomNumber'
                             value={createRoom.roomNumber}
+                            required
                         />
                     </div>
                     <div className='RoomInputDiv'>
@@ -113,6 +115,7 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                             type='text'
                             name='price'
                             value={createRoom.price}
+                            required
                         />
                     </div>
                     <div className='RoomInputDiv'>
@@ -133,6 +136,7 @@ const AddRooms = ({ adminId, hotelId, allRoom }: { adminId: string | undefined, 
                             value={createRoom.roomDescription}
                             rows={4}
                             cols={30}
+                            required
                         />
                     </div>
                     <button className='Add_Room_Bttn'>{isLoading ? <ButtonLoading/> : "Add Room"}</button>
