@@ -37,6 +37,8 @@ const AdminForgetPassword: React.FC = () => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         mutate(email);
+        setEmail('')
+
     };
 
     return (

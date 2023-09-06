@@ -50,7 +50,7 @@ const AdminResetPassword: React.FC = () => {
     };
     return (
         <div className='forget'>
-            <p>{data?.data.message}</p>
+            <p>{data?.data?.message}</p>
             <div className='Admin_Resetwrap'>
                 <img
                     src="/RoomLogo-RBG.png"

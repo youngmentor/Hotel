@@ -16,9 +16,16 @@ export const verifyUser = async (data: string | undefined) => {
 export const adminForgotPassword = async (email: string) => {
   return await axios.post(`${VITE_ENDPOINT}/manager/forgotten`, { email })
 };
+export const userForgotPassword = async (email: string) => {
+  return await axios.post(`${VITE_ENDPOINT}/user/forgot`, { email })
+};
 export const resetAdminPassword = async (data: { id: string | undefined, password: string }) => {
   const { id, password } = data
   return await axios.patch(`${VITE_ENDPOINT}/manager/change/${id}`, { password: password })
+};
+export const resetUserPassword = async (data: { id: string | undefined, password: string }) => {
+  const { id, password } = data
+  return await axios.patch(`${VITE_ENDPOINT}/user/change/${id}`, { password: password })
 };
 export const adminSignUp = async (data: any) => {
   // console.log(data)

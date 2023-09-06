@@ -12,7 +12,6 @@ const AdminVacantRoom = ({value}: {value: any}) => {
     return (
         <div  className="AdminAllRooMain">
                      <div className='AdminAllRoomWrap'>
-            
             {
                 allvacantRoom?.map((i: any) =>
                 (
