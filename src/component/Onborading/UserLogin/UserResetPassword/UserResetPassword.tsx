@@ -8,7 +8,8 @@ import ButtonLoading from "../../../../ButtonLoader/ButtonLoader";
 const UserResetPassword: React.FC = () => {
     const navigate = useNavigate()
     const { id } = useParams<Params>()
-    const inputRef = useRef<HTMLInputElement>(null);
+    const newPasswordRef = useRef<HTMLInputElement>(null);
+    const confirmPasswordRef = useRef<HTMLInputElement>(null);
     const [password, setPassword] = useState<string>('');
     const [confirmNewPassword, setConfirmNewPassword] = useState<string>('');
 
@@ -62,7 +63,7 @@ const UserResetPassword: React.FC = () => {
                 <form className='UserResetPasswordForm' onSubmit={handleSubmit}>
                     <input
                         className='UserResetPasswordInput'
-                        ref={inputRef}
+                        ref={newPasswordRef}
                         type="password" 
                         value={password}
                         placeholder="Enter your new password..."
@@ -70,7 +71,7 @@ const UserResetPassword: React.FC = () => {
                     />
                     <input
                         className='UserResetPasswordInput'
-                        ref={inputRef}
+                        ref={confirmPasswordRef}
                         type="password" 
                         value={confirmNewPassword}
                         pattern={password}
