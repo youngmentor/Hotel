@@ -57,12 +57,12 @@ const UserForgetPassword: React.FC = () => {
                     type="email"
                     value={email}
                     onChange={handleEmailChange}
-                    className='forget_input'
+                    className='Userforget_input'
                     placeholder='Email'
                 />
                 <button
                     type="submit"
-                    className="forget_button"
+                    className="Userforget_button"
                 >
                     {
                         isLoading ? <ButtonLoading /> : " Submit"

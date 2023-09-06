@@ -78,7 +78,7 @@ const UserResetPassword: React.FC = () => {
                         placeholder="Confirm your new password..."
                         onChange={e => setConfirmNewPassword(e.target.value)}
                     />
-                    <button className='forget_button pointer' type='submit' >{isLoading ? <ButtonLoading /> : "Submit"}</button>
+                    <button className='forget_button' type='submit' >{isLoading ? <ButtonLoading /> : "Submit"}</button>
                 </form>
             </div>
         </div>
