@@ -19,7 +19,6 @@ const AdminSignUp: React.FC = () => {
     password: '',
     confirmpassword: '',
   });
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setErrorMessage('');
     setPasswordMatch(true);
