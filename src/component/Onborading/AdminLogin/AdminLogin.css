@@ -1,0 +1,29 @@
+.submit-button-wrapper {
+    display: flex;
+    width: 30%;
+  }
+  .AdminLoginBttn {
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgb(45, 185, 255);
+    color: white;
+    font-size: 18px;
+}
+  
+  .float {
+    justify-content: flex-end;
+  }
+  .button-success {
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background-color: #03bb56;
+  }

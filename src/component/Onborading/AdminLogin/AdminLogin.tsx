@@ -14,7 +14,13 @@ const AdminLogin: React.FC = () => {
     const [login, setLogin] = useState<LoginRequest>({
         email: '',
         password: ''
-    })
+    });
+    const [toggleClass, setToggleClass] = useState<boolean>(false);
+    const annoyingSubmitButton = () => {
+        if (login.password.length < 8) {
+            setToggleClass((prevState) => !prevState);
+        }
+    };
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const { verifyAlert } = useContext(ThemeContext)
     // const [errorMessage, setErrorMessage] = useState<string>('')
@@ -103,7 +109,9 @@ const AdminLogin: React.FC = () => {
                         </div>
                     </div>
                     <p onClick={(() => navigate("/adminforgetpassword"))} className='ForgetPassword'>Forgot Password?</p>
-                    <button type="submit" className='LoginBttn'>{isLoading ? <ButtonLoading /> : "Login"}</button>
+                    <div className={`submit-button-wrapper ${toggleClass ? 'float' : ''}`}>
+                        <button type="submit" className={`AdminLoginBttn ${login.password.length > 8 ? 'AdminLoginBttn' : ''}`} onMouseEnter={annoyingSubmitButton} >{isLoading ? <ButtonLoading /> : "Login"}</button>
+                    </div>
                 </form>
                 <span className='LoginSpan'>Don't have an account yet? <b onClick={() => navigate("/allsignup/adminsignup")} >create account</b></span>
             </div>

@@ -13,12 +13,18 @@ const AdminSignUp: React.FC = () => {
   const navigate = useNavigate()
   const [passwordMatch, setPasswordMatch] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [toggleClass, setToggleClass] = useState<boolean>(false);
   const [formData, setFormData] = useState<SignUpForm>({
     name: '',
     email: '',
     password: '',
     confirmpassword: '',
   });
+  const annoyingSubmitButton = () => {
+    if (formData.password.length < 8) {
+      setToggleClass((prevState) => !prevState);
+    }
+  };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setErrorMessage('');
     setPasswordMatch(true);
@@ -143,7 +149,9 @@ const AdminSignUp: React.FC = () => {
               {!passwordMatch && <p className="ErrorMessage">{errorMessage}</p>}
             </span>
           </div>
-          <button type="submit" className='SignUpBttn'>{isLoading ? <ButtonLoading /> : "SignUp"}</button>
+          <div className={`submit-button-wrapper ${toggleClass ? 'float' : ''}`}>
+            <button type="submit" className={`SignUpBttn ${formData.password.length > 8 ? 'button_success': ''}`}  onMouseEnter={annoyingSubmitButton}>{isLoading ? <ButtonLoading /> : "SignUp"}</button>
+          </div>
         </form>
         <span className='SigupSpan'>Already have an account? <b onClick={() => navigate("/alllogin/adminlogin")} >Login here</b></span>
       </div>
