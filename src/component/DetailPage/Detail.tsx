@@ -185,7 +185,6 @@ const Detail: React.FC = () => {
       onSuccess: function () {
         createBooking();
         navigate("/")
-
         Swal.fire({
           icon: 'success',
           title: 'Payment Successful',
