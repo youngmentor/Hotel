@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom'
 import './PopularHotel.css'
 import { useState } from 'react'
 import { useQuery } from "@tanstack/react-query";
-import { getAbujaHotel,getLagosHotel,getKanoHotel,getCalabarHotel } from "../../APIS/query";
+import { getAbujaHotel, getLagosHotel, getKanoHotel, getCalabarHotel } from "../../APIS/query";
 const Popular: React.FC = () => {
-const navigate= useNavigate()
+    const navigate = useNavigate()
     const [showButton, setShowButton] = useState<boolean>(false)
     const [showButton2, setShowButton2] = useState<boolean>(false)
     const [showButton3, setShowButton3] = useState<boolean>(false)
@@ -61,9 +61,9 @@ const navigate= useNavigate()
                             <h4 className='HotelName'>In Lagos</h4>
                         </div>
                         {
-                            showButton ? <div className='two'  ><button onClick={(()=>navigate("/lagoshotel"))}>See Hotel</button></div> : <div className=''></div>
+                            showButton ? <div className='two'  ><button onClick={(() => navigate("/lagoshotel"))}>See Hotel</button></div> : <div className=''></div>
                         }
-                        {isShow && showButton}
+                        {/* {isShow && showButton} */}
                     </div>
                 </div>
                 <div className="PopularKano"
@@ -76,7 +76,7 @@ const navigate= useNavigate()
                             <h4 className='HotelName'>Kano</h4>
                         </div>
                         {
-                            showButton2 ? <div className='two'  ><button onClick={(()=>navigate("/kanohotel"))}>See Hotel</button></div> : <div className=''></div>
+                            showButton2 ? <div className='two'  ><button onClick={(() => navigate("/kanohotel"))}>See Hotel</button></div> : <div className=''></div>
                         }
                     </div>
                 </div>
@@ -90,7 +90,7 @@ const navigate= useNavigate()
                             <h4 className='HotelName'>Abuja</h4>
                         </div>
                         {
-                            showButton3 ? <div className='two'  ><button onClick={(()=>navigate("/abujahotel"))}>See Hotel</button></div> : <div className=''></div>
+                            showButton3 ? <div className='two'  ><button onClick={(() => navigate("/abujahotel"))}>See Hotel</button></div> : <div className=''></div>
                         }
                     </div>
                 </div>
@@ -104,7 +104,7 @@ const navigate= useNavigate()
                             <h4 className='HotelName'>River</h4>
                         </div>
                         {
-                            showButton4 ? <div className='two'  ><button onClick={(()=>navigate("/riverhotel"))}>See Hotel</button></div> : <div className=''></div>
+                            showButton4 ? <div className='two'  ><button onClick={(() => navigate("/riverhotel"))}>See Hotel</button></div> : <div className=''></div>
                         }
                     </div>
                 </div>
@@ -114,11 +114,11 @@ const navigate= useNavigate()
                 >
                     <div className='PopularLagosWrap'>
                         <div className='PopularDetails'>
-                            <p className='HotelNum'>{}</p>
+                            <p className='HotelNum'>{ }</p>
                             <h4 className='HotelName'>Kwara</h4>
                         </div>
                         {
-                            showButton5 ? <div className='two'  ><button onClick={(()=>navigate("/kwarahotel"))}>See Hotel</button></div> : <div className=''></div>
+                            showButton5 ? <div className='two'  ><button onClick={(() => navigate("/kwarahotel"))}>See Hotel</button></div> : <div className=''></div>
                         }
                     </div>
                 </div>
@@ -128,11 +128,11 @@ const navigate= useNavigate()
                 >
                     <div className='PopularLagosWrap'>
                         <div className='PopularDetails'>
-                            <p className='HotelNum'>{}</p>
+                            <p className='HotelNum'>{ }</p>
                             <h4 className='HotelName'>Ibadan</h4>
                         </div>
                         {
-                            showButton6 ? <div className='two'  ><button onClick={(()=>navigate("/ibadanhotel"))}>See Hotel</button></div> : <div className=''></div>
+                            showButton6 ? <div className='two'  ><button onClick={(() => navigate("/ibadanhotel"))}>See Hotel</button></div> : <div className=''></div>
                         }
                     </div>
                 </div>
@@ -141,3 +141,8 @@ const navigate= useNavigate()
     )
 }
 export default Popular
+
+
+// {
+//     showNav ? <div><p>Login</p></div> : <div className=''></div>
+// }
